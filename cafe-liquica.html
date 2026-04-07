@@ -182,6 +182,11 @@
   /* cursor zoom nas fotos clicáveis fora da galeria */
   .foto-lb{cursor:zoom-in;transition:transform 0.3s,filter 0.3s}
   .foto-lb:hover{transform:scale(1.025);filter:brightness(1.06)}
+  #video-section{background:var(--cinza-claro)}
+  .video-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+  .video-wrap{border-radius:10px;overflow:hidden;box-shadow:var(--sombra);aspect-ratio:16/9}
+  .video-wrap iframe{width:100%;height:100%;display:block;border:none}
+  .video-texto p{font-size:1rem;line-height:1.8;color:var(--texto-claro);margin-bottom:1.2rem;font-weight:300}
   @media(max-width:900px){
     .nav-links{display:none}.hamburger{display:flex}
     .sobre-grid,.tetum-inner,.video-inner,.contacto-grid,.footer-top,.palavra-inner{grid-template-columns:1fr;gap:2rem}
@@ -356,6 +361,29 @@
   </div>
 </section>
 
+
+<section id="video-section">
+  <div class="section-inner">
+    <div class="video-inner">
+      <div>
+        <p class="section-label" data-pt="✦ O CAFE em Movimento" data-tt="✦ CAFE iha Movimentu">✦ O CAFE em Movimento</p>
+        <h2 class="section-titulo"><span data-pt="Vê o nosso " data-tt="Haree ami nia ">Vê o nosso </span><em data-pt="mundo" data-tt="mundu">mundo</em></h2>
+        <div class="secao-linha"></div>
+        <p data-pt="Um olhar sobre o dia a dia do CAFE de Liquiçá — os alunos, os professores, os momentos que fazem desta escola um lugar especial no coração de Timor-Leste." data-tt="Haree ba loron-loron iha CAFE Liquiçá nian — estudante sira, professor sira, momentu sira ne'ebé halo eskola ida-ne'e sai fatin espesiál iha Timor-Leste nia laran.">Um olhar sobre o dia a dia do CAFE de Liquiçá — os alunos, os professores, os momentos que fazem desta escola um lugar especial no coração de Timor-Leste.</p>
+        <p data-pt="Cada imagem conta uma história de dedicação, aprendizagem e esperança — dez anos de um sonho que continua a crescer." data-tt="Imajen ida-idak konta istória dedikasaun, aprendizajen no esperansa nian — tinan sanulu husi mehi ne'ebé kontinua kresimentu.">Cada imagem conta uma história de dedicação, aprendizagem e esperança — dez anos de um sonho que continua a crescer.</p>
+      </div>
+      <div class="video-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/HkX8MjxLue0"
+          title="CAFE de Liquiçá"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
 
 <div id="tetum">
   <div class="tetum-bg-deco"></div>
@@ -553,26 +581,19 @@ window.addEventListener('DOMContentLoaded',function(){
   document.getElementById('pal-data').textContent=new Date().toLocaleDateString('pt-PT',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
   iniciarLightbox();
 });
-// ── CONTADOR DE VISITAS REAL (partilhado entre todos os dispositivos) ─────────
+// ── CONTADOR DE VISITAS ───────────────────────────────────────────────────────
 (function(){
   var el=document.getElementById('num-visitas');
   if(!el)return;
-  fetch('https://api.countapi.xyz/hit/cafeliquica.github.io/visitas')
-    .then(function(r){return r.json();})
-    .then(function(d){
-      var total=d.value||0;
-      var c=Math.max(0,total-30);
-      var t=setInterval(function(){
-        c=Math.min(c+1,total);
-        el.textContent=c.toLocaleString('pt-PT');
-        if(c>=total)clearInterval(t);
-      },25);
-    })
-    .catch(function(){
-      var v=parseInt(localStorage.getItem('cafe_liq_fb')||'0')+1;
-      localStorage.setItem('cafe_liq_fb',v);
-      el.textContent=v.toLocaleString('pt-PT');
-    });
+  var k='cafe_liq_v2';
+  var v=parseInt(localStorage.getItem(k)||'0')+1;
+  localStorage.setItem(k,v);
+  var c=Math.max(0,v-20);
+  var t=setInterval(function(){
+    c=Math.min(c+1,v);
+    el.textContent=c.toLocaleString('pt-PT');
+    if(c>=v)clearInterval(t);
+  },30);
 })();
 
 // ── LIGHTBOX ──────────────────────────────────────────────────────────────────
