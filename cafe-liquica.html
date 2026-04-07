@@ -179,6 +179,7 @@
   .cnt-icone{font-size:1.25rem}
   .cnt-num{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--amarelo);line-height:1;display:block}
   .cnt-label{font-size:0.6rem;color:rgba(255,255,255,0.38);letter-spacing:0.13em;text-transform:uppercase;display:block;margin-top:1px}
+  .cnt-hits img{height:22px;display:block;border-radius:4px}
   /* cursor zoom nas fotos clicáveis fora da galeria */
   .foto-lb{cursor:zoom-in;transition:transform 0.3s,filter 0.3s}
   .foto-lb:hover{transform:scale(1.025);filter:brightness(1.06)}
@@ -514,12 +515,14 @@
   </div>
 </footer>
 
-<!-- CONTADOR DE VISITAS -->
+<!-- CONTADOR DE VISITAS REAL (partilhado entre todos os visitantes) -->
 <div id="contador-visitas">
   <span class="cnt-icone">👁️</span>
   <div>
-    <span class="cnt-num" id="num-visitas">...</span>
-    <span class="cnt-label" data-pt="visitas · obrigado!" data-tt="vizita · obrigadu!">visitas · obrigado!</span>
+    <span class="cnt-label" style="margin-bottom:4px" data-pt="visitas totais" data-tt="vizita tomak">visitas totais</span>
+    <span class="cnt-hits">
+      <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fcafeliquica.github.io%2Fcafe-liquica%2F&count_bg=%23f0a500&title_bg=%231a5c2e&icon=eye.svg&icon_color=%23ffffff&title=visitas&edge_flat=true" alt="Contador de visitas">
+    </span>
   </div>
 </div>
 
@@ -573,20 +576,7 @@ window.addEventListener('DOMContentLoaded',function(){
   document.getElementById('pal-data').textContent=new Date().toLocaleDateString('pt-PT',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
   iniciarLightbox();
 });
-// ── CONTADOR DE VISITAS ───────────────────────────────────────────────────────
-(function(){
-  var el=document.getElementById('num-visitas');
-  if(!el)return;
-  var k='cafe_liq_v2';
-  var v=parseInt(localStorage.getItem(k)||'0')+1;
-  localStorage.setItem(k,v);
-  var c=Math.max(0,v-20);
-  var t=setInterval(function(){
-    c=Math.min(c+1,v);
-    el.textContent=c.toLocaleString('pt-PT');
-    if(c>=v)clearInterval(t);
-  },30);
-})();
+// Contador via hits.seeyoufarm.com (badge na página)
 
 // ── LIGHTBOX ──────────────────────────────────────────────────────────────────
 var lbFotos=[]; var lbIndex=0;
