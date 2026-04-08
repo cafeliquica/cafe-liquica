@@ -131,6 +131,9 @@
   #noticias{background:var(--branco)}
   .noticias-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:2rem}
   @media(min-width:901px){.noticias-grid{grid-template-columns:repeat(3,1fr)}.noticias-grid .noticia-card:nth-child(4),.noticias-grid .noticia-card:nth-child(5){margin-top:0}}
+
+  .noticia-video-wrap{width:100%;aspect-ratio:9/16;max-height:320px;border-radius:8px 8px 0 0;overflow:hidden;background:#000}
+  .noticia-video-wrap iframe{width:100%;height:100%;border:none;display:block}
   .noticia-card{border:1px solid var(--cinza-medio);border-radius:8px;overflow:hidden;transition:box-shadow 0.3s,transform 0.3s}
   .noticia-card:hover{box-shadow:var(--sombra);transform:translateY(-4px)}
   .noticia-img{width:100%;height:200px;object-fit:cover;display:block}
@@ -389,15 +392,7 @@
           allowfullscreen>
         </iframe>
       </div>
-      <div class="video-wrap" style="max-width:340px;margin:0 auto">
-        <iframe
-          src="https://www.youtube.com/embed/2crGCbT-3LI"
-          title="Alunos do CAFE de Liquiçá — evento SuperTmatik"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen>
-        </iframe>
-      </div>
+
     </div>
   </div>
 </section>
@@ -468,6 +463,24 @@
           <h3 class="noticia-titulo" data-pt="Dia da Mulher — mensagens do coração" data-tt="Loron Feto nian — mensajen husi laran">Dia da Mulher — mensagens do coração</h3>
           <p class="noticia-resumo" data-pt="Os alunos do CAFE celebraram o Dia Internacional da Mulher com mensagens escritas à mão em corações — palavras de força, admiração e carinho para todas as mulheres da comunidade." data-tt="Estudante sira husi CAFE selebra Loron Internasionál Feto nian ho mensajen hakerek iha korasa sira — liafuan forsa, admirasaun no karinhu ba feto hotu iha komunidade.">Os alunos do CAFE celebraram o Dia Internacional da Mulher com mensagens escritas à mão em corações — palavras de força, admiração e carinho para todas as mulheres da comunidade.</p>
           <p class="noticia-data">Março 2026</p>
+        </div>
+      </div>
+
+      <div class="noticia-card">
+        <div class="noticia-video-wrap">
+          <iframe
+            src="https://www.youtube.com/embed/2crGCbT-3LI"
+            title="Alunos do CAFE de Liquiçá"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="noticia-corpo">
+          <p class="noticia-cat" data-pt="Vídeo" data-tt="Vídeo">Vídeo</p>
+          <h3 class="noticia-titulo" data-pt="Alunos do CAFE em destaque" data-tt="Estudante CAFE sira iha destake">Alunos do CAFE em destaque</h3>
+          <p class="noticia-resumo" data-pt="Os nossos alunos em acção num evento especial — um momento de orgulho para toda a comunidade do CAFE de Liquiçá." data-tt="Ami nia estudante sira iha aksaun iha eventu espesiál — momentu orgulhu ba komunidade CAFE Liquiçá tomak.">Os nossos alunos em acção num evento especial — um momento de orgulho para toda a comunidade do CAFE de Liquiçá.</p>
+          <p class="noticia-data">2026</p>
         </div>
       </div>
     </div>
