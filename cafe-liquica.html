@@ -2,8 +2,30 @@
 <html lang="pt">
 <head>
 <meta charset="UTF-8">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SC2TK1269H"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-SC2TK1269H');
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CAFE de Liquiçá — Centros de Aprendizagem e Formação Escolar de Timor-Leste</title>
+<title>CAFE de Liquiçá — Centro de Aprendizagem e Formação Escolar · Timor-Leste</title>
+<meta name="description" content="CAFE de Liquiçá (Liquisa / Likisa) — Centro de Aprendizagem e Formação Escolar em Timor-Leste. Escola portuguesa em Liquiçá, ensino do pré-escolar ao 12.º ano. Um dos 14 CAFE de Timor-Leste, projeto de cooperação Camões I.P.">
+<meta name="keywords" content="CAFE, CAFE Liquiçá, CAFE Liquisa, CAFE Likisa, CAFE Timor-Leste, Centros de Aprendizagem e Formação Escolar, Liquiçá, Liquisa, Likisa, Likisá, escola Liquiçá, escola Liquisa, escola Likisa, língua portuguesa Timor-Leste, ensino português Timor, cooperação portuguesa Timor, Camões IP Timor, escola portuguesa Timor, CAFE Timor, 14 CAFE Timor-Leste, Atauro CAFE, aprendizagem Timor-Leste, formação escolar Timor, Liquiça, educação Timor-Leste, sentru aprendizajen Likisa, eskola Likisa">
+<meta name="author" content="CAFE de Liquiçá — Camões I.P.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://cafeliquica.github.io/cafe-liquica/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cafeliquica.github.io/cafe-liquica/">
+<meta property="og:title" content="CAFE de Liquiçá — Centro de Aprendizagem e Formação Escolar · Timor-Leste">
+<meta property="og:description" content="CAFE de Liquiçá (Liquisa/Likisa) — um dos 14 Centros de Aprendizagem e Formação Escolar de Timor-Leste. Ensino em língua portuguesa do pré-escolar ao 12.º ano.">
+<meta property="og:image" content="https://cafeliquica.github.io/cafe-liquica/fotobemvindo.jpeg">
+<meta property="og:site_name" content="CAFE de Liquiçá">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"EducationalOrganization","name":"CAFE de Liquiçá","alternateName":["CAFE Liquiçá","CAFE Liquisa","CAFE Likisa","Centro de Aprendizagem e Formação Escolar de Liquiçá","Sentru Aprendizajen no Formasaun Eskolar Likisa"],"description":"CAFE de Liquiçá — um dos 14 Centros de Aprendizagem e Formação Escolar de Timor-Leste. Projeto de cooperação educativa Portugal-Timor-Leste, promovido pelo Camões I.P.","url":"https://cafeliquica.github.io/cafe-liquica/","logo":"https://cafeliquica.github.io/cafe-liquica/logo.png","image":"https://cafeliquica.github.io/cafe-liquica/fotobemvindo.jpeg","address":{"@type":"PostalAddress","addressLocality":"Liquiçá","addressCountry":"TL"},"email":"liquicacafe@hotmail.com","foundingDate":"2015","parentOrganization":{"@type":"Organization","name":"Camões — Instituto da Cooperação e da Língua, I.P.","url":"https://www.instituto-camoes.pt"}}
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
   :root{--verde:#1a5c2e;--vermelho:#c0392b;--amarelo:#f0a500;--preto:#1a1a1a;--branco:#ffffff;--cinza-claro:#f7f5f0;--cinza-medio:#e8e4dc;--texto:#2c2c2c;--texto-claro:#666;--sombra:0 4px 24px rgba(0,0,0,0.10)}
@@ -104,11 +126,6 @@
   .galeria-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.55) 0%,transparent 60%);opacity:0;transition:opacity 0.3s;display:flex;align-items:flex-end;padding:1rem}
   .galeria-item:hover .galeria-overlay{opacity:1}
   .galeria-overlay span{color:white;font-size:0.82rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase}
-  #video-section{background:var(--cinza-claro)}
-  .video-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
-  .video-wrap{border-radius:10px;overflow:hidden;box-shadow:var(--sombra);background:#000;aspect-ratio:16/9}
-  .video-wrap video{width:100%;height:100%;display:block}
-  .video-texto p{font-size:1rem;line-height:1.8;color:var(--texto-claro);margin-bottom:1.2rem;font-weight:300}
   #tetum{background:var(--preto);padding:5rem 2.5rem;position:relative;overflow:hidden}
   .tetum-bg-deco{position:absolute;right:-5rem;top:50%;transform:translateY(-50%);width:500px;height:500px;border-radius:50%;border:60px solid rgba(240,165,0,0.05);pointer-events:none}
   .tetum-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;position:relative;z-index:1}
@@ -124,14 +141,17 @@
   #noticias{background:var(--branco)}
   .noticias-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:2rem}
   @media(min-width:901px){.noticias-grid{grid-template-columns:repeat(3,1fr)}.noticias-grid .noticia-card:nth-child(4),.noticias-grid .noticia-card:nth-child(5){margin-top:0}}
+
+  .noticia-video-wrap{width:100%;aspect-ratio:9/16;max-height:320px;border-radius:8px 8px 0 0;overflow:hidden;background:#000}
+  .noticia-video-wrap iframe{width:100%;height:100%;border:none;display:block}
   .noticia-card{border:1px solid var(--cinza-medio);border-radius:8px;overflow:hidden;transition:box-shadow 0.3s,transform 0.3s}
   .noticia-card:hover{box-shadow:var(--sombra);transform:translateY(-4px)}
   .noticia-img{width:100%;height:200px;object-fit:cover;display:block}
   .noticia-corpo{padding:1.5rem}
   .noticia-cat{font-size:0.7rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--vermelho);margin-bottom:0.5rem}
   .noticia-titulo{font-family:'Playfair Display',serif;font-size:1.1rem;line-height:1.4;margin-bottom:0.75rem;color:var(--preto)}
-  .noticia-resumo{font-size:0.88rem;color:var(--texto-claro);line-height:1.6;margin-bottom:1rem;font-weight:300}
-  .noticia-data{font-size:0.75rem;color:rgba(0,0,0,0.32);letter-spacing:0.05em}
+  .noticia-resumo{font-size:0.88rem;color:#3a3a3a;line-height:1.6;margin-bottom:1rem;font-weight:400}
+  .noticia-data{font-size:0.75rem;color:rgba(0,0,0,0.55);letter-spacing:0.05em}
   #contacto{background:var(--cinza-claro)}
   .contacto-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem}
   .contacto-info{display:flex;flex-direction:column;gap:1.5rem}
@@ -165,6 +185,29 @@
   .lightbox-nav:hover{background:rgba(255,255,255,0.25)}
   .lightbox-prev{left:1rem}.lightbox-next{right:1rem}
   .galeria-item{cursor:zoom-in}
+
+  /* MODAL DE NOTÍCIA */
+  .modal-noticia{display:none;position:fixed;inset:0;z-index:9998;background:rgba(0,0,0,0.85);align-items:center;justify-content:center;padding:1.5rem;animation:lbFade 0.25s ease}
+  .modal-noticia.aberto{display:flex}
+  .modal-caixa{background:var(--branco);border-radius:12px;max-width:680px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 8px 40px rgba(0,0,0,0.4);animation:lbZoom 0.25s ease}
+  .modal-foto{width:100%;height:280px;object-fit:cover;border-radius:12px 12px 0 0;display:block}
+  .modal-corpo{padding:2rem}
+  .modal-cat{font-size:0.7rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--vermelho);margin-bottom:0.75rem}
+  .modal-titulo{font-family:'Playfair Display',serif;font-size:1.6rem;line-height:1.3;margin-bottom:1rem;color:var(--preto)}
+  .modal-texto{font-size:1rem;color:#2c2c2c;line-height:1.8;font-weight:400;margin-bottom:1.25rem}
+  .modal-data{font-size:0.78rem;color:rgba(0,0,0,0.32);letter-spacing:0.05em;margin-bottom:1.5rem}
+  .modal-fechar{background:var(--vermelho);color:white;border:none;padding:10px 28px;border-radius:4px;font-family:'Source Sans 3',sans-serif;font-size:0.85rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;transition:background 0.2s}
+  .modal-fechar:hover{background:#a93226}
+  .noticia-card{cursor:pointer}
+  @media(max-width:540px){.modal-foto{height:200px}.modal-corpo{padding:1.25rem}.modal-titulo{font-size:1.3rem}}
+  /* cursor zoom nas fotos clicáveis fora da galeria */
+  .foto-lb{cursor:zoom-in;transition:transform 0.3s,filter 0.3s}
+  .foto-lb:hover{transform:scale(1.025);filter:brightness(1.06)}
+  #video-section{background:var(--cinza-claro)}
+  .video-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}.video-inner-videos{display:flex;flex-direction:column;gap:1.5rem}
+  .video-wrap{border-radius:10px;overflow:hidden;box-shadow:var(--sombra);aspect-ratio:16/9}
+  .video-wrap iframe{width:100%;height:100%;display:block;border:none}
+  .video-texto p{font-size:1rem;line-height:1.8;color:var(--texto-claro);margin-bottom:1.2rem;font-weight:300}
   @media(max-width:900px){
     .nav-links{display:none}.hamburger{display:flex}
     .sobre-grid,.tetum-inner,.video-inner,.contacto-grid,.footer-top,.palavra-inner{grid-template-columns:1fr;gap:2rem}
@@ -273,7 +316,7 @@
   <div class="section-inner">
     <div class="sobre-grid">
       <div class="sobre-img-wrap">
-        <img loading="lazy" src="fotobemvindo.jpeg" alt="Sejam Bem-Vindos ao CAFE de Liquiçá" class="sobre-img">
+        <img loading="lazy" src="fotobemvindo.jpeg" alt="Sejam Bem-Vindos ao CAFE de Liquiçá" class="sobre-img foto-lb" onclick="abrirLightboxAvulso('fotobemvindo.jpeg','Bem-vindos ao CAFE de Liquiçá')">
         <div class="sobre-img-badge">
           <span class="num">10</span>
           <span class="txt" data-pt="anos de missão" data-tt="tinan misaun nian">anos de missão</span>
@@ -332,9 +375,14 @@
         <img loading="lazy" src="fotoensaio.jpeg" alt="Ensaio Páscoa">
         <div class="galeria-overlay"><span data-pt="Ensaio — Missa de Páscoa" data-tt="Ensaiu — Misa Páskoa">Ensaio — Missa de Páscoa</span></div>
       </div>
+      <div class="galeria-item">
+        <img loading="lazy" src="fototurma.jpeg" alt="Dia do Pi — SuperTmatik">
+        <div class="galeria-overlay"><span data-pt="Dia do Pi · 9.º ano aprende SuperTmatik" data-tt="Loron Pi · Tinan 9 aprende SuperTmatik">Dia do Pi · 9.º ano aprende SuperTmatik</span></div>
+      </div>
     </div>
   </div>
 </section>
+
 
 <section id="video-section">
   <div class="section-inner">
@@ -347,10 +395,15 @@
         <p data-pt="Cada imagem conta uma história de dedicação, aprendizagem e esperança — dez anos de um sonho que continua a crescer." data-tt="Imajen ida-idak konta istória dedikasaun, aprendizajen no esperansa nian — tinan sanulu husi mehi ne'ebé kontinua kresimentu.">Cada imagem conta uma história de dedicação, aprendizagem e esperança — dez anos de um sonho que continua a crescer.</p>
       </div>
       <div class="video-wrap">
-        <video controls>
-          <source src="video-cafe.mp4" type="video/mp4">
-        </video>
+        <iframe
+          src="https://www.youtube.com/embed/HkX8MjxLue0"
+          title="CAFE de Liquiçá"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
       </div>
+
     </div>
   </div>
 </section>
@@ -368,7 +421,7 @@
       <p class="tetum-traducao" data-pt="Em português: Poesia oral timorense" data-tt="Iha Portugés: Poesia oral Timor nian">Em português: <em>Poesia oral timorense</em></p>
       <p class="tetum-explicacao" data-pt='O dadolin é uma forma de poesia oral tradicional de Timor-Leste, transmitida de geração em geração. Composta por dísticos com rima e ritmo, serve para expressar sentimentos, contar histórias e preservar a memória coletiva do povo timorense. É a voz da alma de Timor — e no CAFE, celebramos esta herança com orgulho.' data-tt="Dadolin mak forma poesia oral tradisionál Timor-Leste nian, transmite husi jerasaun ba jerasaun. Komposta husi dístiku ho rima no ritmu, serbisu hodi expresa sentimentu, konta istória no prezerva memória kolektiva povu Timor nian. Mak lian husi Timor nia klamar — no iha CAFE, ami selebra heransa ida-ne'e ho orgulhu.">O <strong style="color:var(--amarelo)">dadolin</strong> é uma forma de poesia oral tradicional de Timor-Leste, transmitida de geração em geração. Composta por dísticos com rima e ritmo, serve para expressar sentimentos, contar histórias e preservar a memória coletiva do povo timorense. É a voz da alma de Timor — e no CAFE, celebramos esta herança com orgulho.</p>
     </div>
-    <img loading="lazy" src="fotopascoa.jpeg" alt="Comunidade CAFE" class="tetum-foto">
+    <img loading="lazy" src="fotopascoa.jpeg" alt="Comunidade CAFE" class="tetum-foto foto-lb" onclick="abrirLightboxAvulso('fotopascoa.jpeg','Comunidade CAFE')">
   </div>
 </div>
 
@@ -378,8 +431,18 @@
     <h2 class="section-titulo"><span data-pt="O que acontece " data-tt="Saida mak akontese ">O que acontece </span><em data-pt="no CAFE" data-tt="iha CAFE">no CAFE</em></h2>
     <div class="secao-linha"></div>
     <div class="noticias-grid">
-      <div class="noticia-card">
-        <img loading="lazy" src="fotopascoa.jpeg" alt="Missa de Páscoa" class="noticia-img">
+      <div class="noticia-card" onclick="abrirModalNoticia('fotocop.jpeg','Parceria Internacional','Programa de Educação Olímpica do COP chega ao CAFE de Liquiçá','O Programa de Educação Olímpica (PEO) do Comité Olímpico de Portugal chegou a Timor-Leste. O CAFE de Liquiçá é a mais recente instituição a integrar esta iniciativa, graças ao contributo da professora Cláudia Vaz. O programa passa a contar com 362 estabelecimentos registados, reforçando a presença além-fronteiras e a disseminação dos Valores Olímpicos — Excelência, Amizade e Respeito — a nível global.','Abril 2026')">
+        <img loading="lazy" src="fotocop.jpeg" alt="Programa de Educação Olímpica — CAFE Liquiçá" class="noticia-img" onclick="abrirModalNoticia('fotocop.jpeg','Parceria Internacional','Programa de Educação Olímpica do COP chega ao CAFE de Liquiçá','O Programa de Educação Olímpica (PEO) do Comité Olímpico de Portugal chegou a Timor-Leste. O CAFE de Liquiçá é a mais recente instituição a integrar esta iniciativa, graças ao contributo da professora Cláudia Vaz. O programa passa a contar com 362 estabelecimentos registados, reforçando a presença além-fronteiras e a disseminação dos Valores Olímpicos — Excelência, Amizade e Respeito — a nível global.','Abril 2026')" style="cursor:zoom-in">
+        <div class="noticia-corpo">
+          <p class="noticia-cat" data-pt="Destaque Internacional" data-tt="Destake Internasionál">Destaque Internacional</p>
+          <h3 class="noticia-titulo" data-pt="Programa de Educação Olímpica do COP chega ao CAFE de Liquiçá" data-tt="Programa Edukasaun Olímpika COP nian to'o CAFE Liquiçá">Programa de Educação Olímpica do COP chega ao CAFE de Liquiçá</h3>
+          <p class="noticia-resumo" data-pt="O CAFE de Liquiçá integra o Programa de Educação Olímpica do Comité Olímpico de Portugal, promovendo os valores de Excelência, Amizade e Respeito junto dos seus alunos." data-tt="CAFE Liquiçá integra Programa Edukasaun Olímpika Komité Olímpiku Portugál nian, promove valor Exelénsia, Amizade no Respeitu ba estudante sira.">O CAFE de Liquiçá integra o Programa de Educação Olímpica do Comité Olímpico de Portugal, promovendo os valores de Excelência, Amizade e Respeito junto dos seus alunos.</p>
+          <p class="noticia-data">Abril 2026</p>
+          <a href="https://comiteolimpicoportugal.pt/noticias/detalhe-da-noticia/?id=NEW-a89c4059-121b-44cf-b758-695fe5100ad0" target="_blank" style="display:inline-block;margin-top:0.5rem;font-size:0.78rem;color:var(--vermelho);font-weight:600;text-decoration:none;letter-spacing:0.05em;text-transform:uppercase" onclick="event.stopPropagation()">🔗 Ler notícia completa →</a>
+        </div>
+      </div>
+      <div class="noticia-card" data-foto="fotopascoa.jpeg" data-cat="Comunidade" data-titulo="CAFE celebra a Missa de Páscoa 2026" data-texto="Alunos, funcionárias e professoras do CAFE participaram na Missa de Páscoa, num momento de espiritualidade, união e celebração da comunidade escolar. A celebração reuniu toda a comunidade num momento de partilha, fé e identidade colectiva — um dos momentos mais marcantes do calendário escolar do CAFE de Liquiçá." data-data="Abril 2026">
+        <img loading="lazy" src="fotopascoa.jpeg" alt="Missa de Páscoa" class="noticia-img" onclick="abrirLightboxAvulso('fotopascoa.jpeg','Missa de Páscoa 2026')" style="cursor:zoom-in">
         <div class="noticia-corpo">
           <p class="noticia-cat" data-pt="Comunidade" data-tt="Komunidade">Comunidade</p>
           <h3 class="noticia-titulo" data-pt="CAFE celebra a Missa de Páscoa 2026" data-tt="CAFE selebra Misa Páskoa 2026">CAFE celebra a Missa de Páscoa 2026</h3>
@@ -387,8 +450,8 @@
           <p class="noticia-data">Abril 2026</p>
         </div>
       </div>
-      <div class="noticia-card">
-        <img loading="lazy" src="fotoohlp.png" alt="One Health Leaders Program" class="noticia-img">
+      <div class="noticia-card" data-foto="fotoohlp.png" data-cat="Parceria Internacional" data-titulo="One Health Leaders Program no CAFE" data-texto="O CAFE recebeu o programa One Health Leaders, uma iniciativa que une saúde humana, animal e ambiental, em parceria com a Embaixada dos EUA em Timor-Leste. Os alunos aprenderam sobre a interligação entre a saúde das pessoas, dos animais e do ambiente — uma visão moderna e integrada essencial para os cidadãos do século XXI." data-data="Março 2026">
+        <img loading="lazy" src="fotoohlp.png" alt="One Health Leaders Program" class="noticia-img" onclick="abrirLightboxAvulso('fotoohlp.png','One Health Leaders Program')" style="cursor:zoom-in">
         <div class="noticia-corpo">
           <p class="noticia-cat" data-pt="Parceria Internacional" data-tt="Parseiru Internasionál">Parceria Internacional</p>
           <h3 class="noticia-titulo" data-pt="One Health Leaders Program no CAFE" data-tt="One Health Leaders Program iha CAFE">One Health Leaders Program no CAFE</h3>
@@ -396,17 +459,44 @@
           <p class="noticia-data">Março 2026</p>
         </div>
       </div>
+
       <div class="noticia-card">
-        <img loading="lazy" src="fotoaulaprojetor.jpeg" alt="Supermatik — Dia do Pi" class="noticia-img">
+        <div class="noticia-video-wrap">
+          <iframe
+            src="https://www.youtube.com/embed/2crGCbT-3LI"
+            title="Alunos do CAFE de Liquiçá"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
         <div class="noticia-corpo">
-          <p class="noticia-cat" data-pt="Pedagogia" data-tt="Pedagojia">Pedagogia</p>
-          <h3 class="noticia-titulo" data-pt="Aulas de apoio para consolidação de conhecimentos" data-tt="Aula apoiu ba konsolidasaun koñesimentu sira">Aulas de apoio para consolidação de conhecimentos</h3>
-          <p class="noticia-resumo" data-pt="O CAFE reforça o seu compromisso pedagógico com aulas de apoio dedicadas à consolidação de conhecimentos, garantindo que nenhum aluno fica para trás." data-tt="CAFE reforsa nia kompromisu pedagójiku ho aula apoiu dedikadu ba konsolidasaun koñesimentu sira, garante katak estudante ida la hari'i kotuk.">O CAFE reforça o seu compromisso pedagógico com aulas de apoio dedicadas à consolidação de conhecimentos, garantindo que nenhum aluno fica para trás.</p>
-          <p class="noticia-data">Fevereiro 2026</p>
+          <p class="noticia-cat" data-pt="Vídeo" data-tt="Vídeo">Vídeo</p>
+          <h3 class="noticia-titulo" data-pt="Visita de estudo ao Caltech" data-tt="Vizita estudu ba Caltech">Visita de estudo ao Caltech</h3>
+          <p class="noticia-resumo" data-pt="Alunos do CAFE de Liquiçá em visita de estudo ao Caltech — um momento de inspiração e descoberta científica para os nossos jovens." data-tt="Estudante CAFE Liquiçá nian vizita estudu ba Caltech — momentu inspirasaun no deskoberta sientífika ba ami nia joven sira.">Alunos do CAFE de Liquiçá em visita de estudo ao Caltech — um momento de inspiração e descoberta científica para os nossos jovens.</p>
+          <p class="noticia-data">24 de Março de 2026</p>
         </div>
       </div>
-      <div class="noticia-card">
-        <img loading="lazy" src="fotobandeira.jpeg" alt="Hastear da Bandeira" class="noticia-img">
+      <div class="noticia-card" data-foto="fototurma.jpeg" data-cat="Pedagogia" data-titulo="Dia do Pi · 9.º ano descobre o SuperTmatik" data-texto="No Dia do Pi (14 de março), os alunos do 9.º ano participaram numa sessão especial de aprendizagem das regras do SuperTmatik — um jogo de cartas que estimula o cálculo mental, a concentração e o espírito competitivo saudável, tornando a matemática mais envolvente e motivadora." data-data="Março 2026">
+        <img loading="lazy" src="fototurma.jpeg" alt="Dia do Pi — SuperTmatik" class="noticia-img" onclick="abrirLightboxAvulso('fototurma.jpeg','Dia do Pi · 9.º ano aprende SuperTmatik')" style="cursor:zoom-in">
+        <div class="noticia-corpo">
+          <p class="noticia-cat" data-pt="Pedagogia" data-tt="Pedagojia">Pedagogia</p>
+          <h3 class="noticia-titulo" data-pt="Dia do Pi · 9.º ano descobre o SuperTmatik" data-tt="Loron Pi · Tinan 9 deskobre SuperTmatik">Dia do Pi · 9.º ano descobre o SuperTmatik</h3>
+          <p class="noticia-resumo" data-pt="No Dia do Pi (14 de março), os alunos do 9.º ano participaram numa sessão especial de aprendizagem das regras do SuperTmatik — um jogo que une raciocínio matemático e competição de forma lúdica e pedagógica." data-tt="Iha Loron Pi (14 marsu), estudante sira tinan 9 partisipa iha sesaun espesiál aprendizajen regra jogu SuperTmatik nian — jogu ne'ebé hamutuk rasionísniu matemátiku no kompetisaun.">No Dia do Pi (14 de março), os alunos do 9.º ano participaram numa sessão especial de aprendizagem das regras do SuperTmatik — um jogo que une raciocínio matemático e competição de forma lúdica e pedagógica.</p>
+          <p class="noticia-data">Março 2026</p>
+        </div>
+      </div>
+      <div class="noticia-card" data-foto="fotocoracoes.jpeg" data-cat="Celebração" data-titulo="Dia da Mulher — mensagens do coração" data-texto="Os alunos do CAFE celebraram o Dia Internacional da Mulher com mensagens escritas à mão em corações — palavras de força, admiração e carinho para todas as mulheres da comunidade. Um gesto simples e poderoso que demonstra a sensibilidade e a generosidade dos jovens do CAFE." data-data="Março 2026">
+        <img loading="lazy" src="fotocoracoes.jpeg" alt="Dia da Mulher" class="noticia-img" onclick="abrirLightboxAvulso('fotocoracoes.jpeg','Dia da Mulher 2026')" style="cursor:zoom-in">
+        <div class="noticia-corpo">
+          <p class="noticia-cat" data-pt="Celebração" data-tt="Selebrasaun">Celebração</p>
+          <h3 class="noticia-titulo" data-pt="Dia da Mulher — mensagens do coração" data-tt="Loron Feto nian — mensajen husi laran">Dia da Mulher — mensagens do coração</h3>
+          <p class="noticia-resumo" data-pt="Os alunos do CAFE celebraram o Dia Internacional da Mulher com mensagens escritas à mão em corações — palavras de força, admiração e carinho para todas as mulheres da comunidade." data-tt="Estudante sira husi CAFE selebra Loron Internasionál Feto nian ho mensajen hakerek iha korasa sira — liafuan forsa, admirasaun no karinhu ba feto hotu iha komunidade.">Os alunos do CAFE celebraram o Dia Internacional da Mulher com mensagens escritas à mão em corações — palavras de força, admiração e carinho para todas as mulheres da comunidade.</p>
+          <p class="noticia-data">Março 2026</p>
+        </div>
+      </div>
+      <div class="noticia-card" data-foto="fotobandeira.jpeg" data-cat="Tradição" data-titulo="Hastear da Bandeira — ritual de cidadania" data-texto="Na primeira segunda-feira de cada mês, toda a comunidade do CAFE reúne-se no pátio para o hastear da bandeira — um momento solene de civismo, identidade e orgulho timorense. Este ritual mensal reforça os valores de patriotismo e pertença, lembrando a todos os alunos a importância da identidade nacional." data-data="Mensal">
+        <img loading="lazy" src="fotobandeira.jpeg" alt="Hastear da Bandeira" class="noticia-img" onclick="abrirLightboxAvulso('fotobandeira.jpeg','Hastear da Bandeira — ritual de cidadania')" style="cursor:zoom-in">
         <div class="noticia-corpo">
           <p class="noticia-cat" data-pt="Tradição" data-tt="Tradisaun">Tradição</p>
           <h3 class="noticia-titulo" data-pt="Hastear da Bandeira — ritual de cidadania" data-tt="Hasae Bandeira — rituál sidadania nian">Hastear da Bandeira — ritual de cidadania</h3>
@@ -414,13 +504,13 @@
           <p class="noticia-data">Mensal</p>
         </div>
       </div>
-      <div class="noticia-card">
-        <img loading="lazy" src="fotocoracoes.jpeg" alt="Dia da Mulher" class="noticia-img">
+      <div class="noticia-card" data-foto="fotoaulaprojetor.jpeg" data-cat="Pedagogia" data-titulo="Aulas de apoio para consolidação de conhecimentos" data-texto="O CAFE reforça o seu compromisso pedagógico com aulas de apoio dedicadas à consolidação de conhecimentos, garantindo que nenhum aluno fica para trás. Estas aulas permitem atenção individualizada e maior confiança no percurso escolar." data-data="Fevereiro 2026">
+        <img loading="lazy" src="fotoaulaprojetor.jpeg" alt="Aulas de apoio" class="noticia-img" style="cursor:zoom-in">
         <div class="noticia-corpo">
-          <p class="noticia-cat" data-pt="Celebração" data-tt="Selebrasaun">Celebração</p>
-          <h3 class="noticia-titulo" data-pt="Dia da Mulher — mensagens do coração" data-tt="Loron Feto nian — mensajen husi laran">Dia da Mulher — mensagens do coração</h3>
-          <p class="noticia-resumo" data-pt="Os alunos do CAFE celebraram o Dia Internacional da Mulher com mensagens escritas à mão em corações — palavras de força, admiração e carinho para todas as mulheres da comunidade." data-tt="Estudante sira husi CAFE selebra Loron Internasionál Feto nian ho mensajen hakerek iha korasa sira — liafuan forsa, admirasaun no karinhu ba feto hotu iha komunidade.">Os alunos do CAFE celebraram o Dia Internacional da Mulher com mensagens escritas à mão em corações — palavras de força, admiração e carinho para todas as mulheres da comunidade.</p>
-          <p class="noticia-data">Março 2026</p>
+          <p class="noticia-cat" data-pt="Pedagogia" data-tt="Pedagojia">Pedagogia</p>
+          <h3 class="noticia-titulo" data-pt="Aulas de apoio para consolidação de conhecimentos" data-tt="Aula apoiu ba konsolidasaun koñesimentu sira">Aulas de apoio para consolidação de conhecimentos</h3>
+          <p class="noticia-resumo" data-pt="O CAFE reforça o seu compromisso pedagógico com aulas de apoio dedicadas à consolidação de conhecimentos, garantindo que nenhum aluno fica para trás." data-tt="CAFE reforsa nia kompromisu pedagójiku ho aula apoiu dedikadu ba konsolidasaun koñesimentu sira.">O CAFE reforça o seu compromisso pedagógico com aulas de apoio dedicadas à consolidação de conhecimentos, garantindo que nenhum aluno fica para trás.</p>
+          <p class="noticia-data">Fevereiro 2026</p>
         </div>
       </div>
     </div>
@@ -476,14 +566,6 @@
           <li><a href="#contacto" data-pt="Contacto" data-tt="Kontaktu">Contacto</a></li>
         </ul>
       </div>
-      <div class="footer-col">
-        <h4 data-pt="Cooperação" data-tt="Kooperasaun">Cooperação</h4>
-        <ul>
-          <li><a href="https://www.instituto-camoes.pt" target="_blank">Camões I.P.</a></li>
-          <li><a href="#" data-pt="Ministério da Educação TL" data-tt="Ministériu Edukasaun TL">Ministério da Educação TL</a></li>
-          <li><a href="#" data-pt="Projeto CAFE" data-tt="Projetu CAFE">Projeto CAFE</a></li>
-        </ul>
-      </div>
     </div>
     <div class="footer-bottom">
       <span data-pt="© 2025 CAFE de Liquiçá · Timor-Leste · 10 Anos" data-tt="© 2025 CAFE Liquiçá nian · Timor-Leste · Tinan 10">© 2025 CAFE de Liquiçá · Timor-Leste · 10 Anos</span>
@@ -491,6 +573,22 @@
     </div>
   </div>
 </footer>
+
+</div>
+
+<!-- MODAL DE NOTÍCIA -->
+<div class="modal-noticia" id="modal-noticia" onclick="fecharModalNoticia(event)">
+  <div class="modal-caixa" id="modal-caixa">
+    <img loading="lazy" class="modal-foto" id="modal-foto" src="" alt="">
+    <div class="modal-corpo">
+      <p class="modal-cat" id="modal-cat"></p>
+      <h2 class="modal-titulo" id="modal-titulo"></h2>
+      <p class="modal-data" id="modal-data"></p>
+      <p class="modal-texto" id="modal-texto"></p>
+      <button class="modal-fechar" onclick="fecharModalNoticia()">✕ Fechar</button>
+    </div>
+  </div>
+</div>
 
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="fecharLightbox(event)">
@@ -787,7 +885,15 @@ const palavras=[
 
 ];
 
-function getPalavraDoDia(){const i=new Date('2025-01-01'),h=new Date(),d=Math.floor((h-i)/(1000*60*60*24));return palavras[d%palavras.length]}
+function getPalavraDoDia(){
+  // Usa sempre a data UTC para que todos os visitantes vejam a mesma palavra
+  var agora=new Date();
+  // Data de início do site: 6 de abril de 2026 (UTC)
+  var inicio=Date.UTC(2026,3,6); // mês 3 = abril (0-indexed)
+  var hoje=Date.UTC(agora.getUTCFullYear(),agora.getUTCMonth(),agora.getUTCDate());
+  var d=Math.floor((hoje-inicio)/86400000);
+  return palavras[((d%palavras.length)+palavras.length)%palavras.length];
+}
 function lerPalavra(){const p=document.getElementById('pal-palavra').textContent,def=document.getElementById('pal-def').textContent;if('speechSynthesis' in window){window.speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(p+'. '+def);u.lang='pt-PT';u.rate=0.88;window.speechSynthesis.speak(u)}}
 function setLang(lang){
   document.getElementById('btn-pt').className='lang-btn'+(lang==='pt'?' active':'');
@@ -811,41 +917,77 @@ window.addEventListener('DOMContentLoaded',function(){
   document.getElementById('pal-data').textContent=new Date().toLocaleDateString('pt-PT',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
   iniciarLightbox();
 });
-// LIGHTBOX
-let lbFotos=[];let lbIndex=0;
+
+
+// ── MODAL DE NOTÍCIA ──────────────────────────────────────────────────────────
+function fecharModalNoticia(e){
+  if(e&&e.target!==document.getElementById('modal-noticia')&&!e.target.classList.contains('modal-fechar'))return;
+  document.getElementById('modal-noticia').classList.remove('aberto');
+  document.body.style.overflow='';
+}
+document.addEventListener('click',function(e){
+  var card=e.target.closest('.noticia-card');
+  if(!card)return;
+  var foto=card.getAttribute('data-foto');
+  if(!foto)return;
+  document.getElementById('modal-foto').src=foto;
+  document.getElementById('modal-cat').textContent=card.getAttribute('data-cat')||'';
+  document.getElementById('modal-titulo').textContent=card.getAttribute('data-titulo')||'';
+  document.getElementById('modal-texto').textContent=card.getAttribute('data-texto')||'';
+  document.getElementById('modal-data').textContent=card.getAttribute('data-data')||'';
+  document.getElementById('modal-noticia').classList.add('aberto');
+  document.body.style.overflow='hidden';
+});
+// ── LIGHTBOX ──────────────────────────────────────────────────────────────────
+var lbFotos=[]; var lbIndex=0;
+
 function iniciarLightbox(){
   lbFotos=[];
-  document.querySelectorAll('.galeria-item img').forEach((img,i)=>{
-    const legenda=img.closest('.galeria-item').querySelector('.galeria-overlay span');
-    lbFotos.push({src:img.src,alt:img.alt,legenda:legenda?legenda.textContent:img.alt});
-    img.closest('.galeria-item').addEventListener('click',function(){abrirLightbox(i)});
+  document.querySelectorAll('.galeria-item img').forEach(function(img,i){
+    var ov=img.closest('.galeria-item').querySelector('.galeria-overlay span');
+    lbFotos.push({src:img.src, legenda:ov?ov.textContent:img.alt});
+    img.closest('.galeria-item').addEventListener('click',function(){abrirLightboxGaleria(i);});
   });
 }
-function abrirLightbox(i){
+
+function abrirLightboxGaleria(i){
   lbIndex=i;
-  const lb=document.getElementById('lightbox');
   document.getElementById('lb-img').src=lbFotos[i].src;
   document.getElementById('lb-legenda').textContent=lbFotos[i].legenda;
-  lb.classList.add('aberto');
+  document.querySelector('.lightbox-prev').style.visibility='visible';
+  document.querySelector('.lightbox-next').style.visibility='visible';
+  document.getElementById('lightbox').classList.add('aberto');
   document.body.style.overflow='hidden';
 }
+
+function abrirLightboxAvulso(src,leg){
+  document.getElementById('lb-img').src=src;
+  document.getElementById('lb-legenda').textContent=leg||'';
+  document.querySelector('.lightbox-prev').style.visibility='hidden';
+  document.querySelector('.lightbox-next').style.visibility='hidden';
+  document.getElementById('lightbox').classList.add('aberto');
+  document.body.style.overflow='hidden';
+}
+
 function fecharLightbox(e){
   if(e&&e.target!==document.getElementById('lightbox')&&!e.target.classList.contains('lightbox-fechar'))return;
   document.getElementById('lightbox').classList.remove('aberto');
   document.body.style.overflow='';
 }
+
 function navegarLightbox(dir){
   lbIndex=(lbIndex+dir+lbFotos.length)%lbFotos.length;
-  const img=document.getElementById('lb-img');
+  var img=document.getElementById('lb-img');
   img.style.opacity='0';
-  setTimeout(()=>{
+  setTimeout(function(){
     img.src=lbFotos[lbIndex].src;
     document.getElementById('lb-legenda').textContent=lbFotos[lbIndex].legenda;
     img.style.opacity='1';
   },150);
 }
+
 document.addEventListener('keydown',function(e){
-  const lb=document.getElementById('lightbox');
+  var lb=document.getElementById('lightbox');
   if(!lb.classList.contains('aberto'))return;
   if(e.key==='Escape')fecharLightbox({target:lb});
   if(e.key==='ArrowLeft')navegarLightbox(-1);
