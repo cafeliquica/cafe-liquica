@@ -205,8 +205,10 @@
   .foto-lb:hover{transform:scale(1.025);filter:brightness(1.06)}
   #video-section{background:var(--cinza-claro)}
   .video-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}.video-inner-videos{display:flex;flex-direction:column;gap:1.5rem}
+  .video-figura{margin:0}
   .video-wrap{border-radius:10px;overflow:hidden;box-shadow:var(--sombra);aspect-ratio:16/9}
   .video-wrap iframe{width:100%;height:100%;display:block;border:none}
+  .video-legenda{font-size:0.85rem;color:var(--texto-claro);text-align:center;margin-top:0.6rem;font-weight:400;letter-spacing:0.02em;font-style:italic}
   .video-texto p{font-size:1rem;line-height:1.8;color:var(--texto-claro);margin-bottom:1.2rem;font-weight:300}
   @media(max-width:900px){
     .nav-links{display:none}.hamburger{display:flex}
@@ -392,16 +394,36 @@
         <h2 class="section-titulo"><span data-pt="Vê o nosso " data-tt="Haree ami nia ">Vê o nosso </span><em data-pt="mundo" data-tt="mundu">mundo</em></h2>
         <div class="secao-linha"></div>
         <p data-pt="Um olhar sobre o dia a dia do CAFE de Liquiçá — os alunos, os professores, os momentos que fazem desta escola um lugar especial no coração de Timor-Leste." data-tt="Haree ba loron-loron iha CAFE Liquiçá nian — estudante sira, professor sira, momentu sira ne'ebé halo eskola ida-ne'e sai fatin espesiál iha Timor-Leste nia laran.">Um olhar sobre o dia a dia do CAFE de Liquiçá — os alunos, os professores, os momentos que fazem desta escola um lugar especial no coração de Timor-Leste.</p>
-        <p data-pt="Cada imagem conta uma história de dedicação, aprendizagem e esperança — dez anos de um sonho que continua a crescer." data-tt="Imajen ida-idak konta istória dedikasaun, aprendizajen no esperansa nian — tinan sanulu husi mehi ne'ebé kontinua kresimentu.">Cada imagem conta uma história de dedicação, aprendizagem e esperança — dez anos de um sonho que continua a crescer.</p>
+        <p data-pt="Imagens recentes e memórias com história — dez anos de um sonho que continua a crescer." data-tt="Imajen foun no memória sira ho istória — tinan sanulu husi mehi ne'ebé kontinua kresimentu.">Imagens recentes e memórias com história — dez anos de um sonho que continua a crescer.</p>
       </div>
-      <div class="video-wrap">
-        <iframe
-          src="https://www.youtube.com/embed/HkX8MjxLue0"
-          title="CAFE de Liquiçá"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen>
-        </iframe>
+      <!-- Coluna direita: 2 vídeos empilhados, cada um com legenda própria -->
+      <div class="video-inner-videos">
+        <figure class="video-figura">
+          <div class="video-wrap">
+            <iframe
+              src="https://www.youtube.com/embed/HkX8MjxLue0?rel=0"
+              title="CAFE de Liquiçá — apresentação"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy">
+            </iframe>
+          </div>
+          <figcaption class="video-legenda" data-pt="Apresentação do CAFE de Liquiçá" data-tt="Apresentasaun CAFE Liquiçá">Apresentação do CAFE de Liquiçá</figcaption>
+        </figure>
+        <figure class="video-figura">
+          <div class="video-wrap">
+            <iframe
+              src="https://www.youtube.com/embed/d9DBRl8168Y?rel=0"
+              title="Dia da Língua Portuguesa — 5 de maio de 2023"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy">
+            </iframe>
+          </div>
+          <figcaption class="video-legenda" data-pt="Dia da Língua Portuguesa — 5 de maio de 2023" data-tt="Loron Lia-Portugés nian — 5 maiu 2023">Dia da Língua Portuguesa — 5 de maio de 2023</figcaption>
+        </figure>
       </div>
 
     </div>
