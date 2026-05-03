@@ -210,10 +210,32 @@
   .video-wrap iframe{width:100%;height:100%;display:block;border:none}
   .video-legenda{font-size:0.85rem;color:var(--texto-claro);text-align:center;margin-top:0.6rem;font-weight:400;letter-spacing:0.02em;font-style:italic}
   .video-texto p{font-size:1rem;line-height:1.8;color:var(--texto-claro);margin-bottom:1.2rem;font-weight:300}
+  /* === Secção Memórias === */
+  #memorias{background:#fafaf7}
+  .memorias-intro{text-align:center;color:var(--texto-claro);font-size:1rem;font-weight:300;font-style:italic;max-width:680px;margin:0 auto 2.5rem;line-height:1.7}
+  .memorias-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+  .memoria-item{margin:0;cursor:zoom-in;border-radius:6px;overflow:hidden;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,0.06);transition:transform 0.3s,box-shadow 0.3s;display:flex;flex-direction:column}
+  .memoria-item:hover{transform:translateY(-3px);box-shadow:var(--sombra)}
+  .memoria-item img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform 0.5s ease}
+  .memoria-item:hover img{transform:scale(1.04)}
+  .memoria-video-thumb{position:relative;background:#000}
+  .memoria-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:54px;height:54px;border-radius:50%;background:rgba(192,57,43,0.92);color:#fff;font-size:1.2rem;display:flex;align-items:center;justify-content:center;padding-left:4px;box-shadow:0 2px 8px rgba(0,0,0,0.4);transition:transform 0.2s}
+  .memoria-item:hover .memoria-play{transform:translate(-50%,-50%) scale(1.08)}
+  .memoria-legenda{padding:0.85rem 1rem;font-size:0.88rem;color:var(--texto-claro);line-height:1.4;display:flex;flex-direction:column;gap:0.3rem;font-style:normal}
+  .memoria-ano{font-family:'Playfair Display',serif;font-size:0.78rem;font-weight:700;color:var(--vermelho);letter-spacing:0.12em;text-transform:uppercase}
+  /* Lightbox de vídeo */
+  .lightbox-video{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.94);align-items:center;justify-content:center;padding:1.5rem;cursor:zoom-out}
+  .lightbox-video.aberto{display:flex;animation:lbFade 0.25s ease}
+  .lightbox-video-inner{width:min(92vw,960px);aspect-ratio:16/9;cursor:default;animation:lbZoom 0.25s ease}
+  .lightbox-video-inner iframe{width:100%;height:100%;border:none;border-radius:6px;box-shadow:0 8px 24px rgba(0,0,0,0.5)}
+  .lightbox-video-fechar{position:fixed;top:1.2rem;right:1.5rem;background:rgba(255,255,255,0.12);border:none;color:#fff;font-size:1.6rem;width:42px;height:42px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s;line-height:1}
+  .lightbox-video-fechar:hover{background:var(--vermelho)}
+  .lightbox-video-legenda{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.7);font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;background:rgba(0,0,0,0.5);padding:6px 20px;border-radius:20px;text-align:center;max-width:90vw}
   @media(max-width:900px){
     .nav-links{display:none}.hamburger{display:flex}
     .sobre-grid,.tetum-inner,.video-inner,.contacto-grid,.footer-top,.palavra-inner{grid-template-columns:1fr;gap:2rem}
     .galeria-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}.galeria-item.grande{grid-row:auto}
+    .memorias-grid{grid-template-columns:1fr 1fr;gap:1rem}
     .noticias-grid{grid-template-columns:1fr}.numeros-grid{grid-template-columns:repeat(2,1fr)}
     .sobre-img-badge{right:0}.footer-top{grid-template-columns:1fr;gap:2rem}
     .quicklinks-inner{grid-template-columns:repeat(3,1fr)}
@@ -221,7 +243,7 @@
   @media(max-width:540px){
     section,#palavra,#tetum{padding:3.5rem 1.25rem}nav{padding:0 1.25rem}
     .hero-content{padding:0 1.25rem;padding-top:80px}
-    .numeros-grid{grid-template-columns:1fr 1fr}.galeria-grid{grid-template-columns:1fr;grid-template-rows:auto}
+    .numeros-grid{grid-template-columns:1fr 1fr}.galeria-grid{grid-template-columns:1fr;grid-template-rows:auto}.memorias-grid{grid-template-columns:1fr;gap:1rem}
     .palavra-do-dia{font-size:2.4rem}.quicklinks-inner{grid-template-columns:repeat(2,1fr)}#quicklinks{padding:0 1.25rem}
   }
 </style>
@@ -240,6 +262,7 @@
     <li><a href="#sobre" data-pt="Sobre" data-tt="Kona-ba">Sobre</a></li>
     <li><a href="#galeria" data-pt="Galeria" data-tt="Galeria">Galeria</a></li>
     <li><a href="#noticias" data-pt="Notícias" data-tt="Notísia">Notícias</a></li>
+    <li><a href="#memorias" data-pt="Memórias" data-tt="Memória">Memórias</a></li>
     <li><a href="#tetum" data-pt="Cultura" data-tt="Kultura">Cultura</a></li>
     <li><a href="#contacto" class="nav-cta" data-pt="Contacto" data-tt="Kontaktu">Contacto</a></li>
   </ul>
@@ -394,36 +417,17 @@
         <h2 class="section-titulo"><span data-pt="Vê o nosso " data-tt="Haree ami nia ">Vê o nosso </span><em data-pt="mundo" data-tt="mundu">mundo</em></h2>
         <div class="secao-linha"></div>
         <p data-pt="Um olhar sobre o dia a dia do CAFE de Liquiçá — os alunos, os professores, os momentos que fazem desta escola um lugar especial no coração de Timor-Leste." data-tt="Haree ba loron-loron iha CAFE Liquiçá nian — estudante sira, professor sira, momentu sira ne'ebé halo eskola ida-ne'e sai fatin espesiál iha Timor-Leste nia laran.">Um olhar sobre o dia a dia do CAFE de Liquiçá — os alunos, os professores, os momentos que fazem desta escola um lugar especial no coração de Timor-Leste.</p>
-        <p data-pt="Imagens recentes e memórias com história — dez anos de um sonho que continua a crescer." data-tt="Imajen foun no memória sira ho istória — tinan sanulu husi mehi ne'ebé kontinua kresimentu.">Imagens recentes e memórias com história — dez anos de um sonho que continua a crescer.</p>
+        <p data-pt="Cada imagem conta uma história de dedicação, aprendizagem e esperança — dez anos de um sonho que continua a crescer." data-tt="Imajen ida-idak konta istória dedikasaun, aprendizajen no esperansa nian — tinan sanulu husi mehi ne'ebé kontinua kresimentu.">Cada imagem conta uma história de dedicação, aprendizagem e esperança — dez anos de um sonho que continua a crescer.</p>
       </div>
-      <!-- Coluna direita: 2 vídeos empilhados, cada um com legenda própria -->
-      <div class="video-inner-videos">
-        <figure class="video-figura">
-          <div class="video-wrap">
-            <iframe
-              src="https://www.youtube.com/embed/HkX8MjxLue0?rel=0"
-              title="CAFE de Liquiçá — apresentação"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-              loading="lazy">
-            </iframe>
-          </div>
-          <figcaption class="video-legenda" data-pt="Apresentação do CAFE de Liquiçá" data-tt="Apresentasaun CAFE Liquiçá">Apresentação do CAFE de Liquiçá</figcaption>
-        </figure>
-        <figure class="video-figura">
-          <div class="video-wrap">
-            <iframe
-              src="https://www.youtube.com/embed/d9DBRl8168Y?rel=0"
-              title="Dia da Língua Portuguesa — 5 de maio de 2023"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-              loading="lazy">
-            </iframe>
-          </div>
-          <figcaption class="video-legenda" data-pt="Dia da Língua Portuguesa — 5 de maio de 2023" data-tt="Loron Lia-Portugés nian — 5 maiu 2023">Dia da Língua Portuguesa — 5 de maio de 2023</figcaption>
-        </figure>
+      <div class="video-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/HkX8MjxLue0?rel=0"
+          title="CAFE de Liquiçá"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          loading="lazy">
+        </iframe>
       </div>
 
     </div>
@@ -539,6 +543,66 @@
   </div>
 </section>
 
+<!-- ========================================================== -->
+<!-- SECÇÃO MEMÓRIAS — atividades passadas que orgulham o CAFE -->
+<!-- ========================================================== -->
+<section id="memorias">
+  <div class="section-inner">
+    <p class="section-label" data-pt="✦ Memórias" data-tt="✦ Memória sira">✦ Memórias</p>
+    <h2 class="section-titulo"><span data-pt="Momentos que nos " data-tt="Momentu sira ne'ebé ami ">Momentos que nos </span><em data-pt="orgulham" data-tt="orgullu">orgulham</em></h2>
+    <div class="secao-linha"></div>
+    <p class="memorias-intro" data-pt="Aqui estão momentos passados dos quais o CAFE de Liquiçá se orgulha." data-tt="Iha ne'e mak momentu sira husi tempu liubá ne'ebé CAFE Liquiçá orgullu.">Aqui estão momentos passados dos quais o CAFE de Liquiçá se orgulha.</p>
+    <div class="memorias-grid">
+
+      <!-- Foto 1: Bandeiras CPLP, pré-escolar, 2022 -->
+      <figure class="memoria-item" onclick="abrirLightboxAvulso('fotobandeirascplp.jpeg','Bandeiras da CPLP — pré-escolar (2022)')">
+        <img loading="lazy" src="fotobandeirascplp.jpeg" alt="Bandeiras da CPLP — pré-escolar 2022">
+        <figcaption class="memoria-legenda"><span class="memoria-ano">2022</span><span data-pt="Bandeiras da CPLP — pré-escolar" data-tt="Bandeira CPLP nian — pré-eskolar">Bandeiras da CPLP — pré-escolar</span></figcaption>
+      </figure>
+
+      <!-- Foto 2: Língua Portuguesa "última flor do Lácio", 2022 -->
+      <figure class="memoria-item" onclick="abrirLightboxAvulso('fotolinguaportuguesa.jpeg','«A última flor do Lácio» — Dia da Língua Portuguesa (2022)')">
+        <img loading="lazy" src="fotolinguaportuguesa.jpeg" alt="A última flor do Lácio — 2022">
+        <figcaption class="memoria-legenda"><span class="memoria-ano">2022</span><span data-pt="«A última flor do Lácio» — Dia da Língua Portuguesa" data-tt="«A última flor do Lácio» — Loron Lia-Portugés nian">«A última flor do Lácio» — Dia da Língua Portuguesa</span></figcaption>
+      </figure>
+
+      <!-- Foto 3: Palhaço, 2022 -->
+      <figure class="memoria-item" onclick="abrirLightboxAvulso('fotopalhaco.jpeg','O palhaço veio ao CAFE (2022)')">
+        <img loading="lazy" src="fotopalhaco.jpeg" alt="O palhaço veio ao CAFE — 2022">
+        <figcaption class="memoria-legenda"><span class="memoria-ano">2022</span><span data-pt="O palhaço veio ao CAFE" data-tt="Palasu mai iha CAFE">O palhaço veio ao CAFE</span></figcaption>
+      </figure>
+
+      <!-- Vídeo 1: Pré-escolar 5 maio 2022 -->
+      <figure class="memoria-item memoria-video" onclick="abrirLightboxVideo('4s0ax2YY3RQ','Comemoração do Dia da Língua Portuguesa — pré-escolar (2022)')">
+        <div class="memoria-video-thumb">
+          <img loading="lazy" src="https://i.ytimg.com/vi/4s0ax2YY3RQ/hqdefault.jpg" alt="Vídeo — pré-escolar 5 maio 2022">
+          <span class="memoria-play" aria-hidden="true">▶</span>
+        </div>
+        <figcaption class="memoria-legenda"><span class="memoria-ano">2022</span><span data-pt="Comemoração do 5 de Maio — pré-escolar (vídeo)" data-tt="Selebrasaun 5 maiu — pré-eskolar (vídeu)">Comemoração do 5 de Maio — pré-escolar (vídeo)</span></figcaption>
+      </figure>
+
+      <!-- Vídeo 2: 5 maio 2023 (movido de "O CAFE em Movimento") -->
+      <figure class="memoria-item memoria-video" onclick="abrirLightboxVideo('d9DBRl8168Y','Dia da Língua Portuguesa — 5 de maio de 2023')">
+        <div class="memoria-video-thumb">
+          <img loading="lazy" src="https://i.ytimg.com/vi/d9DBRl8168Y/hqdefault.jpg" alt="Vídeo — Dia da Língua Portuguesa 2023">
+          <span class="memoria-play" aria-hidden="true">▶</span>
+        </div>
+        <figcaption class="memoria-legenda"><span class="memoria-ano">2023</span><span data-pt="Dia da Língua Portuguesa (vídeo)" data-tt="Loron Lia-Portugés nian (vídeu)">Dia da Língua Portuguesa (vídeo)</span></figcaption>
+      </figure>
+
+      <!-- Vídeo 3: Peace Run 2025 -->
+      <figure class="memoria-item memoria-video" onclick="abrirLightboxVideo('UPLqrn8f6xc','Receção à equipa Peace Run — dança tradicional (2025)')">
+        <div class="memoria-video-thumb">
+          <img loading="lazy" src="https://i.ytimg.com/vi/UPLqrn8f6xc/hqdefault.jpg" alt="Vídeo — Peace Run 2025">
+          <span class="memoria-play" aria-hidden="true">▶</span>
+        </div>
+        <figcaption class="memoria-legenda"><span class="memoria-ano">2025</span><span data-pt="Peace Run — dança tradicional (vídeo)" data-tt="Peace Run — dansa tradisional (vídeu)">Peace Run — dança tradicional (vídeo)</span></figcaption>
+      </figure>
+
+    </div>
+  </div>
+</section>
+
 <section id="contacto">
   <div class="section-inner">
     <p class="section-label" data-pt="✦ Contacto" data-tt="✦ Kontaktu">✦ Contacto</p>
@@ -556,7 +620,7 @@
         </div>
         <div class="contacto-item">
           <div class="contacto-icon">🌐</div>
-          <div class="contacto-texto"><strong data-pt="Cooperação" data-tt="Kooperasaun">Cooperação</strong><span data-pt="Projeto de Cooperação Portuguesa — Camões I.P. · Timor-Leste" data-tt="Projetu Kooperasaun Portugésa — Camões I.P. · Timor-Leste">Projeto de Cooperação Portuguesa<br>Camões I.P. · Timor-Leste</span></div>
+          <div class="contacto-texto"><strong data-pt="Cooperação" data-tt="Kooperasaun">Cooperação</strong><span data-pt="Projeto de Cooperação Educativa Portugal — Timor-Leste" data-tt="Projetu Kooperasaun Edukativa Portugal — Timor-Leste">Projeto de Cooperação Educativa<br>Portugal — Timor-Leste</span></div>
         </div>
         <div class="contacto-item">
           <div class="contacto-icon">🕐</div>
@@ -584,6 +648,7 @@
           <li><a href="#sobre" data-pt="Sobre o CAFE" data-tt="Kona-ba CAFE">Sobre o CAFE</a></li>
           <li><a href="#galeria" data-pt="Galeria" data-tt="Galeria">Galeria</a></li>
           <li><a href="#noticias" data-pt="Notícias" data-tt="Notísia">Notícias</a></li>
+          <li><a href="#memorias" data-pt="Memórias" data-tt="Memória">Memórias</a></li>
           <li><a href="#tetum" data-pt="Cultura Timorense" data-tt="Kultura Timor nian">Cultura Timorense</a></li>
           <li><a href="#contacto" data-pt="Contacto" data-tt="Kontaktu">Contacto</a></li>
         </ul>
@@ -619,6 +684,15 @@
   <img loading="lazy" class="lightbox-img" id="lb-img" src="" alt="">
   <button class="lightbox-nav lightbox-next" onclick="event.stopPropagation();navegarLightbox(1)">&#8250;</button>
   <span class="lightbox-legenda" id="lb-legenda"></span>
+</div>
+
+<!-- Lightbox de vídeo (Memórias) -->
+<div class="lightbox-video" id="lightbox-video" onclick="fecharLightboxVideo(event)">
+  <button class="lightbox-video-fechar" onclick="fecharLightboxVideo()" aria-label="Fechar">✕</button>
+  <div class="lightbox-video-inner" onclick="event.stopPropagation()">
+    <iframe id="lb-video-iframe" src="" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+  <span class="lightbox-video-legenda" id="lb-video-legenda"></span>
 </div>
 
 <script>
@@ -1016,6 +1090,27 @@ document.addEventListener('keydown',function(e){
   if(e.key==='ArrowRight')navegarLightbox(1);
 });
 document.getElementById('lb-img').style.transition='opacity 0.15s ease';
+
+// === Lightbox de vídeo (secção Memórias) ===
+function abrirLightboxVideo(youtubeId,legenda){
+  var iframe=document.getElementById('lb-video-iframe');
+  iframe.src='https://www.youtube.com/embed/'+youtubeId+'?rel=0&autoplay=1';
+  iframe.title=legenda||'';
+  document.getElementById('lb-video-legenda').textContent=legenda||'';
+  document.getElementById('lightbox-video').classList.add('aberto');
+  document.body.style.overflow='hidden';
+}
+function fecharLightboxVideo(e){
+  if(e&&e.target!==document.getElementById('lightbox-video')&&!e.target.classList.contains('lightbox-video-fechar'))return;
+  document.getElementById('lightbox-video').classList.remove('aberto');
+  // Parar o vídeo: limpar src para não continuar a tocar em background
+  document.getElementById('lb-video-iframe').src='';
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',function(e){
+  var lbv=document.getElementById('lightbox-video');
+  if(lbv && lbv.classList.contains('aberto') && e.key==='Escape')fecharLightboxVideo({target:lbv});
+});
 </script>
 </body>
 </html>
