@@ -48,6 +48,17 @@
   .lang-btn:not(.active):hover{color:white}
   .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer}
   .hamburger span{display:block;width:26px;height:2px;background:white}
+  /* ── BANNER DE DESTAQUE (notícia em foco, lê data-destaque do .noticia-card) ── */
+  .destaque-banner{position:fixed;top:70px;left:0;right:0;z-index:999;background:var(--amarelo);color:var(--preto);padding:0.6rem 2.5rem;display:none;align-items:center;gap:0.8rem;cursor:pointer;border-bottom:1px solid rgba(0,0,0,0.1);font-size:0.88rem;line-height:1.3;transition:background 0.2s}
+  .destaque-banner.ativo{display:flex}
+  .destaque-banner:hover{background:#e09800}
+  .destaque-banner-icone{flex:0 0 auto;font-size:1rem}
+  .destaque-banner-conteudo{flex:1;min-width:0;display:flex;align-items:baseline;gap:0.6rem;flex-wrap:wrap}
+  .destaque-banner-cat{font-weight:700;text-transform:uppercase;letter-spacing:0.05em;font-size:0.72rem;color:var(--vermelho)}
+  .destaque-banner-titulo{font-weight:600;color:var(--preto);overflow:hidden;text-overflow:ellipsis}
+  .destaque-banner-seta{flex:0 0 auto;font-weight:700;font-size:1.1rem}
+  /* Empurrar o hero para baixo quando o banner está visível, para não sobrepor */
+  body.tem-destaque #hero{padding-top:48px}
   #hero{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden}
   .hero-bg{position:absolute;inset:0;background-image:url('fotobemvindo.jpeg');background-size:cover;background-position:center 30%;filter:brightness(0.45);animation:heroZoom 18s ease-in-out infinite alternate}
   @keyframes heroZoom{from{transform:scale(1.0)}to{transform:scale(1.06)}}
@@ -245,6 +256,10 @@
     .hero-content{padding:0 1.25rem;padding-top:80px}
     .numeros-grid{grid-template-columns:1fr 1fr}.galeria-grid{grid-template-columns:1fr;grid-template-rows:auto}.memorias-grid{grid-template-columns:1fr;gap:1rem}
     .palavra-do-dia{font-size:2.4rem}.quicklinks-inner{grid-template-columns:repeat(2,1fr)}#quicklinks{padding:0 1.25rem}
+    .destaque-banner{padding:0.55rem 1.25rem;font-size:0.78rem;gap:0.5rem}
+    .destaque-banner-cat{font-size:0.65rem}
+    .destaque-banner-titulo{font-size:0.82rem}
+    body.tem-destaque #hero{padding-top:60px}
   }
 </style>
 </head>
@@ -274,6 +289,16 @@
     <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
   </div>
 </nav>
+
+<!-- Banner de destaque: lê automaticamente o cartão de notícia com data-destaque="true" -->
+<a class="destaque-banner" id="destaque-banner" role="button" tabindex="0" aria-label="Notícia em destaque">
+  <span class="destaque-banner-icone" aria-hidden="true">📢</span>
+  <span class="destaque-banner-conteudo">
+    <span class="destaque-banner-cat" id="destaque-banner-cat" data-pt="" data-tt=""></span>
+    <span class="destaque-banner-titulo" id="destaque-banner-titulo" data-pt="" data-tt=""></span>
+  </span>
+  <span class="destaque-banner-seta" aria-hidden="true">→</span>
+</a>
 
 <section id="hero">
   <div class="hero-bg"></div>
@@ -457,6 +482,16 @@
     <h2 class="section-titulo"><span data-pt="O que acontece " data-tt="Saida mak akontese ">O que acontece </span><em data-pt="no CAFE" data-tt="iha CAFE">no CAFE</em></h2>
     <div class="secao-linha"></div>
     <div class="noticias-grid">
+      <!-- Notícia 5 de Maio 2026 — Dia Mundial da Língua Portuguesa (DESTAQUE) -->
+      <div class="noticia-card" data-destaque="true" data-foto="foto5maio.jpeg" data-cat="Cultura e Língua" data-titulo="5 de Maio — Dia Mundial da Língua Portuguesa" data-texto="Hoje, 5 de maio, celebra-se o Dia Mundial da Língua Portuguesa, data instituída pela UNESCO em novembro de 2019. O português é língua oficial em nove Estados-membros da CPLP — Comunidade dos Países de Língua Portuguesa: Angola, Brasil, Cabo Verde, Guiné-Bissau, Guiné Equatorial, Moçambique, Portugal, São Tomé e Príncipe e Timor-Leste. Com mais de 260 milhões de falantes distribuídos por quatro continentes, o português é hoje uma das línguas mais faladas do mundo. No CAFE de Liquiçá, esta data é particularmente significativa: a língua portuguesa é, para os nossos alunos, instrumento de cidadania, ponte para o conhecimento e laço com uma comunidade global de falantes." data-data="Maio 2026">
+        <img loading="lazy" src="foto5maio.jpeg" alt="Dia Mundial da Língua Portuguesa — 5 de maio" class="noticia-img" onclick="abrirLightboxAvulso('foto5maio.jpeg','Dia Mundial da Língua Portuguesa — 5 de maio')" style="cursor:zoom-in">
+        <div class="noticia-corpo">
+          <p class="noticia-cat" data-pt="Cultura e Língua" data-tt="Kultura no Lian">Cultura e Língua</p>
+          <h3 class="noticia-titulo" data-pt="5 de Maio — Dia Mundial da Língua Portuguesa" data-tt="5 Maiu — Loron Mundiál Lia-Portugés nian">5 de Maio — Dia Mundial da Língua Portuguesa</h3>
+          <p class="noticia-resumo" data-pt="Hoje, 5 de maio, celebra-se o Dia Mundial da Língua Portuguesa, instituído pela UNESCO em 2019. O português é língua oficial em nove Estados-membros da CPLP, sendo falado por mais de 260 milhões de pessoas em quatro continentes." data-tt="Ohin loron, 5 maiu, selebra Loron Mundiál Lia-Portugés nian, ne'ebé UNESCO institui iha 2019. Portugés mak lian ofisiál iha sia Estadu-membru CPLP nian, no liu husi 260 millaun ema mak ko'alia iha kontinente haat.">Hoje, 5 de maio, celebra-se o Dia Mundial da Língua Portuguesa, instituído pela UNESCO em 2019. O português é língua oficial em nove Estados-membros da CPLP, sendo falado por mais de 260 milhões de pessoas em quatro continentes.</p>
+          <p class="noticia-data">Maio 2026</p>
+        </div>
+      </div>
       <div class="noticia-card" onclick="abrirModalNoticia('fotocop.jpeg','Parceria Internacional','Programa de Educação Olímpica do COP chega ao CAFE de Liquiçá','O Programa de Educação Olímpica (PEO) do Comité Olímpico de Portugal chegou a Timor-Leste. O CAFE de Liquiçá é a mais recente instituição a integrar esta iniciativa, graças ao contributo da professora Cláudia Vaz. O programa passa a contar com 362 estabelecimentos registados, reforçando a presença além-fronteiras e a disseminação dos Valores Olímpicos — Excelência, Amizade e Respeito — a nível global.','Abril 2026')">
         <img loading="lazy" src="fotocop.jpeg" alt="Programa de Educação Olímpica — CAFE Liquiçá" class="noticia-img" onclick="abrirModalNoticia('fotocop.jpeg','Parceria Internacional','Programa de Educação Olímpica do COP chega ao CAFE de Liquiçá','O Programa de Educação Olímpica (PEO) do Comité Olímpico de Portugal chegou a Timor-Leste. O CAFE de Liquiçá é a mais recente instituição a integrar esta iniciativa, graças ao contributo da professora Cláudia Vaz. O programa passa a contar com 362 estabelecimentos registados, reforçando a presença além-fronteiras e a disseminação dos Valores Olímpicos — Excelência, Amizade e Respeito — a nível global.','Abril 2026')" style="cursor:zoom-in">
         <div class="noticia-corpo">
@@ -1111,6 +1146,42 @@ document.addEventListener('keydown',function(e){
   var lbv=document.getElementById('lightbox-video');
   if(lbv && lbv.classList.contains('aberto') && e.key==='Escape')fecharLightboxVideo({target:lbv});
 });
+
+// ── BANNER DE DESTAQUE ────────────────────────────────────────────────────────
+// Procura o cartão de notícia com data-destaque="true" e popula o banner
+// com a sua categoria + título. Ao clicar, abre o modal dessa notícia
+// (reutilizando o handler genérico de .noticia-card).
+function inicializarBannerDestaque(){
+  var card=document.querySelector('.noticia-card[data-destaque="true"]');
+  var banner=document.getElementById('destaque-banner');
+  if(!card||!banner)return;
+
+  // Tradução: usa o data-pt/data-tt da .noticia-cat e .noticia-titulo dentro do cartão
+  var catEl=card.querySelector('.noticia-cat');
+  var tituloEl=card.querySelector('.noticia-titulo');
+  if(!catEl||!tituloEl)return;
+
+  var bCat=document.getElementById('destaque-banner-cat');
+  var bTit=document.getElementById('destaque-banner-titulo');
+  // Copia atributos bilingues para o banner (assim o setLang trata automaticamente)
+  bCat.setAttribute('data-pt',catEl.getAttribute('data-pt')||catEl.textContent);
+  bCat.setAttribute('data-tt',catEl.getAttribute('data-tt')||catEl.textContent);
+  bCat.textContent=catEl.textContent;
+  bTit.setAttribute('data-pt',tituloEl.getAttribute('data-pt')||tituloEl.textContent);
+  bTit.setAttribute('data-tt',tituloEl.getAttribute('data-tt')||tituloEl.textContent);
+  bTit.textContent=tituloEl.textContent;
+
+  // Ao clicar no banner, simula clique no cartão (abre modal pelo handler existente)
+  banner.addEventListener('click',function(){card.click();});
+  banner.addEventListener('keydown',function(e){
+    if(e.key==='Enter'||e.key===' '){e.preventDefault();card.click();}
+  });
+
+  // Mostrar banner e ajustar padding do hero
+  banner.classList.add('ativo');
+  document.body.classList.add('tem-destaque');
+}
+window.addEventListener('DOMContentLoaded',inicializarBannerDestaque);
 </script>
 </body>
 </html>
