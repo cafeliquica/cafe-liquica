@@ -238,10 +238,32 @@
   .lightbox-video{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.94);align-items:center;justify-content:center;padding:1.5rem;cursor:zoom-out}
   .lightbox-video.aberto{display:flex;animation:lbFade 0.25s ease}
   .lightbox-video-inner{width:min(92vw,960px);aspect-ratio:16/9;cursor:default;animation:lbZoom 0.25s ease}
+  /* Quando o vídeo é vertical (Short), ajustar proporção do contentor */
+  .lightbox-video.vertical .lightbox-video-inner{width:min(85vw,360px);aspect-ratio:9/16}
+  @media(max-width:540px){
+    .lightbox-video.vertical .lightbox-video-inner{width:min(92vw,300px)}
+  }
   .lightbox-video-inner iframe{width:100%;height:100%;border:none;border-radius:6px;box-shadow:0 8px 24px rgba(0,0,0,0.5)}
   .lightbox-video-fechar{position:fixed;top:1.2rem;right:1.5rem;background:rgba(255,255,255,0.12);border:none;color:#fff;font-size:1.6rem;width:42px;height:42px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s;line-height:1}
   .lightbox-video-fechar:hover{background:var(--vermelho)}
   .lightbox-video-legenda{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.7);font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;background:rgba(0,0,0,0.5);padding:6px 20px;border-radius:20px;text-align:center;max-width:90vw}
+  /* ── SHORTS (vídeos verticais 9:16) ─────────────────────────────────────── */
+  .shorts-titulo{font-family:'Playfair Display',serif;font-size:1.35rem;color:var(--verde);margin:2.5rem 0 1rem;font-weight:600;display:flex;align-items:center;gap:0.6rem}
+  .shorts-titulo::before{content:"";display:inline-block;width:36px;height:2px;background:var(--amarelo)}
+  .shorts-grid{display:flex;gap:1rem;overflow-x:auto;padding:0.5rem 0 1rem;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+  .shorts-grid::-webkit-scrollbar{height:6px}
+  .shorts-grid::-webkit-scrollbar-track{background:rgba(0,0,0,0.06);border-radius:3px}
+  .shorts-grid::-webkit-scrollbar-thumb{background:var(--verde);border-radius:3px}
+  .short-item{flex:0 0 180px;aspect-ratio:9/16;position:relative;border-radius:8px;overflow:hidden;cursor:pointer;background:#000;scroll-snap-align:start;box-shadow:0 2px 8px rgba(0,0,0,0.15);transition:transform 0.2s,box-shadow 0.2s}
+  .short-item:hover{transform:translateY(-3px);box-shadow:0 6px 16px rgba(0,0,0,0.25)}
+  .short-item img{width:100%;height:100%;object-fit:cover;display:block}
+  .short-item .memoria-play{width:48px;height:48px;font-size:1.05rem}
+  .short-legenda{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(to top,rgba(0,0,0,0.85),transparent);color:#fff;padding:1.5rem 0.75rem 0.6rem;font-size:0.78rem;line-height:1.25;font-weight:500}
+  .short-ano{display:inline-block;background:var(--amarelo);color:var(--preto);font-size:0.65rem;font-weight:700;padding:2px 6px;border-radius:3px;margin-bottom:4px;letter-spacing:0.05em}
+  /* Botão "Ver vídeo" dentro do modal de notícia */
+  .modal-video-btn{display:inline-flex;align-items:center;gap:0.5rem;background:var(--vermelho);color:#fff;padding:0.7rem 1.2rem;border-radius:4px;text-decoration:none;font-weight:600;font-size:0.9rem;margin-top:1rem;transition:background 0.2s;border:none;cursor:pointer;font-family:inherit}
+  .modal-video-btn:hover{background:#a02d20}
+  .modal-video-btn::before{content:"▶";font-size:0.75rem}
   @media(max-width:900px){
     .nav-links{display:none}.hamburger{display:flex}
     .sobre-grid,.tetum-inner,.video-inner,.contacto-grid,.footer-top,.palavra-inner{grid-template-columns:1fr;gap:2rem}
@@ -483,7 +505,7 @@
     <div class="secao-linha"></div>
     <div class="noticias-grid">
       <!-- Notícia 5 de Maio 2026 — Dia Mundial da Língua Portuguesa (DESTAQUE) -->
-      <div class="noticia-card" data-destaque="true" data-foto="foto5maio.jpeg" data-cat="Cultura e Língua" data-titulo="5 de Maio — Dia Mundial da Língua Portuguesa" data-texto="Hoje, 5 de maio, celebra-se o Dia Mundial da Língua Portuguesa, data instituída pela UNESCO em novembro de 2019. O português é língua oficial em nove Estados-membros da CPLP — Comunidade dos Países de Língua Portuguesa: Angola, Brasil, Cabo Verde, Guiné-Bissau, Guiné Equatorial, Moçambique, Portugal, São Tomé e Príncipe e Timor-Leste. Com mais de 260 milhões de falantes distribuídos por quatro continentes, o português é hoje uma das línguas mais faladas do mundo. No CAFE de Liquiçá, esta data é particularmente significativa: a língua portuguesa é, para os nossos alunos, instrumento de cidadania, ponte para o conhecimento e laço com uma comunidade global de falantes." data-data="Maio 2026">
+      <div class="noticia-card" data-destaque="true" data-foto="foto5maio.jpeg" data-video="m_bH1P5pUoI" data-video-vertical="true" data-cat="Cultura e Língua" data-titulo="5 de Maio — Dia Mundial da Língua Portuguesa" data-texto="Hoje, 5 de maio, celebra-se o Dia Mundial da Língua Portuguesa, data instituída pela UNESCO em novembro de 2019. O português é língua oficial em nove Estados-membros da CPLP — Comunidade dos Países de Língua Portuguesa: Angola, Brasil, Cabo Verde, Guiné-Bissau, Guiné Equatorial, Moçambique, Portugal, São Tomé e Príncipe e Timor-Leste. Com mais de 260 milhões de falantes distribuídos por quatro continentes, o português é hoje uma das línguas mais faladas do mundo. No CAFE de Liquiçá, esta data é particularmente significativa: a língua portuguesa é, para os nossos alunos, instrumento de cidadania, ponte para o conhecimento e laço com uma comunidade global de falantes." data-data="Maio 2026">
         <img loading="lazy" src="foto5maio.jpeg" alt="Dia Mundial da Língua Portuguesa — 5 de maio" class="noticia-img" onclick="abrirLightboxAvulso('foto5maio.jpeg','Dia Mundial da Língua Portuguesa — 5 de maio')" style="cursor:zoom-in">
         <div class="noticia-corpo">
           <p class="noticia-cat" data-pt="Cultura e Língua" data-tt="Kultura no Lian">Cultura e Língua</p>
@@ -587,6 +609,19 @@
     <h2 class="section-titulo"><span data-pt="Momentos que nos " data-tt="Momentu sira ne'ebé ami ">Momentos que nos </span><em data-pt="orgulham" data-tt="orgullu">orgulham</em></h2>
     <div class="secao-linha"></div>
     <p class="memorias-intro" data-pt="Aqui estão momentos passados dos quais o CAFE de Liquiçá se orgulha." data-tt="Iha ne'e mak momentu sira husi tempu liubá ne'ebé CAFE Liquiçá orgullu.">Aqui estão momentos passados dos quais o CAFE de Liquiçá se orgulha.</p>
+
+    <!-- ─── SHORTS (vídeos verticais, formato telemóvel) ─── -->
+    <h3 class="shorts-titulo" data-pt="Shorts — vozes dos alunos" data-tt="Shorts — lia-fuan estudante sira nian">Shorts — vozes dos alunos</h3>
+    <div class="shorts-grid">
+      <!-- Short 1: Dia da Língua Portuguesa 2026 -->
+      <figure class="short-item" onclick="abrirLightboxVideo('m_bH1P5pUoI','Língua Portuguesa — uma janela para o mundo (2026)',true)">
+        <img loading="lazy" src="https://i.ytimg.com/vi/m_bH1P5pUoI/hqdefault.jpg" alt="Vídeo dos alunos sobre o Dia Mundial da Língua Portuguesa">
+        <span class="memoria-play" aria-hidden="true">▶</span>
+        <figcaption class="short-legenda"><span class="short-ano">2026</span><br><span data-pt="Língua Portuguesa — uma janela para o mundo" data-tt="Lia-Portugés — janela ida ba mundu">Língua Portuguesa — uma janela para o mundo</span></figcaption>
+      </figure>
+    </div>
+
+    <h3 class="shorts-titulo" data-pt="Fotos e vídeos — anos anteriores" data-tt="Foto no vídeu sira — tinan liubá">Fotos e vídeos — anos anteriores</h3>
     <div class="memorias-grid">
 
       <!-- Foto 1: Bandeiras CPLP, pré-escolar, 2022 -->
@@ -707,6 +742,8 @@
       <h2 class="modal-titulo" id="modal-titulo"></h2>
       <p class="modal-data" id="modal-data"></p>
       <p class="modal-texto" id="modal-texto"></p>
+      <!-- Botão de vídeo: aparece só se a notícia tiver data-video -->
+      <button class="modal-video-btn" id="modal-video-btn" style="display:none" onclick="abrirVideoDoModal()" data-pt="Ver vídeo dos alunos" data-tt="Haree vídeu estudante sira nian">Ver vídeo dos alunos</button>
       <button class="modal-fechar" onclick="fecharModalNoticia()">✕ Fechar</button>
     </div>
   </div>
@@ -1056,6 +1093,11 @@ function fecharModalNoticia(e){
   document.getElementById('modal-noticia').classList.remove('aberto');
   document.body.style.overflow='';
 }
+// Variáveis globais para guardar dados de vídeo da notícia atual no modal
+var modalVideoId=null;
+var modalVideoLegenda=null;
+var modalVideoVertical=false;
+
 document.addEventListener('click',function(e){
   var card=e.target.closest('.noticia-card');
   if(!card)return;
@@ -1066,9 +1108,28 @@ document.addEventListener('click',function(e){
   document.getElementById('modal-titulo').textContent=card.getAttribute('data-titulo')||'';
   document.getElementById('modal-texto').textContent=card.getAttribute('data-texto')||'';
   document.getElementById('modal-data').textContent=card.getAttribute('data-data')||'';
+  // Mostrar botão de vídeo só se a notícia tiver data-video
+  var videoBtn=document.getElementById('modal-video-btn');
+  var videoId=card.getAttribute('data-video');
+  if(videoId){
+    modalVideoId=videoId;
+    modalVideoLegenda=card.getAttribute('data-titulo')||'';
+    modalVideoVertical=card.getAttribute('data-video-vertical')==='true';
+    videoBtn.style.display='inline-flex';
+  }else{
+    modalVideoId=null;
+    videoBtn.style.display='none';
+  }
   document.getElementById('modal-noticia').classList.add('aberto');
   document.body.style.overflow='hidden';
 });
+// Função chamada pelo botão "Ver vídeo dos alunos" dentro do modal
+function abrirVideoDoModal(){
+  if(!modalVideoId)return;
+  // Fechar primeiro o modal de notícia, depois abrir o lightbox de vídeo
+  document.getElementById('modal-noticia').classList.remove('aberto');
+  abrirLightboxVideo(modalVideoId,modalVideoLegenda,modalVideoVertical);
+}
 // ── LIGHTBOX ──────────────────────────────────────────────────────────────────
 var lbFotos=[]; var lbIndex=0;
 
@@ -1126,18 +1187,24 @@ document.addEventListener('keydown',function(e){
 });
 document.getElementById('lb-img').style.transition='opacity 0.15s ease';
 
-// === Lightbox de vídeo (secção Memórias) ===
-function abrirLightboxVideo(youtubeId,legenda){
+// === Lightbox de vídeo (secção Memórias e Shorts) ===
+// Aceita um terceiro parâmetro `vertical` (boolean): se true, ajusta proporção 9:16
+function abrirLightboxVideo(youtubeId,legenda,vertical){
   var iframe=document.getElementById('lb-video-iframe');
   iframe.src='https://www.youtube.com/embed/'+youtubeId+'?rel=0&autoplay=1';
   iframe.title=legenda||'';
   document.getElementById('lb-video-legenda').textContent=legenda||'';
-  document.getElementById('lightbox-video').classList.add('aberto');
+  var lbv=document.getElementById('lightbox-video');
+  // Marcar como vertical para o CSS aplicar proporção 9:16 (Shorts)
+  if(vertical){lbv.classList.add('vertical');}else{lbv.classList.remove('vertical');}
+  lbv.classList.add('aberto');
   document.body.style.overflow='hidden';
 }
 function fecharLightboxVideo(e){
   if(e&&e.target!==document.getElementById('lightbox-video')&&!e.target.classList.contains('lightbox-video-fechar'))return;
-  document.getElementById('lightbox-video').classList.remove('aberto');
+  var lbv=document.getElementById('lightbox-video');
+  lbv.classList.remove('aberto');
+  lbv.classList.remove('vertical');
   // Parar o vídeo: limpar src para não continuar a tocar em background
   document.getElementById('lb-video-iframe').src='';
   document.body.style.overflow='';
