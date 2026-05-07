@@ -279,6 +279,10 @@
   .modal-video-btn{display:inline-flex;align-items:center;gap:0.5rem;background:var(--vermelho);color:#fff;padding:0.7rem 1.2rem;border-radius:4px;text-decoration:none;font-weight:600;font-size:0.9rem;margin-top:1rem;transition:background 0.2s;border:none;cursor:pointer;font-family:inherit}
   .modal-video-btn:hover{background:#a02d20}
   .modal-video-btn::before{content:"▶";font-size:0.75rem}
+  /* Botão de galeria no modal — variante verde para distinguir do vídeo */
+  .modal-galeria-btn{display:inline-flex;align-items:center;gap:0.5rem;background:var(--verde);color:#fff;padding:0.7rem 1.2rem;border-radius:4px;text-decoration:none;font-weight:600;font-size:0.9rem;margin-top:1rem;margin-left:0.5rem;transition:background 0.2s;border:none;cursor:pointer;font-family:inherit}
+  .modal-galeria-btn:hover{background:#13441f}
+  .modal-galeria-btn::before{content:"📸";font-size:0.95rem}
   @media(max-width:900px){
     .nav-links{display:none}.hamburger{display:flex}
     .sobre-grid,.tetum-inner,.video-inner,.contacto-grid,.footer-top,.palavra-inner{grid-template-columns:1fr;gap:2rem}
@@ -546,7 +550,7 @@
         </div>
       </div>
       <!-- Notícia 30 abril 2026 — Limpeza da praia (1.º e 12.º anos) -->
-      <div class="noticia-card" data-foto="fotopraia.jpeg" data-cat="Cidadania Ambiental" data-titulo="Por um Futuro Melhor — alunos do 1.º e 12.º anos limpam a praia de Liquiçá" data-texto="No dia 30 de abril de 2026, alunos do 1.º e do 12.º ano do CAFE de Liquiçá uniram-se numa ação de limpeza da praia, sob o lema «Por um Futuro Melhor!». Da escola até ao mar, os mais velhos guiaram os mais novos pela mão — uma marcha de cidadania que percorreu Liquiçá em fila branca, ordeira e cheia de sentido. Na praia, o trabalho foi de todos: recolher o calçado abandonado, os plásticos e os resíduos que o mar e os passantes deixam para trás. Sacos amarelos enchiam-se enquanto crianças e jovens descobriam, na prática, que cuidar da Terra começa com gestos simples e partilhados. Esta atividade integra-se no projeto educativo do CAFE em educação ambiental e cidadania ativa, alinhada com os Objetivos de Desenvolvimento Sustentável — em particular o ODS 14 (Proteger a Vida Marinha) e o ODS 4 (Educação de Qualidade). A intencionalidade pedagógica é dupla: por um lado, uma aprendizagem ambiental concreta e situada; por outro, a aprendizagem entre pares, em que os alunos do 12.º ano modelam, junto dos do 1.º ano, comportamentos de responsabilidade cívica e respeito pelo bem comum. Para o futuro que queremos, é nas crianças de hoje que se semeia o cuidado de amanhã." data-data="30 de abril de 2026">
+      <div class="noticia-card" data-foto="fotopraia.jpeg" data-galeria="fotopraia.jpeg|Foto de grupo após a recolha — 1.º e 12.º anos juntos||fotomarcha.jpeg|Da escola até à praia, em fila ordeira||fotorecolhapraia.jpeg|A chegada à praia, sob a sombra das árvores" data-cat="Cidadania Ambiental" data-titulo="Por um Futuro Melhor — alunos do 1.º e 12.º anos limpam a praia de Liquiçá" data-texto="No dia 30 de abril de 2026, alunos do 1.º e do 12.º ano do CAFE de Liquiçá uniram-se numa ação de limpeza da praia, sob o lema «Por um Futuro Melhor!». Da escola até ao mar, os mais velhos guiaram os mais novos pela mão — uma marcha de cidadania que percorreu Liquiçá em fila branca, ordeira e cheia de sentido. Na praia, o trabalho foi de todos: recolher o calçado abandonado, os plásticos e os resíduos que o mar e os passantes deixam para trás. Sacos amarelos enchiam-se enquanto crianças e jovens descobriam, na prática, que cuidar da Terra começa com gestos simples e partilhados. Esta atividade integra-se no projeto educativo do CAFE em educação ambiental e cidadania ativa, alinhada com os Objetivos de Desenvolvimento Sustentável — em particular o ODS 14 (Proteger a Vida Marinha) e o ODS 4 (Educação de Qualidade). A intencionalidade pedagógica é dupla: por um lado, uma aprendizagem ambiental concreta e situada; por outro, a aprendizagem entre pares, em que os alunos do 12.º ano modelam, junto dos do 1.º ano, comportamentos de responsabilidade cívica e respeito pelo bem comum. Para o futuro que queremos, é nas crianças de hoje que se semeia o cuidado de amanhã." data-data="30 de abril de 2026">
         <img loading="lazy" src="fotopraia.jpeg" alt="Alunos do 1.º e 12.º anos do CAFE de Liquiçá após a limpeza da praia" class="noticia-img" onclick="abrirLightboxAvulso('fotopraia.jpeg','Por um Futuro Melhor — limpeza da praia, 30 de abril de 2026')" style="cursor:zoom-in">
         <div class="noticia-corpo">
           <p class="noticia-cat" data-pt="Cidadania Ambiental" data-tt="Sidadania Ambientál">Cidadania Ambiental</p>
@@ -785,6 +789,8 @@
       <p class="modal-texto" id="modal-texto"></p>
       <!-- Botão de vídeo: aparece só se a notícia tiver data-video -->
       <button class="modal-video-btn" id="modal-video-btn" style="display:none" onclick="abrirVideoDoModal()" data-pt="Ver vídeo dos alunos" data-tt="Haree vídeu estudante sira nian">Ver vídeo dos alunos</button>
+      <!-- Botão de galeria: aparece só se a notícia tiver data-galeria -->
+      <button class="modal-galeria-btn" id="modal-galeria-btn" style="display:none" onclick="abrirGaleriaDoModal()" data-pt="Ver galeria de fotos" data-tt="Haree galeria foto sira nian">Ver galeria de fotos</button>
       <button class="modal-fechar" onclick="fecharModalNoticia()">✕ Fechar</button>
     </div>
   </div>
@@ -1138,6 +1144,8 @@ function fecharModalNoticia(e){
 var modalVideoId=null;
 var modalVideoLegenda=null;
 var modalVideoVertical=false;
+// Variável global para guardar a galeria da notícia atual no modal (array de {src, legenda})
+var modalGaleriaFotos=null;
 
 document.addEventListener('click',function(e){
   var card=e.target.closest('.noticia-card');
@@ -1172,6 +1180,20 @@ document.addEventListener('click',function(e){
     modalVideoId=null;
     videoBtn.style.display='none';
   }
+  // Mostrar botão de galeria só se a notícia tiver data-galeria
+  // Formato esperado: "ficheiro1.jpeg|legenda 1||ficheiro2.jpeg|legenda 2||..."
+  var galeriaBtn=document.getElementById('modal-galeria-btn');
+  var galeriaRaw=card.getAttribute('data-galeria');
+  if(galeriaRaw){
+    modalGaleriaFotos=galeriaRaw.split('||').map(function(item){
+      var partes=item.split('|');
+      return {src:partes[0].trim(), legenda:(partes[1]||'').trim()};
+    });
+    galeriaBtn.style.display='inline-flex';
+  }else{
+    modalGaleriaFotos=null;
+    galeriaBtn.style.display='none';
+  }
   document.getElementById('modal-noticia').classList.add('aberto');
   document.body.style.overflow='hidden';
 });
@@ -1182,8 +1204,21 @@ function abrirVideoDoModal(){
   document.getElementById('modal-noticia').classList.remove('aberto');
   abrirLightboxVideo(modalVideoId,modalVideoLegenda,modalVideoVertical);
 }
+// Função chamada pelo botão "Ver galeria de fotos" dentro do modal
+// Carrega a galeria da notícia no array do lightbox e abre na primeira foto, com setas ativas
+function abrirGaleriaDoModal(){
+  if(!modalGaleriaFotos||!modalGaleriaFotos.length)return;
+  // Fechar primeiro o modal de notícia
+  document.getElementById('modal-noticia').classList.remove('aberto');
+  // Guardar backup do array original (galeria principal) e substituir pelas fotos desta notícia
+  lbFotosBackup=lbFotos;
+  lbFotos=modalGaleriaFotos.slice();
+  abrirLightboxGaleria(0);
+}
 // ── LIGHTBOX ──────────────────────────────────────────────────────────────────
 var lbFotos=[]; var lbIndex=0;
+// Backup do array original quando uma galeria temporária (de notícia) é aberta
+var lbFotosBackup=null;
 
 function iniciarLightbox(){
   lbFotos=[];
@@ -1217,6 +1252,11 @@ function fecharLightbox(e){
   if(e&&e.target!==document.getElementById('lightbox')&&!e.target.classList.contains('lightbox-fechar'))return;
   document.getElementById('lightbox').classList.remove('aberto');
   document.body.style.overflow='';
+  // Se havia uma galeria temporária ativa (de notícia), restaurar o array original
+  if(lbFotosBackup){
+    lbFotos=lbFotosBackup;
+    lbFotosBackup=null;
+  }
 }
 
 function navegarLightbox(dir){
