@@ -280,6 +280,9 @@
   .modal-video-btn{display:inline-flex;align-items:center;gap:0.5rem;background:var(--vermelho);color:#fff;padding:0.7rem 1.2rem;border-radius:4px;text-decoration:none;font-weight:600;font-size:0.9rem;margin-top:1rem;transition:background 0.2s;border:none;cursor:pointer;font-family:inherit}
   .modal-video-btn:hover{background:#a02d20}
   .modal-video-btn::before{content:"▶";font-size:0.75rem}
+  .modal-video2-btn{display:inline-flex;align-items:center;gap:0.5rem;background:#5a4632;color:#fff;padding:0.7rem 1.2rem;border-radius:4px;text-decoration:none;font-weight:600;font-size:0.9rem;margin-top:1rem;margin-left:0.5rem;transition:background 0.2s;border:none;cursor:pointer;font-family:inherit}
+  .modal-video2-btn:hover{background:#3e3022}
+  .modal-video2-btn::before{content:"▶";font-size:0.75rem}
   /* Botão de galeria no modal — variante verde para distinguir do vídeo */
   .modal-galeria-btn{display:inline-flex;align-items:center;gap:0.5rem;background:var(--verde);color:#fff;padding:0.7rem 1.2rem;border-radius:4px;text-decoration:none;font-weight:600;font-size:0.9rem;margin-top:1rem;margin-left:0.5rem;transition:background 0.2s;border:none;cursor:pointer;font-family:inherit}
   .modal-galeria-btn:hover{background:#13441f}
@@ -546,8 +549,8 @@
     <div class="secao-linha"></div>
     <div class="noticias-grid">
       <!-- Notícia 16 de maio 2026 — III Feira da Ciência (DESTAQUE) -->
-      <div class="noticia-card" data-destaque="true" data-foto="fotoflautas.jpeg" data-video="DS7p9uS8FOI" data-cat="Ciência e Sustentabilidade" data-titulo="III Feira da Ciência — a participação do CAFE de Liquiçá" data-texto="Nos dias 14, 15 e 16 de maio de 2026, o CAFE de Liquiçá participou na III Feira da Ciência, em Dili, sob o tema «Ciência para um futuro sustentável». A escola levou três frentes ao evento: o projeto científico «Escola sem Ruído», uma atuação musical com flautas e um desfile com peças feitas a partir de resíduos plásticos. Uma presença que uniu rigor científico, expressão artística e cidadania ambiental." data-data="16 de maio de 2026">
-        <img loading="lazy" src="fotoflautas.jpeg" alt="Atuação musical com flautas na III Feira da Ciência" class="noticia-img" onclick="abrirLightboxAvulso('fotoflautas.jpeg','Atuação musical com flautas — III Feira da Ciência (16 de maio de 2026)')" style="cursor:zoom-in">
+      <div class="noticia-card" data-destaque="true" data-foto="fotoprojeto.jpeg" data-video="DS7p9uS8FOI" data-video2="sjfH54IlGOY" data-video2-titulo="Da Lixeira à Passarela — desfile sustentável da III Feira da Ciência" data-cat="Ciência e Sustentabilidade" data-titulo="III Feira da Ciência — a participação do CAFE de Liquiçá" data-texto="Nos dias 14, 15 e 16 de maio de 2026, o CAFE de Liquiçá participou na III Feira da Ciência, em Dili, sob o tema «Ciência para um futuro sustentável». A escola levou três frentes ao evento: o projeto científico «Escola sem Ruído», uma atuação musical com flautas e um desfile com peças feitas a partir de resíduos plásticos. Uma presença que uniu rigor científico, expressão artística e cidadania ambiental." data-data="16 de maio de 2026">
+        <img loading="lazy" src="fotoprojeto.jpeg" alt="Alunos do CAFE de Liquiçá apresentam o projeto Escola sem Ruído na III Feira da Ciência" class="noticia-img" onclick="abrirLightboxAvulso('fotoprojeto.jpeg','Apresentação do projeto «Escola sem Ruído» — III Feira da Ciência (16 de maio de 2026)')" style="cursor:zoom-in">
         <div class="noticia-corpo">
           <p class="noticia-cat" data-pt="Ciência e Sustentabilidade" data-tt="Siénsia no Sustentabilidade">Ciência e Sustentabilidade</p>
           <h3 class="noticia-titulo" data-pt="III Feira da Ciência — a participação do CAFE de Liquiçá" data-tt="III Feira Siénsia — partisipasaun CAFE Liquiçá nian">III Feira da Ciência — a participação do CAFE de Liquiçá</h3>
@@ -556,6 +559,7 @@
           <div class="noticia-ctas">
             <span class="noticia-cta" data-pt="📖 Ler notícia completa →" data-tt="📖 Lee notísia kompletu →">📖 Ler notícia completa →</span>
             <span class="noticia-cta noticia-cta-video" data-pt="▶ Ver vídeo do projeto" data-tt="▶ Haree vídeu projetu nian">▶ Ver vídeo do projeto</span>
+            <span class="noticia-cta noticia-cta-video2" data-pt="▶ Ver vídeo do desfile" data-tt="▶ Haree vídeu desfile nian">▶ Ver vídeo do desfile</span>
           </div>
         </div>
       </div>
@@ -817,6 +821,8 @@
       <p class="modal-texto" id="modal-texto"></p>
       <!-- Botão de vídeo: aparece só se a notícia tiver data-video -->
       <button class="modal-video-btn" id="modal-video-btn" style="display:none" onclick="abrirVideoDoModal()" data-pt="Ver vídeo dos alunos" data-tt="Haree vídeu estudante sira nian">Ver vídeo dos alunos</button>
+      <!-- Botão de 2.º vídeo: aparece só se a notícia tiver data-video2 -->
+      <button class="modal-video2-btn" id="modal-video2-btn" style="display:none" onclick="abrirVideo2DoModal()" data-pt="Ver vídeo do desfile" data-tt="Haree vídeu desfile nian">Ver vídeo do desfile</button>
       <!-- Botão de galeria: aparece só se a notícia tiver data-galeria -->
       <button class="modal-galeria-btn" id="modal-galeria-btn" style="display:none" onclick="abrirGaleriaDoModal()" data-pt="Ver fotos" data-tt="Haree foto sira">Ver fotos</button>
       <button class="modal-fechar" onclick="fecharModalNoticia()">✕ Fechar</button>
@@ -1172,6 +1178,10 @@ function fecharModalNoticia(e){
 var modalVideoId=null;
 var modalVideoLegenda=null;
 var modalVideoVertical=false;
+// Variáveis globais para o 2.º vídeo (opcional)
+var modalVideo2Id=null;
+var modalVideo2Legenda=null;
+var modalVideo2Vertical=false;
 // Variável global para guardar a galeria da notícia atual no modal (array de {src, legenda})
 var modalGaleriaFotos=null;
 
@@ -1188,6 +1198,17 @@ document.addEventListener('click',function(e){
       var leg=card.getAttribute('data-titulo')||'';
       var vert=card.getAttribute('data-video-vertical')==='true';
       abrirLightboxVideo(vid,leg,vert);
+      return;
+    }
+  }
+  // Se o utilizador clicou no CTA do 2.º vídeo, abrir vídeo 2 diretamente
+  if(e.target.closest('.noticia-cta-video2')){
+    var vid2=card.getAttribute('data-video2');
+    if(vid2){
+      e.stopPropagation();
+      var leg2=card.getAttribute('data-video2-titulo')||card.getAttribute('data-titulo')||'';
+      var vert2=card.getAttribute('data-video2-vertical')==='true';
+      abrirLightboxVideo(vid2,leg2,vert2);
       return;
     }
   }
@@ -1223,6 +1244,18 @@ document.addEventListener('click',function(e){
     modalVideoId=null;
     videoBtn.style.display='none';
   }
+  // Mostrar botão do 2.º vídeo só se a notícia tiver data-video2
+  var video2Btn=document.getElementById('modal-video2-btn');
+  var video2Id=card.getAttribute('data-video2');
+  if(video2Id){
+    modalVideo2Id=video2Id;
+    modalVideo2Legenda=card.getAttribute('data-video2-titulo')||card.getAttribute('data-titulo')||'';
+    modalVideo2Vertical=card.getAttribute('data-video2-vertical')==='true';
+    video2Btn.style.display='inline-flex';
+  }else{
+    modalVideo2Id=null;
+    video2Btn.style.display='none';
+  }
   // Mostrar botão de galeria só se a notícia tiver data-galeria
   // Formato esperado: "ficheiro1.jpeg|legenda 1||ficheiro2.jpeg|legenda 2||..."
   var galeriaBtn=document.getElementById('modal-galeria-btn');
@@ -1246,6 +1279,12 @@ function abrirVideoDoModal(){
   // Fechar primeiro o modal de notícia, depois abrir o lightbox de vídeo
   document.getElementById('modal-noticia').classList.remove('aberto');
   abrirLightboxVideo(modalVideoId,modalVideoLegenda,modalVideoVertical);
+}
+// Função chamada pelo botão do 2.º vídeo dentro do modal
+function abrirVideo2DoModal(){
+  if(!modalVideo2Id)return;
+  document.getElementById('modal-noticia').classList.remove('aberto');
+  abrirLightboxVideo(modalVideo2Id,modalVideo2Legenda,modalVideo2Vertical);
 }
 // Função chamada pelo botão "Ver galeria de fotos" dentro do modal
 // Carrega a galeria da notícia no array do lightbox e abre na primeira foto, com setas ativas
