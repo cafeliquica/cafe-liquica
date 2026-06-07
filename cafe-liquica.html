@@ -106,6 +106,9 @@
   .palavra-data{font-size:0.75rem;color:rgba(255,255,255,0.35);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1.5rem}
   .btn-voz{display:inline-flex;align-items:center;gap:8px;background:var(--amarelo);color:var(--preto);border:none;padding:10px 22px;border-radius:4px;font-family:'Source Sans 3',sans-serif;font-size:0.82rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;transition:background 0.2s,transform 0.2s}
   .btn-voz:hover{background:#d4920a;transform:translateY(-2px)}
+  .palavra-ver-todas{display:inline-block;margin-left:1rem;color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.82rem;letter-spacing:0.04em;border-bottom:1px solid rgba(255,255,255,0.3);padding-bottom:2px;transition:color 0.2s,border-color 0.2s}
+  .palavra-ver-todas:hover{color:var(--amarelo);border-color:var(--amarelo)}
+  @media(max-width:540px){.palavra-ver-todas{display:block;margin-left:0;margin-top:0.75rem}}
   .palavra-definicao{color:rgba(255,255,255,0.88);font-size:1.05rem;line-height:1.8;margin-bottom:1.5rem;font-weight:300}
   .palavra-frase{background:rgba(255,255,255,0.08);border-left:3px solid var(--amarelo);padding:1rem 1.5rem;border-radius:0 6px 6px 0;color:rgba(255,255,255,0.72);font-style:italic;font-size:0.95rem;line-height:1.6;margin-bottom:1.5rem}
   .palavra-tags{display:flex;gap:0.75rem;flex-wrap:wrap}
@@ -399,6 +402,7 @@
       <p class="palavra-classe" id="pal-classe"></p>
       <p class="palavra-data" id="pal-data"></p>
       <button class="btn-voz" onclick="lerPalavra()">🔊 <span data-pt="Ouvir pronúncia" data-tt="Rona pronúnsia">Ouvir pronúncia</span></button>
+      <a href="palavras.html" class="palavra-ver-todas" data-pt="📚 Ver todas as palavras →" data-tt="📚 Haree liafuan hotu →">📚 Ver todas as palavras →</a>
     </div>
     <div>
       <p class="palavra-definicao" id="pal-def"></p>
