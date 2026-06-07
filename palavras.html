@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SC2TK1269H"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-SC2TK1269H');
+</script>
+
+<title>Palavras do Dia · Arquivo · CAFE de Liquiçá</title>
+<meta name="description" content="Arquivo das Palavras do Dia do CAFE de Liquiçá — vocabulário cuidado em Português Europeu com tradução em Tétum, áudio e definições.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://cafeliquica.github.io/cafe-liquica/palavras.html">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   PALAVRAS DO DIA — ARQUIVO BILINGUE
+   CAFE de Liquiçá · Junho 2026
+   Mantém identidade visual: verde, vermelho, amarelo,
+   Playfair Display + Source Sans 3.
+   ============================================================ */
+
+:root{
+  --verde:#1a5c2e;
+  --vermelho:#c0392b;
+  --amarelo:#f0a500;
+  --preto:#1a1a1a;
+  --branco:#ffffff;
+  --cinza-claro:#f7f5f0;
+  --cinza-medio:#e8e4dc;
+  --texto:#2c2c2c;
+  --texto-claro:#666;
+  --sombra:0 4px 24px rgba(0,0,0,0.10);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Source Sans 3',sans-serif;
+  color:var(--texto);
+  background:var(--branco);
+  -webkit-font-smoothing:antialiased;
+}
+
+/* NAVBAR — coerente com o site principal */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  background:rgba(26,26,26,0.96);
+  backdrop-filter:blur(8px);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 2.5rem;height:70px;
+  border-bottom:2px solid var(--amarelo);
+}
+.nav-logo{display:flex;align-items:center;gap:14px;text-decoration:none}
+.nav-logo-img{width:48px;height:48px;object-fit:contain;background:white;border-radius:6px;padding:3px}
+.nav-logo-text .nome{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--branco);letter-spacing:0.03em;line-height:1.2;display:block}
+.nav-logo-text .sub{font-size:0.68rem;color:var(--amarelo);letter-spacing:0.08em;text-transform:uppercase;font-weight:300;display:block}
+.nav-direita{display:flex;align-items:center;gap:1rem}
+.nav-back{color:rgba(255,255,255,0.75);text-decoration:none;font-size:0.85rem;font-weight:600;letter-spacing:0.05em;transition:color 0.2s}
+.nav-back:hover{color:var(--amarelo)}
+.nav-lang{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:4px;padding:4px 2px}
+.lang-btn{background:none;border:none;cursor:pointer;font-size:0.75rem;font-weight:600;letter-spacing:0.05em;padding:3px 8px;border-radius:3px;transition:all 0.2s;font-family:'Source Sans 3',sans-serif;color:rgba(255,255,255,0.6)}
+.lang-btn.active{background:var(--amarelo);color:var(--preto)}
+.lang-btn:hover:not(.active){color:white}
+
+/* HERO */
+#hero{
+  background:linear-gradient(135deg, var(--verde) 0%, #144623 100%);
+  color:white;
+  padding:7rem 2.5rem 4rem;
+  position:relative;
+  overflow:hidden;
+}
+#hero::before{
+  content:'"';
+  position:absolute;
+  top:-3rem;
+  left:1rem;
+  font-family:'Playfair Display',serif;
+  font-size:20rem;
+  color:rgba(255,255,255,0.04);
+  line-height:1;
+  pointer-events:none;
+}
+.hero-inner{
+  max-width:1100px;
+  margin:0 auto;
+  position:relative;
+  z-index:1;
+}
+.hero-label{
+  font-size:0.72rem;
+  font-weight:600;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--amarelo);
+  margin-bottom:1rem;
+}
+.hero-titulo{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.2rem,5vw,3.6rem);
+  line-height:1.1;
+  margin-bottom:1rem;
+}
+.hero-titulo em{color:var(--amarelo);font-style:italic}
+.hero-sub{
+  font-size:1.05rem;
+  color:rgba(255,255,255,0.8);
+  max-width:680px;
+  line-height:1.7;
+  font-weight:300;
+}
+
+/* CONTROLOS — barra de pesquisa e ordenação */
+.controlos{
+  background:var(--cinza-claro);
+  border-bottom:1px solid var(--cinza-medio);
+  padding:1.5rem 2.5rem;
+  position:sticky;
+  top:70px;
+  z-index:50;
+  box-shadow:0 2px 10px rgba(0,0,0,0.04);
+}
+.controlos-inner{
+  max-width:1100px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  gap:1rem;
+  flex-wrap:wrap;
+}
+.pesquisa-wrap{
+  flex:1;
+  min-width:240px;
+  position:relative;
+}
+.pesquisa-input{
+  width:100%;
+  background:white;
+  border:1px solid var(--cinza-medio);
+  border-radius:6px;
+  padding:11px 16px 11px 42px;
+  font-family:inherit;
+  font-size:0.92rem;
+  color:var(--preto);
+  transition:border-color 0.2s, box-shadow 0.2s;
+}
+.pesquisa-input:focus{
+  outline:none;
+  border-color:var(--verde);
+  box-shadow:0 0 0 3px rgba(26,92,46,0.1);
+}
+.pesquisa-icone{
+  position:absolute;
+  left:14px;
+  top:50%;
+  transform:translateY(-50%);
+  color:var(--texto-claro);
+  font-size:1rem;
+  pointer-events:none;
+}
+.ordenacao{
+  display:flex;
+  align-items:center;
+  gap:0.5rem;
+}
+.ordenacao-label{
+  font-size:0.78rem;
+  font-weight:600;
+  color:var(--texto-claro);
+  letter-spacing:0.05em;
+  text-transform:uppercase;
+}
+.ordenacao-select{
+  background:white;
+  border:1px solid var(--cinza-medio);
+  border-radius:6px;
+  padding:10px 14px;
+  font-family:inherit;
+  font-size:0.88rem;
+  color:var(--preto);
+  cursor:pointer;
+  min-width:180px;
+}
+.contagem{
+  font-size:0.85rem;
+  color:var(--texto-claro);
+  font-style:italic;
+}
+.contagem strong{
+  color:var(--verde);
+  font-weight:700;
+  font-style:normal;
+}
+
+/* GRELHA DE PALAVRAS */
+main{
+  padding:2.5rem 2.5rem 5rem;
+}
+.grelha-inner{
+  max-width:1100px;
+  margin:0 auto;
+}
+.grelha{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:1.5rem;
+}
+
+/* CARD DE PALAVRA */
+.palavra-card{
+  background:white;
+  border:1px solid var(--cinza-medio);
+  border-radius:10px;
+  padding:1.5rem 1.5rem 1.25rem;
+  position:relative;
+  transition:box-shadow 0.25s, transform 0.25s, border-color 0.25s;
+  display:flex;
+  flex-direction:column;
+  gap:0.85rem;
+}
+.palavra-card:hover{
+  box-shadow:var(--sombra);
+  transform:translateY(-3px);
+  border-color:var(--amarelo);
+}
+.palavra-card.atual{
+  border:2px solid var(--amarelo);
+  background:linear-gradient(to bottom, #fffbf2 0%, white 100%);
+}
+.palavra-card.atual::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;
+  height:4px;
+  background:var(--amarelo);
+  border-radius:8px 8px 0 0;
+}
+
+.palavra-num{
+  font-size:0.68rem;
+  font-weight:700;
+  letter-spacing:0.18em;
+  color:var(--texto-claro);
+  text-transform:uppercase;
+}
+.palavra-card.atual .palavra-num{
+  color:var(--vermelho);
+}
+.palavra-card.atual .palavra-num::after{
+  content:' · Hoje';
+  color:var(--amarelo);
+  font-weight:700;
+}
+
+.palavra-titulo-wrap{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:0.6rem;
+}
+.palavra-titulo{
+  font-family:'Playfair Display',serif;
+  font-size:1.6rem;
+  color:var(--preto);
+  line-height:1.15;
+  font-weight:700;
+}
+.palavra-btn-audio{
+  background:var(--verde);
+  color:white;
+  border:none;
+  border-radius:50%;
+  width:36px;height:36px;
+  cursor:pointer;
+  font-size:0.92rem;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+  transition:background 0.2s, transform 0.15s;
+}
+.palavra-btn-audio:hover{
+  background:#144623;
+  transform:scale(1.1);
+}
+.palavra-btn-audio:active{transform:scale(0.95)}
+
+.palavra-classe{
+  font-size:0.78rem;
+  color:var(--texto-claro);
+  font-style:italic;
+}
+
+.palavra-tt{
+  display:flex;
+  align-items:baseline;
+  gap:0.5rem;
+  background:#fffaeb;
+  border-left:3px solid var(--amarelo);
+  padding:0.5rem 0.75rem;
+  border-radius:0 4px 4px 0;
+  font-size:0.92rem;
+}
+.palavra-tt-tag{
+  font-size:0.6rem;
+  font-weight:700;
+  letter-spacing:0.12em;
+  color:#a07000;
+  text-transform:uppercase;
+  flex-shrink:0;
+}
+.palavra-tt-valor{
+  color:var(--preto);
+  font-style:italic;
+}
+
+.palavra-def{
+  font-size:0.9rem;
+  color:var(--texto);
+  line-height:1.55;
+}
+
+.palavra-frase{
+  background:var(--cinza-claro);
+  border-radius:6px;
+  padding:0.7rem 0.9rem;
+  font-size:0.85rem;
+  color:var(--texto-claro);
+  font-style:italic;
+  line-height:1.55;
+}
+
+.palavra-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:0.4rem 0.9rem;
+  font-size:0.78rem;
+  margin-top:0.25rem;
+  padding-top:0.65rem;
+  border-top:1px dashed var(--cinza-medio);
+}
+.palavra-tag{
+  display:inline-flex;
+  align-items:baseline;
+  gap:0.35rem;
+}
+.palavra-tag strong{
+  font-size:0.65rem;
+  font-weight:700;
+  letter-spacing:0.1em;
+  color:var(--verde);
+  text-transform:uppercase;
+}
+.palavra-tag span{
+  color:var(--texto-claro);
+}
+
+/* SEM RESULTADOS */
+.sem-resultados{
+  grid-column:1 / -1;
+  text-align:center;
+  padding:3rem 2rem;
+  color:var(--texto-claro);
+  font-style:italic;
+  background:var(--cinza-claro);
+  border-radius:8px;
+}
+
+/* FOOTER */
+footer{
+  background:var(--preto);
+  color:rgba(255,255,255,0.5);
+  padding:2.5rem 2.5rem 1.5rem;
+  text-align:center;
+  font-size:0.85rem;
+}
+footer a{color:var(--amarelo);text-decoration:none}
+footer a:hover{text-decoration:underline}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  nav{padding:0 1.25rem}
+  .controlos{padding:1rem 1.25rem;top:70px}
+  main{padding:2rem 1.25rem 4rem}
+  .grelha{grid-template-columns:repeat(2, 1fr);gap:1rem}
+  #hero{padding:6rem 1.25rem 3rem}
+}
+@media(max-width:540px){
+  nav{height:60px}
+  .nav-logo-img{width:38px;height:38px}
+  .nav-logo-text .nome{font-size:0.95rem}
+  .nav-logo-text .sub{font-size:0.62rem}
+  .nav-back{display:none}
+  .controlos{top:60px}
+  .controlos-inner{gap:0.6rem}
+  .ordenacao-select{min-width:auto;flex:1}
+  .grelha{grid-template-columns:1fr}
+  .palavra-titulo{font-size:1.4rem}
+}
+
+/* IMPRESSÃO */
+@media print{
+  *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important}
+  @page{size:A4;margin:1.5cm}
+  nav, footer, .controlos{display:none !important}
+  #hero{padding:1cm 0 0.8cm !important}
+  main{padding:0 !important}
+  .grelha{grid-template-columns:repeat(2, 1fr) !important;gap:0.6rem !important}
+  .palavra-card{
+    page-break-inside:avoid;
+    padding:0.8rem !important;
+    border:1px solid #ccc !important;
+    box-shadow:none !important;
+  }
+  .palavra-btn-audio{display:none !important}
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="logo.png" alt="CAFE Liquiçá" class="nav-logo-img">
+    <div class="nav-logo-text">
+      <span class="nome">CAFE de Liquiçá</span>
+      <span class="sub">Palavras do Dia · Liafuan Loron nian</span>
+    </div>
+  </a>
+  <div class="nav-direita">
+    <a href="index.html" class="nav-back" data-pt="← Voltar ao site" data-tt="← Fila ba site">← Voltar ao site</a>
+    <div class="nav-lang">
+      <button class="lang-btn active" onclick="setLang('pt')" id="btn-pt">PT</button>
+      <button class="lang-btn" onclick="setLang('tt')" id="btn-tt">TT</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <p class="hero-label" data-pt="✦ Arquivo · Palavras do Dia" data-tt="✦ Arkivu · Liafuan Loron nian">✦ Arquivo · Palavras do Dia</p>
+    <h1 class="hero-titulo">
+      <span data-pt="As palavras que " data-tt="Liafuan sira ne'ebé ">As palavras que </span><em data-pt="já visitámos." data-tt="ami foin vizita.">já visitámos.</em>
+    </h1>
+    <p class="hero-sub" data-pt="Aqui ficam guardadas todas as Palavras do Dia já apresentadas no CAFE de Liquiçá — para reler, ouvir, e descobrir aquelas que possas ter perdido." data-tt="Iha ne'e mak rai liafuan sira hotu husi Liafuan Loron nian ne'ebé hatudu tiha ona iha CAFE Liquiçá — atu lee, rona no deskobre sira ne'ebé karik ó la haree.">Aqui ficam guardadas todas as Palavras do Dia já apresentadas no CAFE de Liquiçá — para reler, ouvir, e descobrir aquelas que possas ter perdido.</p>
+  </div>
+</section>
+
+<!-- CONTROLOS -->
+<div class="controlos">
+  <div class="controlos-inner">
+    <div class="pesquisa-wrap">
+      <span class="pesquisa-icone">🔍</span>
+      <input type="text" class="pesquisa-input" id="pesquisa" placeholder="Pesquisar palavra, definição..." aria-label="Pesquisar">
+    </div>
+    <div class="ordenacao">
+      <label class="ordenacao-label" for="ordenacao" data-pt="Ordenar:" data-tt="Aranja:">Ordenar:</label>
+      <select class="ordenacao-select" id="ordenacao">
+        <option value="ordem" data-pt="Por ordem do ciclo" data-tt="Tuir orden siklu nian">Por ordem do ciclo</option>
+        <option value="alfa" data-pt="Alfabética A → Z" data-tt="Alfabétika A → Z">Alfabética A → Z</option>
+        <option value="alfa-rev" data-pt="Alfabética Z → A" data-tt="Alfabétika Z → A">Alfabética Z → A</option>
+      </select>
+    </div>
+    <div class="contagem" id="contagem"></div>
+  </div>
+</div>
+
+<!-- GRELHA DE PALAVRAS -->
+<main>
+  <div class="grelha-inner">
+    <div class="grelha" id="grelha"></div>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 CAFE de Liquiçá · <a href="index.html">Voltar ao site</a> · <a href="pratica.html">Pratica Português</a></p>
+</footer>
+
+<script>
+/* ============================================================
+   PALAVRAS DO DIA — DADOS
+   As 14 originais com campo tt: acrescentado (proposta [REV-TT]).
+   PARA EXPANSÃO: adicionar novas entradas com a mesma estrutura.
+   ATENÇÃO: tem de coincidir com o array de cafe-liquica.html
+   e index.html no que toca a PT (palavra, classe, def, frase, sin, ant)
+   ============================================================ */
+const palavras = [
+  {palavra:"Resiliência", tt:"Aguenta-an / Laran-metin",            classe:"substantivo feminino", def:"Capacidade de superar adversidades, adaptar-se a situações difíceis e sair delas ainda mais forte. É a arte de recomeçar com determinação e esperança.", frase:'"A resiliência não é ausência de dificuldades — é a força de as enfrentar com coragem e transformá-las em aprendizagem."', sin:"perseverança · determinação · força", ant:"fragilidade · desistência"},
+  {palavra:"Empoderamento", tt:"Habakat-an / Hametin-an",           classe:"substantivo masculino", def:"Processo pelo qual uma pessoa ou grupo adquire consciência do seu valor e capacidade para agir com autonomia, confiança e dignidade.", frase:'"O empoderamento começa no momento em que acreditas que a tua voz merece ser ouvida."', sin:"fortalecimento · autonomia · capacitação", ant:"submissão · dependência"},
+  {palavra:"Tenacidade", tt:"Laran-metin / La-husik",                classe:"substantivo feminino", def:"Qualidade de quem persiste com firmeza e determinação perante os obstáculos, sem desanimar nem desistir dos seus objetivos.", frase:'"A tenacidade transforma sonhos em conquistas — um passo de cada vez, sem parar."', sin:"perseverança · persistência · garra", ant:"fraqueza · desistência · inércia"},
+  {palavra:"Protagonismo", tt:"Hala'o ulun / Sai protagonista",      classe:"substantivo masculino", def:"Posição de quem assume um papel central e ativo na sua própria história, tomando iniciativa e responsabilidade pelas suas escolhas e ações.", frase:'"Sê o protagonista da tua história — ninguém pode vivê-la por ti."', sin:"liderança · iniciativa · agência", ant:"passividade · submissão"},
+  {palavra:"Magnanimidade", tt:"Laran-luak / Fuan-boot",             classe:"substantivo feminino", def:"Grandeza de espírito manifestada pela generosidade, nobreza de sentimentos e capacidade de perdoar e compreender o outro.", frase:'"A magnanimidade é a coragem de ser grande mesmo quando seria fácil ser pequeno."', sin:"generosidade · nobreza · clemência", ant:"mesquinhez · egoísmo · rancor"},
+  {palavra:"Eloquência", tt:"Koalia diak / Lia-kapaas",              classe:"substantivo feminino", def:"Arte de falar ou escrever com clareza, beleza e poder de persuasão, tocando a inteligência e os sentimentos de quem ouve ou lê.", frase:'"A eloquência não é apenas saber falar — é saber fazer o outro sentir o que dizes."', sin:"oratória · expressividade · fluência", ant:"mutismo · inabilidade · confusão"},
+  {palavra:"Congruência", tt:"Koerénsia / Hanesan iha hotu",         classe:"substantivo feminino", def:"Harmonia e coerência entre o que se pensa, o que se diz e o que se faz. Qualidade de quem é autêntico e fiel aos seus valores.", frase:'"A congruência entre palavras e ações é o fundamento da confiança."', sin:"coerência · harmonia · autenticidade", ant:"contradição · hipocrisia · incoerência"},
+  {palavra:"Perspicácia", tt:"Matenek-lalais / Hatene-mais",         classe:"substantivo feminino", def:"Capacidade de compreender rapidamente e com profundidade as situações, as pessoas e os problemas, revelando inteligência aguçada e bom discernimento.", frase:'"A perspicácia não é um dom — é a recompensa de quem observa o mundo com atenção."', sin:"sagacidade · argúcia · discernimento", ant:"ingenuidade · obtusidade · distração"},
+  {palavra:"Serenidade", tt:"Hakmatek / Laran-kmaan",                classe:"substantivo feminino", def:"Estado de calma interior e equilíbrio que permite enfrentar as dificuldades sem se perturbar, mantendo clareza de pensamento e paz de espírito.", frase:'"A serenidade não é ausência de tempestade — é aprender a dançar à chuva."', sin:"tranquilidade · equanimidade · paz", ant:"agitação · ansiedade · turbulência"},
+  {palavra:"Diligência", tt:"Servisu-makaas / Tau-matan",            classe:"substantivo feminino", def:"Qualidade de quem realiza as suas tarefas com empenho, atenção e constância, sem deixar para amanhã o que pode ser feito com rigor hoje.", frase:'"A diligência não é pressa — é presença constante e cuidada em tudo o que se faz."', sin:"empenho · dedicação · cuidado", ant:"preguiça · negligência · descuido"},
+  {palavra:"Integridade", tt:"Loos-tebes / Karakter loos",           classe:"substantivo feminino", def:"Qualidade de quem age em plena coerência com os seus valores morais e princípios éticos, mesmo quando ninguém está a observar.", frase:'"A integridade é fazer a coisa certa, especialmente quando é mais difícil."', sin:"honestidade · retidão · caráter", ant:"desonestidade · corrupção · hipocrisia"},
+  {palavra:"Assertividade", tt:"Koalia loos / Hatete loos",          classe:"substantivo feminino", def:"Capacidade de expressar pensamentos, sentimentos e necessidades de forma clara, direta e respeitosa, sem agressividade nem submissão.", frase:'"Ser assertivo é ter a coragem de dizer o que pensas com a gentileza de respeitar o outro."', sin:"firmeza · clareza · autoconfiança", ant:"passividade · agressividade · indecisão"},
+  {palavra:"Solicitude", tt:"Tau-matan / Tau-fuan",                  classe:"substantivo feminino", def:"Atenção cuidadosa e ativa ao bem-estar dos outros, manifestada através de gestos de carinho, preocupação genuína e prontidão para ajudar.", frase:'"A solicitude de um bom professor vê o aluno antes de ver o erro."', sin:"cuidado · atenção · carinho", ant:"indiferença · negligência · descaso"},
+  {palavra:"Abnegação", tt:"Fó-an / Sakrifísiu-an",                  classe:"substantivo feminino", def:"Disposição para sacrificar os próprios interesses em favor dos outros ou de uma causa maior, com dedicação e generosidade sem esperar reconhecimento.", frase:'"A abnegação do professor transforma vidas que ele talvez nunca saiba que tocou."', sin:"altruísmo · dedicação · entrega", ant:"egoísmo · individualismo · indiferença"},
+
+  /* ====== 75 NOVAS PALAVRAS (Blocos 1-5, intercalados por ciclo de 5)
+     Ciclo: B1 (Afeto) → B2 (Natureza) → B3 (Ações) → B4 (Ideias) → B5 (Cultura)
+     [REV-TT] todas as traduções Tetum aguardam revisão (não institucional) ====== */
+
+  /* --- Ciclo 1 --- */
+  {palavra:"Gratidão", tt:"Agradese / Reconhese",                     classe:"substantivo feminino", def:"Sentimento profundo de reconhecimento por aquilo que recebemos — gestos, palavras, presença — que nos eleva e nos liga aos outros, transformando o que temos no que sentimos.", frase:'"A gratidão multiplica o que temos e ilumina o que somos."', sin:"reconhecimento · agradecimento · apreço", ant:"ingratidão · desprezo · indiferença"},
+  {palavra:"Aurora", tt:"Loron-saan / Madrugada",                     classe:"substantivo feminino", def:"Primeira luz que rasga a escuridão da noite, anúncio silencioso do dia que nasce — símbolo universal de começo, de promessa renovada.", frase:'"Cada aurora é um lembrete de que a vida nos oferece, todos os dias, a oportunidade de recomeçar."', sin:"alvorada · madrugada · alvorecer", ant:"crepúsculo · anoitecer · ocaso"},
+  {palavra:"Partilhar", tt:"Fahe / Fahe-malu",                        classe:"verbo transitivo", def:"Dividir com outros aquilo que se tem — pão, tempo, alegria, saber — gesto que não diminui quem dá e enriquece quem recebe, criando laço onde antes havia apenas distância.", frase:'"Quem partilha o que tem, descobre que tem mais do que pensava."', sin:"dividir · repartir · oferecer", ant:"acumular · reter · guardar para si"},
+  {palavra:"Liberdade", tt:"Ukun-rasik-an / Liberdade",               classe:"substantivo feminino", def:"Capacidade de escolher e agir segundo a própria consciência, sem submissão arbitrária — direito fundamental que o povo timorense conquistou com sacrifício e que se honra todos os dias.", frase:'"A liberdade não se herda — recebe-se como tarefa, e cada geração tem de a reconquistar."', sin:"autonomia · independência · emancipação", ant:"opressão · escravidão · submissão"},
+  {palavra:"Lusofonia", tt:"Lian-Portugés nia mundu",                 classe:"substantivo feminino", def:"Comunidade humana, cultural e histórica formada pelos povos que partilham a língua portuguesa em quatro continentes — laço que une, na diferença, milhões de pessoas em torno de uma língua comum.", frase:'"A lusofonia não é uma herança fechada — é uma casa que se constrói todos os dias com palavras de todos os que a habitam."', sin:"comunidade lusófona · CPLP · espaço lusófono", ant:"isolamento · alheamento cultural"},
+
+  /* --- Ciclo 2 --- */
+  {palavra:"Ternura", tt:"Domin-kmaan / Karinhu",                     classe:"substantivo feminino", def:"Forma delicada e cuidadosa de amar, que se manifesta em gestos pequenos — um olhar, uma mão tocada, uma palavra dita com brandura — e que toca onde as palavras grandes não chegam.", frase:'"A ternura é a linguagem que o coração entende sem precisar de explicação."', sin:"afeto · meiguice · brandura", ant:"dureza · rudeza · frieza"},
+  {palavra:"Brisa", tt:"Anin-kmaan",                                  classe:"substantivo feminino", def:"Vento leve e suave que afaga a pele e move levemente as folhas — presença discreta da natureza que traz frescura e recorda que estamos vivos.", frase:'"A brisa não tem destino: passa por onde quer, e por isso é livre."', sin:"vento suave · aragem · sopro", ant:"vendaval · tempestade · ventania"},
+  {palavra:"Descobrir", tt:"Buka-hetan / Deskobre",                   classe:"verbo transitivo", def:"Encontrar o que estava oculto — uma verdade, um lugar, uma capacidade dentro de si — gesto curioso e corajoso de quem prefere a pergunta à certeza fácil.", frase:'"Descobrir não é só encontrar o novo: é olhar o conhecido com olhos lavados."', sin:"revelar · achar · explorar", ant:"esconder · ocultar · ignorar"},
+  {palavra:"Dignidade", tt:"Dignidade / Valor-ema",                   classe:"substantivo feminino", def:"Valor inerente a cada ser humano, independentemente da sua origem, condição ou crença — alicerce ético sobre o qual se constroem todos os direitos.", frase:'"A dignidade não se dá nem se tira: reconhece-se em cada pessoa porque ela existe."', sin:"respeito · honra · valor próprio", ant:"humilhação · degradação · indignidade"},
+  {palavra:"Pátria", tt:"Rai-inan / Terra-mama",                      classe:"substantivo feminino", def:"Terra de origem, lugar onde lançámos raízes ou para onde regressamos em pensamento — vínculo profundo entre as pessoas e o solo que as viu nascer.", frase:'"A pátria não é só um chão — é também uma língua, uma memória e um modo de olhar o mundo."', sin:"terra natal · nação · país", ant:"exílio · desenraizamento"},
+
+  /* --- Ciclo 3 --- */
+  {palavra:"Esperança", tt:"Esperansa / Fiar",                        classe:"substantivo feminino", def:"Disposição interior de acreditar que o amanhã pode ser melhor que o hoje, mesmo quando tudo à volta parece dizer o contrário — força silenciosa que sustenta os dias difíceis.", frase:'"A esperança não é certeza de que tudo vai correr bem — é a coragem de continuar a caminhar."', sin:"confiança · otimismo · fé", ant:"desespero · desânimo · ceticismo"},
+  {palavra:"Orvalho", tt:"Bee-aman / Bee iha aibubun",                classe:"substantivo masculino", def:"Gotas de água que se formam de madrugada sobre as folhas e a relva, dádiva silenciosa da noite que evapora ao primeiro sol — pequena maravilha do quotidiano.", frase:'"O orvalho ensina que as coisas mais belas duram pouco e por isso merecem ser olhadas."', sin:"rocio · sereno · humidade", ant:"secura · aridez"},
+  {palavra:"Escolher", tt:"Hili",                                     classe:"verbo transitivo", def:"Tomar uma decisão entre vários caminhos possíveis — exercício profundo da liberdade e da responsabilidade, porque cada escolha é também aquilo a que se renuncia.", frase:'"Escolher é abrir mão de mil possibilidades para honrar uma."', sin:"optar · decidir · selecionar", ant:"hesitar · renunciar · evitar"},
+  {palavra:"Justiça", tt:"Justisa / Lia-loos",                        classe:"substantivo feminino", def:"Princípio que dá a cada um o que lhe é devido e protege os que não têm voz — exigência ética que torna possível a vida em comum entre pessoas e povos.", frase:'"Não há paz duradoura sem justiça, nem justiça sem coragem de quem a defende."', sin:"equidade · retidão · imparcialidade", ant:"injustiça · arbitrariedade · opressão"},
+  {palavra:"Língua", tt:"Lian",                                       classe:"substantivo feminino", def:"Sistema vivo de palavras e gestos que uma comunidade usa para pensar, sentir e criar — em Timor, a língua portuguesa caminha lado a lado com o Tétum, abrindo pontes para o mundo.", frase:'"Cada língua nova é uma janela aberta para um modo diferente de ver o mesmo mundo."', sin:"idioma · fala · linguagem", ant:"silêncio · mutismo · afasia"},
+
+  /* --- Ciclo 4 --- */
+  {palavra:"Alegria", tt:"Ksolok / Haksolok",                         classe:"substantivo feminino", def:"Estado luminoso da alma em que o coração transborda em sorriso, gerado por algo bom que aconteceu ou apenas pela simples presença da vida e dos que amamos.", frase:'"A alegria partilhada multiplica-se; a alegria guardada para si mesma esmorece."', sin:"contentamento · júbilo · felicidade", ant:"tristeza · melancolia · desgosto"},
+  {palavra:"Raiz", tt:"Abut",                                         classe:"substantivo feminino", def:"Parte invisível da árvore que a sustenta — metáfora da origem, da família, da terra que nos forma e a que sempre, de algum modo, regressamos.", frase:'"As raízes não se veem, mas é delas que vive tudo o que floresce."', sin:"origem · fundamento · base", ant:"ramo · copa · superfície"},
+  {palavra:"Sonhar", tt:"Mehi / Mehi-sonha",                          classe:"verbo intransitivo", def:"Imaginar com o coração o que ainda não existe — terra fértil de onde nascem os projetos, as invenções e as transformações que mudam o mundo.", frase:'"Quem deixa de sonhar começa a viver a vida dos outros."', sin:"imaginar · idealizar · aspirar", ant:"desistir · resignar-se · conformar-se"},
+  {palavra:"Verdade", tt:"Lia-loos / Buat-loos",                      classe:"substantivo feminino", def:"Aquilo que corresponde ao real, sem máscara nem distorção — bem precioso que se procura toda uma vida e que se serve com humildade, não com arrogância.", frase:'"A verdade não tem pressa, mas tem uma teimosia que vence todos os atalhos."', sin:"realidade · autenticidade · franqueza", ant:"mentira · engano · falsidade"},
+  {palavra:"Tradição", tt:"Tradisaun / Lisan",                        classe:"substantivo feminino", def:"Conjunto de saberes, gestos e histórias que as gerações transmitem umas às outras — fio vivo que une o passado ao presente e nos lembra quem fomos para sabermos quem somos.", frase:'"A tradição não é o culto das cinzas — é a guarda do fogo que ainda aquece."', sin:"costume · herança · legado", ant:"rutura · esquecimento · modismo"},
+
+  /* --- Ciclo 5 --- */
+  {palavra:"Paz", tt:"Dame / Damelaek",                               classe:"substantivo feminino", def:"Estado de tranquilidade interior ou de harmonia entre pessoas e povos, em que o conflito dá lugar ao entendimento e a alma encontra repouso.", frase:'"A paz não é apenas a ausência de guerra — é a presença viva de justiça e respeito."', sin:"tranquilidade · harmonia · serenidade", ant:"guerra · conflito · agitação"},
+  {palavra:"Semente", tt:"Fini",                                      classe:"substantivo feminino", def:"Princípio adormecido de uma árvore, de uma flor, de um fruto — promessa contida numa pequena casca, lembrete de que tudo o que é grande começou pequeno.", frase:'"Plantar uma semente é acreditar no futuro mesmo quando não se vai ver a sombra da árvore."', sin:"grão · embrião · gérmen", ant:"fruto · colheita"},
+  {palavra:"Criar", tt:"Halo / Kria",                                 classe:"verbo transitivo", def:"Dar existência a algo que não existia antes — uma ideia, uma obra, uma vida — gesto profundamente humano que ecoa o ato primordial de tudo o que veio à luz.", frase:'"Criar é deixar uma marca no mundo que diga: passei por aqui e não fui indiferente."', sin:"produzir · gerar · inventar", ant:"destruir · copiar · imitar"},
+  {palavra:"Sabedoria", tt:"Matenek-tebes / Hatene moris",            classe:"substantivo feminino", def:"Saber profundo que une conhecimento, experiência e bom senso — qualidade dos que aprenderam não só com livros, mas também com a vida e os mais velhos.", frase:'"A sabedoria não é saber muito, é saber o que importa."', sin:"discernimento · prudência · sensatez", ant:"insensatez · loucura · ignorância"},
+  {palavra:"Património", tt:"Patrimóniu / Rikusoin",                  classe:"substantivo masculino", def:"Conjunto de bens — culturais, naturais, espirituais — que recebemos de gerações passadas e que temos o dever de cuidar para os transmitir aos que vêm.", frase:'"O património não é o que possuímos: é o que nos foi confiado para entregarmos intacto."', sin:"herança · legado · acervo", ant:"perda · destruição · descarte"},
+
+  /* --- Ciclo 6 --- */
+  {palavra:"Compaixão", tt:"Hadomi-malu / Laran-sadik",               classe:"substantivo feminino", def:"Capacidade profunda de sentir com o outro o seu sofrimento e de querer agir para o aliviar, sem julgamento nem distância — é amor em forma de proximidade.", frase:'"A compaixão começa quando deixamos de perguntar porquê e começamos a perguntar como ajudar."', sin:"empatia · misericórdia · solidariedade", ant:"crueldade · indiferença · insensibilidade"},
+  {palavra:"Horizonte", tt:"Horizonte / Tasi-rohan",                  classe:"substantivo masculino", def:"Linha onde o céu e a terra (ou o mar) parecem encontrar-se — limite visível que se afasta sempre que tentamos alcançá-lo, símbolo do sonho que nos faz caminhar.", frase:'"O horizonte não existe para ser alcançado, mas para nos lembrar que há sempre mais para ver."', sin:"limite · meta · perspetiva", ant:"barreira · obstáculo"},
+  {palavra:"Cuidar", tt:"Tau-matan / Kuida",                          classe:"verbo transitivo", def:"Tomar conta de alguém ou de algo com atenção, ternura e constância — gesto que sustenta a vida e que muitas vezes passa despercebido a quem o recebe.", frase:'"Cuidar é a forma silenciosa do amor — a que não precisa de palavras para ser entendida."', sin:"zelar · proteger · velar", ant:"abandonar · negligenciar · descuidar"},
+  {palavra:"Conhecimento", tt:"Hatene / Koñesimentu",                 classe:"substantivo masculino", def:"Conjunto de saberes adquiridos pelo estudo, pela experiência e pela reflexão — bem que cresce quando se partilha e que dignifica quem o tem.", frase:'"O conhecimento abre portas que nenhuma chave material consegue abrir."', sin:"saber · erudição · cultura", ant:"ignorância · desconhecimento · alheamento"},
+  {palavra:"Hospitalidade", tt:"Simu di\'ak / Hari\'i ema",            classe:"substantivo feminino", def:"Disposição generosa para acolher quem chega — vizinho, estrangeiro, viajante — com atenção, cuidado e respeito, oferecendo-lhe um lugar à mesa e na conversa. Virtude antiga, ainda muito viva em Timor.", frase:'"A hospitalidade não se mede pela mesa farta — mede-se pelo coração aberto."', sin:"acolhimento · receção · cordialidade", ant:"hostilidade · desprezo · rejeição"},
+
+  /* --- Ciclo 7 --- */
+  {palavra:"Empatia", tt:"Senti hanesan ema seluk",                   classe:"substantivo feminino", def:"Capacidade de entrar no mundo do outro e sentir, por instantes, o que ele sente — não para o substituir, mas para o compreender de verdade.", frase:'"Ter empatia é despir os próprios sapatos e calçar, por um momento, os do outro."', sin:"compreensão · sensibilidade · identificação", ant:"alheamento · egoísmo · frieza"},
+  {palavra:"Maré", tt:"Tasi-bot / Tasi-mota",                         classe:"substantivo feminino", def:"Movimento ritmado do mar que sobe e desce, ditado pela lua — lembrete diário de que tudo na vida tem o seu tempo de cheia e o seu tempo de vazante.", frase:'"A maré ensina-nos que tanto a abundância como a escassez são passagens, nunca destinos."', sin:"vaga · fluxo · corrente", ant:"estagnação · imobilidade"},
+  {palavra:"Semear", tt:"Kuda / Tau-fini",                            classe:"verbo transitivo", def:"Lançar à terra a semente que há de germinar — gesto antigo do agricultor que continua sendo metáfora de tudo o que se faz hoje a pensar no amanhã.", frase:'"Quem semeia ideias, palavras e gestos bons colhe um mundo melhor — talvez não para si, mas para os que vêm depois."', sin:"plantar · cultivar · disseminar", ant:"colher · arrancar · destruir"},
+  {palavra:"Responsabilidade", tt:"Responsabilidade / Lori-an",       classe:"substantivo feminino", def:"Capacidade de assumir as consequências das próprias escolhas e ações — sinal de maturidade humana que distingue quem cresce de quem apenas envelhece.", frase:'"Ser responsável é responder pelo que se faz — e também pelo que se deixa de fazer."', sin:"compromisso · obrigação · dever", ant:"irresponsabilidade · descomprometimento · negligência"},
+  {palavra:"Poesia", tt:"Poezia / Liafuan-furak",                     classe:"substantivo feminino", def:"Arte de dizer com palavras o que os outros sentimentos não conseguem dizer — pode ser escrita ou oral, erudita ou popular, e em todas as línguas e povos toma formas diferentes da mesma verdade.", frase:'"A poesia é a maneira que a alma encontrou de não morrer de tédio na linguagem do dia-a-dia."', sin:"verso · lirismo · canto", ant:"prosa árida · banalidade"},
+
+  /* --- Ciclo 8 --- */
+  {palavra:"Amizade", tt:"Belun / Kolega-amizade",                    classe:"substantivo feminino", def:"Laço escolhido livremente entre pessoas, feito de confiança, partilha e lealdade — relação que resiste ao tempo e à distância, porque se sustenta no que é verdadeiro.", frase:'"A amizade não exige presença constante, mas garante presença certa nos momentos que mais importam."', sin:"companheirismo · cumplicidade · afeição", ant:"inimizade · hostilidade · rivalidade"},
+  {palavra:"Alvorecer", tt:"Loron-sae / Loron-mosu",                  classe:"substantivo masculino", def:"Momento em que a luz se ergue lentamente do horizonte e o mundo vai ganhando cor — instante curto e sagrado em que a noite cede ao dia.", frase:'"Cada alvorecer é uma carta nova que a vida nos escreve antes de acordarmos."', sin:"amanhecer · aurora · romper do dia", ant:"anoitecer · crepúsculo · entardecer"},
+  {palavra:"Construir", tt:"Harii / Tatika",                          classe:"verbo transitivo", def:"Erguer algo com tempo, paciência e cuidado — uma casa, uma escola, uma relação, um país — entendendo que o que se constrói com solidez não se levanta num dia.", frase:'"Construir é mais difícil do que destruir, mas é também o que dá sentido à passagem por este mundo."', sin:"edificar · erigir · levantar", ant:"destruir · demolir · arruinar"},
+  {palavra:"Solidariedade", tt:"Solidariedade / Hamutuk",             classe:"substantivo feminino", def:"Disposição para estar com o outro nos seus desafios, especialmente nos mais difíceis — laço que une pessoas e povos para além das diferenças.", frase:'"A solidariedade é o que sobra de humano quando tudo o resto falha."', sin:"entreajuda · apoio · fraternidade", ant:"indiferença · individualismo · isolamento"},
+  {palavra:"Sagrado", tt:"Lulik / Santu",                             classe:"adjetivo / substantivo masculino", def:"Aquilo que merece especial respeito por estar ligado ao divino, à origem, ao mistério da vida — em muitos povos, inclusive em Timor, há lugares, gestos e palavras que se guardam dessa zona inviolável.", frase:'"O sagrado não precisa de muitas explicações: reconhece-se pelo silêncio que provoca."', sin:"reverenciado · venerável · respeitável", ant:"profano · banal · vulgar"},
+
+  /* --- Ciclo 9 --- */
+  {palavra:"Lealdade", tt:"Laran-loos / Fiar-malu",                   classe:"substantivo feminino", def:"Fidelidade ativa aos compromissos, às pessoas e aos valores em que se acredita — qualidade de quem não vira as costas quando aparece a tempestade.", frase:'"A lealdade prova-se nos dias difíceis, não nos dias fáceis."', sin:"fidelidade · honra · dedicação", ant:"traição · deslealdade · infidelidade"},
+  {palavra:"Ramo", tt:"Sanak / Aisanak",                              classe:"substantivo masculino", def:"Braço da árvore que se estende em direção ao céu, segurando folhas, flores e frutos — imagem da generosidade da natureza que oferece sombra a quem dela precisa.", frase:'"Cada ramo é uma decisão da árvore: crescer para onde o sol o chama."', sin:"galho · braço · vergôntea", ant:"tronco · raiz"},
+  {palavra:"Escutar", tt:"Rona / Rona ho atensaun",                   classe:"verbo transitivo", def:"Ouvir com presença e atenção verdadeira — diferente de apenas ouvir, escutar é abrir espaço dentro de si para receber a palavra e a pessoa que a diz.", frase:'"Escutar é uma forma de dar tempo ao outro — e o tempo é o presente mais raro que temos."', sin:"ouvir · atender · prestar atenção", ant:"ignorar · desatender · falar por cima"},
+  {palavra:"Tolerância", tt:"Toleransia / Simu-malu",                 classe:"substantivo feminino", def:"Disposição para aceitar e respeitar quem pensa, crê ou vive de modo diferente do nosso — virtude essencial em sociedades plurais como a timorense.", frase:'"Tolerar não é concordar com tudo — é reconhecer que cabemos todos na mesma casa."', sin:"respeito · abertura · pluralismo", ant:"intolerância · preconceito · sectarismo"},
+  {palavra:"Herança", tt:"Eransa / Buat husi avo-sira",               classe:"substantivo feminino", def:"Tudo aquilo que recebemos das gerações que nos antecederam — bens materiais, mas sobretudo valores, costumes, língua, gestos — e que temos a responsabilidade de cuidar e transmitir.", frase:'"A herança que vale mais não é a que se guarda no banco — é a que se aprende em casa."', sin:"legado · património · transmissão", ant:"perda · esquecimento · ruptura"},
+
+  /* --- Ciclo 10 --- */
+  {palavra:"Perdão", tt:"Perdua / Husik-tiha",                        classe:"substantivo masculino", def:"Ato de libertar — o outro e a si próprio — do peso de uma ofensa, abrindo caminho para que a relação ou a vida possam recomeçar sem o veneno do rancor.", frase:'"Perdoar não é esquecer, é decidir que o passado não vai escrever o futuro."', sin:"clemência · indulgência · misericórdia", ant:"rancor · vingança · ressentimento"},
+  {palavra:"Sombra", tt:"Mahar / Mahon",                              classe:"substantivo feminino", def:"Refúgio fresco que a árvore, a casa ou a montanha oferecem contra o sol — espaço onde se descansa, conversa, recupera força para continuar o caminho.", frase:'"Quem planta uma árvore sabe que talvez não venha a sentar-se à sua sombra — mas planta-a na mesma."', sin:"abrigo · refúgio · proteção", ant:"sol · exposição · descoberto"},
+  {palavra:"Abraçar", tt:"Hakuak / Kabraza",                          classe:"verbo transitivo", def:"Envolver com os braços alguém ou alguma coisa — gesto universal de acolhimento, consolo e celebração que diz, sem palavras, «estou aqui».", frase:'"Um abraço bem dado vale por mil discursos."', sin:"acolher · enlaçar · estreitar", ant:"rejeitar · repelir · afastar"},
+  {palavra:"Identidade", tt:"Identidade / Sai sé",                    classe:"substantivo feminino", def:"Conjunto de traços que fazem de cada pessoa e de cada povo aquilo que são — herança e construção, raiz e horizonte, semelhança e singularidade.", frase:'"Conhecer a própria identidade não é fechar-se sobre si — é saber de que casa se parte para ir ao encontro do mundo."', sin:"singularidade · caráter · personalidade", ant:"despersonalização · uniformidade · alienação"},
+  {palavra:"Festa", tt:"Festa / Saudasaun",                           classe:"substantivo feminino", def:"Celebração comunitária em que se marca um momento importante — religioso, familiar ou cívico — com música, comida e encontro. Em Timor, a festa é também uma forma de cuidar dos laços que mantêm a comunidade viva.", frase:'"Uma festa bem feita não acaba quando se vai embora: continua a viver nos que ali estiveram."', sin:"celebração · comemoração · convívio", ant:"luto · isolamento · solidão"},
+
+  /* --- Ciclo 11 --- */
+  {palavra:"Coragem", tt:"Brani / Aten-barani",                       classe:"substantivo feminino", def:"Força interior que nos permite avançar perante o medo, defender o que é justo, e fazer o que é difícil quando seria mais fácil recuar.", frase:'"A coragem não é a ausência de medo — é a decisão de que algo é mais importante do que o medo."', sin:"bravura · valentia · ousadia", ant:"cobardia · medo · pusilanimidade"},
+  {palavra:"Floresta", tt:"Ai-laran",                                 classe:"substantivo feminino", def:"Conjunto vasto e vivo de árvores e seres que ali habitam — pulmão da Terra, casa de mil mistérios, lugar onde a vida acontece à margem do nosso barulho.", frase:'"Na floresta, aprendemos que o silêncio também tem música — basta saber escutá-la."', sin:"mata · selva · bosque", ant:"deserto · planície · descampado"},
+  {palavra:"Aprender", tt:"Aprende / Hatene foun",                    classe:"verbo transitivo", def:"Apropriar-se de um saber novo — habilidade, ideia, língua, gesto — processo que dura uma vida inteira e que mantém a alma jovem mesmo quando o corpo envelhece.", frase:'"Aprender é a única coisa de que a vida nunca se cansa, e que nunca cansa quem a vive."', sin:"estudar · assimilar · adquirir saber", ant:"esquecer · ignorar · estagnar"},
+  {palavra:"Memória", tt:"Hanoin / Memória",                          classe:"substantivo feminino", def:"Capacidade de guardar o passado dentro de si e de o transmitir aos que vêm — bem coletivo que sustenta a identidade dos povos e o sentido das suas lutas.", frase:'"Um povo sem memória é como uma árvore sem raízes: o primeiro vento derruba-a."', sin:"lembrança · recordação · evocação", ant:"esquecimento · amnésia · olvido"},
+  {palavra:"Antepassados", tt:"Beiala / Avo-sira",                    classe:"substantivo masculino plural", def:"Pessoas que vieram antes de nós e cuja vida prepara, sustenta e ilumina a nossa — presença espiritual e simbólica que continua a fazer parte do círculo familiar e comunitário.", frase:'"Os antepassados não estão atrás de nós no tempo — caminham connosco sempre que honramos o que nos deixaram."', sin:"avós · ascendentes · maiores", ant:"descendentes · vindouros"},
+
+  /* --- Ciclo 12 --- */
+  {palavra:"Humildade", tt:"Haraik-an / Hakru\'uk-an",                classe:"substantivo feminino", def:"Qualidade de quem reconhece os seus limites sem se diminuir, e o valor dos outros sem se eclipsar — é a sabedoria de quem sabe que ainda tem muito para aprender.", frase:'"A humildade não é pensar menos de si — é pensar menos em si e mais nos outros."', sin:"modéstia · simplicidade · despretensão", ant:"arrogância · soberba · vaidade"},
+  {palavra:"Montanha", tt:"Foho",                                     classe:"substantivo feminino", def:"Elevação majestosa da terra que toca o céu — em Timor, presença sagrada na paisagem, guardiã de histórias, refúgio dos antepassados.", frase:'"A montanha não vai ter contigo: és tu que tens de aprender a subi-la."', sin:"monte · serra · elevação", ant:"vale · planície · depressão"},
+  {palavra:"Ensinar", tt:"Hanorin",                                   classe:"verbo transitivo", def:"Transmitir a outro um saber ou um valor — ato generoso por excelência, porque quem ensina dá sem perder e, ao dar, aprende ainda mais.", frase:'"Ensinar não é encher um balde, é acender um fogo."', sin:"educar · instruir · transmitir", ant:"ocultar · desinformar · enganar"},
+  {palavra:"Diálogo", tt:"Koalia-malu / Diálogu",                     classe:"substantivo masculino", def:"Conversa em que as pessoas falam e escutam de verdade, dispostas a aprender umas com as outras — caminho civilizacional para resolver conflitos e construir entendimento.", frase:'"Onde há diálogo, há sempre uma porta — mesmo nos muros mais altos."', sin:"conversação · troca · entendimento", ant:"monólogo · imposição · silêncio forçado"},
+  {palavra:"Travessia", tt:"Liu-tasi / Travesia",                     classe:"substantivo feminino", def:"Passagem de um lado para o outro — do mar, de uma fronteira, de uma fase da vida. Metáfora poderosa para quem aprende uma nova língua: cada palavra é uma pequena travessia entre dois mundos.", frase:'"Toda a aprendizagem é uma travessia — começamos numa margem e, sem dar por isso, já estamos a aceitar a outra."', sin:"passagem · transição · cruzamento", ant:"permanência · imobilidade"},
+
+  /* --- Ciclo 13 --- */
+  {palavra:"Generosidade", tt:"Laran-luak / Fó-deit",                 classe:"substantivo feminino", def:"Disposição para dar — tempo, atenção, recursos, afeto — sem calcular o retorno, movida pela alegria de contribuir para o bem do outro.", frase:'"A generosidade não se mede pelo que se dá, mas pelo coração com que se oferece."', sin:"liberalidade · altruísmo · munificência", ant:"avareza · mesquinhez · egoísmo"},
+  {palavra:"Rio", tt:"Mota",                                          classe:"substantivo masculino", def:"Curso de água doce que percorre a terra do interior até ao mar — caminho líquido que dá vida às margens e ensina que o destino é também viagem.", frase:'"O rio nunca regressa, mas cada gota encontra sempre o seu mar."', sin:"corrente · curso de água · ribeiro", ant:"lago · poço · estagnação"},
+  {palavra:"Confiar", tt:"Fiar",                                      classe:"verbo intransitivo", def:"Entregar-se a alguém ou a algo com a certeza de que não seremos atraiçoados — gesto vulnerável e corajoso, sem o qual não há relação possível.", frase:'"Confiar é arriscar — mas viver sem confiar é não viver."', sin:"acreditar · entregar-se · ter fé em", ant:"desconfiar · duvidar · suspeitar"},
+  {palavra:"Curiosidade", tt:"Hakarak hatene / Kuriozidade",          classe:"substantivo feminino", def:"Desejo vivo de saber, de perguntar, de explorar — chama que mantém a inteligência acordada e que está na origem de toda a aprendizagem verdadeira.", frase:'"A curiosidade é a forma mais alta de respeito pelo mundo: querer entendê-lo."', sin:"interesse · inquietação · sede de saber", ant:"indiferença · apatia · desinteresse"},
+  {palavra:"Encontro", tt:"Hasoru-malu",                              classe:"substantivo masculino", def:"Momento em que duas ou mais presenças se reúnem — entre pessoas, entre culturas, entre línguas — e algo novo nasce da partilha. O CAFE é, por natureza, um lugar de encontro.", frase:'"Os encontros verdadeiros mudam-nos: saímos sempre um pouco diferentes de como entrámos."', sin:"reunião · convergência · união", ant:"desencontro · separação · distância"},
+
+  /* --- Ciclo 14 --- */
+  {palavra:"Saudade", tt:"Laran-monu / Hanoin-tebes",                 classe:"substantivo feminino", def:"Sentimento doce e amargo de quem recorda alguém ou algo que ama e que está distante — palavra portuguesa única no mundo, que une presença na ausência.", frase:'"A saudade é a prova de que aquilo que amámos continua vivo dentro de nós."', sin:"nostalgia · lembrança · falta", ant:"esquecimento · indiferença"},
+  {palavra:"Estrela", tt:"Fitun",                                     classe:"substantivo feminino", def:"Ponto luminoso no céu noturno, sol distante de outro mundo — guia dos navegantes de outrora, sonho dos olhos de hoje, promessa dos que ainda querem alcançar o longe.", frase:'"As estrelas são lembretes de que mesmo o que está muito longe pode iluminar quem caminha em baixo."', sin:"astro · luminária · ponto de luz", ant:"escuridão · trevas"},
+  {palavra:"Pertencer", tt:"Iha fatin / Sai parte",                   classe:"verbo intransitivo", def:"Sentir-se parte de um lugar, de uma família, de uma comunidade — necessidade humana profunda que nos liga à terra, à história e aos outros.", frase:'"Pertencer não é estar enraizado num só lugar — é levar o lugar dentro de si para onde quer que se vá."', sin:"integrar-se · fazer parte · estar ligado", ant:"alhear-se · isolar-se · desligar-se"},
+  {palavra:"Disciplina", tt:"Disiplina / Hakdiuk-an",                 classe:"substantivo feminino", def:"Hábito constante de organizar os dias e os esforços em torno daquilo que se quer alcançar — força silenciosa que separa o sonho do projeto realizado.", frase:'"A disciplina é a ponte entre o que se quer e o que se consegue."', sin:"método · rigor · constância", ant:"desleixo · indolência · dispersão"},
+  {palavra:"Café", tt:"Kafé",                                         classe:"substantivo masculino", def:"Bebida obtida do grão tostado e moído da planta do mesmo nome, ritualizada em todo o mundo — em Timor, é também um dos principais produtos da terra e uma palavra que dá nome a esta escola.", frase:'"Um café partilhado é uma conversa que acontece: dois lugares, duas chávenas, uma só ponte."', sin:"bica · expresso · grão", ant:""},
+
+  /* --- Ciclo 15 (último) --- */
+  {palavra:"Bondade", tt:"Diak / Laran-diak",                         classe:"substantivo feminino", def:"Inclinação natural para fazer o bem aos outros, manifestada em gestos simples e constantes que tornam o mundo um lugar mais habitável e amável.", frase:'"A bondade é uma língua que os surdos podem ouvir e os cegos podem ver."', sin:"benevolência · gentileza · amabilidade", ant:"maldade · crueldade · malícia"},
+  {palavra:"Mar", tt:"Tasi",                                          classe:"substantivo masculino", def:"Vasta extensão de água salgada que rodeia as terras — em Timor, ele é horizonte, despensa, caminho e também memória de viagens e regressos.", frase:'"O mar não pertence a ninguém — e por isso pertence a todos os que sabem olhá-lo."', sin:"oceano · pélago", ant:"terra · continente"},
+  {palavra:"Recomeçar", tt:"Hahú fila-fali / Komesa-foun",            classe:"verbo intransitivo", def:"Voltar a iniciar depois de uma queda, de um erro, de um adeus — coragem silenciosa de quem sabe que o passado não é destino e que cada dia oferece uma página em branco.", frase:'"Recomeçar não é apagar o que passou — é decidir que o que vem agora vai valer a pena."', sin:"reiniciar · retomar · reerguer-se", ant:"desistir · abandonar · estagnar"},
+  {palavra:"Sentido", tt:"Signifikadu / Razaun",                      classe:"substantivo masculino", def:"Direção interior que orienta as escolhas e dá razão de ser ao que se faz — quando se tem sentido, mesmo as dificuldades se tornam parte de um caminho.", frase:'"Quem tem um porquê suporta quase qualquer como."', sin:"propósito · significado · razão", ant:"absurdo · vazio · desorientação"},
+  {palavra:"Resistência", tt:"Rezisténsia",                           classe:"substantivo feminino", def:"Capacidade de manter de pé aquilo em que se acredita perante a opressão ou a adversidade — em Timor-Leste, palavra com peso histórico singular, gravada na memória de um povo que conquistou a sua liberdade.", frase:'"Resistir é vencer — sobretudo quando se resiste com paciência, com inteligência e com fé."', sin:"persistência · firmeza · oposição", ant:"rendição · submissão · capitulação"}
+  /* [REV-TT] todas as traduções Tetum acima aguardam validação (não institucional) */
+  /* Total: 14 originais + 75 novas = 89 palavras */
+];
+
+/* ============================================================
+   TOGGLE PT/TT na navbar (apenas afeta os data-pt/data-tt fixos)
+   ============================================================ */
+let langAtual = localStorage.getItem('cafe-lang') || 'pt';
+function setLang(lang){
+  langAtual = lang;
+  localStorage.setItem('cafe-lang', lang);
+  document.getElementById('btn-pt').className = 'lang-btn' + (lang==='pt'?' active':'');
+  document.getElementById('btn-tt').className = 'lang-btn' + (lang==='tt'?' active':'');
+  document.querySelectorAll('[data-pt][data-tt]').forEach(el=>{
+    const txt = lang === 'pt' ? el.dataset.pt : el.dataset.tt;
+    if(el.tagName === 'INPUT'){
+      el.placeholder = txt;
+    }else{
+      el.textContent = txt;
+    }
+  });
+  // O conteúdo das palavras NÃO muda — é bilingue por desenho (PT principal + TT em paralelo)
+}
+if(langAtual === 'tt'){setLang('tt')}
+
+/* ============================================================
+   PALAVRA DO DIA — qual é a "de hoje"
+   Mesmo cálculo que o site principal: dias desde 2025-01-01 mod N
+   ============================================================ */
+function indicePalavraDoDia(){
+  const inicio = Date.UTC(2025, 0, 1);   // 1 jan 2025 00:00 UTC
+  const hoje = Date.UTC(
+    new Date().getUTCFullYear(),
+    new Date().getUTCMonth(),
+    new Date().getUTCDate()
+  );
+  const dias = Math.floor((hoje - inicio) / (1000 * 60 * 60 * 24));
+  return ((dias % palavras.length) + palavras.length) % palavras.length;
+}
+
+/* ============================================================
+   RENDERIZAR A GRELHA
+   ============================================================ */
+function renderizarGrelha(){
+  const pesquisa = document.getElementById('pesquisa').value.toLowerCase().trim();
+  const ordem = document.getElementById('ordenacao').value;
+  const idxAtual = indicePalavraDoDia();
+
+  // Filtrar
+  let lista = palavras
+    .map((p, i) => ({...p, indice: i}))
+    .filter(p => {
+      if(!pesquisa) return true;
+      return p.palavra.toLowerCase().includes(pesquisa)
+        || p.def.toLowerCase().includes(pesquisa)
+        || (p.tt && p.tt.toLowerCase().includes(pesquisa))
+        || (p.sin && p.sin.toLowerCase().includes(pesquisa));
+    });
+
+  // Ordenar
+  if(ordem === 'alfa'){
+    lista.sort((a,b) => a.palavra.localeCompare(b.palavra, 'pt'));
+  }else if(ordem === 'alfa-rev'){
+    lista.sort((a,b) => b.palavra.localeCompare(a.palavra, 'pt'));
+  }
+  // 'ordem' usa a ordem natural (já está)
+
+  // Render
+  const grelha = document.getElementById('grelha');
+  const contagem = document.getElementById('contagem');
+
+  if(lista.length === 0){
+    grelha.innerHTML = `<div class="sem-resultados">Nenhuma palavra corresponde à pesquisa.</div>`;
+    contagem.innerHTML = `<strong>0</strong> / ${palavras.length}`;
+    return;
+  }
+
+  grelha.innerHTML = lista.map(p => {
+    const ehAtual = p.indice === idxAtual;
+    const numero = String(p.indice + 1).padStart(2, '0');
+    return `
+      <article class="palavra-card ${ehAtual?'atual':''}">
+        <div class="palavra-num">#${numero}</div>
+        <div class="palavra-titulo-wrap">
+          <h2 class="palavra-titulo">${p.palavra}</h2>
+          <button class="palavra-btn-audio" onclick="lerPalavra(${p.indice})" aria-label="Ouvir ${p.palavra}">🔊</button>
+        </div>
+        <p class="palavra-classe">${p.classe}</p>
+        <div class="palavra-tt">
+          <span class="palavra-tt-tag">Tétum</span>
+          <span class="palavra-tt-valor">${p.tt}</span>
+        </div>
+        <p class="palavra-def">${p.def}</p>
+        <div class="palavra-frase">${p.frase}</div>
+        <div class="palavra-tags">
+          <span class="palavra-tag"><strong>Sin:</strong><span>${p.sin}</span></span>
+          <span class="palavra-tag"><strong>Ant:</strong><span>${p.ant}</span></span>
+        </div>
+      </article>
+    `;
+  }).join('');
+
+  contagem.innerHTML = `<strong>${lista.length}</strong> / ${palavras.length}`;
+}
+
+/* ============================================================
+   SÍNTESE DE VOZ — ouvir palavra + definição em pt-PT
+   Comportamento idêntico ao do site principal (cafe-liquica.html):
+   lê a palavra seguida da definição completa.
+   Recebe o índice no array `palavras` (mais robusto que passar
+   strings com aspas e travessões pelo atributo onclick).
+   ============================================================ */
+function lerPalavra(indice){
+  if(!('speechSynthesis' in window)){
+    alert('O teu navegador não suporta síntese de voz.');
+    return;
+  }
+  const p = palavras[indice];
+  if(!p) return;
+
+  window.speechSynthesis.cancel();
+  // Lê: "Palavra. Definição..."
+  const texto = p.palavra + '. ' + p.def;
+  const utt = new SpeechSynthesisUtterance(texto);
+  utt.lang = 'pt-PT';
+  utt.rate = 0.88;
+  utt.pitch = 1;
+
+  // Tenta encontrar voz pt-PT específica se disponível
+  const vozes = window.speechSynthesis.getVoices();
+  const vozPT = vozes.find(v => v.lang === 'pt-PT' || v.lang.startsWith('pt-PT'));
+  if(vozPT) utt.voice = vozPT;
+
+  window.speechSynthesis.speak(utt);
+}
+
+/* ============================================================
+   LIGAR EVENTOS
+   ============================================================ */
+document.getElementById('pesquisa').addEventListener('input', renderizarGrelha);
+document.getElementById('ordenacao').addEventListener('change', renderizarGrelha);
+
+// Aplicar placeholder traduzido no input
+function aplicarPlaceholderPesquisa(){
+  const inp = document.getElementById('pesquisa');
+  inp.placeholder = langAtual === 'pt'
+    ? 'Pesquisar palavra, definição...'
+    : "Buka liafuan, definisaun...";   /* [REV-TT] */
+}
+
+// Render inicial
+renderizarGrelha();
+aplicarPlaceholderPesquisa();
+
+// Carregar vozes (algumas browsers carregam-nas de forma assíncrona)
+if(window.speechSynthesis){
+  window.speechSynthesis.onvoiceschanged = () => {};
+}
+</script>
+
+</body>
+</html>

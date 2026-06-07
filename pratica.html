@@ -1,0 +1,1606 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pratica Português · CAFE de Liquiçá</title>
+<meta name="description" content="Pratica Português ao teu ritmo — vocabulário, frases e exercícios do CAFE de Liquiçá, Timor-Leste.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   PRATICA PORTUGUÊS — CAFE de Liquiçá
+   Mock funcional bilingue PT/TT — apenas Tema 1 ativo
+   ============================================================ */
+
+:root{
+  --verde:#1a5c2e;
+  --vermelho:#c0392b;
+  --amarelo:#f0a500;
+  --preto:#1a1a1a;
+  --branco:#ffffff;
+  --cinza-claro:#f7f5f0;
+  --cinza-medio:#e5e0d5;
+  --texto-claro:rgba(0,0,0,0.65);
+  --sombra:0 4px 20px rgba(0,0,0,0.08);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Source Sans 3',sans-serif;
+  font-weight:400;
+  color:var(--preto);
+  background:var(--cinza-claro);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* NAVBAR com toggle PT/TT */
+nav{
+  position:fixed;top:0;left:0;right:0;
+  background:rgba(26,26,26,0.95);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  z-index:100;height:70px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 2.5rem;
+  border-bottom:1px solid rgba(255,255,255,0.05);
+}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:white}
+.nav-logo-img{height:40px;width:auto}
+.nav-logo-text .nome{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;display:block;line-height:1}
+.nav-logo-text .sub{font-size:0.7rem;color:rgba(255,255,255,0.45);letter-spacing:0.08em;text-transform:uppercase}
+.nav-direita{display:flex;align-items:center;gap:1.5rem}
+.nav-back{color:rgba(255,255,255,0.75);text-decoration:none;font-size:0.85rem;font-weight:600;letter-spacing:0.05em;transition:color 0.2s}
+.nav-back:hover{color:var(--amarelo)}
+.nav-lang{display:flex;gap:4px;background:rgba(255,255,255,0.06);border-radius:4px;padding:3px}
+.lang-btn{background:transparent;border:none;color:rgba(255,255,255,0.6);padding:6px 12px;font-size:0.75rem;font-weight:600;letter-spacing:0.08em;cursor:pointer;border-radius:3px;transition:background 0.2s,color 0.2s;font-family:inherit}
+.lang-btn.active{background:var(--amarelo);color:var(--preto)}
+
+/* HERO */
+#hero-pratica{background:var(--verde);color:white;padding:7rem 2.5rem 4rem;position:relative;overflow:hidden}
+#hero-pratica::before{content:'';position:absolute;top:-50%;right:-10%;width:500px;height:500px;background:radial-gradient(circle,rgba(240,165,0,0.08) 0%,transparent 70%);pointer-events:none}
+.hero-pratica-inner{max-width:1100px;margin:0 auto;position:relative;z-index:1}
+.hero-pratica-label{font-size:0.72rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--amarelo);margin-bottom:1rem}
+.hero-pratica-titulo{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,3.5rem);line-height:1.15;margin-bottom:1.25rem}
+.hero-pratica-titulo em{color:var(--amarelo);font-style:italic}
+.hero-pratica-sub{font-size:1.1rem;color:rgba(255,255,255,0.85);max-width:560px;font-weight:300;line-height:1.7}
+
+/* SELO NÍVEL A1 */
+.hero-selo-nivel{
+  display:inline-flex;
+  align-items:center;
+  gap:1.25rem;
+  margin-top:2rem;
+  padding:0.85rem 1.25rem 0.85rem 0.85rem;
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(240,165,0,0.3);
+  border-radius:6px;
+  backdrop-filter:blur(4px);
+  -webkit-backdrop-filter:blur(4px);
+  max-width:100%;
+  flex-wrap:wrap;
+}
+.selo-nivel{
+  display:flex;
+  align-items:center;
+  gap:0.6rem;
+  flex-shrink:0;
+}
+.selo-nivel-codigo{
+  font-family:'Playfair Display',serif;
+  font-size:1.6rem;
+  font-weight:700;
+  color:var(--amarelo);
+  letter-spacing:0.02em;
+  line-height:1;
+  background:rgba(240,165,0,0.12);
+  padding:6px 12px;
+  border-radius:4px;
+  border:1px solid rgba(240,165,0,0.4);
+}
+.selo-nivel-texto{
+  font-size:0.78rem;
+  font-weight:600;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,0.85);
+}
+.selo-info{
+  display:flex;
+  flex-direction:column;
+  gap:0.2rem;
+  border-left:1px solid rgba(255,255,255,0.15);
+  padding-left:1.25rem;
+}
+.selo-info-linha{
+  font-size:0.78rem;
+  color:rgba(255,255,255,0.7);
+  line-height:1.3;
+  font-style:italic;
+}
+.selo-info-link{
+  font-size:0.8rem;
+  font-weight:600;
+  color:var(--amarelo);
+  text-decoration:none;
+  transition:color 0.2s;
+}
+.selo-info-link:hover{
+  color:white;
+}
+
+/* TEMAS */
+#temas{padding:4rem 2.5rem}
+.temas-inner{max-width:1100px;margin:0 auto}
+.temas-titulo{font-family:'Playfair Display',serif;font-size:1.6rem;margin-bottom:0.5rem}
+.temas-sub{color:var(--texto-claro);font-size:0.95rem;margin-bottom:2.5rem}
+.temas-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.tema-card{background:white;border:1px solid var(--cinza-medio);border-radius:12px;padding:2rem 1.5rem;text-align:center;cursor:pointer;transition:transform 0.25s,box-shadow 0.25s,border-color 0.25s;position:relative;overflow:hidden}
+.tema-card.ativo:hover{transform:translateY(-4px);box-shadow:var(--sombra);border-color:var(--verde)}
+.tema-card.em-breve{opacity:0.55;cursor:not-allowed}
+.tema-num{font-family:'Playfair Display',serif;font-size:0.85rem;font-weight:700;color:var(--vermelho);letter-spacing:0.15em;margin-bottom:0.75rem}
+.tema-emoji{font-size:3rem;margin-bottom:1rem;line-height:1}
+.tema-emoji.svg-emoji{
+  /* Quando o card usa um SVG ilustrado em vez de emoji texto */
+  height:80px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.tema-emoji.svg-emoji svg{
+  max-height:80px;
+  width:auto;
+}
+.tema-titulo{font-family:'Playfair Display',serif;font-size:1.4rem;margin-bottom:0.5rem;color:var(--preto)}
+.tema-info{font-size:0.85rem;color:var(--texto-claro);margin-bottom:1.25rem}
+.tema-btn{display:inline-block;background:var(--verde);color:white;padding:8px 20px;border-radius:4px;font-size:0.78rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase}
+.tema-em-breve-tag{display:inline-block;background:var(--cinza-medio);color:var(--texto-claro);padding:8px 20px;border-radius:4px;font-size:0.78rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase}
+
+/* PAINEL */
+#painel-tema{display:none;background:white;padding:3rem 2.5rem 5rem;animation:fadeIn 0.4s ease}
+#painel-tema.visivel{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.painel-inner{max-width:800px;margin:0 auto}
+.painel-back{display:inline-flex;align-items:center;gap:6px;color:var(--texto-claro);text-decoration:none;font-size:0.85rem;font-weight:600;margin-bottom:2rem;background:none;border:none;cursor:pointer;font-family:inherit}
+.painel-back:hover{color:var(--verde)}
+.painel-label{font-size:0.72rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--vermelho);margin-bottom:0.5rem}
+.painel-titulo{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,2.8rem);margin-bottom:0.5rem}
+.painel-titulo em{color:var(--verde);font-style:italic}
+.painel-sub{color:var(--texto-claro);margin-bottom:3rem;font-size:1rem}
+
+/* BLOCOS */
+.bloco{background:var(--cinza-claro);border-radius:12px;padding:2rem;margin-bottom:2rem}
+.bloco-cabec{display:flex;align-items:center;gap:12px;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--cinza-medio)}
+.bloco-num{width:32px;height:32px;border-radius:50%;background:var(--verde);color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;flex-shrink:0}
+.bloco-titulo{font-family:'Playfair Display',serif;font-size:1.3rem;margin:0}
+
+/* VOCAB */
+.vocab-lista{display:flex;flex-direction:column;gap:0.75rem}
+.vocab-item{background:white;border:1px solid var(--cinza-medio);border-radius:8px;padding:1rem 1.25rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;transition:border-color 0.2s}
+.vocab-item:hover{border-color:var(--verde)}
+.vocab-emoji{font-size:1.8rem;flex-shrink:0;width:40px;text-align:center}
+.vocab-pt{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--preto);flex:1;min-width:120px}
+.vocab-acoes{display:flex;gap:0.5rem;flex-shrink:0}
+.vocab-btn{background:white;border:1px solid var(--cinza-medio);border-radius:6px;padding:8px 14px;font-size:0.85rem;cursor:pointer;display:flex;align-items:center;gap:6px;font-family:inherit;color:var(--texto-claro);transition:all 0.2s}
+.vocab-btn:hover{border-color:var(--verde);color:var(--verde)}
+.vocab-btn.audio{color:var(--vermelho)}
+.vocab-btn.audio:hover{background:var(--vermelho);color:white;border-color:var(--vermelho)}
+.vocab-btn.tetum.ativo{background:var(--amarelo);border-color:var(--amarelo);color:var(--preto)}
+.vocab-tetum{width:100%;margin-top:0.75rem;padding-top:0.75rem;border-top:1px dashed var(--cinza-medio);font-size:0.95rem;color:var(--texto-claro);display:none}
+.vocab-tetum.visivel{display:block}
+.vocab-tetum strong{color:var(--verde);font-weight:600;letter-spacing:0.05em;text-transform:uppercase;font-size:0.7rem;margin-right:8px}
+
+/* GRELHA DE LETRAS (Tema Alfabeto) */
+.alfabeto-grelha{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:0.6rem;
+  margin-bottom:1.5rem;
+}
+.letra-card{
+  background:white;
+  border:1px solid var(--cinza-medio);
+  border-radius:8px;
+  padding:0.85rem 0.5rem 0.75rem;
+  text-align:center;
+  cursor:pointer;
+  transition:all 0.2s;
+  position:relative;
+  display:flex;flex-direction:column;align-items:center;
+  min-height:130px;
+  justify-content:flex-start;
+}
+.letra-card:hover{
+  border-color:var(--verde);
+  box-shadow:var(--sombra);
+  transform:translateY(-2px);
+}
+.letra-card:active{transform:translateY(0)}
+.letra-grande{
+  font-family:'Playfair Display',serif;
+  font-size:2rem;
+  font-weight:700;
+  color:var(--preto);
+  line-height:1;
+  margin-bottom:2px;
+}
+.letra-grande sup{
+  color:var(--vermelho);
+  font-size:0.7rem;
+  font-weight:400;
+  margin-left:1px;
+}
+.letra-nome{
+  font-size:0.78rem;
+  color:var(--texto-claro);
+  font-style:italic;
+  margin-bottom:0.5rem;
+  letter-spacing:0.02em;
+}
+.letra-exemplo{
+  font-size:0.78rem;
+  color:var(--verde);
+  font-weight:600;
+  margin-top:auto;
+  word-break:break-word;
+  hyphens:auto;
+  width:100%;
+  line-height:1.2;
+}
+.letra-tetum-btn{
+  background:transparent;
+  border:none;
+  font-size:0.7rem;
+  color:rgba(0,0,0,0.35);
+  cursor:pointer;
+  padding:2px 6px;
+  margin-top:4px;
+  border-radius:3px;
+  transition:color 0.2s,background 0.2s;
+  font-family:inherit;
+}
+.letra-tetum-btn:hover{
+  color:var(--amarelo);
+  background:rgba(240,165,0,0.1);
+}
+.letra-tetum-traducao{
+  display:none;
+  font-size:0.72rem;
+  color:var(--texto-claro);
+  margin-top:3px;
+  padding:3px 6px;
+  background:rgba(240,165,0,0.08);
+  border-radius:3px;
+  width:100%;
+  word-break:break-word;
+}
+.letra-tetum-traducao.visivel{display:block}
+.alfabeto-divisor{
+  text-align:center;
+  font-size:0.72rem;
+  color:var(--texto-claro);
+  letter-spacing:0.15em;
+  text-transform:uppercase;
+  margin:1.5rem 0 1rem;
+  padding-top:1rem;
+  border-top:1px dashed var(--cinza-medio);
+  position:relative;
+}
+.alfabeto-nota{
+  background:#fff8e5;
+  border-left:3px solid var(--amarelo);
+  padding:0.85rem 1rem;
+  border-radius:0 6px 6px 0;
+  margin-top:1rem;
+  font-size:0.85rem;
+  color:var(--texto-claro);
+}
+.alfabeto-nota strong{color:var(--preto)}
+.alfabeto-nota-linha{
+  display:flex;
+  align-items:flex-start;
+  gap:0.65rem;
+  margin-bottom:0.4rem;
+  line-height:1.5;
+}
+.alfabeto-nota-linha:last-child{margin-bottom:0}
+.alfabeto-nota-tag{
+  font-size:0.62rem;
+  font-weight:700;
+  letter-spacing:0.1em;
+  padding:2px 7px;
+  border-radius:3px;
+  flex-shrink:0;
+  margin-top:1px;
+}
+.alfabeto-nota-tag.pt{
+  background:rgba(26,92,46,0.12);
+  color:var(--verde);
+}
+.alfabeto-nota-tag.tt{
+  background:rgba(240,165,0,0.2);
+  color:#a07000;
+}
+
+/* FRASES */
+.frases-lista{display:flex;flex-direction:column;gap:0.75rem}
+.frase-item{background:white;border-left:3px solid var(--verde);border-radius:0 8px 8px 0;padding:1rem 1.25rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;font-family:'Playfair Display',serif;font-size:1.1rem;font-style:italic;transition:border-color 0.2s}
+.frase-texto{flex:1;min-width:180px}
+.frase-acoes{display:flex;gap:0.5rem;flex-shrink:0;align-items:center;font-style:normal}
+.frase-btn{background:var(--vermelho);color:white;border:none;border-radius:50%;width:38px;height:38px;cursor:pointer;font-size:0.9rem;flex-shrink:0;transition:transform 0.15s}
+.frase-btn:hover{transform:scale(1.1)}
+.frase-btn:active{transform:scale(0.95)}
+.frase-tetum-btn{font-family:'Source Sans 3',sans-serif;font-size:0.78rem}
+.frase-item .vocab-tetum{font-style:normal;font-family:'Source Sans 3',sans-serif;font-size:0.9rem}
+
+/* EXERCÍCIO */
+.exercicio-instrucao{text-align:center;margin-bottom:1.5rem;color:var(--texto-claro)}
+.exercicio-audio-wrap{text-align:center;margin-bottom:2rem}
+.exercicio-situacao-wrap{
+  background:#fff8e5;
+  border:1px solid rgba(240,165,0,0.3);
+  border-radius:10px;
+  padding:1.5rem 1.75rem;
+  margin-bottom:2rem;
+  text-align:center;
+}
+.ex-situacao-tag{
+  font-size:0.68rem;
+  font-weight:700;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:#a07000;
+  margin-bottom:0.75rem;
+}
+.ex-situacao-texto{
+  font-family:'Playfair Display',serif;
+  font-size:1.2rem;
+  font-style:italic;
+  color:var(--preto);
+  line-height:1.4;
+}
+.exercicio-audio-btn{background:var(--verde);color:white;border:none;width:80px;height:80px;border-radius:50%;font-size:1.8rem;cursor:pointer;transition:transform 0.15s,box-shadow 0.15s;box-shadow:0 4px 12px rgba(26,92,46,0.3)}
+.exercicio-audio-btn:hover{transform:scale(1.05);box-shadow:0 6px 18px rgba(26,92,46,0.4)}
+.exercicio-audio-btn:active{transform:scale(0.97)}
+.exercicio-opcoes{display:flex;flex-direction:column;gap:0.75rem;margin-bottom:1.5rem}
+.exercicio-opcao{background:white;border:2px solid var(--cinza-medio);border-radius:8px;padding:1rem 1.25rem;cursor:pointer;font-family:'Playfair Display',serif;font-size:1.15rem;text-align:left;transition:all 0.2s;font-weight:400;color:var(--preto)}
+.exercicio-opcao:hover{border-color:var(--verde);background:#f0f9f3}
+.exercicio-opcao.certa{border-color:var(--verde);background:#e8f5ec;color:var(--verde);font-weight:700}
+.exercicio-opcao.errada{border-color:var(--vermelho);background:#fdedeb;color:var(--vermelho)}
+.exercicio-feedback{text-align:center;padding:1rem;border-radius:8px;font-weight:600;display:none;margin-bottom:1rem}
+.exercicio-feedback.visivel{display:block}
+.exercicio-feedback.certo{background:#e8f5ec;color:var(--verde)}
+.exercicio-feedback.errado{background:#fdedeb;color:var(--vermelho)}
+.exercicio-acoes{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.exercicio-btn{background:var(--verde);color:white;border:none;padding:12px 28px;border-radius:6px;font-size:0.85rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;cursor:pointer;font-family:inherit;transition:background 0.2s}
+.exercicio-btn:hover{background:#144623}
+.exercicio-btn.outline{background:transparent;color:var(--verde);border:2px solid var(--verde)}
+.exercicio-btn.outline:hover{background:var(--verde);color:white}
+
+/* DIÁLOGO */
+.dialogo-controlo{text-align:center;margin-bottom:1.5rem}
+.dialogo-btn-ouvir{
+  background:var(--verde);color:white;border:none;
+  padding:14px 28px;border-radius:6px;
+  font-size:0.9rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;
+  cursor:pointer;font-family:inherit;
+  display:inline-flex;align-items:center;gap:10px;
+  transition:background 0.2s,transform 0.15s;
+  box-shadow:0 4px 12px rgba(26,92,46,0.25);
+}
+.dialogo-btn-ouvir:hover{background:#144623;transform:translateY(-1px)}
+.dialogo-btn-ouvir:active{transform:translateY(0)}
+.dialogo-btn-ouvir.a-tocar{background:var(--vermelho);box-shadow:0 4px 12px rgba(192,57,43,0.25)}
+.dialogo-btn-ouvir .icone{font-size:1.1rem}
+.dialogo-lista{display:flex;flex-direction:column;gap:1rem}
+.dialogo-linha{display:flex;align-items:flex-start;gap:1rem;padding:1rem 1.25rem;background:white;border-radius:8px;transition:background 0.3s,border-left 0.3s;border-left:3px solid transparent}
+.dialogo-linha.B{margin-left:2rem;background:#f0f9f3}
+.dialogo-linha.ativa{border-left:3px solid var(--amarelo);background:#fffbf0}
+.dialogo-linha.B.ativa{background:#fff8e5}
+.dialogo-quem{font-family:'Playfair Display',serif;font-weight:700;color:var(--vermelho);flex-shrink:0;width:24px;padding-top:2px}
+.dialogo-linha.B .dialogo-quem{color:var(--verde)}
+.dialogo-conteudo{flex:1;min-width:0}
+.dialogo-linha-topo{display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap}
+.dialogo-texto{flex:1;font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;min-width:160px}
+.dialogo-tetum-btn{background:transparent;border:1px solid var(--cinza-medio);color:var(--texto-claro);padding:5px 10px;border-radius:4px;font-size:0.72rem;cursor:pointer;font-family:'Source Sans 3',sans-serif;flex-shrink:0;transition:all 0.2s}
+.dialogo-tetum-btn:hover{border-color:var(--amarelo);color:var(--amarelo)}
+.dialogo-tetum-btn.ativo{background:var(--amarelo);border-color:var(--amarelo);color:var(--preto)}
+.dialogo-tetum{display:none;margin-top:0.6rem;padding-top:0.6rem;border-top:1px dashed var(--cinza-medio);font-family:'Source Sans 3',sans-serif;font-size:0.9rem;color:var(--texto-claro);font-style:normal}
+.dialogo-tetum.visivel{display:block}
+.dialogo-tetum strong{color:var(--verde);font-weight:600;letter-spacing:0.05em;text-transform:uppercase;font-size:0.7rem;margin-right:8px}
+
+/* FOOTER */
+footer{background:var(--preto);color:rgba(255,255,255,0.5);padding:2.5rem 2.5rem 2rem;text-align:center;font-size:0.85rem}
+footer a{color:var(--amarelo);text-decoration:none}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .temas-grid{grid-template-columns:1fr;gap:1rem}
+  .tema-card{padding:1.5rem}
+  .nav-direita{gap:0.75rem}
+  .nav-back{font-size:0.75rem}
+  .alfabeto-grelha{grid-template-columns:repeat(4,1fr)}
+}
+@media(max-width:540px){
+  nav{padding:0 1rem;height:60px}
+  .nav-logo-img{height:32px}
+  .nav-logo-text .nome{font-size:0.95rem}
+  .nav-logo-text .sub{font-size:0.65rem}
+  .nav-back{display:none}
+  #hero-pratica{padding:5.5rem 1.25rem 3rem}
+  .hero-selo-nivel{
+    gap:0.85rem;
+    padding:0.75rem 1rem 0.75rem 0.75rem;
+    margin-top:1.5rem;
+  }
+  .selo-info{
+    padding-left:0.85rem;
+  }
+  .selo-info-linha{font-size:0.72rem}
+  .selo-info-link{font-size:0.75rem}
+  .selo-nivel-codigo{font-size:1.3rem;padding:5px 10px}
+  .selo-nivel-texto{font-size:0.7rem;letter-spacing:0.08em}
+  #temas{padding:3rem 1.25rem}
+  #painel-tema{padding:2rem 1.25rem 4rem}
+  .bloco{padding:1.5rem 1.25rem}
+  .vocab-item{padding:0.85rem 1rem}
+  .vocab-emoji{font-size:1.5rem;width:32px}
+  .vocab-pt{font-size:1.15rem}
+  .frase-item{font-size:1rem}
+  .dialogo-linha.B{margin-left:1rem}
+  .exercicio-audio-btn{width:70px;height:70px;font-size:1.5rem}
+  .alfabeto-grelha{grid-template-columns:repeat(3,1fr);gap:0.5rem}
+  .letra-card{padding:0.7rem 0.4rem 0.6rem;min-height:120px}
+  .letra-grande{font-size:1.7rem}
+  .letra-nome{font-size:0.72rem}
+  .letra-exemplo{font-size:0.72rem}
+}
+
+/* ============================================================
+   CSS DE IMPRESSÃO — pratica.html
+   Esconde interativos, revela traduções Tetum, otimiza A4.
+   Permite imprimir 2 vezes (modo PT e modo TT) para mostrar
+   à Teresa e à Engracia o que cada utilizador vê.
+   ============================================================ */
+@media print{
+  *{ -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important; }
+
+  @page{
+    size:A4;
+    margin:1.5cm 1.8cm 2cm;
+  }
+
+  body{
+    background:white !important;
+    font-size:10.5pt;
+    line-height:1.45;
+  }
+
+  /* Esconder elementos não relevantes em papel */
+  nav, footer,
+  .nav-back, .nav-lang,
+  .frase-btn, .vocab-btn.audio,
+  .dialogo-btn-ouvir, .dialogo-controlo,
+  .exercicio-audio-btn, .exercicio-audio-wrap, .exercicio-acoes,
+  .exercicio-opcoes, .exercicio-feedback, .exercicio-situacao-wrap,
+  #ex-audio-wrap, .painel-back,
+  .vocab-btn.tetum, .letra-tetum-btn, .dialogo-tetum-btn, .frase-tetum-btn{
+    display:none !important;
+  }
+
+  /* Revelar todas as traduções Tétum independentemente do botão */
+  .vocab-tetum, .dialogo-tetum, .letra-tetum-traducao{
+    display:block !important;
+    background:#fffaeb !important;
+    border-top:1px dashed #c0a060 !important;
+    padding-top:0.35rem !important;
+    margin-top:0.4rem !important;
+  }
+
+  /* Hero institucional */
+  #hero-pratica{
+    padding:1cm 0 0.8cm !important;
+    page-break-after:avoid;
+  }
+  .hero-selo-nivel{
+    margin-top:0.6rem !important;
+    page-break-inside:avoid;
+  }
+  .selo-info-link{ color:white !important; }
+
+  /* Painel do tema — sempre visível */
+  #painel-tema{
+    display:block !important;
+    padding:0.8rem 0 !important;
+    page-break-before:always;
+  }
+
+  /* Grelha de temas — mais compacta */
+  #temas{
+    padding:0.8cm 0 !important;
+    page-break-after:always;
+  }
+  .temas-grid{
+    grid-template-columns:repeat(2,1fr) !important;
+    gap:0.5rem !important;
+  }
+  .tema-card{
+    padding:0.7rem !important;
+    page-break-inside:avoid;
+  }
+  .tema-emoji{
+    font-size:1.8rem !important;
+    margin-bottom:0.3rem !important;
+  }
+  .tema-emoji.svg-emoji{
+    height:50px !important;
+  }
+  .tema-emoji.svg-emoji svg{
+    max-height:50px !important;
+  }
+
+  /* Blocos do tema — não cortar */
+  .bloco{
+    page-break-inside:avoid;
+    margin-bottom:0.8rem !important;
+    padding:0.7rem 1rem !important;
+  }
+
+  /* Grelha do alfabeto compacta */
+  .alfabeto-grelha{
+    grid-template-columns:repeat(6,1fr) !important;
+    gap:0.25rem !important;
+  }
+  .letra-card{
+    padding:0.4rem 0.25rem !important;
+    min-height:auto !important;
+    page-break-inside:avoid;
+  }
+  .letra-grande{font-size:1.3rem !important}
+  .letra-nome{font-size:0.65rem !important}
+  .letra-exemplo{font-size:0.65rem !important}
+  .letra-tetum-traducao{
+    font-size:0.6rem !important;
+    padding:2px 4px !important;
+    margin-top:0.2rem !important;
+  }
+
+  /* Itens compactos */
+  .vocab-item, .frase-item, .dialogo-linha{
+    padding:0.45rem 0.7rem !important;
+    page-break-inside:avoid;
+  }
+
+  /* Rodapé institucional via @page (Chrome) */
+  @page{
+    @bottom-center{
+      content:"CAFE de Liquiçá — Pratica Português  ·  Documento para validação institucional";
+      font-family:'Source Sans 3',sans-serif;
+      font-size:8pt;
+      color:#888;
+    }
+    @bottom-right{
+      content:"Página " counter(page);
+      font-family:'Source Sans 3',sans-serif;
+      font-size:8pt;
+      color:#888;
+    }
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="logo.png" alt="CAFE Liquiçá" class="nav-logo-img">
+    <div class="nav-logo-text">
+      <span class="nome">CAFE de Liquiçá</span>
+      <span class="sub" data-pt="Pratica Português" data-tt="Pratika Portugés">Pratica Português</span>
+    </div>
+  </a>
+  <div class="nav-direita">
+    <a href="index.html" class="nav-back" data-pt="← Voltar ao site" data-tt="← Fila ba site">← Voltar ao site</a>
+    <div class="nav-lang">
+      <button class="lang-btn active" onclick="setLang('pt')" id="btn-pt">PT</button>
+      <button class="lang-btn" onclick="setLang('tt')" id="btn-tt">TT</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero-pratica">
+  <div class="hero-pratica-inner">
+    <p class="hero-pratica-label" data-pt="✦ Pratica Português" data-tt="✦ Pratika Portugés">✦ Pratica Português</p>
+    <h1 class="hero-pratica-titulo">
+      <span data-pt="Pratica " data-tt="Pratika ">Pratica </span><em data-pt="Português" data-tt="Portugés">Português</em><br>
+      <span data-pt="ao teu ritmo." data-tt="tuir o-nia ritmu.">ao teu ritmo.</span>
+    </h1>
+    <p class="hero-pratica-sub" data-pt="Toca, ouve, repete — e descobre a língua portuguesa de forma simples." data-tt="Klik, rona, repete — no deskobre lian Portugés iha forma simples.">
+      Toca, ouve, repete — e descobre a língua portuguesa de forma simples.
+    </p>
+
+    <!-- Selo A1 + link para Sobre o curso -->
+    <div class="hero-selo-nivel">
+      <div class="selo-nivel">
+        <span class="selo-nivel-codigo">A1</span>
+        <span class="selo-nivel-texto" data-pt="Nível Iniciação" data-tt="Nivel Hahú">Nível Iniciação</span>
+      </div>
+      <div class="selo-info">
+        <p class="selo-info-linha" data-pt="Conteúdo baseado no Referencial Camões PLE" data-tt="Konteúdu tuir Referencial Camões PLE">Conteúdo baseado no Referencial Camões PLE</p>
+        <a href="pratica-sobre.html" class="selo-info-link" data-pt="Sobre este recurso →" data-tt="Kona-ba rekursu ne'e →">Sobre este recurso →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEMAS -->
+<section id="temas">
+  <div class="temas-inner">
+    <h2 class="temas-titulo" data-pt="Escolhe um tema" data-tt="Hili tema ida">Escolhe um tema</h2>
+    <p class="temas-sub" data-pt="Podes começar por onde quiseres. Cada tema é independente." data-tt="Bele hahú husi ne'ebé deit. Tema ida-idak independente.">Podes começar por onde quiseres. Cada tema é independente.</p>
+
+    <div class="temas-grid">
+
+      <div class="tema-card ativo" onclick="abrirTema('ola')">
+        <p class="tema-num">01</p>
+        <div class="tema-emoji">👋🏽</div>
+        <h3 class="tema-titulo" data-pt="Dizer olá" data-tt="Dehan olá">Dizer olá</h3>
+        <p class="tema-info" data-pt="7 palavras · 5 frases · 1 exercício" data-tt="Liafuan 7 · Fraze 5 · Ezersísiu 1">7 palavras · 5 frases · 1 exercício</p>
+        <span class="tema-btn" data-pt="Começar →" data-tt="Hahú →">Começar →</span>
+      </div>
+
+      <div class="tema-card ativo" onclick="abrirTema('alfabeto')">
+        <p class="tema-num">02</p>
+        <div class="tema-emoji">🔤</div>
+        <h3 class="tema-titulo" data-pt="O alfabeto" data-tt="Alfabétu">O alfabeto</h3>
+        <p class="tema-info" data-pt="26 letras · 5 frases · 1 exercício" data-tt="Letra 26 · Fraze 5 · Ezersísiu 1">26 letras · 5 frases · 1 exercício</p>
+        <span class="tema-btn" data-pt="Começar →" data-tt="Hahú →">Começar →</span>
+      </div>
+
+      <div class="tema-card em-breve">
+        <p class="tema-num">03</p>
+        <div class="tema-emoji">🔢</div>
+        <h3 class="tema-titulo" data-pt="Os números" data-tt="Númeru sira">Os números</h3>
+        <p class="tema-info" data-pt="20 números · 5 frases · 1 exercício" data-tt="Númeru 20 · Fraze 5 · Ezersísiu 1">20 números · 5 frases · 1 exercício</p>
+        <span class="tema-em-breve-tag" data-pt="Em breve" data-tt="Sei mai">Em breve</span>
+      </div>
+
+      <div class="tema-card em-breve">
+        <p class="tema-num">04</p>
+        <div class="tema-emoji svg-emoji">
+          <!-- Família timorense ilustrada (opção B aprovada) — pele castanha, cabelo escuro,
+               mãe com vestido vermelho com riscas amarelas (referência subtil ao tais).
+               Cores institucionais CAFE: verde #1a5c2e, vermelho #c0392b, amarelo #f0a500. -->
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-label="Família">
+            <ellipse cx="55" cy="175" rx="22" ry="4" fill="#000" opacity="0.08"/>
+            <ellipse cx="105" cy="178" rx="20" ry="4" fill="#000" opacity="0.08"/>
+            <ellipse cx="145" cy="178" rx="14" ry="3" fill="#000" opacity="0.08"/>
+            <!-- Pai -->
+            <path d="M 35 170 Q 35 110 55 100 Q 75 110 75 170 Z" fill="#1a5c2e"/>
+            <rect x="50" y="92" width="10" height="10" fill="#8b5e3c"/>
+            <circle cx="55" cy="78" r="15" fill="#8b5e3c"/>
+            <path d="M 40 73 Q 41 64 55 62 Q 69 64 70 73 Q 70 70 65 68 Q 58 67 55 68 Q 50 67 44 70 Q 41 71 40 73 Z" fill="#1a1a1a"/>
+            <circle cx="50" cy="79" r="1.3" fill="#1a1a1a"/>
+            <circle cx="60" cy="79" r="1.3" fill="#1a1a1a"/>
+            <path d="M 52 85 Q 55 87 58 85" stroke="#5a3a26" stroke-width="1" fill="none" stroke-linecap="round"/>
+            <!-- Mãe -->
+            <path d="M 82 175 Q 82 115 105 105 Q 128 115 128 175 Z" fill="#c0392b"/>
+            <rect x="90" y="135" width="30" height="3" fill="#f0a500"/>
+            <rect x="90" y="148" width="30" height="2" fill="#f0a500" opacity="0.7"/>
+            <rect x="100" y="97" width="10" height="10" fill="#a06b3f"/>
+            <circle cx="105" cy="82" r="15" fill="#a06b3f"/>
+            <path d="M 90 78 Q 88 65 105 63 Q 122 65 120 78 Q 122 95 118 105 L 95 105 Q 88 95 90 78 Z" fill="#1a1a1a"/>
+            <circle cx="100" cy="83" r="1.3" fill="#1a1a1a"/>
+            <circle cx="110" cy="83" r="1.3" fill="#1a1a1a"/>
+            <path d="M 102 89 Q 105 91 108 89" stroke="#5a3a26" stroke-width="1" fill="none" stroke-linecap="round"/>
+            <!-- Criança -->
+            <path d="M 132 175 Q 132 140 145 134 Q 158 140 158 175 Z" fill="#f0a500"/>
+            <rect x="141" y="128" width="8" height="7" fill="#9a6840"/>
+            <circle cx="145" cy="118" r="12" fill="#9a6840"/>
+            <path d="M 133 115 Q 133 107 145 105 Q 157 107 157 115 Q 157 112 152 110 Q 148 109 145 110 Q 142 109 137 111 Q 134 112 133 115 Z" fill="#1a1a1a"/>
+            <circle cx="141" cy="119" r="1.1" fill="#1a1a1a"/>
+            <circle cx="149" cy="119" r="1.1" fill="#1a1a1a"/>
+            <path d="M 142 123 Q 145 126 148 123" stroke="#5a3a26" stroke-width="1" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 class="tema-titulo" data-pt="A minha família" data-tt="Ha'u-nia família">A minha família</h3>
+        <p class="tema-info" data-pt="9 palavras · 5 frases · 1 exercício" data-tt="Liafuan 9 · Fraze 5 · Ezersísiu 1">9 palavras · 5 frases · 1 exercício</p>
+        <span class="tema-em-breve-tag" data-pt="Em breve" data-tt="Sei mai">Em breve</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PAINEL DO TEMA -->
+<section id="painel-tema">
+  <div class="painel-inner">
+
+    <button class="painel-back" onclick="fecharTema()" data-pt="← Voltar aos temas" data-tt="← Fila ba tema sira">← Voltar aos temas</button>
+
+    <p class="painel-label" id="painel-label">✦ Tema 01</p>
+    <h2 class="painel-titulo" id="painel-titulo">
+      <span data-pt="Dizer " data-tt="Dehan ">Dizer </span><em data-pt="olá" data-tt="olá">olá</em>
+    </h2>
+    <p class="painel-sub" id="painel-sub" data-pt="As primeiras palavras para cumprimentar alguém em português." data-tt="Liafuan dahuluk atu kumprimenta ema iha portugés.">As primeiras palavras para cumprimentar alguém em português.</p>
+
+    <!-- BLOCO 1 -->
+    <div class="bloco">
+      <div class="bloco-cabec">
+        <div class="bloco-num">1</div>
+        <h3 class="bloco-titulo" data-pt="Vocabulário" data-tt="Vokabuláriu">Vocabulário</h3>
+      </div>
+      <div class="vocab-lista" id="vocab-lista"></div>
+    </div>
+
+    <!-- BLOCO 2 -->
+    <div class="bloco">
+      <div class="bloco-cabec">
+        <div class="bloco-num">2</div>
+        <h3 class="bloco-titulo" data-pt="Frases para usar" data-tt="Fraze atu uza">Frases para usar</h3>
+      </div>
+      <div class="frases-lista" id="frases-lista"></div>
+    </div>
+
+    <!-- BLOCO 3 -->
+    <div class="bloco">
+      <div class="bloco-cabec">
+        <div class="bloco-num">3</div>
+        <h3 class="bloco-titulo" data-pt="Exercício — ouve e escolhe" data-tt="Ezersísiu — rona no hili">Exercício — ouve e escolhe</h3>
+      </div>
+      <p class="exercicio-instrucao" id="ex-instrucao">Toca no botão verde para ouvir uma palavra. Depois, escolhe a opção certa.</p>
+      <div class="exercicio-audio-wrap" id="ex-audio-wrap">
+        <button class="exercicio-audio-btn" onclick="ouvirExercicio()" id="ex-audio-btn">🔊</button>
+      </div>
+      <div class="exercicio-situacao-wrap" id="ex-situacao-wrap" style="display:none"></div>
+      <div class="exercicio-opcoes" id="ex-opcoes"></div>
+      <div class="exercicio-feedback" id="ex-feedback"></div>
+      <div class="exercicio-acoes">
+        <button id="btn-novo-exercicio" class="exercicio-btn outline" onclick="novaPergunta()">Nova palavra</button>
+      </div>
+    </div>
+
+    <!-- BLOCO 4 -->
+    <div class="bloco">
+      <div class="bloco-cabec">
+        <div class="bloco-num">4</div>
+        <h3 class="bloco-titulo" data-pt="Mini-diálogo" data-tt="Diálogu badak">Mini-diálogo</h3>
+      </div>
+      <div class="dialogo-controlo">
+        <button class="dialogo-btn-ouvir" id="dialogo-btn" onclick="ouvirDialogo()"></button>
+      </div>
+      <div class="dialogo-lista" id="dialogo-lista"></div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 CAFE de Liquiçá · <a href="index.html" data-pt="Voltar ao site" data-tt="Fila ba site">Voltar ao site</a></p>
+</footer>
+
+<script>
+/* ============================================================
+   ESTADO DE LÍNGUA — partilhado com o site principal via localStorage
+   ============================================================ */
+let langAtual = localStorage.getItem('cafe-lang') || 'pt';
+
+/* ============================================================
+   DADOS DO TEMA 1 — DIZER OLÁ
+   PT = a língua a aprender (NUNCA muda)
+   TT = tradução de apoio, revelada ao toque (igual nas duas vistas)
+   [REV-TT] = traduções para revisão por colega timorense
+   ============================================================ */
+const tema1 = {
+  vocab:[
+    {emoji:'👋🏽',  pt:'Olá',         tt:'Olá / Bondia'},        /* [REV-TT] */
+    {emoji:'☀️',  pt:'Bom dia',     tt:'Bondia'},              /* [REV-TT] */
+    {emoji:'🌤️', pt:'Boa tarde',   tt:'Botarde'},             /* [REV-TT] */
+    {emoji:'🌙', pt:'Boa noite',   tt:'Bonoite'},             /* [REV-TT] */
+    {emoji:'👋🏽', pt:'Adeus',       tt:'Dá'},                  /* [REV-TT] forma usada em Liquiçá */
+    {emoji:'🙏🏽', pt:'Obrigado',    tt:'Obrigadu'},            /* [REV-TT] */
+    {emoji:'😊', pt:'Prazer',      tt:'Kontente atu hasoru'}  /* [REV-TT] */
+  ],
+  frases:[
+    {pt:'Bom dia! Como te chamas?',  tt:'Bondia! Naran sá?'},               /* [REV-TT] */
+    {pt:'Eu chamo-me Maria.',         tt:'Hau-nia naran Maria.'},            /* [REV-TT] */
+    {pt:'Muito prazer!',              tt:'Kontente atu hasoru ó!'},          /* [REV-TT] */
+    {pt:'Boa tarde, professora.',     tt:'Botarde, mestra.'},                /* [REV-TT] */
+    {pt:'Até amanhã!',                tt:'Aban hasoru fali!'}                /* [REV-TT] */
+  ],
+  exercicio:[
+    /* TIPO A — ouve e escolhe (auditivo PT) */
+    {tipo:'ouve', ouvir:'Olá',         opcoes:['Olá','Adeus','Obrigado']},
+    {tipo:'ouve', ouvir:'Obrigado',    opcoes:['Bom dia','Obrigado','Prazer']},
+    {tipo:'ouve', ouvir:'Boa noite',   opcoes:['Boa tarde','Boa noite','Bom dia']},
+    {tipo:'ouve', ouvir:'Adeus',       opcoes:['Olá','Prazer','Adeus']},
+    {tipo:'ouve', ouvir:'Bom dia',     opcoes:['Bom dia','Boa noite','Obrigado']},
+    {tipo:'ouve', ouvir:'Boa tarde',   opcoes:['Boa tarde','Boa noite','Adeus']},
+    {tipo:'ouve', ouvir:'Prazer',      opcoes:['Prazer','Obrigado','Olá']},
+    {tipo:'ouve', ouvir:'Olá',         opcoes:['Olá','Bom dia','Boa tarde']},
+    {tipo:'ouve', ouvir:'Obrigado',    opcoes:['Obrigado','Adeus','Boa noite']},
+    {tipo:'ouve', ouvir:'Boa tarde',   opcoes:['Boa tarde','Bom dia','Prazer']},
+    /* TIPO B — lê situação em Tétum, escolhe expressão PT correta [REV-TT] */
+    {tipo:'situacao', situacaoTT:'Saúda ema iha dadeer?',          opcoes:['Bom dia','Boa noite','Adeus']},          /* [REV-TT] de manhã */
+    {tipo:'situacao', situacaoTT:'Saúda ema iha lokraik?',         opcoes:['Boa tarde','Bom dia','Olá']},            /* [REV-TT] à tarde */
+    {tipo:'situacao', situacaoTT:'Saúda ema iha kalan?',           opcoes:['Boa noite','Bom dia','Adeus']},          /* [REV-TT] à noite */
+    {tipo:'situacao', situacaoTT:'Despede an husi ema?',           opcoes:['Adeus','Prazer','Obrigado']},            /* [REV-TT] despedir */
+    {tipo:'situacao', situacaoTT:'Bainhira ema ajuda ó?',          opcoes:['Obrigado','Olá','Adeus']},               /* [REV-TT] agradecer */
+    {tipo:'situacao', situacaoTT:'Hasoru ema foun, dahuluk?',      opcoes:['Prazer','Obrigado','Boa noite']},        /* [REV-TT] conhecer pessoa */
+    {tipo:'situacao', situacaoTT:'Saudasaun jerál, informál?',     opcoes:['Olá','Boa noite','Adeus']},              /* [REV-TT] saudação geral */
+    {tipo:'situacao', situacaoTT:'Iha rohan loron, tama uma?',     opcoes:['Boa noite','Boa tarde','Bom dia']}       /* [REV-TT] fim do dia */
+  ],
+  dialogo:[
+    {quem:'A', texto:'Bom dia! Como te chamas?',         tt:'Bondia! Naran sá?'},               /* [REV-TT] */
+    {quem:'B', texto:'Chamo-me João. E tu?',             tt:'Hau-nia naran João. Ó nian?'},     /* [REV-TT] */
+    {quem:'A', texto:'Eu sou a Maria. Muito prazer!',    tt:'Hau Maria. Kontente atu hasoru!'}, /* [REV-TT] */
+    {quem:'B', texto:'Igualmente. Até amanhã!',          tt:'Hau mós. Aban hasoru fali!'}       /* [REV-TT] */
+  ]
+};
+
+/* ============================================================
+   DADOS DO TEMA 2 — O ALFABETO (26 letras)
+   tipo:'alfabeto' diferencia este tema do vocabulário tradicional.
+   - "letra" = a grafia (A, B, C…)
+   - "nome" = o nome falado (á, bê, cê…) — passado à síntese de voz
+   - "exemplo" = palavra portuguesa começada por essa letra
+   - "exemploTT" = tradução da palavra-exemplo em Tétum
+   - "estrangeira" = true para K, W, Y (separadas visualmente)
+   - "nota" = nota didática (ex: H mudo)
+   [REV-TT] = traduções por validar
+   ============================================================ */
+const tema2 = {
+  tipo:'alfabeto',
+  letras:[
+    {letra:'A', nome:'á',      exemplo:'Água',    exemploTT:'Bee'},          /* [REV-TT] */
+    {letra:'B', nome:'bê',     exemplo:'Bola',    exemploTT:'Bola'},         /* [REV-TT] */
+    {letra:'C', nome:'cê',     exemplo:'Casa',    exemploTT:'Uma'},          /* [REV-TT] */
+    {letra:'D', nome:'dê',     exemplo:'Dia',     exemploTT:'Loron'},        /* [REV-TT] */
+    {letra:'E', nome:'é',      exemplo:'Escola',  exemploTT:'Eskola'},       /* [REV-TT] */
+    {letra:'F', nome:'efe',    nomeAudio:'éfe',   exemplo:'Família', exemploTT:'Família'},      /* [REV-TT] */
+    {letra:'G', nome:'gê',     exemplo:'Gato',    exemploTT:'Busa'},         /* [REV-TT] */
+    {letra:'H', nome:'agá',    exemplo:'Hora',    exemploTT:'Oras', nota:'H_mudo'},  /* [REV-TT] */
+    {letra:'I', nome:'i',      exemplo:'Igreja',  exemploTT:'Igreja'},       /* [REV-TT] */
+    {letra:'J', nome:'jota',   exemplo:'Janela',  exemploTT:'Janela'},       /* [REV-TT] */
+    {letra:'L', nome:'ele',    nomeAudio:'éle',   exemplo:'Livro',   exemploTT:'Livru'},        /* [REV-TT] */
+    {letra:'M', nome:'eme',    nomeAudio:'éme',   exemplo:'Mãe',     exemploTT:'Inan'},         /* [REV-TT] */
+    {letra:'N', nome:'ene',    nomeAudio:'éne',   exemplo:'Nome',    exemploTT:'Naran'},        /* [REV-TT] */
+    {letra:'O', nome:'ó',      exemplo:'Olá',     exemploTT:'Olá'},          /* [REV-TT] */
+    {letra:'P', nome:'pê',     exemplo:'Pai',     exemploTT:'Aman'},         /* [REV-TT] */
+    {letra:'Q', nome:'quê',    exemplo:'Queijo',  exemploTT:'Keiju'},        /* [REV-TT] */
+    {letra:'R', nome:'erre',   nomeAudio:'érre',  exemplo:'Rua',     exemploTT:'Dalan'},        /* [REV-TT] */
+    {letra:'S', nome:'esse',   nomeAudio:'ésse',  exemplo:'Sol',     exemploTT:'Loro-matan'},   /* [REV-TT] */
+    {letra:'T', nome:'tê',     exemplo:'Tempo',   exemploTT:'Tempu'},        /* [REV-TT] */
+    {letra:'U', nome:'u',      nomeAudio:'ú',     rateAudio:0.7, exemplo:'Uva', exemploTT:'Uvas'},  /* [REV-TT] som prolongado */
+    {letra:'V', nome:'vê',     exemplo:'Voz',     exemploTT:'Lian'},         /* [REV-TT] */
+    {letra:'X', nome:'xis',    exemplo:'Xadrez',  exemploTT:'Xadrez'},       /* [REV-TT] */
+    {letra:'Z', nome:'zê',     exemplo:'Zebra',   exemploTT:'Zebra'},        /* [REV-TT] */
+    /* Letras de origem estrangeira — separadas visualmente */
+    {letra:'K', nome:'capa',     nomeAudio:'cápa',  exemplo:'Kiwi', exemploTT:'Kiwi', estrangeira:true},
+    {letra:'W', nome:'duplo vê', exemplo:'Web',  exemploTT:'Web',  estrangeira:true},
+    {letra:'Y', nome:'ípsilon',  exemplo:'Yoga', exemploTT:'Yoga', estrangeira:true}
+  ],
+  frases:[
+    {pt:'Como se escreve o teu nome?',                 tt:'Eskreve nia naran oinsá?'},                                                               /* [REV-TT] */
+    {texto:'M - A - R - I - A : Maria',                soletrar:['éme','á','érre','i','á'], palavraFinal:'Maria'},
+    {pt:'Pode soletrar o seu sobrenome, por favor?',   tt:'Bele soletra nia sobrenaran, favór ida?'},                                               /* [REV-TT] */
+    {texto:'S - I - L - V - A : Silva',                soletrar:['ésse','i','éle','vê','á'], palavraFinal:'Silva'},
+    {pt:'É com cê ou esse?',                            tt:'Ho letra "C" ka "S"?'}                                                                    /* [REV-TT] */
+  ],
+  exercicio:[
+    /* TIPO A — ouve nome da letra, escolhe a letra */
+    /* Vogais */
+    {tipo:'ouve-letra', ouvir:'á',        opcoes:['A','E','O']},
+    {tipo:'ouve-letra', ouvir:'é',        opcoes:['E','A','I']},
+    {tipo:'ouve-letra', ouvir:'i',        opcoes:['I','E','Y']},
+    {tipo:'ouve-letra', ouvir:'ó',        opcoes:['O','A','U']},
+    {tipo:'ouve-letra', ouvir:'ú',        opcoes:['U','O','V']},   /* TTS lê 'ú' (acentuado) — letra escrita é U */
+    /* Consoantes oclusivas */
+    {tipo:'ouve-letra', ouvir:'bê',       opcoes:['B','D','P']},
+    {tipo:'ouve-letra', ouvir:'dê',       opcoes:['D','B','T']},
+    {tipo:'ouve-letra', ouvir:'pê',       opcoes:['P','B','T']},
+    {tipo:'ouve-letra', ouvir:'tê',       opcoes:['T','D','P']},
+    /* Sibilantes confundíveis (cê / esse / zê) */
+    {tipo:'ouve-letra', ouvir:'cê',       opcoes:['C','S','Z']},
+    {tipo:'ouve-letra', ouvir:'ésse',     opcoes:['S','C','Z']},   /* nomeAudio do S */
+    {tipo:'ouve-letra', ouvir:'zê',       opcoes:['Z','S','C']},
+    /* Fricativas */
+    {tipo:'ouve-letra', ouvir:'éfe',      opcoes:['F','S','V']},   /* nomeAudio do F */
+    {tipo:'ouve-letra', ouvir:'vê',       opcoes:['V','B','F']},
+    /* Sons palatais (gê / jota) */
+    {tipo:'ouve-letra', ouvir:'gê',       opcoes:['G','J','Q']},
+    {tipo:'ouve-letra', ouvir:'jota',     opcoes:['J','G','Y']},
+    /* Líquidas / nasais — frequente confusão */
+    {tipo:'ouve-letra', ouvir:'éle',      opcoes:['L','M','N']},   /* nomeAudio do L */
+    {tipo:'ouve-letra', ouvir:'éme',      opcoes:['M','N','L']},   /* nomeAudio do M */
+    {tipo:'ouve-letra', ouvir:'éne',      opcoes:['N','M','L']},   /* nomeAudio do N */
+    {tipo:'ouve-letra', ouvir:'érre',     opcoes:['R','L','N']},   /* nomeAudio do R */
+    /* H mudo — armadilha clássica */
+    {tipo:'ouve-letra', ouvir:'agá',      opcoes:['H','A','G']},
+    /* X com som /ʃ/ */
+    {tipo:'ouve-letra', ouvir:'xis',      opcoes:['X','S','Z']},
+    /* /k/ que pode ser C, Q ou K */
+    {tipo:'ouve-letra', ouvir:'quê',      opcoes:['Q','C','K']},
+    /* Letras de origem estrangeira */
+    {tipo:'ouve-letra', ouvir:'cápa',     opcoes:['K','C','Q']},   /* TTS lê 'cápa' mas a letra escrita é K */
+    {tipo:'ouve-letra', ouvir:'duplo vê', opcoes:['W','V','U']},
+    {tipo:'ouve-letra', ouvir:'ípsilon',  opcoes:['Y','I','J']},
+
+    /* TIPO D — ouve a palavra-exemplo, escolhe a letra inicial */
+    {tipo:'palavra-letra', ouvir:'Água',     letraCorreta:'A', opcoes:['A','E','O']},
+    {tipo:'palavra-letra', ouvir:'Bola',     letraCorreta:'B', opcoes:['B','D','P']},
+    {tipo:'palavra-letra', ouvir:'Casa',     letraCorreta:'C', opcoes:['C','K','Q']},
+    {tipo:'palavra-letra', ouvir:'Dia',      letraCorreta:'D', opcoes:['D','B','T']},
+    {tipo:'palavra-letra', ouvir:'Escola',   letraCorreta:'E', opcoes:['E','A','I']},
+    {tipo:'palavra-letra', ouvir:'Família',  letraCorreta:'F', opcoes:['F','V','P']},
+    {tipo:'palavra-letra', ouvir:'Gato',     letraCorreta:'G', opcoes:['G','J','Q']},
+    {tipo:'palavra-letra', ouvir:'Hora',     letraCorreta:'H', opcoes:['H','A','O']},   /* H mudo - armadilha! */
+    {tipo:'palavra-letra', ouvir:'Igreja',   letraCorreta:'I', opcoes:['I','J','E']},
+    {tipo:'palavra-letra', ouvir:'Janela',   letraCorreta:'J', opcoes:['J','G','Y']},
+    {tipo:'palavra-letra', ouvir:'Livro',    letraCorreta:'L', opcoes:['L','M','N']},
+    {tipo:'palavra-letra', ouvir:'Mãe',      letraCorreta:'M', opcoes:['M','N','L']},
+    {tipo:'palavra-letra', ouvir:'Nome',     letraCorreta:'N', opcoes:['N','M','L']},
+    {tipo:'palavra-letra', ouvir:'Olá',      letraCorreta:'O', opcoes:['O','A','U']},
+    {tipo:'palavra-letra', ouvir:'Pai',      letraCorreta:'P', opcoes:['P','B','T']},
+    {tipo:'palavra-letra', ouvir:'Queijo',   letraCorreta:'Q', opcoes:['Q','C','K']},
+    {tipo:'palavra-letra', ouvir:'Rua',      letraCorreta:'R', opcoes:['R','L','N']},
+    {tipo:'palavra-letra', ouvir:'Sol',      letraCorreta:'S', opcoes:['S','C','Z']},
+    {tipo:'palavra-letra', ouvir:'Tempo',    letraCorreta:'T', opcoes:['T','D','P']},
+    {tipo:'palavra-letra', ouvir:'Uva',      letraCorreta:'U', opcoes:['U','O','V']},
+    {tipo:'palavra-letra', ouvir:'Voz',      letraCorreta:'V', opcoes:['V','B','F']},
+    {tipo:'palavra-letra', ouvir:'Xadrez',   letraCorreta:'X', opcoes:['X','S','Z']},
+    {tipo:'palavra-letra', ouvir:'Zebra',    letraCorreta:'Z', opcoes:['Z','S','C']},
+    {tipo:'palavra-letra', ouvir:'Kiwi',     letraCorreta:'K', opcoes:['K','C','Q']},
+    {tipo:'palavra-letra', ouvir:'Web',      letraCorreta:'W', opcoes:['W','V','U']},
+    {tipo:'palavra-letra', ouvir:'Yoga',     letraCorreta:'Y', opcoes:['Y','I','J']}
+  ],
+  dialogo:[
+    {quem:'A', texto:'Bom dia! Qual é o seu nome?',         tt:'Bondia! Saida mak nia naran?'},                /* [REV-TT] */
+    {quem:'B', texto:'Chamo-me Ana Silva.',                  tt:'Hau-nia naran Ana Silva.'},                    /* [REV-TT] */
+    {quem:'A', texto:'Pode soletrar Silva, por favor?',      tt:'Bele soletra Silva, favór ida?'},              /* [REV-TT] */
+    {quem:'B', texto:'S - I - L - V - A',                    soletrar:['ésse','i','éle','vê','á']},
+    {quem:'A', texto:'Obrigada!',                            tt:'Obrigadu!'}                                    /* [REV-TT] */
+  ]
+};
+
+/* ============================================================
+   STRINGS DA INTERFACE TRADUZIDAS DINAMICAMENTE
+   (para botões e feedback gerados por JS)
+   [REV-TT] = a confirmar com colega timorense
+   ============================================================ */
+const i18n = {
+  pt:{
+    btnOuvir:'🔊 Ouvir',
+    btnTetum:'👁 Tétum',
+    btnTetumAtivo:'👁 Esconder',
+    btnDialogo:'▶  Ouvir diálogo completo',
+    btnDialogoTocar:'■  A tocar...',
+    btnNovoVocab:'Nova palavra',
+    btnNovoLetra:'Nova letra',
+    btnNovoNumero:'Novo número',
+    exInstrucaoOuve:'Toca no botão verde para ouvir uma palavra. Depois, escolhe a opção certa.',
+    exInstrucaoOuveLetra:'Toca no botão verde para ouvir o nome de uma letra. Depois, escolhe a letra correta.',
+    exInstrucaoPalavraLetra:'Toca no botão verde para ouvir uma palavra. Depois, escolhe a letra inicial.',
+    exInstrucaoSituacao:'Lê a situação em Tétum. Escolhe a expressão portuguesa correta.',
+    exSituacaoTag:'Situação',
+    feedbackCerto:'✓ Boa! Acertaste. Tentas outra?',
+    feedbackErrado:(certa)=>'✗ Quase! A resposta certa era "'+certa+'". Toca em "Nova" para tentar outra.',
+    tetumLabel:'Tétum:'
+  },
+  tt:{
+    btnOuvir:'🔊 Rona',                                                      /* [REV-TT] */
+    btnTetum:'👁 Hatudu Tétum',                                              /* [REV-TT] */
+    btnTetumAtivo:'👁 Subar',                                                /* [REV-TT] */
+    btnDialogo:'▶  Rona diálogu tomak',                                      /* [REV-TT] */
+    btnDialogoTocar:'■  Sei toka...',                                        /* [REV-TT] */
+    btnNovoVocab:'Liafuan foun',                                             /* [REV-TT] */
+    btnNovoLetra:'Letra foun',                                               /* [REV-TT] */
+    btnNovoNumero:'Númeru foun',                                             /* [REV-TT] */
+    exInstrucaoOuve:'Klik iha botaun verde atu rona liafuan ida. Depois, hili opsaun loos.',                                /* [REV-TT] */
+    exInstrucaoOuveLetra:'Klik iha botaun verde atu rona naran letra. Depois, hili letra loos.',                            /* [REV-TT] */
+    exInstrucaoPalavraLetra:'Klik iha botaun verde atu rona liafuan ida. Depois, hili letra dahuluk.',                      /* [REV-TT] */
+    exInstrucaoSituacao:'Lee situasaun iha Tétun. Hili espresaun portugés loos.',                                            /* [REV-TT] */
+    exSituacaoTag:'Situasaun',                                                                                                /* [REV-TT] */
+    feedbackCerto:'✓ Diak! Loos! Hakarak koko seluk?',                       /* [REV-TT] */
+    feedbackErrado:(certa)=>'✗ Próximu! Resposta loos mak "'+certa+'". Klik "Foun" atu koko seluk.', /* [REV-TT] */
+    tetumLabel:'Tétum:'
+  }
+};
+
+/* ============================================================
+   TOGGLE DE LÍNGUA
+   ============================================================ */
+function setLang(lang){
+  pararDialogo(); // se diálogo estiver a tocar, parar
+  langAtual = lang;
+  localStorage.setItem('cafe-lang', lang);
+  document.getElementById('btn-pt').className='lang-btn'+(lang==='pt'?' active':'');
+  document.getElementById('btn-tt').className='lang-btn'+(lang==='tt'?' active':'');
+  document.querySelectorAll('[data-pt]').forEach(el=>{
+    const v=el.getAttribute('data-'+lang);
+    if(v!==null){el.innerHTML=v}
+  });
+  // se o painel do tema estiver aberto, re-renderiza para atualizar botões dinâmicos
+  if(document.getElementById('painel-tema').classList.contains('visivel')){
+    renderizarTema();
+  }
+}
+
+/* ============================================================
+   ABRIR / FECHAR TEMA
+   ============================================================ */
+const temas = {
+  ola:      {dados:tema1, num:'01', titulo:{pt:'Dizer <em>olá</em>',         tt:'Dehan <em>olá</em>'},                sub:{pt:'As primeiras palavras para cumprimentar alguém em português.',   tt:'Liafuan dahuluk atu kumprimenta ema iha portugés.'}},
+  alfabeto: {dados:tema2, num:'02', titulo:{pt:'O <em>alfabeto</em>',        tt:'<em>Alfabétu</em>'},                  sub:{pt:'As 26 letras do alfabeto português — toca em cada uma para ouvir o nome.', tt:'Letra 26 husi alfabétu Portugés — klik letra ida-idak atu rona naran.'}}
+};
+let temaAtual = null;
+
+function abrirTema(id){
+  if(!temas[id]){return}  // só temas registados
+  // ao trocar de tema, reset do histórico do exercício
+  if(temaAtual !== id){
+    historicoExercicio = [];
+  }
+  temaAtual = id;
+  document.getElementById('painel-tema').classList.add('visivel');
+  document.getElementById('temas').style.display = 'none';
+  setTimeout(()=>{
+    document.getElementById('painel-tema').scrollIntoView({behavior:'smooth',block:'start'});
+  },50);
+  renderizarTema();
+}
+function fecharTema(){
+  pararDialogo(); // garantir que áudio pára se utilizador sair
+  document.getElementById('painel-tema').classList.remove('visivel');
+  document.getElementById('temas').style.display = 'block';
+  document.getElementById('temas').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+/* ============================================================
+   RENDERIZAR TEMA — agora suporta múltiplos temas
+   ============================================================ */
+function renderizarTema(){
+  const t = i18n[langAtual];
+  const cfg = temas[temaAtual];
+  const dados = cfg.dados;
+
+  // atualizar título/sub do painel
+  document.getElementById('painel-label').textContent = '✦ Tema ' + cfg.num;
+  document.getElementById('painel-titulo').innerHTML = cfg.titulo[langAtual];
+  document.getElementById('painel-sub').textContent = cfg.sub[langAtual];
+
+  // BLOCO 1 — depende do tipo de tema
+  const vl = document.getElementById('vocab-lista');
+  if(dados.tipo === 'alfabeto'){
+    vl.innerHTML = renderizarAlfabeto(dados, t);
+  }else{
+    // vocabulário tradicional (Tema 1, e futuros 3 e 4)
+    vl.innerHTML = dados.vocab.map((v,i)=>`
+      <div class="vocab-item">
+        <div class="vocab-emoji">${v.emoji}</div>
+        <div class="vocab-pt">${v.pt}</div>
+        <div class="vocab-acoes">
+          <button class="vocab-btn audio" onclick="lerTexto('${v.pt}')">${t.btnOuvir}</button>
+          <button class="vocab-btn tetum" onclick="toggleTetum(${i}, this)">${t.btnTetum}</button>
+        </div>
+        <div class="vocab-tetum" id="tetum-${i}">
+          <strong>${t.tetumLabel}</strong>${v.tt}
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // BLOCO 2 — frases (PT, sempre); aceita string simples, objeto {pt,tt}, ou objeto {texto, soletrar}
+  const fl = document.getElementById('frases-lista');
+  fl.innerHTML = dados.frases.map((f, idx)=>{
+    // Normalizar entrada para sempre ter "texto" (PT) e opcionalmente "tt"
+    let obj;
+    if(typeof f === 'string'){
+      obj = {texto:f};
+    }else if(f.pt){
+      // formato Tema 1: {pt, tt}
+      obj = {texto:f.pt, tt:f.tt};
+    }else{
+      // formato Tema 2: {texto, soletrar, palavraFinal}
+      obj = f;
+    }
+
+    // botão de áudio: soletrar ou frase normal
+    const btnAudio = obj.soletrar
+      ? `<button class="frase-btn" onclick="soletrar(${idx})" title="Ouvir letra a letra">🔊</button>`
+      : `<button class="frase-btn" onclick="lerTexto('${obj.texto.replace(/'/g,"\\'")}')">🔊</button>`;
+
+    // botão Tétum + bloco de tradução (só quando há tt)
+    const idTT = 'tt-frase-' + idx;
+    const btnTT = obj.tt
+      ? `<button class="vocab-btn tetum frase-tetum-btn" onclick="toggleTetumGenerico('${idTT}', this)">${t.btnTetum}</button>`
+      : '';
+    const blocoTT = obj.tt
+      ? `<div class="vocab-tetum" id="${idTT}"><strong>${t.tetumLabel}</strong>${obj.tt}</div>`
+      : '';
+
+    return `
+      <div class="frase-item ${obj.tt ? 'tem-tetum' : ''}">
+        <div class="frase-texto">"${obj.texto}"</div>
+        <div class="frase-acoes">${btnAudio}${btnTT}</div>
+        ${blocoTT}
+      </div>
+    `;
+  }).join('');
+
+  // BLOCO 3 — exercício
+  novaPergunta();
+
+  // BLOCO 4 — diálogo (PT, sempre); inclui linhas com data-index para destaque + tradução TT opcional
+  const dl = document.getElementById('dialogo-lista');
+  dl.innerHTML = dados.dialogo.map((d,i)=>{
+    const idTT = 'tt-dialogo-' + i;
+    const btnTT = d.tt
+      ? `<button class="dialogo-tetum-btn" onclick="event.stopPropagation();toggleTetumGenerico('${idTT}', this)">${t.btnTetum}</button>`
+      : '';
+    const blocoTT = d.tt
+      ? `<div class="dialogo-tetum" id="${idTT}"><strong>${t.tetumLabel}</strong>${d.tt}</div>`
+      : '';
+    return `
+      <div class="dialogo-linha ${d.quem}" data-index="${i}">
+        <div class="dialogo-quem">${d.quem}:</div>
+        <div class="dialogo-conteudo">
+          <div class="dialogo-linha-topo">
+            <div class="dialogo-texto">"${d.texto}"</div>
+            ${btnTT}
+          </div>
+          ${blocoTT}
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  // texto do botão de ouvir diálogo
+  const btnDial = document.getElementById('dialogo-btn');
+  if(btnDial && !btnDial.classList.contains('a-tocar')){
+    btnDial.innerHTML = t.btnDialogo;
+  }
+
+  // texto do botão "Nova ..." — varia segundo o tipo de tema
+  const btnNovo = document.getElementById('btn-novo-exercicio');
+  if(btnNovo){
+    if(dados.tipo === 'alfabeto'){
+      btnNovo.textContent = t.btnNovoLetra;
+    }else if(dados.tipo === 'numeros'){
+      btnNovo.textContent = t.btnNovoNumero;
+    }else{
+      btnNovo.textContent = t.btnNovoVocab;
+    }
+  }
+}
+
+/* ============================================================
+   RENDERIZAR GRELHA DO ALFABETO (Tema 2)
+   - 23 letras "nativas" + separador + 3 letras de origem estrangeira
+   - cada letra: clicável (toca o nome), com palavra-exemplo visível
+   - botão pequeno "Tétum" só na palavra-exemplo
+   - asterisco no H com nota "H não se pronuncia"
+   ============================================================ */
+function renderizarAlfabeto(dados, t){
+  const nativas = dados.letras.filter(l => !l.estrangeira);
+  const estrangeiras = dados.letras.filter(l => l.estrangeira);
+
+  const cardLetra = (l, idx) => {
+    // identificador único para o toggle de Tétum
+    const id = 'tt-letra-' + idx;
+    // marcação especial do H mudo
+    const supH = (l.nota === 'H_mudo') ? '<sup title="H não se pronuncia">*</sup>' : '';
+    // o que é passado à TTS pode diferir do nome visível (ex: K visível "capa", TTS lê "cápa")
+    const ttsNome = (l.nomeAudio || l.nome).replace(/'/g,"\\'");
+    // rate específico (ex: U mais lento) ou padrão
+    const ttsRate = (typeof l.rateAudio === 'number') ? l.rateAudio : 0.9;
+    return `
+      <div class="letra-card" onclick="lerTexto('${ttsNome}', ${ttsRate})">
+        <div class="letra-grande">${l.letra}${supH}</div>
+        <div class="letra-nome">${l.nome}</div>
+        <div class="letra-exemplo">${l.exemplo}</div>
+        <button class="letra-tetum-btn" onclick="event.stopPropagation();toggleTetumLetra('${id}', this)">${t.btnTetum}</button>
+        <div class="letra-tetum-traducao" id="${id}">${l.exemploTT}</div>
+      </div>
+    `;
+  };
+
+  let html = '<div class="alfabeto-grelha">';
+  html += nativas.map((l, i) => cardLetra(l, i)).join('');
+  html += '</div>';
+
+  // separador para letras estrangeiras — PT + TT em paralelo (rótulo bilingue)
+  const labelEstrangeiras = '— Letras de origem estrangeira  ·  Letra husi origen estranjeiru —';  /* [REV-TT] */
+  html += `<div class="alfabeto-divisor">${labelEstrangeiras}</div>`;
+  html += '<div class="alfabeto-grelha">';
+  html += estrangeiras.map((l, i) => cardLetra(l, nativas.length + i)).join('');
+  html += '</div>';
+
+  // nota sobre o H mudo — mostra PT + TT em paralelo (independente do toggle)
+  // razão pedagógica: nota didática crítica que tem de funcionar para utilizadores
+  // que não sabem PT (precisam do TT) e para os que não sabem TT (curiosidade/aprendizagem)
+  const notaH = `
+    <div class="alfabeto-nota-linha">
+      <span class="alfabeto-nota-tag pt">PT</span>
+      <span><strong>* H não se pronuncia</strong> em português. A palavra <em>Hora</em> lê-se "ora".</span>
+    </div>
+    <div class="alfabeto-nota-linha">
+      <span class="alfabeto-nota-tag tt">TT</span>
+      <span><strong>* H la pronunsia</strong> iha portugés. Liafuan <em>Hora</em> rona "ora".</span>
+    </div>
+  `;  /* [REV-TT] tradução Tetum da nota didática */
+  html += `<div class="alfabeto-nota">${notaH}</div>`;
+
+  return html;
+}
+
+/* Toggle do Tétum nas letras do alfabeto (separado do toggleTetum geral) */
+function toggleTetumLetra(id, btn){
+  const el = document.getElementById(id);
+  const t = i18n[langAtual];
+  const aberto = el.classList.toggle('visivel');
+  btn.innerHTML = aberto ? t.btnTetumAtivo : t.btnTetum;
+}
+
+/* Toggle genérico do Tétum em frases e diálogo (Tema 1) */
+function toggleTetumGenerico(id, btn){
+  const el = document.getElementById(id);
+  const t = i18n[langAtual];
+  const aberto = el.classList.toggle('visivel');
+  btn.classList.toggle('ativo', aberto);
+  btn.innerHTML = aberto ? t.btnTetumAtivo : t.btnTetum;
+}
+
+/* Ler nome da letra com síntese de voz pt-PT (compat — usa lerTexto) */
+function lerNomeLetra(nome, rate){
+  lerTexto(nome, rate);
+}
+
+/* ============================================================
+   SOLETRAR LETRA A LETRA — núcleo pedagógico do Tema 2
+   Lê uma sequência de nomes de letras (ex: ['esse','i','ele','vê','á'])
+   com pausa de 1 segundo entre cada, terminando opcionalmente com
+   uma palavra completa (ex: 'Maria').
+   Recebe callback opcional para encadeamento (usado pelo diálogo).
+   ============================================================ */
+let soletracaoEmCurso = false;
+
+function soletrarSequencia(letras, palavraFinal, onComplete){
+  if(!('speechSynthesis' in window)){
+    if(onComplete) onComplete();
+    return;
+  }
+  soletracaoEmCurso = true;
+  window.speechSynthesis.cancel();
+  let idx = 0;
+  let timeoutFallback = null;
+
+  function falar(texto, rate, depois){
+    // wrapper robusto: se onend não disparar (bug conhecido em Chrome/iOS),
+    // um fallback timeout dispara passados (texto.length * 250 + 1500)ms.
+    const u = new SpeechSynthesisUtterance(texto);
+    u.lang = 'pt-PT';
+    u.rate = rate;
+    u.pitch = 1;
+    let chamou = false;
+    const seguir = ()=>{
+      if(chamou) return;
+      chamou = true;
+      if(timeoutFallback){clearTimeout(timeoutFallback); timeoutFallback=null;}
+      depois();
+    };
+    u.onend = seguir;
+    u.onerror = seguir;
+    window.speechSynthesis.speak(u);
+    // fallback: tempo estimado de leitura + margem
+    const estimado = Math.max(800, texto.length * 220) + 600;
+    timeoutFallback = setTimeout(seguir, estimado);
+  }
+
+  function proxima(){
+    if(!soletracaoEmCurso){
+      if(onComplete) onComplete();
+      return;
+    }
+    if(idx < letras.length){
+      falar(letras[idx], 0.85, ()=>{
+        idx++;
+        // pausa de ~1 segundo entre letras (decisão pedagógica: máxima clareza)
+        setTimeout(proxima, 1000);
+      });
+    }else if(palavraFinal){
+      // após soletrar, pausa breve e diz a palavra completa
+      setTimeout(()=>{
+        if(!soletracaoEmCurso){if(onComplete) onComplete();return}
+        falar(palavraFinal, 0.9, ()=>{
+          soletracaoEmCurso = false;
+          if(onComplete) onComplete();
+        });
+      }, 500);
+    }else{
+      soletracaoEmCurso = false;
+      if(onComplete) onComplete();
+    }
+  }
+  proxima();
+}
+
+function pararSoletracao(){
+  soletracaoEmCurso = false;
+  window.speechSynthesis.cancel();
+}
+
+/* Disparado pelo botão 🔊 das frases que têm soletração */
+function soletrar(fraseIdx){
+  const dados = temas[temaAtual].dados;
+  const f = dados.frases[fraseIdx];
+  if(!f || !f.soletrar) return;
+  pararSoletracao();
+  pararDialogo();
+  soletrarSequencia(f.soletrar, f.palavraFinal || null, null);
+}
+
+/* ============================================================
+   SÍNTESE DE VOZ — sempre pt-PT (a língua a aprender)
+   ============================================================ */
+function lerTexto(texto, rate){
+  if(!('speechSynthesis' in window)){
+    alert('O teu navegador não suporta leitura de voz.');
+    return;
+  }
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(texto);
+  u.lang = 'pt-PT';
+  u.rate = (typeof rate === 'number') ? rate : 0.9;
+  u.pitch = 1;
+  window.speechSynthesis.speak(u);
+}
+
+/* ============================================================
+   TÉTUM TOGGLE
+   ============================================================ */
+function toggleTetum(i, btn){
+  const el = document.getElementById('tetum-'+i);
+  const t = i18n[langAtual];
+  const aberto = el.classList.toggle('visivel');
+  btn.classList.toggle('ativo', aberto);
+  btn.innerHTML = aberto ? t.btnTetumAtivo : t.btnTetum;
+}
+
+/* ============================================================
+   EXERCÍCIO — usa o tema ativo
+   Algoritmo de rotação: mantém histórico das últimas N perguntas
+   para evitar repetições precoces; quanto maior o pool de perguntas,
+   maior a janela de histórico (até metade do pool).
+   ============================================================ */
+let perguntaAtual = null;
+let historicoExercicio = [];
+
+function novaPergunta(){
+  document.getElementById('ex-feedback').classList.remove('visivel','certo','errado');
+  const dados = temas[temaAtual].dados;
+  const pool = dados.exercicio;
+
+  // janela = metade do pool (mín 1, máx 12) — janela maior para sentir mais variedade
+  const tamHist = Math.min(12, Math.max(1, Math.floor(pool.length / 2)));
+
+  // candidatos = perguntas que NÃO estão nas últimas tamHist
+  let candidatos = pool.filter(p => !historicoExercicio.includes(p));
+  if(candidatos.length === 0){
+    // pool esgotado pela janela — limpa histórico
+    historicoExercicio = [];
+    candidatos = pool;
+  }
+
+  const p = candidatos[Math.floor(Math.random() * candidatos.length)];
+  perguntaAtual = p;
+  historicoExercicio.push(p);
+  // limita tamanho do histórico
+  if(historicoExercicio.length > tamHist){
+    historicoExercicio.shift();
+  }
+
+  // Renderizar conforme tipo de exercício
+  renderizarPergunta(p);
+}
+
+/* ============================================================
+   Renderizar o estímulo da pergunta consoante o tipo
+   - 'ouve' / 'ouve-letra' / 'palavra-letra' → estímulo é áudio
+   - 'situacao' → estímulo é texto em Tétum (sem áudio)
+   ============================================================ */
+function renderizarPergunta(p){
+  const cont = document.getElementById('ex-opcoes');
+  const instrucao = document.getElementById('ex-instrucao');
+  const audioWrap = document.getElementById('ex-audio-wrap');
+  const situacaoWrap = document.getElementById('ex-situacao-wrap');
+  const t = i18n[langAtual];
+
+  if(p.tipo === 'situacao'){
+    // Tipo B — situação em Tétum, escolhe expressão PT
+    if(audioWrap) audioWrap.style.display = 'none';
+    if(situacaoWrap){
+      situacaoWrap.style.display = 'block';
+      situacaoWrap.innerHTML = `
+        <div class="ex-situacao-tag">${t.exSituacaoTag}</div>
+        <div class="ex-situacao-texto">${p.situacaoTT}</div>
+      `;
+    }
+    if(instrucao){
+      instrucao.textContent = t.exInstrucaoSituacao;
+    }
+  }else{
+    // Tipos áudio (ouve, ouve-letra, palavra-letra) — mostra botão áudio
+    if(situacaoWrap) situacaoWrap.style.display = 'none';
+    if(audioWrap) audioWrap.style.display = 'block';
+    if(instrucao){
+      if(p.tipo === 'palavra-letra'){
+        instrucao.textContent = t.exInstrucaoPalavraLetra;
+      }else if(p.tipo === 'ouve-letra'){
+        instrucao.textContent = t.exInstrucaoOuveLetra;
+      }else{
+        instrucao.textContent = t.exInstrucaoOuve;
+      }
+    }
+  }
+
+  // Opções (idêntico em todos os tipos)
+  const opcoesEmb = [...p.opcoes].sort(()=>Math.random()-0.5);
+  cont.innerHTML = opcoesEmb.map(o=>`
+    <button class="exercicio-opcao" onclick="escolherOpcao(this,'${o.replace(/'/g,"\\'")}')">${o}</button>
+  `).join('');
+}
+
+function escolherOpcao(btn, escolha){
+  document.querySelectorAll('.exercicio-opcao').forEach(b=>b.style.pointerEvents='none');
+  const fb = document.getElementById('ex-feedback');
+  const t = i18n[langAtual];
+
+  // Determinar a resposta certa segundo o tipo de pergunta:
+  // - 'ouve' (Tema 1, vocabulário): opção certa = perguntaAtual.ouvir
+  // - 'ouve-letra' (Tema 2 A): ouve nome ("á"), opção certa é a letra ("A")
+  // - 'palavra-letra' (Tema 2 D): ouve palavra ("Bola"), opção certa é primeira letra (campo letraCorreta)
+  // - 'situacao' (Tema 1 B): a opção certa é sempre a primeira do array (por convenção da estrutura de dados)
+  let certa;
+  const tipoP = perguntaAtual.tipo || 'ouve';
+
+  if(tipoP === 'palavra-letra'){
+    certa = perguntaAtual.letraCorreta;
+  }else if(tipoP === 'situacao'){
+    // primeira opção é sempre a certa nesta convenção (depois sorteia-se a ordem)
+    certa = perguntaAtual.opcoes[0];
+  }else if(tipoP === 'ouve-letra' || (temas[temaAtual].dados.tipo === 'alfabeto' && !perguntaAtual.letraCorreta)){
+    // Alfabeto Tipo A — procurar a letra pelo nome (aceita nome ou nomeAudio)
+    const letraObj = temas[temaAtual].dados.letras.find(
+      l => l.nome === perguntaAtual.ouvir || l.nomeAudio === perguntaAtual.ouvir
+    );
+    certa = letraObj ? letraObj.letra : perguntaAtual.ouvir;
+  }else{
+    // 'ouve' (vocabulário Tema 1)
+    certa = perguntaAtual.ouvir;
+  }
+
+  if(escolha === certa){
+    btn.classList.add('certa');
+    fb.textContent = t.feedbackCerto;
+    fb.classList.add('visivel','certo');
+  }else{
+    btn.classList.add('errada');
+    fb.textContent = t.feedbackErrado(certa);
+    fb.classList.add('visivel','errado');
+    document.querySelectorAll('.exercicio-opcao').forEach(b=>{
+      if(b.textContent === certa) b.classList.add('certa');
+    });
+  }
+}
+
+function ouvirExercicio(){
+  if(!perguntaAtual) return;
+  // Tipo 'situacao' não tem áudio (o estímulo é texto em Tétum)
+  if(perguntaAtual.tipo === 'situacao') return;
+  // se a pergunta corresponde a uma letra com rateAudio (ex: U), aplicar esse rate
+  let rate = 0.9;
+  if(temas[temaAtual].dados.tipo === 'alfabeto' && perguntaAtual.tipo === 'ouve-letra'){
+    const letraObj = temas[temaAtual].dados.letras.find(
+      l => l.nome === perguntaAtual.ouvir || l.nomeAudio === perguntaAtual.ouvir
+    );
+    if(letraObj && typeof letraObj.rateAudio === 'number'){
+      rate = letraObj.rateAudio;
+    }
+  }
+  lerTexto(perguntaAtual.ouvir, rate);
+}
+
+/* ============================================================
+   OUVIR DIÁLOGO COMPLETO — encadeia as 4 falas com pausa natural
+   e destaca visualmente a linha que está a ser lida
+   ============================================================ */
+let dialogoEmCurso = false;
+
+function ouvirDialogo(){
+  if(!('speechSynthesis' in window)){
+    alert('O teu navegador não suporta leitura de voz.');
+    return;
+  }
+  // se já está a tocar, parar
+  if(dialogoEmCurso){
+    pararDialogo();
+    return;
+  }
+  dialogoEmCurso = true;
+  const btn = document.getElementById('dialogo-btn');
+  const t = i18n[langAtual];
+  btn.innerHTML = t.btnDialogoTocar;
+  btn.classList.add('a-tocar');
+
+  window.speechSynthesis.cancel();
+
+  // encadear utterances — cada uma só começa quando a anterior termina
+  let i = 0;
+  function lerProximaLinha(){
+    // remover destaque anterior
+    document.querySelectorAll('.dialogo-linha.ativa').forEach(el=>el.classList.remove('ativa'));
+    const dadosTema = temas[temaAtual].dados;
+    if(i >= dadosTema.dialogo.length || !dialogoEmCurso){
+      pararDialogo();
+      return;
+    }
+    // destacar linha atual
+    const linha = document.querySelector('.dialogo-linha[data-index="'+i+'"]');
+    if(linha) linha.classList.add('ativa');
+
+    const linhaData = dadosTema.dialogo[i];
+
+    // se a linha tem soletração, ler letra a letra (lentamente, 1s entre cada)
+    if(linhaData.soletrar){
+      soletrarSequencia(linhaData.soletrar, null, ()=>{
+        if(!dialogoEmCurso){pararDialogo();return}
+        i++;
+        setTimeout(lerProximaLinha, 600);  // pausa maior depois de soletração
+      });
+      return;
+    }
+
+    // linha normal
+    const u = new SpeechSynthesisUtterance(linhaData.texto);
+    u.lang = 'pt-PT';
+    u.rate = 0.9;
+    u.pitch = 1;
+    u.onend = ()=>{
+      i++;
+      setTimeout(lerProximaLinha, 300);
+    };
+    u.onerror = ()=>pararDialogo();
+    window.speechSynthesis.speak(u);
+  }
+  lerProximaLinha();
+}
+
+function pararDialogo(){
+  dialogoEmCurso = false;
+  pararSoletracao(); // pára também eventual soletração em curso dentro do diálogo
+  window.speechSynthesis.cancel();
+  document.querySelectorAll('.dialogo-linha.ativa').forEach(el=>el.classList.remove('ativa'));
+  const btn = document.getElementById('dialogo-btn');
+  if(btn){
+    const t = i18n[langAtual];
+    btn.innerHTML = t.btnDialogo;
+    btn.classList.remove('a-tocar');
+  }
+}
+
+/* ============================================================
+   INICIALIZAÇÃO — aplica língua guardada se houver
+   ============================================================ */
+if(langAtual === 'tt'){setLang('tt')}
+</script>
+
+</body>
+</html>

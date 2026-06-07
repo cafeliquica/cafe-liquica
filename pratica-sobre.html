@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sobre o curso · Pratica Português · CAFE de Liquiçá</title>
+<meta name="description" content="Sobre o Pratica Português — recurso pedagógico do CAFE de Liquiçá, baseado no Referencial Camões PLE e no Quadro Europeu Comum de Referência para as Línguas (QECR).">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   PRATICA PORTUGUÊS — SOBRE O CURSO (PT | TT em paralelo)
+   Página bilingue oficial — duas colunas em paralelo
+   Conteúdo em Tétum marcado [REV-TT] para revisão por nativo
+   ============================================================ */
+
+:root{
+  --verde:#1a5c2e;
+  --vermelho:#c0392b;
+  --amarelo:#f0a500;
+  --preto:#1a1a1a;
+  --branco:#ffffff;
+  --cinza-claro:#f7f5f0;
+  --cinza-medio:#e5e0d5;
+  --texto-claro:rgba(0,0,0,0.65);
+  --sombra:0 4px 20px rgba(0,0,0,0.08);
+  --fundo-tt:#fdfbf5;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Source Sans 3',sans-serif;
+  font-weight:400;
+  color:var(--preto);
+  background:var(--cinza-claro);
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* NAVBAR (versão sem toggle PT/TT — esta página é bilingue por desenho) */
+nav{
+  position:fixed;top:0;left:0;right:0;
+  background:rgba(26,26,26,0.95);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  z-index:100;height:70px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 2.5rem;
+  border-bottom:1px solid rgba(255,255,255,0.05);
+}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:white}
+.nav-logo-img{height:40px;width:auto}
+.nav-logo-text .nome{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;display:block;line-height:1}
+.nav-logo-text .sub{font-size:0.7rem;color:rgba(255,255,255,0.45);letter-spacing:0.08em;text-transform:uppercase}
+.nav-back{color:rgba(255,255,255,0.75);text-decoration:none;font-size:0.85rem;font-weight:600;letter-spacing:0.05em;transition:color 0.2s}
+.nav-back:hover{color:var(--amarelo)}
+
+/* HERO bilingue */
+#hero{
+  background:var(--verde);
+  color:white;
+  padding:7rem 2.5rem 4rem;
+  position:relative;
+  overflow:hidden;
+}
+#hero::before{
+  content:'';position:absolute;
+  top:-50%;right:-10%;
+  width:500px;height:500px;
+  background:radial-gradient(circle,rgba(240,165,0,0.08) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero-inner{max-width:1100px;margin:0 auto;position:relative;z-index:1}
+.hero-label{font-size:0.72rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--amarelo);margin-bottom:1rem}
+.hero-titulo{font-family:'Playfair Display',serif;font-size:clamp(2rem,4.5vw,3rem);line-height:1.15;margin-bottom:1.25rem}
+.hero-titulo em{color:var(--amarelo);font-style:italic}
+.hero-sub-bilingue{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:2rem;
+  max-width:900px;
+  margin-top:1.5rem;
+}
+.hero-sub-pt, .hero-sub-tt{
+  font-size:1rem;
+  color:rgba(255,255,255,0.85);
+  font-weight:300;
+  line-height:1.7;
+}
+.hero-sub-tt{
+  border-left:1px solid rgba(240,165,0,0.3);
+  padding-left:2rem;
+}
+.hero-sub-tag{
+  display:block;
+  font-size:0.68rem;
+  font-weight:600;
+  letter-spacing:0.15em;
+  text-transform:uppercase;
+  color:var(--amarelo);
+  margin-bottom:0.5rem;
+  opacity:0.85;
+}
+
+/* BOTÃO ATALHO TÉTUM
+   Só faz sentido em mobile/tablet onde as colunas empilham (PT em cima, TT em baixo).
+   Em desktop ≥821px as duas colunas estão lado a lado e o Tétum já está visível —
+   o botão fica escondido. Mostra-se apenas em viewport ≤820px (definido no @media). */
+.atalho-tetum-wrap{
+  display:none; /* escondido por defeito (desktop) */
+  max-width:1100px;
+  margin:1.5rem auto 0;
+  padding:0 2.5rem;
+  text-align:right;
+}
+.atalho-tetum{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:transparent;
+  border:1.5px solid var(--amarelo);
+  color:var(--amarelo);
+  padding:10px 20px;
+  border-radius:6px;
+  font-family:'Source Sans 3',sans-serif;
+  font-size:0.85rem;
+  font-weight:600;
+  letter-spacing:0.05em;
+  text-decoration:none;
+  cursor:pointer;
+  transition:all 0.2s;
+}
+.atalho-tetum:hover{
+  background:var(--amarelo);
+  color:var(--preto);
+  transform:translateY(-1px);
+}
+
+/* CONTEÚDO */
+main{padding:3rem 2.5rem 5rem}
+.conteudo{max-width:1100px;margin:0 auto}
+
+.seccao{margin-bottom:3.5rem}
+.seccao-num{
+  font-family:'Playfair Display',serif;
+  font-size:0.85rem;
+  font-weight:700;
+  color:var(--vermelho);
+  letter-spacing:0.15em;
+  margin-bottom:0.5rem;
+}
+
+/* Bloco bilingue em duas colunas */
+.bilingue{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:2.5rem;
+  align-items:flex-start;
+}
+.col-pt, .col-tt{
+  min-width:0;
+}
+.col-tt{
+  border-left:2px solid var(--amarelo);
+  padding-left:2rem;
+  background:linear-gradient(to right, rgba(240,165,0,0.04), transparent);
+}
+.col-tag{
+  display:inline-block;
+  font-size:0.65rem;
+  font-weight:700;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  padding:3px 10px;
+  border-radius:3px;
+  margin-bottom:0.85rem;
+}
+.col-tag.pt{
+  background:rgba(26,92,46,0.1);
+  color:var(--verde);
+}
+.col-tag.tt{
+  background:rgba(240,165,0,0.15);
+  color:#a07000;
+}
+.seccao-titulo{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.4rem,2.6vw,1.8rem);
+  margin-bottom:1rem;
+  color:var(--preto);
+  line-height:1.25;
+}
+.seccao-titulo em{color:var(--verde);font-style:italic}
+.bilingue p{
+  margin-bottom:1rem;
+  font-size:0.97rem;
+}
+
+/* NÍVEIS A1 / A2 — cartões bilingues */
+.nivel-card{
+  background:white;
+  border:1px solid var(--cinza-medio);
+  border-radius:12px;
+  padding:1.5rem 1.75rem;
+  margin-bottom:1.25rem;
+}
+.nivel-card.a1{border-left:4px solid var(--verde)}
+.nivel-card.a2{border-left:4px solid var(--vermelho)}
+.nivel-card.b1{
+  border-left:4px solid var(--cinza-medio);
+  opacity:0.65;
+}
+.nivel-card-topo{
+  display:flex;
+  gap:1.25rem;
+  align-items:center;
+  margin-bottom:1.25rem;
+  padding-bottom:1rem;
+  border-bottom:1px solid var(--cinza-medio);
+}
+.nivel-badge{
+  font-family:'Playfair Display',serif;
+  font-size:1.8rem;
+  font-weight:700;
+  line-height:1;
+  flex-shrink:0;
+  padding:0.5rem 0.85rem;
+  border-radius:6px;
+  text-align:center;
+  min-width:70px;
+}
+.nivel-card.a1 .nivel-badge{
+  color:var(--verde);
+  background:rgba(26,92,46,0.08);
+}
+.nivel-card.a2 .nivel-badge{
+  color:var(--vermelho);
+  background:rgba(192,57,43,0.08);
+}
+.nivel-card.b1 .nivel-badge{
+  color:var(--texto-claro);
+  background:var(--cinza-medio);
+}
+.nivel-card-titulo{
+  font-family:'Playfair Display',serif;
+  font-size:1.25rem;
+  margin-bottom:0.15rem;
+  display:block;
+}
+.nivel-card-tag{
+  font-size:0.72rem;
+  color:var(--texto-claro);
+  font-weight:600;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+}
+.nivel-descritor{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1.75rem;
+}
+.nivel-descritor p{
+  font-size:0.92rem;
+  color:var(--texto-claro);
+  line-height:1.65;
+}
+.nivel-descritor .col-tt{
+  padding-left:1.5rem;
+}
+
+/* TABELA DESCRITORES — em modo bilingue, mostra duas colunas próprias */
+.tabela-wrap{
+  margin-bottom:1.5rem;
+  overflow-x:auto;
+}
+.tabela-descritores{
+  width:100%;
+  border-collapse:collapse;
+  background:white;
+  border-radius:8px;
+  overflow:hidden;
+  box-shadow:var(--sombra);
+  min-width:560px;
+}
+.tabela-descritores th{
+  background:var(--verde);
+  color:white;
+  padding:0.85rem 0.9rem;
+  text-align:left;
+  font-size:0.75rem;
+  font-weight:600;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+}
+.tabela-descritores td{
+  padding:0.7rem 0.9rem;
+  border-bottom:1px solid var(--cinza-medio);
+  font-size:0.88rem;
+  vertical-align:top;
+}
+.tabela-descritores tr:last-child td{border-bottom:none}
+.tabela-descritores .col-categoria{
+  font-weight:600;
+  color:var(--preto);
+  width:38%;
+}
+.tabela-descritores .col-status{
+  text-align:center;
+  width:90px;
+  font-weight:700;
+}
+.tabela-descritores .feito{color:var(--verde)}
+.tabela-descritores .pendente{color:var(--texto-claro);font-style:italic;font-size:0.78rem}
+
+/* BIBLIOGRAFIA — apenas em PT (citações oficiais) */
+.bibliografia-aviso{
+  background:#fff8e5;
+  border-left:3px solid var(--amarelo);
+  padding:0.75rem 1.25rem;
+  border-radius:0 6px 6px 0;
+  margin-bottom:1.5rem;
+  font-size:0.85rem;
+  color:var(--texto-claro);
+}
+.bibliografia-aviso strong{color:var(--preto)}
+.bibliografia{
+  background:white;
+  border-radius:8px;
+  padding:1.5rem 1.75rem;
+  border-left:3px solid var(--verde);
+}
+.bibliografia ol{
+  padding-left:1.25rem;
+  margin:0;
+}
+.bibliografia li{
+  margin-bottom:0.85rem;
+  font-size:0.9rem;
+  line-height:1.6;
+  color:var(--texto-claro);
+}
+.bibliografia li:last-child{margin-bottom:0}
+.bibliografia strong{color:var(--preto);font-weight:600}
+.bibliografia em{color:var(--verde);font-style:italic}
+.bibliografia a{
+  color:var(--verde);
+  text-decoration:none;
+  font-weight:600;
+}
+.bibliografia a:hover{text-decoration:underline}
+
+/* CTA voltar */
+.cta-voltar{
+  text-align:center;
+  margin-top:3rem;
+  padding-top:2.5rem;
+  border-top:1px solid var(--cinza-medio);
+}
+.btn-voltar{
+  display:inline-block;
+  background:var(--verde);
+  color:white;
+  padding:14px 32px;
+  border-radius:6px;
+  font-size:0.85rem;
+  font-weight:600;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  text-decoration:none;
+  transition:background 0.2s,transform 0.15s;
+  box-shadow:0 4px 12px rgba(26,92,46,0.25);
+}
+.btn-voltar:hover{
+  background:#144623;
+  transform:translateY(-1px);
+}
+
+/* FOOTER */
+footer{
+  background:var(--preto);
+  color:rgba(255,255,255,0.5);
+  padding:2.5rem 2.5rem 2rem;
+  text-align:center;
+  font-size:0.85rem;
+}
+footer a{color:var(--amarelo);text-decoration:none}
+
+/* RESPONSIVE — em mobile, colunas empilham PT em cima, TT em baixo */
+@media(max-width:820px){
+  .atalho-tetum-wrap{
+    display:block; /* mostra atalho — colunas começam a empilhar */
+    text-align:right;
+  }
+  .bilingue{
+    grid-template-columns:1fr;
+    gap:1.25rem;
+  }
+  .col-tt{
+    border-left:none;
+    border-top:2px solid var(--amarelo);
+    padding-left:0;
+    padding-top:1.25rem;
+    background:linear-gradient(to bottom, rgba(240,165,0,0.04), transparent 100px);
+  }
+  .nivel-descritor{
+    grid-template-columns:1fr;
+    gap:1rem;
+  }
+  .nivel-descritor .col-tt{
+    padding-left:0;
+    padding-top:1rem;
+    border-top:1px dashed var(--cinza-medio);
+  }
+  .hero-sub-bilingue{
+    grid-template-columns:1fr;
+    gap:1.25rem;
+  }
+  .hero-sub-tt{
+    border-left:none;
+    border-top:1px solid rgba(240,165,0,0.3);
+    padding-left:0;
+    padding-top:1.25rem;
+  }
+}
+@media(max-width:540px){
+  nav{padding:0 1rem;height:60px}
+  .nav-logo-img{height:32px}
+  .nav-logo-text .nome{font-size:0.95rem}
+  .nav-logo-text .sub{font-size:0.65rem}
+  .nav-back{display:none}
+  #hero{padding:5.5rem 1.25rem 3rem}
+  .atalho-tetum-wrap{
+    display:block; /* mostra o atalho em mobile/tablet onde as colunas empilham */
+    padding:0 1.25rem;
+    text-align:center;
+  }
+  .atalho-tetum{width:100%;justify-content:center}
+  main{padding:2.5rem 1.25rem 4rem}
+  .nivel-card{padding:1.25rem}
+  .nivel-card-topo{flex-direction:column;align-items:flex-start;gap:0.85rem}
+  .nivel-badge{font-size:1.5rem;padding:0.4rem 0.85rem}
+  .bibliografia{padding:1.25rem}
+}
+
+/* ============================================================
+   CSS DE IMPRESSÃO — pratica-sobre.html
+   Página bilingue PT|TT já desenhada em paralelo.
+   Para impressão: esconde navbar/botão e otimiza A4.
+   ============================================================ */
+@media print{
+  *{ -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important; }
+
+  @page{
+    size:A4;
+    margin:1.5cm 1.8cm 2cm;
+  }
+
+  body{
+    background:white !important;
+    font-size:10pt;
+    line-height:1.5;
+  }
+
+  /* Esconder elementos não relevantes em papel */
+  nav, footer,
+  .nav-back,
+  .atalho-tetum-wrap,
+  .cta-voltar{
+    display:none !important;
+  }
+
+  /* Hero compacto */
+  #hero{
+    padding:1cm 0 0.8cm !important;
+    page-break-after:avoid;
+  }
+  .hero-titulo{font-size:1.8rem !important;margin-bottom:0.6rem !important}
+  .hero-sub-bilingue{margin-top:0.8rem !important;gap:1.5rem !important}
+  .hero-sub-pt, .hero-sub-tt{font-size:0.9rem !important}
+
+  /* Conteúdo */
+  main{padding:0.8cm 0 !important}
+
+  /* Manter colunas PT|TT em paralelo (definição da página) */
+  .bilingue{
+    grid-template-columns:1fr 1fr !important;
+    gap:1.5rem !important;
+  }
+  .col-tt{
+    padding-left:1.25rem !important;
+  }
+
+  /* Secções não devem cortar a meio */
+  .seccao{
+    page-break-inside:auto;
+    margin-bottom:1.2rem !important;
+  }
+  .seccao-titulo{
+    font-size:1.3rem !important;
+    margin-bottom:0.6rem !important;
+    page-break-after:avoid;
+  }
+  .bilingue p{
+    font-size:0.9rem !important;
+    margin-bottom:0.5rem !important;
+  }
+
+  /* Cartões de nível A1/A2/B1 — não cortar */
+  .nivel-card{
+    page-break-inside:avoid;
+    padding:1rem 1.2rem !important;
+    margin-bottom:0.8rem !important;
+  }
+  .nivel-badge{font-size:1.4rem !important;padding:0.35rem 0.7rem !important;min-width:60px !important}
+  .nivel-card-titulo{font-size:1.1rem !important}
+  .nivel-descritor p{font-size:0.85rem !important}
+
+  /* Tabela compacta */
+  .tabela-descritores{
+    font-size:0.82rem !important;
+    page-break-inside:auto;
+  }
+  .tabela-descritores th{padding:0.5rem 0.6rem !important;font-size:0.7rem !important}
+  .tabela-descritores td{padding:0.4rem 0.6rem !important}
+  .tabela-descritores tr{page-break-inside:avoid}
+
+  /* Bibliografia */
+  .bibliografia{
+    padding:1rem 1.2rem !important;
+    page-break-inside:avoid;
+  }
+  .bibliografia li{font-size:0.82rem !important;margin-bottom:0.55rem !important}
+
+  /* Rodapé institucional */
+  @page{
+    @bottom-center{
+      content:"CAFE de Liquiçá — Pratica Português · Sobre o curso · Validação institucional";
+      font-family:'Source Sans 3',sans-serif;
+      font-size:8pt;
+      color:#888;
+    }
+    @bottom-right{
+      content:"Página " counter(page);
+      font-family:'Source Sans 3',sans-serif;
+      font-size:8pt;
+      color:#888;
+    }
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR (sem toggle: a página é bilingue por desenho) -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="logo.png" alt="CAFE Liquiçá" class="nav-logo-img">
+    <div class="nav-logo-text">
+      <span class="nome">CAFE de Liquiçá</span>
+      <span class="sub">Pratica Português · Sobre / Kona-ba</span>
+    </div>
+  </a>
+  <a href="pratica.html" class="nav-back">← Voltar ao Pratica · Fila</a>
+</nav>
+
+<!-- HERO bilingue -->
+<section id="hero">
+  <div class="hero-inner">
+    <p class="hero-label">✦ Sobre este recurso · Kona-ba rekursu ne'e</p>
+    <h1 class="hero-titulo">
+      Um curso com <em>fundamento.</em>
+    </h1>
+    <div class="hero-sub-bilingue">
+      <div class="hero-sub-pt">
+        <span class="hero-sub-tag">Português</span>
+        O <em>Pratica Português</em> é um recurso pedagógico do CAFE de Liquiçá baseado em referenciais oficiais do ensino de Português Língua Estrangeira.
+      </div>
+      <div class="hero-sub-tt">
+        <span class="hero-sub-tag">Tétun</span>
+        <em>Pratika Portugés</em> mak rekursu pedagójiku husi CAFE de Liquiçá ne'ebé bazeia ba referensiál ofisiál sira husi hanorin Portugés nu'udar Lian Estranjeiru.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOTÃO atalho Tétum -->
+<div class="atalho-tetum-wrap">
+  <a href="#secao-1" class="atalho-tetum" onclick="irParaTetum(event)">↓ Bá Tétun</a>
+</div>
+
+<!-- CONTEÚDO -->
+<main>
+  <div class="conteudo">
+
+    <!-- SECÇÃO 1 — Para quem -->
+    <section class="seccao" id="secao-1">
+      <p class="seccao-num">01</p>
+      <div class="bilingue">
+
+        <!-- COLUNA PT -->
+        <div class="col-pt">
+          <span class="col-tag pt">Português</span>
+          <h2 class="seccao-titulo">Para <em>quem</em> é este recurso?</h2>
+          <p>
+            O <em>Pratica Português</em> foi desenhado para adultos timorenses sem conhecimento prévio de português, que desejam descobrir a língua ao seu ritmo — em casa, no telemóvel, sem pressão e sem necessidade de inscrição.
+          </p>
+          <p>
+            Pensámos sobretudo em pais, mães, tios e familiares dos alunos do CAFE de Liquiçá — e, porventura, de outros CAFE da rede em Timor-Leste — que querem acompanhar a aprendizagem dos mais novos, ou simplesmente abrir uma janela para uma língua que faz parte da história e do presente do país.
+          </p>
+          <p>
+            O recurso é gratuito, não exige conhecimento técnico, e funciona em qualquer telemóvel com ligação à Internet.
+          </p>
+        </div>
+
+        <!-- COLUNA TT [REV-TT] -->
+        <div class="col-tt">
+          <span class="col-tag tt">Tétun</span>
+          <h2 class="seccao-titulo">Ba sé mak rekursu <em>ida ne'e</em>?</h2>
+          <p>
+            <em>Pratika Portugés</em> mak halo ba ema timoroan boot sira ne'ebé seidauk hatene Portugés, no hakarak deskobre lian ne'e tuir sira-nia ritmu — iha uma, ho telefone-mane, la ho presaun no la presiza rejistu.
+          </p>
+          <p>
+            Ami hanoin liu-liu ba aman, inan, tiu sira no familia alunu sira-nia husi CAFE de Liquiçá — no, karik, mós husi CAFE seluk iha rede Timor-Leste nian — ne'ebé hakarak akompañia oan sira-nia aprendizajen, ka loke janela ba lian ida ne'ebé tama ona iha istória no iha tempu agora husi ita-nia rai.
+          </p>
+          <p>
+            Rekursu ne'e gratuita, la presiza koñesimentu tékniku, no funsiona iha telefone-mane saida deit ne'ebé iha ligasaun internet.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECÇÃO 2 — QECR -->
+    <section class="seccao">
+      <p class="seccao-num">02</p>
+      <div class="bilingue">
+
+        <div class="col-pt">
+          <span class="col-tag pt">Português</span>
+          <h2 class="seccao-titulo">O Quadro Europeu Comum de Referência</h2>
+          <p>
+            Todo o conteúdo do <em>Pratica Português</em> segue os níveis de proficiência definidos pelo <strong>Quadro Europeu Comum de Referência para as Línguas (QECR)</strong>, documento elaborado pelo Conselho da Europa que é hoje o padrão internacional para o ensino e avaliação de línguas estrangeiras.
+          </p>
+          <p>
+            O QECR organiza a aprendizagem em seis níveis: A1, A2, B1, B2, C1 e C2 — do nível mais básico ao mais avançado.
+          </p>
+        </div>
+
+        <div class="col-tt">
+          <span class="col-tag tt">Tétun</span>
+          <h2 class="seccao-titulo">Kuadru Europeu Komún ba Referénsia</h2>
+          <p>
+            Konteúdu hotu husi <em>Pratika Portugés</em> tuir nivel proficiénsia sira ne'ebé define iha <strong>Kuadru Europeu Komún ba Referénsia ba Lian sira (QECR)</strong>, dokumentu ne'ebé Konsellu Europa halo, no ne'ebé ohin loron mak padraun internasionál ba hanorin no avaliasaun lian estranjeiru sira.
+          </p>
+          <p>
+            QECR organiza aprendizajen iha nivel neen: A1, A2, B1, B2, C1 no C2 — husi nivel ki'ik liu to'o nivel as liu.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Cartões de níveis A1, A2, B1 (bilingue interno) -->
+
+      <div class="nivel-card a1" style="margin-top:2rem">
+        <div class="nivel-card-topo">
+          <div class="nivel-badge">A1</div>
+          <div>
+            <span class="nivel-card-titulo">Iniciação · Hahú</span>
+            <span class="nivel-card-tag">Nível atual / Nivel agora — Pratica Português</span>
+          </div>
+        </div>
+        <div class="nivel-descritor">
+          <div class="col-pt">
+            <span class="col-tag pt">Português</span>
+            <p>
+              "É capaz de compreender e usar expressões familiares e quotidianas, assim como enunciados muito simples, que visam satisfazer necessidades concretas. Pode apresentar-se e apresentar outros e é capaz de fazer perguntas e dar respostas sobre aspetos pessoais como, por exemplo, o local onde vive, as pessoas que conhece e as coisas que tem."
+            </p>
+          </div>
+          <div class="col-tt">
+            <span class="col-tag tt">Tétun</span>
+            <p>
+              "Bele komprende no uza espresaun familiar no loron-loron nian, no mós fraze sira simples liu, ne'ebé serve atu satisfés nesesidade konkreta sira. Bele apresenta an no apresenta ema seluk, no bele halo pergunta no fó resposta kona-ba aspetu pesoál sira hanesan, hanesan ezemplu, fatin ne'ebé moris ba, ema sira ne'ebé hatene, no buat sira ne'ebé iha."
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="nivel-card a2">
+        <div class="nivel-card-topo">
+          <div class="nivel-badge">A2</div>
+          <div>
+            <span class="nivel-card-titulo">Elementar · Elementár</span>
+            <span class="nivel-card-tag">Próxima fase / Faze tuir mai</span>
+          </div>
+        </div>
+        <div class="nivel-descritor">
+          <div class="col-pt">
+            <span class="col-tag pt">Português</span>
+            <p>
+              "É capaz de compreender frases isoladas e expressões frequentes relacionadas com áreas de prioridade imediata. Pode comunicar em tarefas simples e em rotinas que exigem apenas uma troca de informação simples e direta sobre assuntos que lhe são familiares."
+            </p>
+          </div>
+          <div class="col-tt">
+            <span class="col-tag tt">Tétun</span>
+            <p>
+              "Bele komprende fraze sira ketak-ketak no espresaun barak ne'ebé bainhira liga ho área prioridade imediata. Bele komunika iha tarefa simples no rutina sira ne'ebé presiza de'it troka informasaun simples no diretu kona-ba asuntu sira ne'ebé hatene tiha ona."
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="nivel-card b1">
+        <div class="nivel-card-topo">
+          <div class="nivel-badge">B1</div>
+          <div>
+            <span class="nivel-card-titulo">Intermédio · Intermédiu</span>
+            <span class="nivel-card-tag">Para o futuro / Ba futuru</span>
+          </div>
+        </div>
+        <div class="nivel-descritor">
+          <div class="col-pt">
+            <span class="col-tag pt">Português</span>
+            <p>
+              Capacidade de lidar com situações encontradas em viagem, produzir textos simples sobre assuntos familiares e descrever experiências, eventos e ambições.
+            </p>
+          </div>
+          <div class="col-tt">
+            <span class="col-tag tt">Tétun</span>
+            <p>
+              Kapasidade atu lida ho situasaun sira ne'ebé hasoru bainhira viajen, halo testu simples kona-ba asuntu sira hatene, no deskreve esperiénsia, eventu no ambisaun sira.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECÇÃO 3 — Cobertura A1 -->
+    <section class="seccao">
+      <p class="seccao-num">03</p>
+      <div class="bilingue">
+
+        <div class="col-pt">
+          <span class="col-tag pt">Português</span>
+          <h2 class="seccao-titulo">O que <em>cobrimos</em> do nível A1</h2>
+          <p>
+            Os temas atualmente disponíveis no <em>Pratica Português</em> cobrem as principais funções comunicativas do nível A1 definidas pelo <strong>Referencial Camões PLE</strong>.
+          </p>
+        </div>
+
+        <div class="col-tt">
+          <span class="col-tag tt">Tétun</span>
+          <h2 class="seccao-titulo">Saida mak <em>kobre</em> husi nivel A1</h2>
+          <p>
+            Tema sira ne'ebé ohin loron iha <em>Pratika Portugés</em> kobre funsaun komunikativa prinsipál sira husi nivel A1 ne'ebé define iha <strong>Referensiál Camões PLE</strong>.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="tabela-wrap">
+        <table class="tabela-descritores">
+          <thead>
+            <tr>
+              <th>Função comunicativa A1 / Funsaun komunikativa A1</th>
+              <th>Tema do <em>Pratica</em></th>
+              <th class="col-status">Estado · Situasaun</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-categoria">A.1 — Saudar e cumprimentar / Saúda no kumprimenta</td>
+              <td>01 · Dizer olá / Dehan olá</td>
+              <td class="col-status feito">✓</td>
+            </tr>
+            <tr>
+              <td class="col-categoria">A.1 — Despedir-se / Despede an</td>
+              <td>01 · Dizer olá / Dehan olá</td>
+              <td class="col-status feito">✓</td>
+            </tr>
+            <tr>
+              <td class="col-categoria">A.3 — Apresentar-se / Apresenta an</td>
+              <td>01 · Dizer olá &nbsp;|&nbsp; 02 · Alfabeto</td>
+              <td class="col-status feito">✓</td>
+            </tr>
+            <tr>
+              <td class="col-categoria">A.2.11 — Agradecer / Agradese</td>
+              <td>01 · Dizer olá / Dehan olá</td>
+              <td class="col-status feito">✓</td>
+            </tr>
+            <tr>
+              <td class="col-categoria">G.2.13–14 — Soletrar / Soletra</td>
+              <td>02 · O alfabeto / Alfabétu</td>
+              <td class="col-status feito">✓</td>
+            </tr>
+            <tr>
+              <td class="col-categoria">B.1.4 / B.2.4 — Quantidades, numerais / Kuantidade, númeru</td>
+              <td>03 · Os números / Númeru sira</td>
+              <td class="col-status pendente">em breve · sei mai</td>
+            </tr>
+            <tr>
+              <td class="col-categoria">A.3 — Apresentar família / Apresenta família</td>
+              <td>04 · A minha família / Ha'u-nia família</td>
+              <td class="col-status pendente">em breve · sei mai</td>
+            </tr>
+            <tr>
+              <td class="col-categoria">B.1.3 — Situação temporal (horas) / Tempu, oras</td>
+              <td>—</td>
+              <td class="col-status pendente">futuro · futuru</td>
+            </tr>
+            <tr>
+              <td class="col-categoria">B.2.2 — Localização / Lokalizasaun</td>
+              <td>—</td>
+              <td class="col-status pendente">futuro · futuru</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SECÇÃO 4 — Metodologia -->
+    <section class="seccao">
+      <p class="seccao-num">04</p>
+      <div class="bilingue">
+
+        <div class="col-pt">
+          <span class="col-tag pt">Português</span>
+          <h2 class="seccao-titulo">Como é que se <em>aprende</em>?</h2>
+          <p>
+            Cada tema combina quatro tipos de atividade, num modelo de aprendizagem ativa que respeita o ritmo do utilizador.
+          </p>
+          <p>
+            <strong>Vocabulário visual</strong> — apresenta novas palavras com imagem, áudio em português europeu, e tradução em Tétum disponível ao toque.
+          </p>
+          <p>
+            <strong>Frases para usar</strong> — situa o vocabulário em frases simples e quotidianas, com áudio individual para cada uma.
+          </p>
+          <p>
+            <strong>Exercício interativo</strong> — testa a compreensão auditiva através de escolha múltipla com retorno imediato.
+          </p>
+          <p>
+            <strong>Mini-diálogo</strong> — fecha o tema com uma conversa breve em contexto real, lida em sequência natural.
+          </p>
+          <p>
+            Esta abordagem segue os princípios da didática comunicativa de línguas estrangeiras, em que a língua é tratada como instrumento de comunicação real, não como objeto de memorização teórica.
+          </p>
+        </div>
+
+        <div class="col-tt">
+          <span class="col-tag tt">Tétun</span>
+          <h2 class="seccao-titulo">Oinsá mak <em>aprende</em>?</h2>
+          <p>
+            Tema ida-idak kombina tipu atividade haat, iha modelu aprendizajen ativa ne'ebé respeita uza-na'in nia ritmu.
+          </p>
+          <p>
+            <strong>Vokabuláriu vizuál</strong> — apresenta liafuan foun ho imajen, áudio iha Portugés europeu, no tradusaun iha Tétun ne'ebé bele hatudu ho klik.
+          </p>
+          <p>
+            <strong>Fraze atu uza</strong> — tau vokabuláriu iha fraze simples no loron-loron nian, ho áudio individuál ba ida-idak.
+          </p>
+          <p>
+            <strong>Ezersísiu interativu</strong> — teste komprensaun auditiva ho eskolla múltipla no retornu imediatu.
+          </p>
+          <p>
+            <strong>Diálogu badak</strong> — taka tema ho konversa badak iha kontestu reál, lee tuir sekuénsia naturál.
+          </p>
+          <p>
+            Abordajen ne'e tuir prinsípiu didátika komunikativa ba lian estranjeiru sira, iha-ne'ebé lian trata nu'udar instrumentu komunikasaun reál, la'ós nu'udar objetu memorizasaun teórika.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECÇÃO 5 — Bibliografia (apenas em PT) -->
+    <section class="seccao">
+      <p class="seccao-num">05</p>
+      <h2 class="seccao-titulo">Bibliografia e <em>fontes</em> · Bibliografia no fontes</h2>
+
+      <div class="bibliografia-aviso">
+        <strong>Nota / Nota.</strong>
+        As referências bibliográficas são apresentadas apenas em Português por se tratar de citações de obras técnicas oficiais que não devem ser traduzidas.
+        <em>Referénsia bibliográfika sira apresenta de'it iha Portugés tanba citasaun husi obra tékniku ofisiál sira ne'ebé la bele tradús.</em>
+      </div>
+
+      <div class="bibliografia">
+        <ol>
+          <li>
+            <strong>Camões, I.P.</strong> (s.d.). <em>Referencial Camões PLE — Português Língua Estrangeira</em>. Lisboa: Camões — Instituto da Cooperação e da Língua. Disponível em: <a href="https://www.instituto-camoes.pt/activity/centro-virtual/referencial-camoes-ple" target="_blank" rel="noopener">instituto-camoes.pt</a>
+          </li>
+          <li>
+            <strong>Conselho da Europa</strong> (2001). <em>Quadro Europeu Comum de Referência para as Línguas — Aprendizagem, Ensino, Avaliação (QECR)</em>. Edições ASA / Direção-Geral da Educação.
+          </li>
+          <li>
+            <strong>Conselho da Europa</strong> (2020). <em>Common European Framework of Reference for Languages: Companion Volume</em>. Estrasburgo: Council of Europe Publishing.
+          </li>
+          <li>
+            <strong>Direção-Geral da Educação</strong> (2018). <em>Aprendizagens Essenciais — Português Língua Não Materna</em>. Ministério da Educação, República Portuguesa.
+          </li>
+          <li>
+            <strong>Instituto Nacional de Linguística (INL/UNTL)</strong>. <em>Matadalan Ortográfiku ba Tetun-Prasa</em>. Universidade Nacional Timor Lorosa'e. Decreto Governamental 1/2004.
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- SECÇÃO 6 — Sobre o CAFE -->
+    <section class="seccao">
+      <p class="seccao-num">06</p>
+      <div class="bilingue">
+
+        <div class="col-pt">
+          <span class="col-tag pt">Português</span>
+          <h2 class="seccao-titulo">Sobre o <em>CAFE de Liquiçá</em></h2>
+          <p>
+            O CAFE de Liquiçá — Centro de Aprendizagem e Formação Escolar — é uma das instituições da <strong>rede CAFE</strong> em Timor-Leste, que <strong>ensina em português</strong> desde a pré-escolar até ao 12.º ano de escolaridade. Faz parte de um <strong>projeto de cooperação internacional bilateral entre Portugal e Timor-Leste</strong>.
+          </p>
+          <p>
+            Este recurso digital nasceu da convicção de que aprender uma língua é também abrir uma janela: para a família, para a história, para o mundo.
+          </p>
+        </div>
+
+        <div class="col-tt">
+          <span class="col-tag tt">Tétun</span>
+          <h2 class="seccao-titulo">Kona-ba <em>CAFE de Liquiçá</em></h2>
+          <p>
+            CAFE de Liquiçá — Sentru Aprendizajen no Formasaun Eskolar — mak ida husi instituisaun sira iha <strong>rede CAFE</strong> iha Timor-Leste, ne'ebé <strong>hanorin iha Portugés</strong> husi pré-eskolár to'o tinan dahuluk 12 husi eskolaridade. Tama iha <strong>projetu kooperasaun internasionál bilaterál entre Portugál no Timor-Leste</strong>.
+          </p>
+          <p>
+            Rekursu dijitál ne'e moris husi konviksaun katak aprende lian ida mak mós loke janela ida: ba família, ba istória, ba mundu.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CTA voltar -->
+    <div class="cta-voltar">
+      <a href="pratica.html" class="btn-voltar">← Voltar ao Pratica · Fila ba Pratika</a>
+    </div>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 CAFE de Liquiçá · <a href="index.html">Voltar ao site · Fila ba site</a></p>
+</footer>
+
+<script>
+/* ============================================================
+   Atalho "Bá Tétun" — scroll para primeira secção
+   Em mobile, isso significa saltar para a coluna TT (que aparece abaixo da PT).
+   Em desktop, leva para o topo do conteúdo (TT já está visível à direita).
+   ============================================================ */
+function irParaTetum(evento){
+  evento.preventDefault();
+  const ehMobile = window.matchMedia('(max-width:820px)').matches;
+  const alvo = ehMobile
+    ? document.querySelector('#secao-1 .col-tt')   // em mobile, vai diretamente à coluna Tétum
+    : document.getElementById('secao-1');           // em desktop, vai ao topo da secção
+  if(alvo){
+    alvo.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+}
+</script>
+
+</body>
+</html>
