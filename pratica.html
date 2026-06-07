@@ -221,6 +221,48 @@ nav{
   transform:translateY(-2px);
 }
 .letra-card:active{transform:translateY(0)}
+.letra-audio-icon{
+  position:absolute;
+  top:6px;
+  right:6px;
+  font-size:1.1rem;
+  background:#1a5c2e;
+  color:white;
+  width:26px;
+  height:26px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 2px 6px rgba(0,0,0,0.15);
+  transition:transform 0.2s, background 0.2s;
+  pointer-events:none;
+  line-height:1;
+  animation:pulsoAudio 2s ease-in-out infinite;
+}
+@keyframes pulsoAudio{
+  0%, 100%{transform:scale(1); box-shadow:0 2px 6px rgba(0,0,0,0.15)}
+  50%{transform:scale(1.08); box-shadow:0 2px 10px rgba(26,92,46,0.35)}
+}
+.letra-card:hover .letra-audio-icon{
+  background:#f0a500;
+  color:#1a1a1a;
+  transform:scale(1.2);
+  animation:none;
+}
+.letra-card:active .letra-audio-icon{
+  transform:scale(0.95);
+  animation:none;
+}
+@media(max-width:540px){
+  .letra-audio-icon{
+    width:22px;
+    height:22px;
+    font-size:0.9rem;
+    top:4px;
+    right:4px;
+  }
+}
 .letra-grande{
   font-family:'Playfair Display',serif;
   font-size:2rem;
@@ -1203,6 +1245,7 @@ function renderizarAlfabeto(dados, t){
     const ttsRate = (typeof l.rateAudio === 'number') ? l.rateAudio : 0.9;
     return `
       <div class="letra-card" onclick="lerTexto('${ttsNome}', ${ttsRate})">
+        <span class="letra-audio-icon" aria-hidden="true">🔊</span>
         <div class="letra-grande">${l.letra}${supH}</div>
         <div class="letra-nome">${l.nome}</div>
         <div class="letra-exemplo">${l.exemplo}</div>
