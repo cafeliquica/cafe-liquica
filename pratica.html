@@ -190,7 +190,12 @@ nav{
 .vocab-btn:hover{border-color:var(--verde);color:var(--verde)}
 .vocab-btn.audio{color:var(--vermelho)}
 .vocab-btn.audio:hover{background:var(--vermelho);color:white;border-color:var(--vermelho)}
-.vocab-btn.tetum.ativo{background:var(--amarelo);border-color:var(--amarelo);color:var(--preto)}
+/* Botão Tétum em destaque permanente: amarelo é a cor do Tétum em todo o site.
+   Fechado = amarelo cheio; aberto (tradução visível) = inverte para escuro. */
+.vocab-btn.tetum{background:var(--amarelo);border-color:var(--amarelo);color:var(--preto);font-weight:600;padding:9px 16px;font-size:0.88rem}
+.vocab-btn.tetum:hover{background:#d99400;border-color:#d99400;color:var(--preto)}
+.vocab-btn.tetum.ativo{background:var(--preto);border-color:var(--preto);color:var(--amarelo)}
+.vocab-btn.tetum.ativo:hover{background:#333;border-color:#333;color:var(--amarelo)}
 .vocab-tetum{width:100%;margin-top:0.75rem;padding-top:0.75rem;border-top:1px dashed var(--cinza-medio);font-size:0.95rem;color:var(--texto-claro);display:none}
 .vocab-tetum.visivel{display:block}
 .vocab-tetum strong{color:var(--verde);font-weight:600;letter-spacing:0.05em;text-transform:uppercase;font-size:0.7rem;margin-right:8px}
@@ -253,20 +258,21 @@ nav{
   line-height:1.2;
 }
 .letra-tetum-btn{
-  background:transparent;
+  background:rgba(240,165,0,0.15);
   border:none;
   font-size:0.7rem;
-  color:rgba(0,0,0,0.35);
+  font-weight:600;
+  color:#a07000;
   cursor:pointer;
-  padding:2px 6px;
+  padding:3px 8px;
   margin-top:4px;
   border-radius:3px;
   transition:color 0.2s,background 0.2s;
   font-family:inherit;
 }
 .letra-tetum-btn:hover{
-  color:var(--amarelo);
-  background:rgba(240,165,0,0.1);
+  color:var(--preto);
+  background:var(--amarelo);
 }
 .letra-tetum-traducao{
   display:none;
@@ -407,9 +413,9 @@ nav{
 .dialogo-conteudo{flex:1;min-width:0}
 .dialogo-linha-topo{display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap}
 .dialogo-texto{flex:1;font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;min-width:160px}
-.dialogo-tetum-btn{background:transparent;border:1px solid var(--cinza-medio);color:var(--texto-claro);padding:5px 10px;border-radius:4px;font-size:0.72rem;cursor:pointer;font-family:'Source Sans 3',sans-serif;flex-shrink:0;transition:all 0.2s}
-.dialogo-tetum-btn:hover{border-color:var(--amarelo);color:var(--amarelo)}
-.dialogo-tetum-btn.ativo{background:var(--amarelo);border-color:var(--amarelo);color:var(--preto)}
+.dialogo-tetum-btn{background:var(--amarelo);border:1px solid var(--amarelo);color:var(--preto);font-weight:600;padding:6px 12px;border-radius:4px;font-size:0.74rem;cursor:pointer;font-family:'Source Sans 3',sans-serif;flex-shrink:0;transition:all 0.2s}
+.dialogo-tetum-btn:hover{background:#d99400;border-color:#d99400;color:var(--preto)}
+.dialogo-tetum-btn.ativo{background:var(--preto);border-color:var(--preto);color:var(--amarelo)}
 .dialogo-tetum{display:none;margin-top:0.6rem;padding-top:0.6rem;border-top:1px dashed var(--cinza-medio);font-family:'Source Sans 3',sans-serif;font-size:0.9rem;color:var(--texto-claro);font-style:normal}
 .dialogo-tetum.visivel{display:block}
 .dialogo-tetum strong{color:var(--verde);font-weight:600;letter-spacing:0.05em;text-transform:uppercase;font-size:0.7rem;margin-right:8px}
@@ -630,8 +636,8 @@ footer a{color:var(--amarelo);text-decoration:none}
   <div class="nav-direita">
     <a href="index.html" class="nav-back" data-pt="← Voltar ao site" data-tt="← Fila ba site">← Voltar ao site</a>
     <div class="nav-lang">
-      <button class="lang-btn active" onclick="setLang('pt')" id="btn-pt">PT</button>
-      <button class="lang-btn" onclick="setLang('tt')" id="btn-tt">TT</button>
+      <button class="lang-btn" onclick="setLang('tt')" id="btn-tt">Tetun</button>
+      <button class="lang-btn active" onclick="setLang('pt')" id="btn-pt">Português</button>
     </div>
   </div>
 </nav>
