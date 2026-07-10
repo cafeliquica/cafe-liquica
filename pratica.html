@@ -221,48 +221,6 @@ nav{
   transform:translateY(-2px);
 }
 .letra-card:active{transform:translateY(0)}
-.letra-audio-icon{
-  position:absolute;
-  top:6px;
-  right:6px;
-  font-size:1.1rem;
-  background:#1a5c2e;
-  color:white;
-  width:26px;
-  height:26px;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  box-shadow:0 2px 6px rgba(0,0,0,0.15);
-  transition:transform 0.2s, background 0.2s;
-  pointer-events:none;
-  line-height:1;
-  animation:pulsoAudio 2s ease-in-out infinite;
-}
-@keyframes pulsoAudio{
-  0%, 100%{transform:scale(1); box-shadow:0 2px 6px rgba(0,0,0,0.15)}
-  50%{transform:scale(1.08); box-shadow:0 2px 10px rgba(26,92,46,0.35)}
-}
-.letra-card:hover .letra-audio-icon{
-  background:#f0a500;
-  color:#1a1a1a;
-  transform:scale(1.2);
-  animation:none;
-}
-.letra-card:active .letra-audio-icon{
-  transform:scale(0.95);
-  animation:none;
-}
-@media(max-width:540px){
-  .letra-audio-icon{
-    width:22px;
-    height:22px;
-    font-size:0.9rem;
-    top:4px;
-    right:4px;
-  }
-}
 .letra-grande{
   font-family:'Playfair Display',serif;
   font-size:2rem;
@@ -456,6 +414,27 @@ nav{
 .dialogo-tetum.visivel{display:block}
 .dialogo-tetum strong{color:var(--verde);font-weight:600;letter-spacing:0.05em;text-transform:uppercase;font-size:0.7rem;margin-right:8px}
 
+/* BILINGUE (andaime) — instruções e feedback: Tétum primeiro, PT por baixo */
+.bi-tt{display:block;font-weight:600;color:inherit}
+.bi-pt{display:block;font-size:0.85em;opacity:0.75;margin-top:2px;font-weight:400}
+
+/* ETIQUETAS DE REGISTO (informal / formal) — frases e diálogo */
+.registo-tag{display:inline-block;font-family:'Source Sans 3',sans-serif;font-style:normal;font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:3px 9px;border-radius:10px;flex-shrink:0}
+.registo-tag.informal{background:rgba(26,92,46,0.1);color:var(--verde)}
+.registo-tag.formal{background:rgba(192,57,43,0.1);color:var(--vermelho)}
+.dialogo-registo{text-align:center;margin:-0.5rem 0 1rem}
+
+/* NOTA DIDÁTICA no vocabulário (ex.: obrigado/obrigada) — sempre bilingue */
+.vocab-nota{width:100%;margin-top:0.75rem;background:#fff8e5;border-left:3px solid var(--amarelo);padding:0.75rem 0.9rem;border-radius:0 6px 6px 0;font-size:0.82rem;color:var(--texto-claro);line-height:1.5}
+.vocab-nota .alfabeto-nota-linha{margin-bottom:0.35rem}
+.vocab-nota .alfabeto-nota-linha:last-child{margin-bottom:0}
+
+/* SESSÃO DO EXERCÍCIO — progresso e resultado */
+.exercicio-progresso{text-align:center;font-size:0.7rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--texto-claro);margin-bottom:0.75rem}
+.exercicio-resultado{text-align:center;padding:2rem 1rem;background:white;border:1px solid var(--cinza-medio);border-radius:12px;margin-bottom:1.5rem}
+.resultado-emoji{font-size:2.6rem;line-height:1;margin-bottom:0.5rem}
+.resultado-score{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:var(--verde);margin-bottom:0.5rem}
+
 /* FOOTER */
 footer{background:var(--preto);color:rgba(255,255,255,0.5);padding:2.5rem 2.5rem 2rem;text-align:center;font-size:0.85rem}
 footer a{color:var(--amarelo);text-decoration:none}
@@ -530,6 +509,7 @@ footer a{color:var(--amarelo);text-decoration:none}
   .dialogo-btn-ouvir, .dialogo-controlo,
   .exercicio-audio-btn, .exercicio-audio-wrap, .exercicio-acoes,
   .exercicio-opcoes, .exercicio-feedback, .exercicio-situacao-wrap,
+  .exercicio-progresso, .exercicio-resultado,
   #ex-audio-wrap, .painel-back,
   .vocab-btn.tetum, .letra-tetum-btn, .dialogo-tetum-btn, .frase-tetum-btn{
     display:none !important;
@@ -694,7 +674,7 @@ footer a{color:var(--amarelo);text-decoration:none}
         <p class="tema-num">01</p>
         <div class="tema-emoji">👋🏽</div>
         <h3 class="tema-titulo" data-pt="Dizer olá" data-tt="Dehan olá">Dizer olá</h3>
-        <p class="tema-info" data-pt="7 palavras · 5 frases · 1 exercício" data-tt="Liafuan 7 · Fraze 5 · Ezersísiu 1">7 palavras · 5 frases · 1 exercício</p>
+        <p class="tema-info" data-pt="9 palavras · 8 frases · 1 exercício" data-tt="Liafuan 9 · Fraze 8 · Ezersísiu 1">9 palavras · 8 frases · 1 exercício</p>
         <span class="tema-btn" data-pt="Começar →" data-tt="Hahú →">Começar →</span>
       </div>
 
@@ -702,7 +682,7 @@ footer a{color:var(--amarelo);text-decoration:none}
         <p class="tema-num">02</p>
         <div class="tema-emoji">🔤</div>
         <h3 class="tema-titulo" data-pt="O alfabeto" data-tt="Alfabétu">O alfabeto</h3>
-        <p class="tema-info" data-pt="26 letras · 6 frases · 1 exercício" data-tt="Letra 26 · Fraze 6 · Ezersísiu 1">26 letras · 6 frases · 1 exercício</p>
+        <p class="tema-info" data-pt="26 letras · 5 frases · 1 exercício" data-tt="Letra 26 · Fraze 5 · Ezersísiu 1">26 letras · 5 frases · 1 exercício</p>
         <span class="tema-btn" data-pt="Começar →" data-tt="Hahú →">Começar →</span>
       </div>
 
@@ -797,6 +777,7 @@ footer a{color:var(--amarelo);text-decoration:none}
         <div class="bloco-num">3</div>
         <h3 class="bloco-titulo" data-pt="Exercício — ouve e escolhe" data-tt="Ezersísiu — rona no hili">Exercício — ouve e escolhe</h3>
       </div>
+      <p class="exercicio-progresso" id="ex-progresso"></p>
       <p class="exercicio-instrucao" id="ex-instrucao">Toca no botão verde para ouvir uma palavra. Depois, escolhe a opção certa.</p>
       <div class="exercicio-audio-wrap" id="ex-audio-wrap">
         <button class="exercicio-audio-btn" onclick="ouvirExercicio()" id="ex-audio-btn">🔊</button>
@@ -804,8 +785,9 @@ footer a{color:var(--amarelo);text-decoration:none}
       <div class="exercicio-situacao-wrap" id="ex-situacao-wrap" style="display:none"></div>
       <div class="exercicio-opcoes" id="ex-opcoes"></div>
       <div class="exercicio-feedback" id="ex-feedback"></div>
+      <div class="exercicio-resultado" id="ex-resultado" style="display:none"></div>
       <div class="exercicio-acoes">
-        <button id="btn-novo-exercicio" class="exercicio-btn outline" onclick="novaPergunta()">Nova palavra</button>
+        <button id="btn-novo-exercicio" class="exercicio-btn outline" style="display:none" onclick="avancarSessao()">Seguinte</button>
       </div>
     </div>
 
@@ -818,6 +800,7 @@ footer a{color:var(--amarelo);text-decoration:none}
       <div class="dialogo-controlo">
         <button class="dialogo-btn-ouvir" id="dialogo-btn" onclick="ouvirDialogo()"></button>
       </div>
+      <p class="dialogo-registo" id="dialogo-registo"></p>
       <div class="dialogo-lista" id="dialogo-lista"></div>
     </div>
 
@@ -826,13 +809,22 @@ footer a{color:var(--amarelo);text-decoration:none}
 
 <footer>
   <p>© 2026 CAFE de Liquiçá · <a href="index.html" data-pt="Voltar ao site" data-tt="Fila ba site">Voltar ao site</a></p>
+  <!-- Aviso de transparência: tradução TT com apoio de IA [REV-TT] -->
+  <p style="margin:0.9rem auto 0;font-size:0.72rem;opacity:0.75;line-height:1.6;max-width:680px">
+    Tradusaun ba Tetun halo ho ajuda husi intelijénsia artifisiál (IA) no bele iha sala. Hetan sala ida? Favór avizu ami: <a href="mailto:liquicacafe@hotmail.com">liquicacafe@hotmail.com</a> — obrigadu barak!<br>
+    A tradução para tétum foi feita com apoio de inteligência artificial (IA) e pode conter erros. Encontrou algum? Agradecemos que nos avise: <a href="mailto:liquicacafe@hotmail.com">liquicacafe@hotmail.com</a> — obrigada!
+  </p>
 </footer>
 
 <script>
 /* ============================================================
    ESTADO DE LÍNGUA — partilhado com o site principal via localStorage
+   Na PRIMEIRA visita (sem preferência guardada) a interface abre em
+   TÉTUM: o público-alvo são adultos que ainda não sabem português,
+   e a interface é andaime — tem de ser compreendida à partida.
+   Quem preferir português carrega em «PT» e a escolha fica guardada.
    ============================================================ */
-let langAtual = localStorage.getItem('cafe-lang') || 'pt';
+let langAtual = localStorage.getItem('cafe-lang') || 'tt';
 
 /* ============================================================
    DADOS DO TEMA 1 — DIZER OLÁ
@@ -842,20 +834,36 @@ let langAtual = localStorage.getItem('cafe-lang') || 'pt';
    ============================================================ */
 const tema1 = {
   vocab:[
+    /* Ordenado por função (Referencial Camões): saudar (1-4) → despedir (5-6)
+       → agradecer e responder (7-8) → apresentar-se (9) */
     {emoji:'👋🏽',  pt:'Olá',         tt:'Olá / Bondia'},        /* [REV-TT] */
     {emoji:'☀️',  pt:'Bom dia',     tt:'Bondia'},              /* [REV-TT] */
     {emoji:'🌤️', pt:'Boa tarde',   tt:'Botarde'},             /* [REV-TT] */
     {emoji:'🌙', pt:'Boa noite',   tt:'Bonoite'},             /* [REV-TT] */
-    {emoji:'👋🏽', pt:'Adeus',       tt:'Dá'},                  /* [REV-TT] forma usada em Liquiçá */
-    {emoji:'🙏🏽', pt:'Obrigado',    tt:'Obrigadu'},            /* [REV-TT] */
+    {emoji:'🚶🏽', pt:'Adeus',       tt:'Dá'},                  /* [REV-TT] forma usada em Liquiçá */
+    {emoji:'🕒', pt:'Até logo',    tt:'Hasoru fali'},         /* [REV-TT] confirmar forma usada em Liquiçá */
+    {emoji:'🙏🏽', pt:'Obrigado / Obrigada', audio:'Obrigado. Obrigada.', tt:'Obrigadu',   /* [REV-TT] */
+      nota:{
+        tt:'Mane sira dehan «obrigado». Feto sira dehan «obrigada».',                      /* [REV-TT] */
+        pt:'Os homens dizem «obrigado». As mulheres dizem «obrigada».'
+      }},
+    {emoji:'🤲🏽', pt:'De nada',     tt:'De nada (uza mós iha Tetun) · La iha buat ida'},  /* [REV-TT] empréstimo corrente confirmado no terreno + forma tétum de referência */
     {emoji:'😊', pt:'Prazer',      tt:'Kontente atu hasoru'}  /* [REV-TT] */
   ],
+  /* Nota didática do bloco de frases — ponte tu/você ↔ ó/Ita (transferência L1→L2) */
+  frasesNota:{
+    tt:'Iha portugés: «Como te chamas?» ba ema besik (hanesan «ó» iha Tetun). «Como se chama?» ba ema boot ka ema foun (hanesan «Ita»).',  /* [REV-TT] */
+    pt:'Em português: «Como te chamas?» usa-se com pessoas próximas (como «ó» em tétum). «Como se chama?» usa-se com pessoas mais velhas ou desconhecidas (como «Ita»).'
+  },
   frases:[
-    {pt:'Bom dia! Como te chamas?',  tt:'Bondia! Naran sá?'},               /* [REV-TT] */
-    {pt:'Eu chamo-me Maria.',         tt:'Hau-nia naran Maria.'},            /* [REV-TT] */
-    {pt:'Muito prazer!',              tt:'Kontente atu hasoru ó!'},          /* [REV-TT] */
-    {pt:'Boa tarde, professora.',     tt:'Botarde, mestra.'},                /* [REV-TT] */
-    {pt:'Até amanhã!',                tt:'Aban hasoru fali!'}                /* [REV-TT] */
+    {pt:'Bom dia! Como te chamas?',   tt:'Bondia! Ó-nia naran saida?',      registo:'informal'},  /* [REV-TT] */
+    {pt:'Eu chamo-me Maria.',          tt:'Ha\'u-nia naran Maria.'},                               /* [REV-TT] */
+    {pt:'Muito prazer!',               tt:'Kontente atu hasoru ó!'},                               /* [REV-TT] */
+    {pt:'Bom dia. Como se chama?',     tt:'Bondia. Ita-nia naran saida?',    registo:'formal'},    /* [REV-TT] */
+    {pt:'Como está?',                  tt:'Ita diak ka lae?',                registo:'formal'},    /* [REV-TT] */
+    {pt:'Estou bem, obrigado.',        tt:'Ha\'u diak, obrigadu.'},                                /* [REV-TT] */
+    {pt:'Boa tarde, professora.',      tt:'Botarde, mestra.',                registo:'formal'},
+    {pt:'Até amanhã!',                 tt:'Aban hasoru fali!'}                                     /* [REV-TT] */
   ],
   exercicio:[
     /* TIPO A — ouve e escolhe (auditivo PT) */
@@ -869,16 +877,24 @@ const tema1 = {
     {tipo:'ouve', ouvir:'Olá',         opcoes:['Olá','Bom dia','Boa tarde']},
     {tipo:'ouve', ouvir:'Obrigado',    opcoes:['Obrigado','Adeus','Boa noite']},
     {tipo:'ouve', ouvir:'Boa tarde',   opcoes:['Boa tarde','Bom dia','Prazer']},
-    /* TIPO B — lê situação em Tétum, escolhe expressão PT correta [REV-TT] */
-    {tipo:'situacao', situacaoTT:'Saúda ema iha dadeer?',          opcoes:['Bom dia','Boa noite','Adeus']},          /* [REV-TT] de manhã */
-    {tipo:'situacao', situacaoTT:'Saúda ema iha lokraik?',         opcoes:['Boa tarde','Bom dia','Olá']},            /* [REV-TT] à tarde */
-    {tipo:'situacao', situacaoTT:'Saúda ema iha kalan?',           opcoes:['Boa noite','Bom dia','Adeus']},          /* [REV-TT] à noite */
-    {tipo:'situacao', situacaoTT:'Despede an husi ema?',           opcoes:['Adeus','Prazer','Obrigado']},            /* [REV-TT] despedir */
-    {tipo:'situacao', situacaoTT:'Bainhira ema ajuda ó?',          opcoes:['Obrigado','Olá','Adeus']},               /* [REV-TT] agradecer */
-    {tipo:'situacao', situacaoTT:'Hasoru ema foun, dahuluk?',      opcoes:['Prazer','Obrigado','Boa noite']},        /* [REV-TT] conhecer pessoa */
-    {tipo:'situacao', situacaoTT:'Saudasaun jerál, informál?',     opcoes:['Olá','Boa noite','Adeus']},              /* [REV-TT] saudação geral */
-    {tipo:'situacao', situacaoTT:'Iha rohan loron, tama uma?',     opcoes:['Boa noite','Boa tarde','Bom dia']}       /* [REV-TT] fim do dia */
+    /* TIPO B — lê situação em Tétum, escolhe expressão PT correta [REV-TT]
+       A resposta certa vai agora no campo explícito "certa" (mais robusto
+       do que a convenção antiga "primeira opção do array"). */
+    {tipo:'situacao', situacaoTT:'Saúda ema iha dadeer?',          certa:'Bom dia',    opcoes:['Bom dia','Boa noite','Adeus']},          /* [REV-TT] de manhã */
+    {tipo:'situacao', situacaoTT:'Saúda ema iha lokraik?',         certa:'Boa tarde',  opcoes:['Boa tarde','Bom dia','Olá']},            /* [REV-TT] à tarde */
+    {tipo:'situacao', situacaoTT:'Saúda ema iha kalan?',           certa:'Boa noite',  opcoes:['Boa noite','Bom dia','Adeus']},          /* [REV-TT] à noite */
+    {tipo:'situacao', situacaoTT:'Despede an husi ema?',           certa:'Adeus',      opcoes:['Adeus','Prazer','Obrigado']},            /* [REV-TT] despedir */
+    {tipo:'situacao', situacaoTT:'Bainhira ema ajuda ó?',          certa:'Obrigado',   opcoes:['Obrigado','Olá','Adeus']},               /* [REV-TT] agradecer */
+    {tipo:'situacao', situacaoTT:'Hasoru ema foun, dahuluk?',      certa:'Prazer',     opcoes:['Prazer','Obrigado','Boa noite']},        /* [REV-TT] conhecer pessoa */
+    {tipo:'situacao', situacaoTT:'Saudasaun jerál, informál?',     certa:'Olá',        opcoes:['Olá','Boa noite','Adeus']},              /* [REV-TT] saudação geral */
+    {tipo:'situacao', situacaoTT:'Iha rohan loron, tama uma?',     certa:'Boa noite',  opcoes:['Boa noite','Boa tarde','Bom dia']},      /* [REV-TT] fim do dia */
+    /* Situações novas — palavras novas do Bloco 1 + nota de género [REV-TT] */
+    {tipo:'situacao', situacaoTT:'Ema ida ajuda ó, ó dehan «obrigadu». Nia responde saida?',  certa:'De nada',    opcoes:['De nada','Adeus','Boa noite']},     /* [REV-TT] responder a agradecimento */
+    {tipo:'situacao', situacaoTT:'Ó sei hasoru fali ema iha oras badak.',                     certa:'Até logo',   opcoes:['Até logo','Bom dia','Prazer']},     /* [REV-TT] reencontro em breve */
+    {tipo:'situacao', situacaoTT:'Ó sei hasoru fali ema aban.',                               certa:'Até amanhã', opcoes:['Até amanhã','Boa tarde','De nada']},/* [REV-TT] reencontro amanhã */
+    {tipo:'situacao', situacaoTT:'Feto ida hakarak agradese. Nia dehan saida?',               certa:'Obrigada',   opcoes:['Obrigada','Obrigado','De nada']}    /* [REV-TT] testa a nota obrigado/obrigada */
   ],
+  dialogoRegisto:'informal',
   dialogo:[
     {quem:'A', texto:'Bom dia! Como te chamas?',         tt:'Bondia! Naran sá?'},               /* [REV-TT] */
     {quem:'B', texto:'Chamo-me João. E tu?',             tt:'Hau-nia naran João. Ó nian?'},     /* [REV-TT] */
@@ -920,7 +936,7 @@ const tema2 = {
     {letra:'R', nome:'erre',   nomeAudio:'érre',  exemplo:'Rua',     exemploTT:'Dalan'},        /* [REV-TT] */
     {letra:'S', nome:'esse',   nomeAudio:'ésse',  exemplo:'Sol',     exemploTT:'Loro-matan'},   /* [REV-TT] */
     {letra:'T', nome:'tê',     exemplo:'Tempo',   exemploTT:'Tempu'},        /* [REV-TT] */
-    {letra:'U', nome:'u',      exemplo:'Uva', exemploTT:'Uvas'},   /* [REV-TT] */
+    {letra:'U', nome:'u',      nomeAudio:'ú',     rateAudio:0.7, exemplo:'Uva', exemploTT:'Uvas'},  /* [REV-TT] som prolongado */
     {letra:'V', nome:'vê',     exemplo:'Voz',     exemploTT:'Lian'},         /* [REV-TT] */
     {letra:'X', nome:'xis',    exemplo:'Xadrez',  exemploTT:'Xadrez'},       /* [REV-TT] */
     {letra:'Z', nome:'zê',     exemplo:'Zebra',   exemploTT:'Zebra'},        /* [REV-TT] */
@@ -934,8 +950,7 @@ const tema2 = {
     {texto:'M - A - R - I - A : Maria',                soletrar:['éme','á','érre','i','á'], palavraFinal:'Maria'},
     {pt:'Pode soletrar o seu sobrenome, por favor?',   tt:'Bele soletra nia sobrenaran, favór ida?'},                                               /* [REV-TT] */
     {texto:'S - I - L - V - A : Silva',                soletrar:['ésse','i','éle','vê','á'], palavraFinal:'Silva'},
-    {pt:'É com C ou S?',                                tt:'Ho letra C ka S?'},                                                                         /* [REV-TT] */
-    {pt:'É com S.',                                     tt:'Ho letra S.'}                                                                              /* [REV-TT] */
+    {pt:'É com cê ou esse?',                            tt:'Ho letra "C" ka "S"?'}                                                                    /* [REV-TT] */
   ],
   exercicio:[
     /* TIPO A — ouve nome da letra, escolhe a letra */
@@ -944,12 +959,12 @@ const tema2 = {
     {tipo:'ouve-letra', ouvir:'é',        opcoes:['E','A','I']},
     {tipo:'ouve-letra', ouvir:'i',        opcoes:['I','E','Y']},
     {tipo:'ouve-letra', ouvir:'ó',        opcoes:['O','A','U']},
-    {tipo:'ouve-letra', ouvir:'u',        opcoes:['U','O','V']},   /* letra U */
+    {tipo:'ouve-letra', ouvir:'ú',        opcoes:['U','O','V']},   /* TTS lê 'ú' (acentuado) — letra escrita é U */
     /* Consoantes oclusivas */
     {tipo:'ouve-letra', ouvir:'bê',       opcoes:['B','D','P']},
-    {tipo:'ouve-letra', ouvir:'dê',       opcoes:['D','B','P']},
+    {tipo:'ouve-letra', ouvir:'dê',       opcoes:['D','B','T']},
     {tipo:'ouve-letra', ouvir:'pê',       opcoes:['P','B','T']},
-    {tipo:'ouve-letra', ouvir:'tê',       opcoes:['T','P','C']},
+    {tipo:'ouve-letra', ouvir:'tê',       opcoes:['T','D','P']},
     /* Sibilantes confundíveis (cê / esse / zê) */
     {tipo:'ouve-letra', ouvir:'cê',       opcoes:['C','S','Z']},
     {tipo:'ouve-letra', ouvir:'ésse',     opcoes:['S','C','Z']},   /* nomeAudio do S */
@@ -1006,9 +1021,9 @@ const tema2 = {
   ],
   dialogo:[
     {quem:'A', texto:'Bom dia! Qual é o seu nome?',         tt:'Bondia! Saida mak nia naran?'},                /* [REV-TT] */
-    {quem:'B', texto:'Chamo-me Ana Gomes.',                    tt:'Ha\'u-nia naran Ana Gomes.'},                    /* [REV-TT] */
-    {quem:'A', texto:'Pode soletrar Gomes, por favor?',         tt:'Bele soletra Gomes, favór ida?'},              /* [REV-TT] */
-    {quem:'B', texto:'G - O - M - E - S',                    soletrar:['gê','ó','éme','é','ésse']},
+    {quem:'B', texto:'Chamo-me Ana Silva.',                  tt:'Hau-nia naran Ana Silva.'},                    /* [REV-TT] */
+    {quem:'A', texto:'Pode soletrar Silva, por favor?',      tt:'Bele soletra Silva, favór ida?'},              /* [REV-TT] */
+    {quem:'B', texto:'S - I - L - V - A',                    soletrar:['ésse','i','éle','vê','á']},
     {quem:'A', texto:'Obrigada!',                            tt:'Obrigadu!'}                                    /* [REV-TT] */
   ]
 };
@@ -1035,7 +1050,9 @@ const i18n = {
     exSituacaoTag:'Situação',
     feedbackCerto:'✓ Boa! Acertaste. Tentas outra?',
     feedbackErrado:(certa)=>'✗ Quase! A resposta certa era "'+certa+'". Toca em "Nova" para tentar outra.',
-    tetumLabel:'Tétum:'
+    tetumLabel:'Tétum:',
+    registo_informal:'informal',
+    registo_formal:'formal'
   },
   tt:{
     btnOuvir:'🔊 Rona',                                                      /* [REV-TT] */
@@ -1053,7 +1070,9 @@ const i18n = {
     exSituacaoTag:'Situasaun',                                                                                                /* [REV-TT] */
     feedbackCerto:'✓ Diak! Loos! Hakarak koko seluk?',                       /* [REV-TT] */
     feedbackErrado:(certa)=>'✗ Próximu! Resposta loos mak "'+certa+'". Klik "Foun" atu koko seluk.', /* [REV-TT] */
-    tetumLabel:'Tétum:'
+    tetumLabel:'Tétum:',
+    registo_informal:'informál',                                             /* [REV-TT] */
+    registo_formal:'formál'                                                  /* [REV-TT] */
   }
 };
 
@@ -1087,9 +1106,9 @@ let temaAtual = null;
 
 function abrirTema(id){
   if(!temas[id]){return}  // só temas registados
-  // ao trocar de tema, reset do histórico do exercício
+  // ao trocar de tema, começa uma sessão nova do exercício
   if(temaAtual !== id){
-    historicoExercicio = [];
+    sessao = null;
   }
   temaAtual = id;
   document.getElementById('painel-tema').classList.add('visivel');
@@ -1125,31 +1144,49 @@ function renderizarTema(){
     vl.innerHTML = renderizarAlfabeto(dados, t);
   }else{
     // vocabulário tradicional (Tema 1, e futuros 3 e 4)
+    // - v.audio (opcional): texto alternativo para a síntese de voz
+    //   (ex.: "Obrigado / Obrigada" lê "Obrigado. Obrigada.")
+    // - v.nota (opcional): nota didática bilingue, SEMPRE visível nas duas
+    //   línguas (TT primeiro) — é andaime, como a nota do H mudo no Tema 2
     vl.innerHTML = dados.vocab.map((v,i)=>`
       <div class="vocab-item">
         <div class="vocab-emoji">${v.emoji}</div>
         <div class="vocab-pt">${v.pt}</div>
         <div class="vocab-acoes">
-          <button class="vocab-btn audio" onclick="lerTexto('${v.pt}')">${t.btnOuvir}</button>
+          <button class="vocab-btn audio" onclick="lerTexto('${(v.audio||v.pt).replace(/'/g,"\\'")}')">${t.btnOuvir}</button>
           <button class="vocab-btn tetum" onclick="toggleTetum(${i}, this)">${t.btnTetum}</button>
         </div>
         <div class="vocab-tetum" id="tetum-${i}">
           <strong>${t.tetumLabel}</strong>${v.tt}
         </div>
+        ${v.nota ? `
+        <div class="vocab-nota">
+          <div class="alfabeto-nota-linha"><span class="alfabeto-nota-tag tt">TT</span><span>${v.nota.tt}</span></div>
+          <div class="alfabeto-nota-linha"><span class="alfabeto-nota-tag pt">PT</span><span>${v.nota.pt}</span></div>
+        </div>` : ''}
       </div>
     `).join('');
   }
 
-  // BLOCO 2 — frases (PT, sempre); aceita string simples, objeto {pt,tt}, ou objeto {texto, soletrar}
+  // BLOCO 2 — frases (PT, sempre); aceita string simples, objeto {pt,tt,registo}, ou objeto {texto, soletrar}
   const fl = document.getElementById('frases-lista');
-  fl.innerHTML = dados.frases.map((f, idx)=>{
-    // Normalizar entrada para sempre ter "texto" (PT) e opcionalmente "tt"
+
+  // Nota didática do bloco (ex.: ponte tu/você ↔ ó/Ita no Tema 1) —
+  // bilingue e sempre visível (TT primeiro): é andaime, não conteúdo
+  const flNota = dados.frasesNota ? `
+    <div class="alfabeto-nota" style="margin-bottom:1rem">
+      <div class="alfabeto-nota-linha"><span class="alfabeto-nota-tag tt">TT</span><span>${dados.frasesNota.tt}</span></div>
+      <div class="alfabeto-nota-linha"><span class="alfabeto-nota-tag pt">PT</span><span>${dados.frasesNota.pt}</span></div>
+    </div>` : '';
+
+  fl.innerHTML = flNota + dados.frases.map((f, idx)=>{
+    // Normalizar entrada para sempre ter "texto" (PT) e opcionalmente "tt"/"registo"
     let obj;
     if(typeof f === 'string'){
       obj = {texto:f};
     }else if(f.pt){
-      // formato Tema 1: {pt, tt}
-      obj = {texto:f.pt, tt:f.tt};
+      // formato Tema 1: {pt, tt, registo}
+      obj = {texto:f.pt, tt:f.tt, registo:f.registo};
     }else{
       // formato Tema 2: {texto, soletrar, palavraFinal}
       obj = f;
@@ -1169,8 +1206,14 @@ function renderizarTema(){
       ? `<div class="vocab-tetum" id="${idTT}"><strong>${t.tetumLabel}</strong>${obj.tt}</div>`
       : '';
 
+    // etiqueta de registo (informal / formal) — só nas frases marcadas
+    const tagRegisto = obj.registo
+      ? `<span class="registo-tag ${obj.registo}">${t['registo_'+obj.registo]}</span>`
+      : '';
+
     return `
       <div class="frase-item ${obj.tt ? 'tem-tetum' : ''}">
+        ${tagRegisto}
         <div class="frase-texto">"${obj.texto}"</div>
         <div class="frase-acoes">${btnAudio}${btnTT}</div>
         ${blocoTT}
@@ -1178,8 +1221,12 @@ function renderizarTema(){
     `;
   }).join('');
 
-  // BLOCO 3 — exercício
-  novaPergunta();
+  // BLOCO 3 — exercício em sessão de 5 perguntas
+  if(sessao && sessao.tema === temaAtual){
+    retomarSessao();   // mudar a língua da interface não reinicia a sessão
+  }else{
+    iniciarSessao();
+  }
 
   // BLOCO 4 — diálogo (PT, sempre); inclui linhas com data-index para destaque + tradução TT opcional
   const dl = document.getElementById('dialogo-lista');
@@ -1211,17 +1258,19 @@ function renderizarTema(){
     btnDial.innerHTML = t.btnDialogo;
   }
 
-  // texto do botão "Nova ..." — varia segundo o tipo de tema
-  const btnNovo = document.getElementById('btn-novo-exercicio');
-  if(btnNovo){
-    if(dados.tipo === 'alfabeto'){
-      btnNovo.textContent = t.btnNovoLetra;
-    }else if(dados.tipo === 'numeros'){
-      btnNovo.textContent = t.btnNovoNumero;
+  // etiqueta de registo do diálogo (ex.: informal no Tema 1)
+  const dr = document.getElementById('dialogo-registo');
+  if(dr){
+    if(dados.dialogoRegisto){
+      dr.innerHTML = '<span class="registo-tag '+dados.dialogoRegisto+'">'+t['registo_'+dados.dialogoRegisto]+'</span>';
+      dr.style.display = '';
     }else{
-      btnNovo.textContent = t.btnNovoVocab;
+      dr.style.display = 'none';
     }
   }
+
+  // o botão do exercício ("Seguinte / Repetir") é gerido pela sessão
+  atualizarBotaoSessao();
 }
 
 /* ============================================================
@@ -1246,7 +1295,6 @@ function renderizarAlfabeto(dados, t){
     const ttsRate = (typeof l.rateAudio === 'number') ? l.rateAudio : 0.9;
     return `
       <div class="letra-card" onclick="lerTexto('${ttsNome}', ${ttsRate})">
-        <span class="letra-audio-icon" aria-hidden="true">🔊</span>
         <div class="letra-grande">${l.letra}${supH}</div>
         <div class="letra-nome">${l.nome}</div>
         <div class="letra-exemplo">${l.exemplo}</div>
@@ -1400,12 +1448,8 @@ function lerTexto(texto, rate){
     return;
   }
   window.speechSynthesis.cancel();
-  // remover texto entre parênteses (esclarecimentos visuais que não devem ser falados)
-  // exemplo: "É com S (esse)." é lido apenas como "É com S."
-  const textoFalado = texto.replace(/\([^)]*\)/g, '').replace(/\s+/g, ' ').replace(/\s+\./g, '.').trim();
-  const u = new SpeechSynthesisUtterance(textoFalado);
+  const u = new SpeechSynthesisUtterance(texto);
   u.lang = 'pt-PT';
-  u.volume = 1;
   u.rate = (typeof rate === 'number') ? rate : 0.9;
   u.pitch = 1;
   window.speechSynthesis.speak(u);
@@ -1423,40 +1467,116 @@ function toggleTetum(i, btn){
 }
 
 /* ============================================================
-   EXERCÍCIO — usa o tema ativo
-   Algoritmo de rotação: mantém histórico das últimas N perguntas
-   para evitar repetições precoces; quanto maior o pool de perguntas,
-   maior a janela de histórico (até metade do pool).
+   EXERCÍCIO — SESSÃO DE 5 PERGUNTAS
+   Sorteia 5 perguntas do tema (sem repetições dentro da sessão),
+   mostra o progresso ("Pergunta 2 de 5"), conta os acertos e
+   termina com um resultado ("Acertaste 4 em 5") e opção de repetir.
+   Decisão pedagógica: sessão curta e fechada dá sensação de domínio
+   e um ponto natural de paragem — melhor para adultos do que
+   perguntas soltas sem fim.
    ============================================================ */
 let perguntaAtual = null;
-let historicoExercicio = [];
+let sessao = null;
+const SESSAO_N = 5;
 
-function novaPergunta(){
-  document.getElementById('ex-feedback').classList.remove('visivel','certo','errado');
-  const dados = temas[temaAtual].dados;
-  const pool = dados.exercicio;
+/* Compõe duas linhas: Tétum primeiro (a instrução é andaime — tem de
+   ser compreendida por quem ainda não sabe português), PT por baixo */
+function linhaBilingue(tt, pt){
+  return '<span class="bi-tt">'+tt+'</span><span class="bi-pt">'+pt+'</span>';
+}
 
-  // janela = metade do pool (mín 1, máx 12) — janela maior para sentir mais variedade
-  const tamHist = Math.min(12, Math.max(1, Math.floor(pool.length / 2)));
+function iniciarSessao(){
+  const pool = temas[temaAtual].dados.exercicio;
+  const n = Math.min(SESSAO_N, pool.length);
+  // baralhar uma cópia do pool e tirar as primeiras n (sem repetir)
+  const baralhado = [...pool].sort(()=>Math.random()-0.5);
+  sessao = {tema:temaAtual, perguntas:baralhado.slice(0,n), idx:0, acertos:0, respondida:false, terminada:false};
+  mostrarPerguntaSessao();
+}
 
-  // candidatos = perguntas que NÃO estão nas últimas tamHist
-  let candidatos = pool.filter(p => !historicoExercicio.includes(p));
-  if(candidatos.length === 0){
-    // pool esgotado pela janela — limpa histórico
-    historicoExercicio = [];
-    candidatos = pool;
+/* Re-render sem reiniciar (ex.: mudança de língua da interface) */
+function retomarSessao(){
+  if(!sessao){iniciarSessao();return}
+  if(sessao.terminada){mostrarResultadoSessao();return}
+  mostrarPerguntaSessao(true);
+}
+
+function mostrarPerguntaSessao(manterResposta){
+  const fb = document.getElementById('ex-feedback');
+  fb.classList.remove('visivel','certo','errado');
+  const res = document.getElementById('ex-resultado');
+  if(res) res.style.display = 'none';
+  const instr = document.getElementById('ex-instrucao');
+  if(instr) instr.style.display = '';
+  if(!manterResposta) sessao.respondida = false;
+  perguntaAtual = sessao.perguntas[sessao.idx];
+
+  // progresso bilingue [REV-TT]
+  const prog = document.getElementById('ex-progresso');
+  if(prog){
+    prog.innerHTML = 'Pergunta ' + (sessao.idx+1) + ' husi ' + sessao.perguntas.length +
+                     ' &nbsp;·&nbsp; Pergunta ' + (sessao.idx+1) + ' de ' + sessao.perguntas.length;
+    prog.style.display = '';
   }
 
-  const p = candidatos[Math.floor(Math.random() * candidatos.length)];
-  perguntaAtual = p;
-  historicoExercicio.push(p);
-  // limita tamanho do histórico
-  if(historicoExercicio.length > tamHist){
-    historicoExercicio.shift();
-  }
+  renderizarPergunta(perguntaAtual);
+  atualizarBotaoSessao();
+}
 
-  // Renderizar conforme tipo de exercício
-  renderizarPergunta(p);
+/* O botão só aparece depois de responder; muda de texto conforme o momento.
+   Rótulos bilingues fixos (TT · PT) [REV-TT] */
+function atualizarBotaoSessao(){
+  const btn = document.getElementById('btn-novo-exercicio');
+  if(!btn || !sessao) return;
+  if(sessao.terminada){
+    btn.style.display = '';
+    btn.innerHTML = 'Halo fali &nbsp;·&nbsp; Repetir';
+  }else if(sessao.respondida){
+    btn.style.display = '';
+    const ultima = sessao.idx >= sessao.perguntas.length - 1;
+    btn.innerHTML = ultima
+      ? 'Haree rezultadu &nbsp;·&nbsp; Ver resultado'
+      : 'Tuir mai &nbsp;·&nbsp; Seguinte →';
+  }else{
+    btn.style.display = 'none';
+  }
+}
+
+function avancarSessao(){
+  if(!sessao || sessao.terminada){iniciarSessao();return}
+  if(!sessao.respondida) return;
+  if(sessao.idx >= sessao.perguntas.length - 1){
+    mostrarResultadoSessao();
+  }else{
+    sessao.idx++;
+    mostrarPerguntaSessao();
+  }
+}
+
+function mostrarResultadoSessao(){
+  sessao.terminada = true;
+  const instr = document.getElementById('ex-instrucao');
+  if(instr) instr.style.display = 'none';
+  const aw = document.getElementById('ex-audio-wrap');
+  if(aw) aw.style.display = 'none';
+  const sw = document.getElementById('ex-situacao-wrap');
+  if(sw) sw.style.display = 'none';
+  document.getElementById('ex-opcoes').innerHTML = '';
+  const prog = document.getElementById('ex-progresso');
+  if(prog) prog.style.display = 'none';
+  const fb = document.getElementById('ex-feedback');
+  fb.classList.remove('visivel','certo','errado');
+
+  const res = document.getElementById('ex-resultado');
+  const a = sessao.acertos, n = sessao.perguntas.length;
+  const emoji = a === n ? '🌟' : (a >= Math.ceil(n*0.6) ? '👏🏽' : '💪🏽');
+  /* resultado bilingue [REV-TT] */
+  res.innerHTML =
+    '<div class="resultado-emoji">' + emoji + '</div>' +
+    '<div class="resultado-score">' + a + ' / ' + n + '</div>' +
+    linhaBilingue('Ó hetan loos '+a+' husi '+n+'!', 'Acertaste '+a+' em '+n+'!');
+  res.style.display = 'block';
+  atualizarBotaoSessao();
 }
 
 /* ============================================================
@@ -1471,18 +1591,21 @@ function renderizarPergunta(p){
   const situacaoWrap = document.getElementById('ex-situacao-wrap');
   const t = i18n[langAtual];
 
+  // As instruções do exercício são andaime: aparecem SEMPRE nas duas
+  // línguas em simultâneo (Tétum primeiro, PT por baixo), independentemente
+  // do toggle da interface — quem não sabe português tem de as entender.
   if(p.tipo === 'situacao'){
     // Tipo B — situação em Tétum, escolhe expressão PT
     if(audioWrap) audioWrap.style.display = 'none';
     if(situacaoWrap){
       situacaoWrap.style.display = 'block';
       situacaoWrap.innerHTML = `
-        <div class="ex-situacao-tag">${t.exSituacaoTag}</div>
+        <div class="ex-situacao-tag">${i18n.tt.exSituacaoTag} · ${i18n.pt.exSituacaoTag}</div>
         <div class="ex-situacao-texto">${p.situacaoTT}</div>
       `;
     }
     if(instrucao){
-      instrucao.textContent = t.exInstrucaoSituacao;
+      instrucao.innerHTML = linhaBilingue(i18n.tt.exInstrucaoSituacao, i18n.pt.exInstrucaoSituacao);
     }
   }else{
     // Tipos áudio (ouve, ouve-letra, palavra-letra) — mostra botão áudio
@@ -1490,11 +1613,11 @@ function renderizarPergunta(p){
     if(audioWrap) audioWrap.style.display = 'block';
     if(instrucao){
       if(p.tipo === 'palavra-letra'){
-        instrucao.textContent = t.exInstrucaoPalavraLetra;
+        instrucao.innerHTML = linhaBilingue(i18n.tt.exInstrucaoPalavraLetra, i18n.pt.exInstrucaoPalavraLetra);
       }else if(p.tipo === 'ouve-letra'){
-        instrucao.textContent = t.exInstrucaoOuveLetra;
+        instrucao.innerHTML = linhaBilingue(i18n.tt.exInstrucaoOuveLetra, i18n.pt.exInstrucaoOuveLetra);
       }else{
-        instrucao.textContent = t.exInstrucaoOuve;
+        instrucao.innerHTML = linhaBilingue(i18n.tt.exInstrucaoOuve, i18n.pt.exInstrucaoOuve);
       }
     }
   }
@@ -1507,22 +1630,24 @@ function renderizarPergunta(p){
 }
 
 function escolherOpcao(btn, escolha){
+  // não deixa responder duas vezes à mesma pergunta (ex.: após re-render)
+  if(!sessao || sessao.respondida) return;
   document.querySelectorAll('.exercicio-opcao').forEach(b=>b.style.pointerEvents='none');
   const fb = document.getElementById('ex-feedback');
-  const t = i18n[langAtual];
 
-  // Determinar a resposta certa segundo o tipo de pergunta:
-  // - 'ouve' (Tema 1, vocabulário): opção certa = perguntaAtual.ouvir
-  // - 'ouve-letra' (Tema 2 A): ouve nome ("á"), opção certa é a letra ("A")
-  // - 'palavra-letra' (Tema 2 D): ouve palavra ("Bola"), opção certa é primeira letra (campo letraCorreta)
-  // - 'situacao' (Tema 1 B): a opção certa é sempre a primeira do array (por convenção da estrutura de dados)
+  // Determinar a resposta certa:
+  // - campo explícito "certa" tem SEMPRE prioridade (formato novo, mais robusto)
+  // - restantes convenções mantêm-se por compatibilidade com o Tema 2:
+  //   'ouve' → perguntaAtual.ouvir | 'ouve-letra' → letra pelo nome
+  //   'palavra-letra' → letraCorreta | 'situacao' antiga → primeira opção
   let certa;
   const tipoP = perguntaAtual.tipo || 'ouve';
 
-  if(tipoP === 'palavra-letra'){
+  if(perguntaAtual.certa){
+    certa = perguntaAtual.certa;
+  }else if(tipoP === 'palavra-letra'){
     certa = perguntaAtual.letraCorreta;
   }else if(tipoP === 'situacao'){
-    // primeira opção é sempre a certa nesta convenção (depois sorteia-se a ordem)
     certa = perguntaAtual.opcoes[0];
   }else if(tipoP === 'ouve-letra' || (temas[temaAtual].dados.tipo === 'alfabeto' && !perguntaAtual.letraCorreta)){
     // Alfabeto Tipo A — procurar a letra pelo nome (aceita nome ou nomeAudio)
@@ -1531,22 +1656,27 @@ function escolherOpcao(btn, escolha){
     );
     certa = letraObj ? letraObj.letra : perguntaAtual.ouvir;
   }else{
-    // 'ouve' (vocabulário Tema 1)
     certa = perguntaAtual.ouvir;
   }
 
-  if(escolha === certa){
+  sessao.respondida = true;
+  const acertou = (escolha === certa);
+  if(acertou) sessao.acertos++;
+
+  // feedback bilingue — Tétum primeiro (andaime) [REV-TT]
+  if(acertou){
     btn.classList.add('certa');
-    fb.textContent = t.feedbackCerto;
+    fb.innerHTML = linhaBilingue('✓ Loos! Di\'ak tebes!', 'Certo! Muito bem!');
     fb.classList.add('visivel','certo');
   }else{
     btn.classList.add('errada');
-    fb.textContent = t.feedbackErrado(certa);
+    fb.innerHTML = linhaBilingue('✗ Resposta loos mak «'+certa+'».', 'A resposta certa era «'+certa+'».');
     fb.classList.add('visivel','errado');
     document.querySelectorAll('.exercicio-opcao').forEach(b=>{
       if(b.textContent === certa) b.classList.add('certa');
     });
   }
+  atualizarBotaoSessao();
 }
 
 function ouvirExercicio(){
