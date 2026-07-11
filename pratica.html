@@ -310,6 +310,9 @@ nav{
   color:var(--texto-claro);
 }
 .alfabeto-nota strong{color:var(--preto)}
+/* Palavras-exemplo audíveis dentro das notas (sons especiais) */
+.nota-ouvir{background:rgba(26,92,46,0.08);border:1px solid rgba(26,92,46,0.3);color:var(--verde);border-radius:4px;padding:1px 7px;cursor:pointer;font-family:inherit;font-size:0.95em;font-style:italic;transition:all 0.15s}
+.nota-ouvir:hover{background:var(--verde);color:white}
 .alfabeto-nota-linha{
   display:flex;
   align-items:flex-start;
@@ -958,9 +961,9 @@ const tema2 = {
     {letra:'Y', nome:'ípsilon',  exemplo:'Yoga', exemploTT:'Yoga', estrangeira:true}
   ],
   frases:[
-    {pt:'Como se escreve o teu nome?',                 tt:'Eskreve nia naran oinsá?'},                                                               /* [REV-TT] */
+    {pt:'Como se escreve o teu nome?',                 tt:'Eskreve nia naran oinsá?',                 registo:'informal'},                          /* [REV-TT] */
     {texto:'M - A - R - I - A : Maria',                soletrar:['éme','á','érre','i','á'], palavraFinal:'Maria'},
-    {pt:'Pode soletrar o seu sobrenome, por favor?',   tt:'Bele soletra nia sobrenaran, favór ida?'},                                               /* [REV-TT] */
+    {pt:'Pode soletrar o seu apelido, por favor?',     tt:'Bele soletra nia apelidu, favór ida?',     registo:'formal'},                            /* [REV-TT] «apelido» = PT europeu (não «sobrenome», que é PT do Brasil) */
     {texto:'S - I - L - V - A : Silva',                soletrar:['ésse','i','éle','vê','á'], palavraFinal:'Silva'},
     {pt:'É com cê ou esse?',                            tt:'Ho letra "C" ka "S"?'}                                                                    /* [REV-TT] */
   ],
@@ -1031,6 +1034,7 @@ const tema2 = {
     {tipo:'palavra-letra', ouvir:'Web',      letraCorreta:'W', opcoes:['W','V','U']},
     {tipo:'palavra-letra', ouvir:'Yoga',     letraCorreta:'Y', opcoes:['Y','I','J']}
   ],
+  dialogoRegisto:'formal',
   dialogo:[
     {quem:'A', texto:'Bom dia! Qual é o seu nome?',         tt:'Bondia! Saida mak nia naran?'},                /* [REV-TT] */
     {quem:'B', texto:'Chamo-me Ana Silva.',                  tt:'Hau-nia naran Ana Silva.'},                    /* [REV-TT] */
@@ -1327,20 +1331,36 @@ function renderizarAlfabeto(dados, t){
   html += estrangeiras.map((l, i) => cardLetra(l, nativas.length + i)).join('');
   html += '</div>';
 
-  // nota sobre o H mudo — mostra PT + TT em paralelo (independente do toggle)
-  // razão pedagógica: nota didática crítica que tem de funcionar para utilizadores
-  // que não sabem PT (precisam do TT) e para os que não sabem TT (curiosidade/aprendizagem)
+  // nota sobre o H mudo — TT primeiro (andaime), PT por baixo,
+  // sempre visível independentemente do toggle
   const notaH = `
-    <div class="alfabeto-nota-linha">
-      <span class="alfabeto-nota-tag pt">PT</span>
-      <span><strong>* H não se pronuncia</strong> em português. A palavra <em>Hora</em> lê-se "ora".</span>
-    </div>
     <div class="alfabeto-nota-linha">
       <span class="alfabeto-nota-tag tt">TT</span>
       <span><strong>* H la pronunsia</strong> iha portugés. Liafuan <em>Hora</em> rona "ora".</span>
     </div>
+    <div class="alfabeto-nota-linha">
+      <span class="alfabeto-nota-tag pt">PT</span>
+      <span><strong>* H não se pronuncia</strong> em português. A palavra <em>Hora</em> lê-se "ora".</span>
+    </div>
   `;  /* [REV-TT] tradução Tetum da nota didática */
   html += `<div class="alfabeto-nota">${notaH}</div>`;
+
+  // nota dos "SONS ESPECIAIS" — dígrafos ch / lh / nh e a cedilha ç.
+  // O que dificulta a LEITURA do português não são as letras soltas,
+  // são estas combinações — por isso têm exemplos AUDÍVEIS ao toque.
+  // Ponte L1→L2: o «nh» português soa como o «ñ» que o Tetun já tem.
+  const ex = (palavra)=>`<button class="nota-ouvir" onclick="lerTexto('${palavra}')">${palavra} 🔊</button>`;
+  const notaSons = `
+    <div class="alfabeto-nota-linha">
+      <span class="alfabeto-nota-tag tt">TT</span>
+      <span><strong>Lian espesiál:</strong> iha portugés, letra balun hamutuk halo lian foun: <strong>ch</strong> hanesan iha ${ex('chave')}; <strong>lh</strong> hanesan iha ${ex('filho')}; <strong>nh</strong> hanesan iha ${ex('ninho')} — lian hanesan «ñ» iha Tetun (<em>koñese</em>); no <strong>ç</strong> lee «ss», hanesan iha ${ex('criança')}.</span>
+    </div>
+    <div class="alfabeto-nota-linha">
+      <span class="alfabeto-nota-tag pt">PT</span>
+      <span><strong>Sons especiais:</strong> em português, algumas letras juntas fazem um som novo: <strong>ch</strong> como em ${ex('chave')}; <strong>lh</strong> como em ${ex('filho')}; <strong>nh</strong> como em ${ex('ninho')} — soa como o «ñ» do tétum (<em>koñese</em>); e <strong>ç</strong> lê-se «ss», como em ${ex('criança')}.</span>
+    </div>
+  `;  /* [REV-TT] tradução Tetum da nota dos sons especiais */
+  html += `<div class="alfabeto-nota" style="margin-top:0.75rem">${notaSons}</div>`;
 
   return html;
 }
@@ -1377,36 +1397,9 @@ function lerNomeLetra(nome, rate){
 let soletracaoEmCurso = false;
 
 function soletrarSequencia(letras, palavraFinal, onComplete){
-  if(!('speechSynthesis' in window)){
-    if(onComplete) onComplete();
-    return;
-  }
   soletracaoEmCurso = true;
-  window.speechSynthesis.cancel();
+  pararAudio();
   let idx = 0;
-  let timeoutFallback = null;
-
-  function falar(texto, rate, depois){
-    // wrapper robusto: se onend não disparar (bug conhecido em Chrome/iOS),
-    // um fallback timeout dispara passados (texto.length * 250 + 1500)ms.
-    const u = new SpeechSynthesisUtterance(texto);
-    u.lang = 'pt-PT';
-    u.rate = rate;
-    u.pitch = 1;
-    let chamou = false;
-    const seguir = ()=>{
-      if(chamou) return;
-      chamou = true;
-      if(timeoutFallback){clearTimeout(timeoutFallback); timeoutFallback=null;}
-      depois();
-    };
-    u.onend = seguir;
-    u.onerror = seguir;
-    window.speechSynthesis.speak(u);
-    // fallback: tempo estimado de leitura + margem
-    const estimado = Math.max(800, texto.length * 220) + 600;
-    timeoutFallback = setTimeout(seguir, estimado);
-  }
 
   function proxima(){
     if(!soletracaoEmCurso){
@@ -1414,7 +1407,8 @@ function soletrarSequencia(letras, palavraFinal, onComplete){
       return;
     }
     if(idx < letras.length){
-      falar(letras[idx], 0.85, ()=>{
+      // cada letra é um clip (gravação real se existir, TTS se não)
+      dizer(letras[idx], 0.85, ()=>{
         idx++;
         // pausa de ~1 segundo entre letras (decisão pedagógica: máxima clareza)
         setTimeout(proxima, 1000);
@@ -1423,7 +1417,7 @@ function soletrarSequencia(letras, palavraFinal, onComplete){
       // após soletrar, pausa breve e diz a palavra completa
       setTimeout(()=>{
         if(!soletracaoEmCurso){if(onComplete) onComplete();return}
-        falar(palavraFinal, 0.9, ()=>{
+        dizer(palavraFinal, 0.9, ()=>{
           soletracaoEmCurso = false;
           if(onComplete) onComplete();
         });
@@ -1438,7 +1432,7 @@ function soletrarSequencia(letras, palavraFinal, onComplete){
 
 function pararSoletracao(){
   soletracaoEmCurso = false;
-  window.speechSynthesis.cancel();
+  pararAudio();
 }
 
 /* Disparado pelo botão 🔊 das frases que têm soletração */
@@ -1452,19 +1446,129 @@ function soletrar(fraseIdx){
 }
 
 /* ============================================================
-   SÍNTESE DE VOZ — sempre pt-PT (a língua a aprender)
+   MOTOR DE ÁUDIO — gravações reais primeiro, síntese como rede
+   Os MP3 gravados (voz humana, PT europeu) vivem em audios/ e
+   seguem a nomenclatura a1_tema[nn]_… . O mapa abaixo liga cada
+   texto do site ao seu ficheiro. Ao tocar:
+   1.º tenta o MP3;  2.º se não existir/falhar → síntese de voz.
+   Assim, cada tema passa a voz humana no dia em que os seus
+   clips forem gravados, sem mais alterações ao código.
    ============================================================ */
-function lerTexto(texto, rate){
-  if(!('speechSynthesis' in window)){
-    alert('O teu navegador não suporta leitura de voz.');
-    return;
-  }
-  window.speechSynthesis.cancel();
+const AUDIO_BASE = 'audios/';
+const mapaAudio = {};   // chave (texto normalizado) → ficheiro ou [sequência]
+
+function chaveAudio(t){ return String(t).trim().toLowerCase(); }
+
+function registarAudios(){
+  const limpo = s => s.toLowerCase().normalize('NFD')
+                      .replace(/[\u0300-\u036f]/g,'').replace(/ /g,'_');
+  // --- Tema 01: Dizer olá ---
+  tema1.vocab.forEach(v=>{
+    if(v.audio){
+      // «Obrigado / Obrigada» — dois clips tocados em sequência
+      mapaAudio[chaveAudio(v.audio)] =
+        ['a1_tema01_vocab_obrigado.mp3','a1_tema01_vocab_obrigada.mp3'];
+      mapaAudio['obrigado'] = 'a1_tema01_vocab_obrigado.mp3';
+      mapaAudio['obrigada'] = 'a1_tema01_vocab_obrigada.mp3';
+    }else{
+      mapaAudio[chaveAudio(v.pt)] = 'a1_tema01_vocab_' + limpo(v.pt) + '.mp3';
+    }
+  });
+  tema1.frases.forEach((f,i)=>{
+    if(f.pt) mapaAudio[chaveAudio(f.pt)] = 'a1_tema01_frase' + (i+1) + '.mp3';
+  });
+  tema1.dialogo.forEach((d,i)=>{
+    mapaAudio[chaveAudio(d.texto)] = 'a1_tema01_dialogo' + (i+1) + '.mp3';
+  });
+  // --- Tema 02: O alfabeto ---
+  tema2.letras.forEach(l=>{
+    const fich = 'a1_tema02_letra_' + l.letra.toLowerCase() + '.mp3';
+    mapaAudio[chaveAudio(l.nome)] = fich;                 // ex.: «efe»
+    if(l.nomeAudio) mapaAudio[chaveAudio(l.nomeAudio)] = fich;  // ex.: «éfe» (forma da TTS)
+    mapaAudio[chaveAudio(l.exemplo)] = 'a1_tema02_palavra_' + limpo(l.exemplo) + '.mp3';
+  });
+  ['Maria','Silva','chave','filho','ninho','criança'].forEach(p=>{
+    mapaAudio[chaveAudio(p)] = 'a1_tema02_palavra_' + limpo(p) + '.mp3';
+  });
+  tema2.frases.forEach((f,i)=>{
+    if(f.pt) mapaAudio[chaveAudio(f.pt)] = 'a1_tema02_frase' + (i+1) + '.mp3';
+  });
+  tema2.dialogo.forEach((d,i)=>{
+    if(!d.soletrar) mapaAudio[chaveAudio(d.texto)] = 'a1_tema02_dialogo' + (i+1) + '.mp3';
+  });
+}
+registarAudios();
+
+/* Síntese de voz pt-PT com callback robusto (onend nem sempre dispara
+   em Chrome/iOS → fallback por tempo estimado) */
+function falarTTS(texto, rate, depois){
+  if(!('speechSynthesis' in window)){ if(depois) depois(); return; }
   const u = new SpeechSynthesisUtterance(texto);
   u.lang = 'pt-PT';
   u.rate = (typeof rate === 'number') ? rate : 0.9;
   u.pitch = 1;
+  let chamou = false, temporizador = null;
+  const seguir = ()=>{
+    if(chamou) return;
+    chamou = true;
+    if(temporizador) clearTimeout(temporizador);
+    if(depois) depois();
+  };
+  u.onend = seguir;
+  u.onerror = seguir;
   window.speechSynthesis.speak(u);
+  temporizador = setTimeout(seguir, Math.max(800, texto.length * 220) + 600);
+}
+
+/* Reprodução de um MP3 com fallback se o ficheiro não existir */
+let audioAtual = null;
+function pararAudio(){
+  if(audioAtual){ try{ audioAtual.pause(); }catch(e){} audioAtual = null; }
+  if('speechSynthesis' in window) window.speechSynthesis.cancel();
+}
+
+function tocarFicheiro(fich, aoFalhar, depois){
+  const a = new Audio(AUDIO_BASE + fich);
+  audioAtual = a;
+  let resolvido = false;
+  a.onended = ()=>{
+    if(resolvido) return; resolvido = true;
+    if(audioAtual === a) audioAtual = null;
+    if(depois) depois();
+  };
+  a.onerror = ()=>{
+    if(resolvido) return; resolvido = true;
+    if(audioAtual === a) audioAtual = null;
+    aoFalhar();
+  };
+  a.play().catch(()=>{
+    if(resolvido) return; resolvido = true;
+    aoFalhar();
+  });
+}
+
+/* Núcleo: diz um texto — gravação real primeiro, TTS se faltar */
+function dizer(texto, rate, depois){
+  const alvo = mapaAudio[chaveAudio(texto)];
+  const recurso = ()=> falarTTS(texto, rate, depois);
+  if(!alvo){ recurso(); return; }
+  if(Array.isArray(alvo)){
+    // sequência de clips (ex.: «Obrigado» + «Obrigada», com pausa curta)
+    let i = 0;
+    const proximo = ()=>{
+      if(i >= alvo.length){ if(depois) depois(); return; }
+      tocarFicheiro(alvo[i++], recurso, ()=>setTimeout(proximo, 350));
+    };
+    proximo();
+    return;
+  }
+  tocarFicheiro(alvo, recurso, depois);
+}
+
+/* API pública usada por todo o site (mantém a assinatura antiga) */
+function lerTexto(texto, rate){
+  pararAudio();
+  dizer(texto, rate, null);
 }
 
 /* ============================================================
@@ -1715,10 +1819,6 @@ function ouvirExercicio(){
 let dialogoEmCurso = false;
 
 function ouvirDialogo(){
-  if(!('speechSynthesis' in window)){
-    alert('O teu navegador não suporta leitura de voz.');
-    return;
-  }
   // se já está a tocar, parar
   if(dialogoEmCurso){
     pararDialogo();
@@ -1730,9 +1830,9 @@ function ouvirDialogo(){
   btn.innerHTML = t.btnDialogoTocar;
   btn.classList.add('a-tocar');
 
-  window.speechSynthesis.cancel();
+  pararAudio();
 
-  // encadear utterances — cada uma só começa quando a anterior termina
+  // encadear falas — cada uma só começa quando a anterior termina
   let i = 0;
   function lerProximaLinha(){
     // remover destaque anterior
@@ -1758,17 +1858,12 @@ function ouvirDialogo(){
       return;
     }
 
-    // linha normal
-    const u = new SpeechSynthesisUtterance(linhaData.texto);
-    u.lang = 'pt-PT';
-    u.rate = 0.9;
-    u.pitch = 1;
-    u.onend = ()=>{
+    // linha normal — gravação real se existir, TTS se não
+    dizer(linhaData.texto, 0.9, ()=>{
+      if(!dialogoEmCurso){pararDialogo();return}
       i++;
       setTimeout(lerProximaLinha, 300);
-    };
-    u.onerror = ()=>pararDialogo();
-    window.speechSynthesis.speak(u);
+    });
   }
   lerProximaLinha();
 }
@@ -1776,7 +1871,7 @@ function ouvirDialogo(){
 function pararDialogo(){
   dialogoEmCurso = false;
   pararSoletracao(); // pára também eventual soletração em curso dentro do diálogo
-  window.speechSynthesis.cancel();
+  pararAudio();
   document.querySelectorAll('.dialogo-linha.ativa').forEach(el=>el.classList.remove('ativa'));
   const btn = document.getElementById('dialogo-btn');
   if(btn){
