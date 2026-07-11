@@ -68,9 +68,12 @@ nav{
 .nav-back{color:rgba(255,255,255,0.75);text-decoration:none;font-size:0.85rem;font-weight:600;letter-spacing:0.05em;transition:color 0.2s}
 .nav-back:hover{color:var(--amarelo)}
 .nav-lang{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:4px;padding:4px 2px}
-.lang-btn{background:none;border:none;cursor:pointer;font-size:0.75rem;font-weight:600;letter-spacing:0.05em;padding:3px 8px;border-radius:3px;transition:all 0.2s;font-family:'Source Sans 3',sans-serif;color:rgba(255,255,255,0.6)}
+.lang-btn{background:none;border:none;cursor:pointer;font-size:0.75rem;font-weight:600;letter-spacing:0.05em;padding:3px 8px;border-radius:3px;transition:all 0.2s;font-family:'Source Sans 3',sans-serif;color:rgba(255,255,255,0.6);min-width:82px;text-align:center}
 .lang-btn.active{background:var(--amarelo);color:var(--preto)}
 .lang-btn:hover:not(.active){color:white}
+/* Botão Tetun sempre bem visível: vermelho cheio quando não selecionado */
+#btn-tt:not(.active){background:var(--vermelho);color:white}
+#btn-tt:not(.active):hover{background:#a53125;color:white}
 
 /* HERO */
 #hero{
