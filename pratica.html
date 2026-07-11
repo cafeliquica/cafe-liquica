@@ -58,8 +58,11 @@ nav{
 .nav-back{color:rgba(255,255,255,0.75);text-decoration:none;font-size:0.85rem;font-weight:600;letter-spacing:0.05em;transition:color 0.2s}
 .nav-back:hover{color:var(--amarelo)}
 .nav-lang{display:flex;gap:4px;background:rgba(255,255,255,0.06);border-radius:4px;padding:3px}
-.lang-btn{background:transparent;border:none;color:rgba(255,255,255,0.6);padding:6px 12px;font-size:0.75rem;font-weight:600;letter-spacing:0.08em;cursor:pointer;border-radius:3px;transition:background 0.2s,color 0.2s;font-family:inherit}
+.lang-btn{background:transparent;border:none;color:rgba(255,255,255,0.6);padding:6px 12px;font-size:0.75rem;font-weight:600;letter-spacing:0.08em;cursor:pointer;border-radius:3px;transition:background 0.2s,color 0.2s;font-family:inherit;min-width:88px;text-align:center}
 .lang-btn.active{background:var(--amarelo);color:var(--preto)}
+/* Botão Tetun sempre bem visível: vermelho cheio quando não selecionado */
+#btn-tt:not(.active){background:var(--vermelho);color:white}
+#btn-tt:not(.active):hover{background:#a53125}
 
 /* HERO */
 #hero-pratica{background:var(--verde);color:white;padding:7rem 2.5rem 4rem;position:relative;overflow:hidden}
@@ -824,13 +827,16 @@ footer a{color:var(--amarelo);text-decoration:none}
 
 <script>
 /* ============================================================
-   ESTADO DE LÍNGUA — partilhado com o site principal via localStorage
-   Na PRIMEIRA visita (sem preferência guardada) a interface abre em
-   TÉTUM: o público-alvo são adultos que ainda não sabem português,
-   e a interface é andaime — tem de ser compreendida à partida.
-   Quem preferir português carrega em «PT» e a escolha fica guardada.
+   ESTADO DE LÍNGUA — o Pratica tem memória PRÓPRIA (chave separada
+   do site geral): o site institucional abre em português, mas o
+   Pratica abre em TÉTUM, porque o seu público-alvo são adultos que
+   ainda não sabem português — a interface é andaime e tem de ser
+   compreendida à partida. Ao longo dos níveis (A1 → A2 → B1) o
+   tétum será progressivamente retirado, até restar só o português.
+   Quem preferir português carrega em «Português» e a escolha fica
+   guardada (só para o Pratica).
    ============================================================ */
-let langAtual = localStorage.getItem('cafe-lang') || 'tt';
+let langAtual = localStorage.getItem('cafe-lang-pratica') || 'tt';
 
 /* ============================================================
    DADOS DO TEMA 1 — DIZER OLÁ
@@ -1088,7 +1094,7 @@ const i18n = {
 function setLang(lang){
   pararDialogo(); // se diálogo estiver a tocar, parar
   langAtual = lang;
-  localStorage.setItem('cafe-lang', lang);
+  localStorage.setItem('cafe-lang-pratica', lang);
   document.getElementById('btn-pt').className='lang-btn'+(lang==='pt'?' active':'');
   document.getElementById('btn-tt').className='lang-btn'+(lang==='tt'?' active':'');
   document.querySelectorAll('[data-pt]').forEach(el=>{
