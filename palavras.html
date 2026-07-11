@@ -725,8 +725,22 @@ function renderizarGrelha(){
   const ordem = document.getElementById('ordenacao').value;
   const idxAtual = indicePalavraDoDia();
 
-  // Filtrar
+  // Só se mostram as palavras que JÁ SAÍRAM como palavra do dia.
+  // Na primeira volta do ciclo (desde 6 abr 2026), a coleção cresce
+  // uma palavra por dia; a partir do dia em que o ciclo completa,
+  // ficam todas visíveis. (Nunca menos de 1.)
+  const inicioCiclo = Date.UTC(2026, 3, 6);
+  const hojeUTC = Date.UTC(
+    new Date().getUTCFullYear(),
+    new Date().getUTCMonth(),
+    new Date().getUTCDate()
+  );
+  const diasCiclo = Math.floor((hojeUTC - inicioCiclo) / 86400000);
+  const visiveis = Math.max(1, Math.min(palavras.length, diasCiclo + 1));
+
+  // Filtrar (apenas dentro das já saídas)
   let lista = palavras
+    .slice(0, visiveis)
     .map((p, i) => ({...p, indice: i}))
     .filter(p => {
       if(!pesquisa) return true;
