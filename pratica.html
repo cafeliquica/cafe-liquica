@@ -714,7 +714,7 @@ footer a{color:var(--amarelo);text-decoration:none}
         <span class="tema-btn" data-pt="Começar →" data-tt="Hahú →">Começar →</span>
       </div>
 
-      <div class="tema-card em-breve">
+      <div class="tema-card ativo" onclick="abrirTema('familia')">
         <p class="tema-num">05</p>
         <div class="tema-emoji svg-emoji">
           <!-- Família timorense ilustrada (opção B aprovada) — pele castanha, cabelo escuro,
@@ -753,8 +753,8 @@ footer a{color:var(--amarelo);text-decoration:none}
           </svg>
         </div>
         <h3 class="tema-titulo" data-pt="A minha família" data-tt="Ha'u-nia família">A minha família</h3>
-        <p class="tema-info" data-pt="9 palavras · 5 frases · 1 exercício" data-tt="Liafuan 9 · Fraze 5 · Ezersísiu 1">9 palavras · 5 frases · 1 exercício</p>
-        <span class="tema-em-breve-tag" data-pt="Em breve" data-tt="Sei mai">Em breve</span>
+        <p class="tema-info" data-pt="15 palavras · 5 frases · 1 exercício" data-tt="Liafuan 15 · Fraze 5 · Ezersísiu 1">15 palavras · 5 frases · 1 exercício</p>
+        <span class="tema-btn" data-pt="Começar →" data-tt="Hahú →">Começar →</span>
       </div>
 
     </div>
@@ -1223,6 +1223,97 @@ const tema4 = {
 };
 
 /* ============================================================
+   DADOS DO TEMA 5 — A MINHA FAMÍLIA (Referencial A.3 — apresentar família)
+   Estrutura igual ao Tema 1 (vocab + notas, frases + registo,
+   exercício ouve/situação com campo "certa", diálogo).
+   Ordem do vocabulário: unidade → pais → casal → filhos →
+   irmãos → avós → tios → primos.
+   ATENÇÃO Tétum do parentesco: maun/mana também se usam como
+   tratamento respeitoso de desconhecidos (confirmado no terreno) —
+   daí a nota didática de irmão/irmã. Formas de parentesco TODAS
+   marcadas [REV-TT] — revisão nativa mais crítica do que nos
+   temas anteriores.
+   ============================================================ */
+const tema5 = {
+  vocab:[
+    {emoji:'👨🏽‍👩🏽‍👧🏽‍👦🏽', pt:'a família', tt:'família'},
+    {emoji:'👨🏽', pt:'o pai',    tt:'aman (koloquial: apá)'},   /* [REV-TT] */
+    {emoji:'👩🏽', pt:'a mãe',    tt:'inan (koloquial: amá)'},   /* [REV-TT] */
+    {emoji:'🤵🏽', pt:'o marido', tt:'la\'en'},                  /* [REV-TT] */
+    {emoji:'👰🏽', pt:'a mulher', tt:'feen',                     /* [REV-TT] */
+      nota:{
+        tt:'«Mulher» iha portugés bele «feen» («a minha mulher» = ha\'u-nia feen) no mós «feto» jerál. Kontestu mak hatudu.',  /* [REV-TT] */
+        pt:'«Mulher» em português é «esposa» («a minha mulher») e também «mulher» em geral. O contexto diz qual é.'
+      }},
+    {emoji:'👦🏽', pt:'o filho',  tt:'oan-mane'},                /* [REV-TT] */
+    {emoji:'👧🏽', pt:'a filha',  tt:'oan-feto'},                /* [REV-TT] */
+    {emoji:'🧑🏽', pt:'o irmão',  tt:'maun / alin-mane'},        /* [REV-TT] */
+    {emoji:'💁🏽‍♀️', pt:'a irmã', tt:'mana / alin-feto',        /* [REV-TT] */
+      nota:{
+        tt:'Kuidadu: iha Tetun, «maun» no «mana» mós uza atu koalia ho ema ne\'ebé ita la koñese, ho respeitu. Iha portugés LAE: «irmão» no «irmã» ba família deit. Ba ema ne\'ebé ita la koñese, portugés uza «senhor» no «senhora».',  /* [REV-TT] */
+        pt:'Atenção: em tétum, «maun» e «mana» também se usam para falar com pessoas que não conhecemos, com respeito. Em português NÃO: «irmão» e «irmã» são só para a família. Para desconhecidos, o português usa «senhor» e «senhora».'
+      }},
+    {emoji:'👴🏽', pt:'o avô',    tt:'abó-mane'},                /* [REV-TT] */
+    {emoji:'👵🏽', pt:'a avó',    tt:'abó-feto',                 /* [REV-TT] */
+      nota:{
+        tt:'Rona didiak: «avô» (mane) no «avó» (feto) — diferensa iha lian «ô» no «ó» deit.',  /* [REV-TT] */
+        pt:'Ouve com atenção: «avô» (homem) e «avó» (mulher) — a diferença está só no som «ô» e «ó».'
+      }},
+    {emoji:'🧔🏽', pt:'o tio',    tt:'tiu'},                     /* [REV-TT] */
+    {emoji:'👩🏽‍🦱', pt:'a tia',  tt:'tia'},                     /* [REV-TT] */
+    {emoji:'🧒🏽', pt:'o primo',  tt:'primu'},                   /* [REV-TT] */
+    {emoji:'🙋🏽‍♀️', pt:'a prima', tt:'prima'}                   /* [REV-TT] */
+  ],
+  /* Nota didática do bloco de frases — possessivos (o contraste
+     mais rentável do tema: ha'u-nia invariável vs. o meu/a minha) */
+  frasesNota:{
+    tt:'Iha Tetun, «ha\'u-nia» nunka muda. Iha portugés, muda tuir liafuan: «o meu pai» (mane), «a minha mãe» (feto). La muda tuir ema ne\'ebé koalia.',  /* [REV-TT] */
+    pt:'Em tétum, «ha\'u-nia» nunca muda. Em português, muda com a palavra: «o meu pai», «a minha mãe». Não muda com quem fala.'
+  },
+  frases:[
+    {pt:'Esta é a minha família.',       tt:'Ida-ne\'e ha\'u-nia família.'},                    /* [REV-TT] */
+    {pt:'O meu pai chama-se José.',      tt:'Ha\'u-nia aman naran José.'},                      /* [REV-TT] */
+    {pt:'Tenho dois irmãos e uma irmã.', tt:'Ha\'u iha maun-alin mane rua no mana ida.'},       /* [REV-TT] recicla números do Tema 03 */
+    {pt:'Como se chama a tua mãe?',      tt:'Ó-nia inan naran saida?',    registo:'informal'},  /* [REV-TT] */
+    {pt:'A senhora tem filhos?',         tt:'Ita iha oan ka lae?',        registo:'formal'}     /* [REV-TT] liga-se à nota maun/mana ↔ senhor/senhora */
+  ],
+  exercicio:[
+    /* TIPO A — ouve e escolhe (reutiliza os áudios do vocabulário).
+       Distratores deliberados: pares mínimos de género, incluindo
+       o teste auditivo ô/ó (avô/avó). */
+    {tipo:'ouve', ouvir:'o pai',     opcoes:['o pai','o primo','a mãe']},
+    {tipo:'ouve', ouvir:'a avó',     opcoes:['a avó','o avô','a tia']},
+    {tipo:'ouve', ouvir:'o avô',     opcoes:['o avô','a avó','o tio']},
+    {tipo:'ouve', ouvir:'o irmão',   opcoes:['o irmão','a irmã','o tio']},
+    {tipo:'ouve', ouvir:'a filha',   opcoes:['a filha','o filho','a família']},
+    {tipo:'ouve', ouvir:'o marido',  opcoes:['o marido','a mulher','o pai']},
+    {tipo:'ouve', ouvir:'a prima',   opcoes:['a prima','o primo','a mãe']},
+    {tipo:'ouve', ouvir:'a família', opcoes:['a família','a filha','a tia']},
+    /* TIPO B — lê a definição de parentesco em Tétum, escolhe a
+       palavra portuguesa. Campo explícito "certa". [REV-TT] */
+    {tipo:'situacao', situacaoTT:'Inan-nia inan.',                                  certa:'a avó',      opcoes:['a avó','a tia','a mãe']},          /* [REV-TT] mãe da mãe */
+    {tipo:'situacao', situacaoTT:'Aman-nia aman.',                                  certa:'o avô',      opcoes:['o avô','o pai','o tio']},          /* [REV-TT] pai do pai */
+    {tipo:'situacao', situacaoTT:'Aman-nia maun ka alin-mane.',                     certa:'o tio',      opcoes:['o tio','o primo','o irmão']},      /* [REV-TT] irmão do pai */
+    {tipo:'situacao', situacaoTT:'Inan-nia mana ka alin-feto.',                     certa:'a tia',      opcoes:['a tia','a prima','a irmã']},       /* [REV-TT] irmã da mãe */
+    {tipo:'situacao', situacaoTT:'Tiu-nia oan-mane.',                               certa:'o primo',    opcoes:['o primo','o filho','o irmão']},    /* [REV-TT] filho do tio */
+    {tipo:'situacao', situacaoTT:'Mane ne\'ebé kaben ho feto.',                     certa:'o marido',   opcoes:['o marido','o pai','o filho']},     /* [REV-TT] casado */
+    {tipo:'situacao', situacaoTT:'Feto ne\'ebé kaben ho mane.',                     certa:'a mulher',   opcoes:['a mulher','a mãe','a filha']},     /* [REV-TT] casada */
+    {tipo:'situacao', situacaoTT:'Ema hotu iha uma ida: aman, inan, oan sira.',     certa:'a família',  opcoes:['a família','a filha','a avó']}     /* [REV-TT] a unidade */
+  ],
+  dialogoRegisto:'informal',
+  /* Contexto: dois amigos a ver uma fotografia de família.
+     A troca «a tua mãe? — a minha avó» treina o par tua/minha. */
+  dialogo:[
+    {quem:'A', texto:'Quem é este?',                     tt:'Ida-ne\'e sé?'},                        /* [REV-TT] */
+    {quem:'B', texto:'É o meu pai. Chama-se Marcelino.', tt:'Ha\'u-nia aman. Naran Marcelino.'},     /* [REV-TT] */
+    {quem:'A', texto:'E esta é a tua mãe?',              tt:'No ida-ne\'e ó-nia inan?'},             /* [REV-TT] */
+    {quem:'B', texto:'Não, é a minha avó.',              tt:'Lae, ha\'u-nia abó-feto.'},             /* [REV-TT] */
+    {quem:'A', texto:'Tens irmãos?',                     tt:'Ó iha maun-alin ka lae?'},              /* [REV-TT] */
+    {quem:'B', texto:'Tenho uma irmã. Chama-se Aida.',   tt:'Ha\'u iha mana ida. Naran Aida.'}       /* [REV-TT] */
+  ]
+};
+
+/* ============================================================
    STRINGS DA INTERFACE TRADUZIDAS DINAMICAMENTE
    (para botões e feedback gerados por JS)
    [REV-TT] = a confirmar com colega timorense
@@ -1300,7 +1391,8 @@ const temas = {
   ola:      {dados:tema1, num:'01', titulo:{pt:'Dizer <em>olá</em>',         tt:'Dehan <em>olá</em>'},                sub:{pt:'As primeiras palavras para cumprimentar alguém em português.',   tt:'Liafuan dahuluk atu kumprimenta ema iha portugés.'}},
   alfabeto: {dados:tema2, num:'02', titulo:{pt:'O <em>alfabeto</em>',        tt:'<em>Alfabétu</em>'},                  sub:{pt:'As 26 letras do alfabeto português — toca em cada uma para ouvir o nome.', tt:'Letra 26 husi alfabétu Portugés — klik letra ida-idak atu rona naran.'}},
   numeros:  {dados:tema3, num:'03', titulo:{pt:'Os <em>números</em>',        tt:'<em>Númeru</em> sira'},               sub:{pt:'Contar de 0 a 1000 em português — toca em cada número para ouvir.', tt:'Sura husi 0 to\'o 1000 iha portugés — klik númeru ida-idak atu rona.'}},
-  horas:    {dados:tema4, num:'04', titulo:{pt:'As <em>horas</em>',          tt:'<em>Oras</em>'},                      sub:{pt:'Perguntar e dizer as horas em português — toca em cada cartão para ouvir.', tt:'Husu no dehan oras iha portugés — klik kartaun ida-idak atu rona.'}}
+  horas:    {dados:tema4, num:'04', titulo:{pt:'As <em>horas</em>',          tt:'<em>Oras</em>'},                      sub:{pt:'Perguntar e dizer as horas em português — toca em cada cartão para ouvir.', tt:'Husu no dehan oras iha portugés — klik kartaun ida-idak atu rona.'}},
+  familia:  {dados:tema5, num:'05', titulo:{pt:'A minha <em>família</em>',   tt:'Ha\'u-nia <em>família</em>'},         sub:{pt:'As palavras da família e como apresentar os teus em português.', tt:'Liafuan família nian no oinsá apresenta ó-nia família iha portugés.'}}
 };
 let temaAtual = null;
 
@@ -1852,6 +1944,24 @@ function registarAudios(){
   tema4.dialogo.forEach((d,i)=>{
     const k = chaveAudio(d.texto);
     if(!mapaAudio[k]) mapaAudio[k] = 'a1_tema04_dialogo' + (i+1) + '.mp3';
+  });
+
+  // --- Tema 05: A minha família ---
+  // Vocabulário: a1_tema05_vocab_[palavra].mp3. O exercício «ouve»
+  // reutiliza estes mesmos clips — nenhum ficheiro ex* neste tema.
+  // Guardas if(!mapaAudio[k]) em TODOS os registos: nunca sobrepor
+  // clips já registados por temas anteriores.
+  tema5.vocab.forEach(v=>{
+    const k = chaveAudio(v.pt);
+    if(!mapaAudio[k]) mapaAudio[k] = 'a1_tema05_vocab_' + limpo(v.pt) + '.mp3';
+  });
+  tema5.frases.forEach((f,i)=>{
+    const k = chaveAudio(f.pt);
+    if(!mapaAudio[k]) mapaAudio[k] = 'a1_tema05_frase' + (i+1) + '.mp3';
+  });
+  tema5.dialogo.forEach((d,i)=>{
+    const k = chaveAudio(d.texto);
+    if(!mapaAudio[k]) mapaAudio[k] = 'a1_tema05_dialogo' + (i+1) + '.mp3';
   });
 }
 registarAudios();
