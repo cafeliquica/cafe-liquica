@@ -13,7 +13,7 @@
 <style>
 /* ============================================================
    PRATICA PORTUGUÊS — CAFE de Liquiçá
-   Mock funcional bilingue PT/TT — apenas Tema 1 ativo
+   Bilingue PT/TT — Temas 01 a 04 ativos
    ============================================================ */
 
 :root{
@@ -698,16 +698,24 @@ footer a{color:var(--amarelo);text-decoration:none}
         <span class="tema-btn" data-pt="Começar →" data-tt="Hahú →">Começar →</span>
       </div>
 
-      <div class="tema-card em-breve">
+      <div class="tema-card ativo" onclick="abrirTema('numeros')">
         <p class="tema-num">03</p>
         <div class="tema-emoji">🔢</div>
         <h3 class="tema-titulo" data-pt="Os números" data-tt="Númeru sira">Os números</h3>
-        <p class="tema-info" data-pt="20 números · 5 frases · 1 exercício" data-tt="Númeru 20 · Fraze 5 · Ezersísiu 1">20 números · 5 frases · 1 exercício</p>
-        <span class="tema-em-breve-tag" data-pt="Em breve" data-tt="Sei mai">Em breve</span>
+        <p class="tema-info" data-pt="38 números · 5 frases · 1 exercício" data-tt="Númeru 38 · Fraze 5 · Ezersísiu 1">38 números · 5 frases · 1 exercício</p>
+        <span class="tema-btn" data-pt="Começar →" data-tt="Hahú →">Começar →</span>
+      </div>
+
+      <div class="tema-card ativo" onclick="abrirTema('horas')">
+        <p class="tema-num">04</p>
+        <div class="tema-emoji">🕗</div>
+        <h3 class="tema-titulo" data-pt="As horas" data-tt="Oras">As horas</h3>
+        <p class="tema-info" data-pt="10 palavras · 6 frases · 1 exercício" data-tt="Liafuan 10 · Fraze 6 · Ezersísiu 1">10 palavras · 6 frases · 1 exercício</p>
+        <span class="tema-btn" data-pt="Começar →" data-tt="Hahú →">Começar →</span>
       </div>
 
       <div class="tema-card em-breve">
-        <p class="tema-num">04</p>
+        <p class="tema-num">05</p>
         <div class="tema-emoji svg-emoji">
           <!-- Família timorense ilustrada (opção B aprovada) — pele castanha, cabelo escuro,
                mãe com vestido vermelho com riscas amarelas (referência subtil ao tais).
@@ -1045,6 +1053,176 @@ const tema2 = {
 };
 
 /* ============================================================
+   DADOS DO TEMA 3 — OS NÚMEROS (0 a 1000 + composição)
+   tipo:'numeros' — reutiliza a grelha visual do alfabeto.
+   PT = língua a aprender (com áudio); TT = só tradução escrita.
+   Grafia do 8 = "walu" (gramática Williams-van Klinken). Variante INL: "ualu".
+   Números nativos verificados; frases e diálogo em Tétum marcados [REV-TT].
+   Exercício: tipo 'ouve-numero' com campo explícito "certa" —
+   distratores propositados (confusão clássica 13/30, 15/50, 16/60…).
+   ============================================================ */
+const tema3 = {
+  tipo:'numeros',
+  grupos:[
+    {rotulo:{pt:'De 0 a 10', tt:'Husi 0 to\'o 10'}, numeros:[          /* [REV-TT] rótulo */
+      {n:'0',  pt:'zero',   tt:'zero'},
+      {n:'1',  pt:'um',     tt:'ida'},
+      {n:'2',  pt:'dois',   tt:'rua'},
+      {n:'3',  pt:'três',   tt:'tolu'},
+      {n:'4',  pt:'quatro', tt:'haat'},
+      {n:'5',  pt:'cinco',  tt:'lima'},
+      {n:'6',  pt:'seis',   tt:'neen'},
+      {n:'7',  pt:'sete',   tt:'hitu'},
+      {n:'8',  pt:'oito',   tt:'walu'},
+      {n:'9',  pt:'nove',   tt:'sia'},
+      {n:'10', pt:'dez',    tt:'sanulu'}
+    ]},
+    {rotulo:{pt:'De 11 a 19', tt:'Husi 11 to\'o 19'}, numeros:[        /* [REV-TT] rótulo */
+      {n:'11', pt:'onze',      tt:'sanulu resin ida'},
+      {n:'12', pt:'doze',      tt:'sanulu resin rua'},
+      {n:'13', pt:'treze',     tt:'sanulu resin tolu'},
+      {n:'14', pt:'catorze',   tt:'sanulu resin haat'},
+      {n:'15', pt:'quinze',    tt:'sanulu resin lima'},
+      {n:'16', pt:'dezasseis', tt:'sanulu resin neen'},
+      {n:'17', pt:'dezassete', tt:'sanulu resin hitu'},
+      {n:'18', pt:'dezoito',   tt:'sanulu resin walu'},
+      {n:'19', pt:'dezanove',  tt:'sanulu resin sia'}
+    ]},
+    {rotulo:{pt:'As dezenas', tt:'Dezena sira'}, numeros:[             /* [REV-TT] rótulo */
+      {n:'20', pt:'vinte',     tt:'rua-nulu'},
+      {n:'30', pt:'trinta',    tt:'tolu-nulu'},
+      {n:'40', pt:'quarenta',  tt:'haat-nulu'},
+      {n:'50', pt:'cinquenta', tt:'lima-nulu'},
+      {n:'60', pt:'sessenta',  tt:'neen-nulu'},
+      {n:'70', pt:'setenta',   tt:'hitu-nulu'},
+      {n:'80', pt:'oitenta',   tt:'walu-nulu'},
+      {n:'90', pt:'noventa',   tt:'sia-nulu'}
+    ]},
+    {rotulo:{pt:'As centenas e o mil', tt:'Atus sira no rihun'}, numeros:[   /* [REV-TT] rótulo */
+      {n:'100',  pt:'cem',          tt:'atus ida'},
+      {n:'200',  pt:'duzentos',     tt:'atus rua'},
+      {n:'300',  pt:'trezentos',    tt:'atus tolu'},
+      {n:'400',  pt:'quatrocentos', tt:'atus haat'},
+      {n:'500',  pt:'quinhentos',   tt:'atus lima'},
+      {n:'600',  pt:'seiscentos',   tt:'atus neen'},
+      {n:'700',  pt:'setecentos',   tt:'atus hitu'},
+      {n:'800',  pt:'oitocentos',   tt:'atus walu'},
+      {n:'900',  pt:'novecentos',   tt:'atus sia'},
+      {n:'1000', pt:'mil',          tt:'rihun ida'}
+    ]}
+  ],
+  /* Composição — regra geradora (não são cards; vão para a caixa "Como compor") */
+  compor:[
+    {n:'108', pt:'cento e oito',                tt:'atus ida resin walu'},
+    {n:'223', pt:'duzentos e vinte e três',     tt:'atus rua rua-nulu resin tolu'},
+    {n:'535', pt:'quinhentos e trinta e cinco', tt:'atus lima tolu-nulu resin lima'}
+  ],
+  frases:[
+    {pt:'Quantos anos tens?',                   tt:'Ita iha tinan hira?',                                registo:'informal'},  /* [REV-TT] */
+    {pt:'Tenho doze anos.',                     tt:'Ha\'u iha tinan sanulu resin rua.'},                 /* [REV-TT] */
+    {pt:'Que horas são? São oito horas.',       tt:'Tuku hira? Tuku walu.'},                             /* [REV-TT] */
+    {pt:'Na minha turma somos vinte e cinco.',  tt:'Iha ha\'u-nia turma ami nain rua-nulu resin lima.'}, /* [REV-TT] */
+    {pt:'Este livro custa cinco dólares.',      tt:'Livru ne\'e folin dólar lima.'}                      /* [REV-TT] */
+  ],
+  exercicio:[
+    /* TIPO ouve-numero — ouve a palavra em PT, escolhe o algarismo.
+       Campo explícito "certa" (formato robusto da sessão de 5 perguntas). */
+    {tipo:'ouve-numero', ouvir:'três',       certa:'3',    opcoes:['3','13','30']},
+    {tipo:'ouve-numero', ouvir:'sete',       certa:'7',    opcoes:['7','17','70']},
+    {tipo:'ouve-numero', ouvir:'oito',       certa:'8',    opcoes:['8','18','80']},
+    {tipo:'ouve-numero', ouvir:'onze',       certa:'11',   opcoes:['11','1','10']},
+    {tipo:'ouve-numero', ouvir:'treze',      certa:'13',   opcoes:['13','30','3']},
+    {tipo:'ouve-numero', ouvir:'quinze',     certa:'15',   opcoes:['15','50','5']},
+    {tipo:'ouve-numero', ouvir:'dezasseis',  certa:'16',   opcoes:['16','60','6']},
+    {tipo:'ouve-numero', ouvir:'vinte',      certa:'20',   opcoes:['20','2','12']},
+    {tipo:'ouve-numero', ouvir:'quarenta',   certa:'40',   opcoes:['40','14','4']},
+    {tipo:'ouve-numero', ouvir:'cinquenta',  certa:'50',   opcoes:['50','15','5']},
+    {tipo:'ouve-numero', ouvir:'sessenta',   certa:'60',   opcoes:['60','16','6']},
+    {tipo:'ouve-numero', ouvir:'noventa',    certa:'90',   opcoes:['90','19','9']},
+    {tipo:'ouve-numero', ouvir:'cem',        certa:'100',  opcoes:['100','10','1000']},
+    {tipo:'ouve-numero', ouvir:'duzentos',   certa:'200',  opcoes:['200','20','2000']},
+    {tipo:'ouve-numero', ouvir:'quinhentos', certa:'500',  opcoes:['500','50','5000']},
+    {tipo:'ouve-numero', ouvir:'mil',        certa:'1000', opcoes:['1000','100','10000']}
+  ],
+  dialogoRegisto:'informal',
+  dialogo:[
+    {quem:'A', texto:'Quantos anos tens?',                tt:'Ita iha tinan hira?'},               /* [REV-TT] */
+    {quem:'B', texto:'Tenho dez anos. E tu?',             tt:'Ha\'u iha tinan sanulu. Ó nian?'},   /* [REV-TT] */
+    {quem:'A', texto:'Tenho doze anos.',                  tt:'Ha\'u iha tinan sanulu resin rua.'}, /* [REV-TT] */
+    {quem:'B', texto:'Qual é o teu número de telefone?',  tt:'Ó-nia númeru telefone saida?'},      /* [REV-TT] */
+    {quem:'A', texto:'É o sete, sete, cinco, três.',      tt:'Mak hitu, hitu, lima, tolu.'}        /* [REV-TT] */
+  ]
+};
+
+/* ============================================================
+   DADOS DO TEMA 4 — AS HORAS (Referencial B.1.3 — situação temporal)
+   tipo:'horas' — vocabulário tradicional + grelha «Ler as horas»
+   com relógios SVG + caixa didática «É ou São? / às, ao».
+   Nível A1: horas certas e meias horas. SEM quartos (ficam para A2).
+   Recicla os números do Tema 03 (reutilização espaçada).
+   Tétum das expressões de tempo TODO marcado [REV-TT] — as formas
+   «ho balun» (e meia) e «loloos» (em ponto) são as mais incertas.
+   ============================================================ */
+const tema4 = {
+  tipo:'horas',
+  vocab:[
+    {emoji:'🕐', pt:'a hora',      tt:'oras'},          /* [REV-TT] */
+    {emoji:'⌚', pt:'o relógio',   tt:'relójiu'},       /* [REV-TT] */
+    {emoji:'🌞', pt:'meio-dia',    tt:'meiu-dia'},      /* [REV-TT] */
+    {emoji:'🌙', pt:'meia-noite',  tt:'meia-noite'},    /* [REV-TT] */
+    {emoji:'🌅', pt:'da manhã',    tt:'dadeer'},        /* [REV-TT] */
+    {emoji:'🌇', pt:'da tarde',    tt:'lokraik'},       /* [REV-TT] */
+    {emoji:'🌃', pt:'da noite',    tt:'kalan'},         /* [REV-TT] */
+    {emoji:'🕣', pt:'e meia',      tt:'ho balun'},      /* [REV-TT] */
+    {emoji:'🕗', pt:'em ponto',    tt:'loloos'},        /* [REV-TT] */
+    {emoji:'⏱️', pt:'o minuto',    tt:'minutu'}         /* [REV-TT] */
+  ],
+  /* «Ler as horas» — exemplos com relógio SVG + hora digital + frase */
+  exemplos:[
+    {h:1,  m:0,  digital:'1:00',  pt:'É uma hora.',                tt:'Tuku ida.'},              /* [REV-TT] */
+    {h:8,  m:0,  digital:'8:00',  pt:'São oito horas em ponto.',   tt:'Tuku walu loloos.'},      /* [REV-TT] */
+    {h:9,  m:30, digital:'9:30',  pt:'São nove e meia.',           tt:'Tuku sia ho balun.'},     /* [REV-TT] */
+    {h:12, m:0,  digital:'12:00', pt:'É meio-dia.',                tt:'Meiu-dia.'},              /* [REV-TT] */
+    {h:12, m:0,  digital:'00:00', pt:'É meia-noite.',              tt:'Meia-noite.'},            /* [REV-TT] */
+    {h:8,  m:0,  digital:'20:00', pt:'São oito da noite.',         tt:'Tuku walu kalan.'}        /* [REV-TT] */
+  ],
+  frases:[
+    {pt:'Que horas são?',                 tt:'Tuku hira?'},                  /* [REV-TT] */
+    {pt:'São oito horas da manhã.',       tt:'Tuku walu dadeer.'},           /* [REV-TT] */
+    {pt:'É uma hora.',                    tt:'Tuku ida.'},                   /* [REV-TT] */
+    {pt:'São nove e meia.',               tt:'Tuku sia ho balun.'},          /* [REV-TT] */
+    {pt:'A escola começa às oito.',       tt:'Eskola hahú tuku walu.'},      /* [REV-TT] */
+    {pt:'O autocarro parte ao meio-dia.', tt:'Bis sai iha meiu-dia.'}        /* [REV-TT] */
+  ],
+  exercicio:[
+    /* TIPO ouve-hora — ouve as horas ditas em PT, escolhe a hora digital.
+       Distratores propositados: hora vs. meia hora; manhã vs. noite (24h). */
+    {tipo:'ouve-hora', ouvir:'São três horas.',             certa:'3:00',  opcoes:['3:00','3:30','8:00']},
+    {tipo:'ouve-hora', ouvir:'São oito horas.',             certa:'8:00',  opcoes:['8:00','8:30','3:00']},
+    {tipo:'ouve-hora', ouvir:'São nove e meia.',            certa:'9:30',  opcoes:['9:30','9:00','8:30']},
+    {tipo:'ouve-hora', ouvir:'É uma hora.',                 certa:'1:00',  opcoes:['1:00','11:00','1:30']},
+    {tipo:'ouve-hora', ouvir:'É meio-dia.',                 certa:'12:00', opcoes:['12:00','2:00','10:00']},
+    {tipo:'ouve-hora', ouvir:'É meia-noite.',               certa:'00:00', opcoes:['00:00','12:00','10:00']},
+    {tipo:'ouve-hora', ouvir:'São duas e meia.',            certa:'2:30',  opcoes:['2:30','2:00','3:30']},
+    {tipo:'ouve-hora', ouvir:'São cinco horas.',            certa:'5:00',  opcoes:['5:00','5:30','9:00']},
+    {tipo:'ouve-hora', ouvir:'São seis e meia.',            certa:'6:30',  opcoes:['6:30','6:00','7:30']},
+    {tipo:'ouve-hora', ouvir:'São sete horas da manhã.',    certa:'7:00',  opcoes:['7:00','7:30','19:00']},
+    {tipo:'ouve-hora', ouvir:'São oito da noite.',          certa:'20:00', opcoes:['20:00','8:00','18:00']},
+    {tipo:'ouve-hora', ouvir:'São dez horas.',              certa:'10:00', opcoes:['10:00','10:30','12:00']},
+    {tipo:'ouve-hora', ouvir:'São quatro e meia.',          certa:'4:30',  opcoes:['4:30','4:00','5:30']},
+    {tipo:'ouve-hora', ouvir:'São onze horas.',             certa:'11:00', opcoes:['11:00','1:00','11:30']}
+  ],
+  dialogoRegisto:'informal',
+  dialogo:[
+    {quem:'A', texto:'Que horas são?',                 tt:'Tuku hira?'},                        /* [REV-TT] */
+    {quem:'B', texto:'São sete e meia.',               tt:'Tuku hitu ho balun.'},               /* [REV-TT] */
+    {quem:'A', texto:'A que horas começa a escola?',   tt:'Eskola hahú tuku hira?'},            /* [REV-TT] */
+    {quem:'B', texto:'Começa às oito.',                tt:'Hahú tuku walu.'},                   /* [REV-TT] */
+    {quem:'A', texto:'Então ainda temos meia hora!',   tt:'Nune\'e ita sei iha minutu tolu-nulu!'}  /* [REV-TT] */
+  ]
+};
+
+/* ============================================================
    STRINGS DA INTERFACE TRADUZIDAS DINAMICAMENTE
    (para botões e feedback gerados por JS)
    [REV-TT] = a confirmar com colega timorense
@@ -1061,6 +1239,8 @@ const i18n = {
     btnNovoNumero:'Novo número',
     exInstrucaoOuve:'Toca no botão verde para ouvir uma palavra. Depois, escolhe a opção certa.',
     exInstrucaoOuveLetra:'Toca no botão verde para ouvir o nome de uma letra. Depois, escolhe a letra correta.',
+    exInstrucaoOuveNumero:'Toca no botão verde para ouvir um número. Depois, escolhe o algarismo certo.',
+    exInstrucaoOuveHora:'Toca no botão verde para ouvir as horas. Depois, escolhe a hora certa.',
     exInstrucaoPalavraLetra:'Toca no botão verde para ouvir uma palavra. Depois, escolhe a letra inicial.',
     exInstrucaoSituacao:'Lê a situação em Tétum. Escolhe a expressão portuguesa correta.',
     exSituacaoTag:'Situação',
@@ -1081,6 +1261,8 @@ const i18n = {
     btnNovoNumero:'Númeru foun',                                             /* [REV-TT] */
     exInstrucaoOuve:'Klik iha botaun verde atu rona liafuan ida. Depois, hili opsaun loos.',                                /* [REV-TT] */
     exInstrucaoOuveLetra:'Klik iha botaun verde atu rona naran letra. Depois, hili letra loos.',                            /* [REV-TT] */
+    exInstrucaoOuveNumero:'Klik iha botaun verde atu rona númeru ida. Depois, hili algarismu loos.',                        /* [REV-TT] */
+    exInstrucaoOuveHora:'Klik iha botaun verde atu rona oras. Depois, hili oras loos.',                                      /* [REV-TT] */
     exInstrucaoPalavraLetra:'Klik iha botaun verde atu rona liafuan ida. Depois, hili letra dahuluk.',                      /* [REV-TT] */
     exInstrucaoSituacao:'Lee situasaun iha Tétun. Hili espresaun portugés loos.',                                            /* [REV-TT] */
     exSituacaoTag:'Situasaun',                                                                                                /* [REV-TT] */
@@ -1116,7 +1298,9 @@ function setLang(lang){
    ============================================================ */
 const temas = {
   ola:      {dados:tema1, num:'01', titulo:{pt:'Dizer <em>olá</em>',         tt:'Dehan <em>olá</em>'},                sub:{pt:'As primeiras palavras para cumprimentar alguém em português.',   tt:'Liafuan dahuluk atu kumprimenta ema iha portugés.'}},
-  alfabeto: {dados:tema2, num:'02', titulo:{pt:'O <em>alfabeto</em>',        tt:'<em>Alfabétu</em>'},                  sub:{pt:'As 26 letras do alfabeto português — toca em cada uma para ouvir o nome.', tt:'Letra 26 husi alfabétu Portugés — klik letra ida-idak atu rona naran.'}}
+  alfabeto: {dados:tema2, num:'02', titulo:{pt:'O <em>alfabeto</em>',        tt:'<em>Alfabétu</em>'},                  sub:{pt:'As 26 letras do alfabeto português — toca em cada uma para ouvir o nome.', tt:'Letra 26 husi alfabétu Portugés — klik letra ida-idak atu rona naran.'}},
+  numeros:  {dados:tema3, num:'03', titulo:{pt:'Os <em>números</em>',        tt:'<em>Númeru</em> sira'},               sub:{pt:'Contar de 0 a 1000 em português — toca em cada número para ouvir.', tt:'Sura husi 0 to\'o 1000 iha portugés — klik númeru ida-idak atu rona.'}},
+  horas:    {dados:tema4, num:'04', titulo:{pt:'As <em>horas</em>',          tt:'<em>Oras</em>'},                      sub:{pt:'Perguntar e dizer as horas em português — toca em cada cartão para ouvir.', tt:'Husu no dehan oras iha portugés — klik kartaun ida-idak atu rona.'}}
 };
 let temaAtual = null;
 
@@ -1158,6 +1342,10 @@ function renderizarTema(){
   const vl = document.getElementById('vocab-lista');
   if(dados.tipo === 'alfabeto'){
     vl.innerHTML = renderizarAlfabeto(dados, t);
+  }else if(dados.tipo === 'numeros'){
+    vl.innerHTML = renderizarNumeros(dados, t);
+  }else if(dados.tipo === 'horas'){
+    vl.innerHTML = renderizarHoras(dados, t);
   }else{
     // vocabulário tradicional (Tema 1, e futuros 3 e 4)
     // - v.audio (opcional): texto alternativo para a síntese de voz
@@ -1365,6 +1553,132 @@ function renderizarAlfabeto(dados, t){
   return html;
 }
 
+/* ============================================================
+   RENDERIZAR GRELHA DOS NÚMEROS (Tema 3)
+   - reutiliza as classes do alfabeto (.alfabeto-grelha / .letra-card)
+     para consistência visual e zero CSS novo
+   - cada número: clicável (toca a palavra em PT), com 👁 Tétum (só tradução escrita)
+   - grupos separados por divisor; termina com a caixa "Como compor"
+   - a caixa "Como compor" é andaime didático: bilingue, Tétum PRIMEIRO,
+     sempre visível (mesmo princípio da nota do H mudo no Tema 2)
+   ============================================================ */
+function renderizarNumeros(dados, t){
+  let idx = 0;
+
+  // card de um número (mesma estrutura visual da letra)
+  const cardNumero = (num) => {
+    const id = 'tt-numero-' + (idx++);
+    const tts = num.pt.replace(/'/g,"\\'");
+    return `
+      <div class="letra-card" onclick="lerTexto('${tts}', 0.9)">
+        <span class="letra-audio-icon" aria-hidden="true">🔊</span>
+        <div class="letra-grande">${num.n}</div>
+        <div class="letra-exemplo">${num.pt}</div>
+        <button class="letra-tetum-btn" onclick="event.stopPropagation();toggleTetumLetra('${id}', this)">${t.btnTetum}</button>
+        <div class="letra-tetum-traducao" id="${id}">${num.tt}</div>
+      </div>`;
+  };
+
+  let html = '';
+  dados.grupos.forEach((g, gi) => {
+    const rot = (g.rotulo && g.rotulo[langAtual]) ? g.rotulo[langAtual] : g.rotulo.pt;
+    // primeiro divisor sem linha de topo (encosta ao título do bloco)
+    const estilo = (gi === 0) ? ' style="border-top:none;padding-top:0;margin-top:0"' : '';
+    html += `<div class="alfabeto-divisor"${estilo}>${rot}</div>`;
+    html += '<div class="alfabeto-grelha">';
+    html += g.numeros.map(cardNumero).join('');
+    html += '</div>';
+  });
+
+  // Caixa "Como compor" — estilo .alfabeto-nota, Tétum primeiro (andaime)
+  let comp = '<div class="alfabeto-nota" style="margin-top:1.5rem">';
+  comp += '<div class="alfabeto-nota-linha"><span class="alfabeto-nota-tag tt">TT</span><span><strong>Atu kompoin:</strong> iha portugés, ita liga atus + dezena + unidade ho «e». 100 mesak dehan <em>cem</em>; husi 101 ba leten muda ba <em>cento</em>. Iha Tetun, <strong>resin</strong> («a mais») liga parte sira no mosu de\'it molok ikus.</span></div>';  /* [REV-TT] */
+  comp += '<div class="alfabeto-nota-linha"><span class="alfabeto-nota-tag pt">PT</span><span><strong>Como compor:</strong> ligamos centena + dezena + unidade com «e». 100 sozinho diz-se <em>cem</em>; a partir de 101 muda para <em>cento</em>. Em Tétum, <strong>resin</strong> («a mais») liga as partes e aparece só antes da última.</span></div>';
+  dados.compor.forEach((c) => {
+    const tts = c.pt.replace(/'/g,"\\'");
+    comp += `<div class="alfabeto-nota-linha"><span class="alfabeto-nota-tag pt" style="cursor:pointer" onclick="lerTexto('${tts}', 0.9)" title="Ouvir">🔊 ${c.n}</span><span><strong>${c.pt}</strong> &nbsp;·&nbsp; <em style="opacity:0.7">${c.tt}</em></span></div>`;
+  });
+  comp += '</div>';
+
+  return html + comp;
+}
+
+/* ============================================================
+   RENDERIZAR O TEMA DAS HORAS (Tema 4)
+   Três partes:
+   1) vocabulário tradicional (mesma estrutura visual do Tema 1)
+   2) «Ler as horas» — cartões com relógio SVG + hora digital + frase
+      (reutiliza .letra-card do alfabeto: zero CSS novo)
+   3) caixa didática «É ou São? / às, ao» — bilingue, Tétum PRIMEIRO,
+      sempre visível (andaime, como a nota do H mudo no Tema 2)
+   ============================================================ */
+
+/* Relógio analógico simples em SVG (mostrador com ponteiros) */
+function svgRelogio(h, m){
+  const angH = ((h % 12) + m/60) * 30;   // 360° / 12 horas
+  const angM = m * 6;                    // 360° / 60 minutos
+  const rad = a => (a-90) * Math.PI/180;
+  const px = (a,r) => (32 + r*Math.cos(rad(a))).toFixed(1);
+  const py = (a,r) => (32 + r*Math.sin(rad(a))).toFixed(1);
+  let tracos = '';
+  for(let i=0;i<12;i++){
+    const a = i*30;
+    tracos += `<line x1="${px(a,26)}" y1="${py(a,26)}" x2="${px(a,29)}" y2="${py(a,29)}" stroke="currentColor" stroke-width="1.5"/>`;
+  }
+  return `<svg viewBox="0 0 64 64" width="64" height="64" aria-hidden="true" style="display:block;margin:0 auto">
+    <circle cx="32" cy="32" r="30" fill="none" stroke="currentColor" stroke-width="2.5"/>${tracos}
+    <line x1="32" y1="32" x2="${px(angH,14)}" y2="${py(angH,14)}" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+    <line x1="32" y1="32" x2="${px(angM,22)}" y2="${py(angM,22)}" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="32" cy="32" r="2.5" fill="currentColor"/>
+  </svg>`;
+}
+
+function renderizarHoras(dados, t){
+  // 1) Vocabulário — mesma estrutura do renderizador tradicional
+  //    (ids tetum-N compatíveis com toggleTetum)
+  let html = dados.vocab.map((v,i)=>`
+    <div class="vocab-item">
+      <div class="vocab-emoji">${v.emoji}</div>
+      <div class="vocab-pt">${v.pt}</div>
+      <div class="vocab-acoes">
+        <button class="vocab-btn audio" onclick="lerTexto('${(v.audio||v.pt).replace(/'/g,"\\'")}')">${t.btnOuvir}</button>
+        <button class="vocab-btn tetum" onclick="toggleTetum(${i}, this)">${t.btnTetum}</button>
+      </div>
+      <div class="vocab-tetum" id="tetum-${i}">
+        <strong>${t.tetumLabel}</strong>${v.tt}
+      </div>
+    </div>
+  `).join('');
+
+  // 2) «Ler as horas» — relógio SVG + digital + frase, clicável com áudio
+  const rotulo = (langAtual === 'tt') ? 'Lee oras / Ler as horas' : 'Ler as horas / Lee oras';   /* [REV-TT] rótulo */
+  html += `<div class="alfabeto-divisor">${rotulo}</div>`;
+  html += '<div class="alfabeto-grelha">';
+  let idxEx = 0;
+  html += dados.exemplos.map(ex=>{
+    const id = 'tt-hora-' + (idxEx++);
+    const tts = ex.pt.replace(/'/g,"\\'");
+    return `
+      <div class="letra-card" onclick="lerTexto('${tts}', 0.9)">
+        <span class="letra-audio-icon" aria-hidden="true">🔊</span>
+        <div style="color:var(--verde)">${svgRelogio(ex.h, ex.m)}</div>
+        <div class="letra-grande" style="font-size:1.2rem">${ex.digital}</div>
+        <div class="letra-exemplo">${ex.pt}</div>
+        <button class="letra-tetum-btn" onclick="event.stopPropagation();toggleTetumLetra('${id}', this)">${t.btnTetum}</button>
+        <div class="letra-tetum-traducao" id="${id}">${ex.tt}</div>
+      </div>`;
+  }).join('');
+  html += '</div>';
+
+  // 3) Caixa didática «É ou São? / às, ao» — Tétum primeiro (andaime)
+  let nota = '<div class="alfabeto-nota" style="margin-top:1.5rem">';
+  nota += '<div class="alfabeto-nota-linha"><span class="alfabeto-nota-tag tt">TT</span><span><strong>«É» ka «São»?</strong> — <em>É</em> ba tuku ida, meiu-dia no meia-noite; <em>São</em> ba tuku rua ba leten. Atu dehan tempu ne\'ebé buat ida akontese: <strong>às</strong> + oras (<em>às oito</em>) no <strong>ao</strong> + meio-dia (<em>ao meio-dia</em>).</span></div>';  /* [REV-TT] */
+  nota += '<div class="alfabeto-nota-linha"><span class="alfabeto-nota-tag pt">PT</span><span><strong>«É» ou «São»?</strong> — <em>É</em> uma hora, <em>é</em> meio-dia, <em>é</em> meia-noite; <em>são</em> duas, três, oito horas. Para dizer quando algo acontece: <strong>às</strong> + horas (<em>a escola começa às oito</em>) e <strong>ao</strong> + meio-dia (<em>ao meio-dia</em>).</span></div>';
+  nota += '</div>';
+
+  return html + nota;
+}
+
 /* Toggle do Tétum nas letras do alfabeto (separado do toggleTetum geral) */
 function toggleTetumLetra(id, btn){
   const el = document.getElementById(id);
@@ -1495,6 +1809,49 @@ function registarAudios(){
   });
   tema2.dialogo.forEach((d,i)=>{
     if(!d.soletrar) mapaAudio[chaveAudio(d.texto)] = 'a1_tema02_dialogo' + (i+1) + '.mp3';
+  });
+  // --- Tema 03: Os números ---
+  // Cada número tem um clip próprio, nomeado pelo algarismo (identificador
+  // limpo para a web): a1_tema03_num_15.mp3 = «quinze».
+  // O exercício «ouve-numero» usa as mesmas palavras, logo fica coberto.
+  tema3.grupos.forEach(g=>{
+    g.numeros.forEach(num=>{
+      mapaAudio[chaveAudio(num.pt)] = 'a1_tema03_num_' + num.n + '.mp3';
+    });
+  });
+  tema3.compor.forEach((c,i)=>{
+    mapaAudio[chaveAudio(c.pt)] = 'a1_tema03_compor' + (i+1) + '.mp3';
+  });
+  tema3.frases.forEach((f,i)=>{
+    if(f.pt) mapaAudio[chaveAudio(f.pt)] = 'a1_tema03_frase' + (i+1) + '.mp3';
+  });
+  tema3.dialogo.forEach((d,i)=>{
+    // não sobrepor: «Quantos anos tens?» e «Tenho doze anos.» já existem
+    // como frases — o mesmo clip serve as duas utilizações (menos gravações)
+    const k = chaveAudio(d.texto);
+    if(!mapaAudio[k]) mapaAudio[k] = 'a1_tema03_dialogo' + (i+1) + '.mp3';
+  });
+  // --- Tema 04: As horas ---
+  // Ordem: vocab → frases → exemplos → exercício → diálogo.
+  // Os três últimos têm guarda if(!mapaAudio[k]): frases iguais
+  // reutilizam o mesmo clip (menos gravações, coerência de voz).
+  tema4.vocab.forEach(v=>{
+    mapaAudio[chaveAudio(v.pt)] = 'a1_tema04_vocab_' + limpo(v.pt) + '.mp3';
+  });
+  tema4.frases.forEach((f,i)=>{
+    if(f.pt) mapaAudio[chaveAudio(f.pt)] = 'a1_tema04_frase' + (i+1) + '.mp3';
+  });
+  tema4.exemplos.forEach((ex,i)=>{
+    const k = chaveAudio(ex.pt);
+    if(!mapaAudio[k]) mapaAudio[k] = 'a1_tema04_hora' + (i+1) + '.mp3';
+  });
+  tema4.exercicio.forEach((e,i)=>{
+    const k = chaveAudio(e.ouvir);
+    if(!mapaAudio[k]) mapaAudio[k] = 'a1_tema04_ex' + (i+1) + '.mp3';
+  });
+  tema4.dialogo.forEach((d,i)=>{
+    const k = chaveAudio(d.texto);
+    if(!mapaAudio[k]) mapaAudio[k] = 'a1_tema04_dialogo' + (i+1) + '.mp3';
   });
 }
 registarAudios();
@@ -1732,6 +2089,10 @@ function renderizarPergunta(p){
         instrucao.innerHTML = linhaBilingue(i18n.tt.exInstrucaoPalavraLetra, i18n.pt.exInstrucaoPalavraLetra);
       }else if(p.tipo === 'ouve-letra'){
         instrucao.innerHTML = linhaBilingue(i18n.tt.exInstrucaoOuveLetra, i18n.pt.exInstrucaoOuveLetra);
+      }else if(p.tipo === 'ouve-numero'){
+        instrucao.innerHTML = linhaBilingue(i18n.tt.exInstrucaoOuveNumero, i18n.pt.exInstrucaoOuveNumero);
+      }else if(p.tipo === 'ouve-hora'){
+        instrucao.innerHTML = linhaBilingue(i18n.tt.exInstrucaoOuveHora, i18n.pt.exInstrucaoOuveHora);
       }else{
         instrucao.innerHTML = linhaBilingue(i18n.tt.exInstrucaoOuve, i18n.pt.exInstrucaoOuve);
       }
