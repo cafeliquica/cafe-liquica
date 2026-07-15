@@ -187,6 +187,8 @@ nav{
 .vocab-item{background:white;border:1px solid var(--cinza-medio);border-radius:8px;padding:1rem 1.25rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;transition:border-color 0.2s}
 .vocab-item:hover{border-color:var(--verde)}
 .vocab-emoji{font-size:1.8rem;flex-shrink:0;width:40px;text-align:center}
+.vocab-emoji.svg-mini{width:auto;max-width:170px;font-size:0}
+.ex-imagem{font-size:3.4rem;text-align:center;padding:0.3rem 0;line-height:1.15}
 .vocab-pt{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--preto);flex:1;min-width:120px}
 .vocab-acoes{display:flex;gap:0.5rem;flex-shrink:0}
 .vocab-btn{background:white;border:1px solid var(--cinza-medio);border-radius:6px;padding:8px 14px;font-size:0.85rem;cursor:pointer;display:flex;align-items:center;gap:6px;font-family:inherit;color:var(--texto-claro);transition:all 0.2s}
@@ -757,6 +759,134 @@ footer a{color:var(--amarelo);text-decoration:none}
         <span class="tema-btn" data-pt="Começar →" data-tt="Hahú →">Começar →</span>
       </div>
 
+      <div class="tema-card ativo" onclick="abrirTema('comida')">
+        <p class="tema-num">06</p>
+        <div class="tema-emoji svg-emoji">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-label="Mercado">
+            <ellipse cx="100" cy="182" rx="62" ry="5" fill="#000" opacity="0.08"/>
+            <rect x="38" y="60" width="6" height="118" fill="#8b5e3c"/>
+            <rect x="156" y="60" width="6" height="118" fill="#8b5e3c"/>
+            <path d="M 28 62 Q 100 40 172 62 L 172 52 Q 100 30 28 52 Z" fill="#1a5c2e"/>
+            <path d="M 28 62 L 52 59 L 52 74 Q 40 79 28 74 Z" fill="#c0392b"/>
+            <path d="M 52 59 L 76 57 L 76 72 Q 64 77 52 74 Z" fill="#f0a500"/>
+            <path d="M 76 57 L 100 56 L 100 71 Q 88 76 76 72 Z" fill="#c0392b"/>
+            <path d="M 100 56 L 124 57 L 124 72 Q 112 76 100 71 Z" fill="#f0a500"/>
+            <path d="M 124 57 L 148 59 L 148 74 Q 136 77 124 72 Z" fill="#c0392b"/>
+            <path d="M 148 59 L 172 62 L 172 74 Q 160 79 148 74 Z" fill="#f0a500"/>
+            <rect x="30" y="118" width="140" height="10" rx="2" fill="#8b5e3c"/>
+            <rect x="30" y="128" width="140" height="4" fill="#6e4a2f"/>
+            <ellipse cx="56" cy="112" rx="9" ry="7" fill="#3e7d32"/>
+            <ellipse cx="70" cy="113" rx="9" ry="7" fill="#4e8d3c"/>
+            <ellipse cx="63" cy="104" rx="9" ry="7" fill="#5da046"/>
+            <path d="M 92 116 Q 90 104 100 100 Q 96 110 98 116 Z" fill="#f0a500"/>
+            <path d="M 99 116 Q 98 102 108 99 Q 103 109 105 116 Z" fill="#f0a500"/>
+            <path d="M 106 116 Q 106 104 115 102 Q 110 110 112 116 Z" fill="#e09400"/>
+            <circle cx="130" cy="110" r="8" fill="#6e4a2f"/>
+            <circle cx="127" cy="107" r="1.2" fill="#3f2a1a"/>
+            <circle cx="132" cy="107" r="1.2" fill="#3f2a1a"/>
+            <ellipse cx="148" cy="112" rx="5" ry="8" fill="#f0a500"/>
+            <path d="M 144 108 Q 148 100 152 108 Q 150 104 148 103 Q 146 104 144 108 Z" fill="#4e8d3c"/>
+            <path d="M 58 178 L 62 158 L 90 158 L 94 178 Z" fill="#b98a4f"/>
+            <path d="M 62 158 L 90 158" stroke="#8b5e3c" stroke-width="3"/>
+            <ellipse cx="68" cy="155" rx="6" ry="5" fill="#4e8d3c"/>
+            <ellipse cx="78" cy="153" rx="6" ry="5" fill="#3e7d32"/>
+            <ellipse cx="86" cy="156" rx="5" ry="4" fill="#5da046"/>
+            <path d="M 118 178 Q 128 168 140 172 Q 134 176 140 182 Q 128 184 118 178 Z" fill="#c0392b"/>
+            <circle cx="136" cy="174" r="1.2" fill="#fff"/>
+          </svg>
+        </div>
+        <h3 class="tema-titulo" data-pt="A comida e a bebida" data-tt="Hahán no hemu">A comida e a bebida</h3>
+        <p class="tema-info" data-pt="19 palavras · 5 frases · 1 exercício" data-tt="Liafuan 19 · Fraze 5 · Ezersísiu 1">19 palavras · 5 frases · 1 exercício</p>
+        <span class="tema-btn" data-pt="Começar →" data-tt="Hahú →">Começar →</span>
+      </div>
+
+      <div class="tema-card ativo" onclick="abrirTema('dias')">
+        <p class="tema-num">07</p>
+        <div class="tema-emoji svg-emoji">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-label="Calendário">
+            <ellipse cx="100" cy="182" rx="55" ry="5" fill="#000" opacity="0.08"/>
+            <rect x="42" y="42" width="116" height="132" rx="8" fill="#fff" stroke="#c9c2b6" stroke-width="2"/>
+            <path d="M 42 50 Q 42 42 50 42 L 150 42 Q 158 42 158 50 L 158 74 L 42 74 Z" fill="#1a5c2e"/>
+            <rect x="62" y="32" width="8" height="20" rx="4" fill="#8b5e3c"/>
+            <rect x="130" y="32" width="8" height="20" rx="4" fill="#8b5e3c"/>
+            <circle cx="146" cy="58" r="7" fill="#f0a500"/>
+            <path d="M 146 51 A 7 7 0 0 0 146 65 A 9 9 0 0 1 146 51 Z" fill="#1a5c2e" opacity="0.55"/>
+            <g fill="#e8e4dc">
+              <rect x="52" y="86" width="20" height="16" rx="2"/><rect x="76" y="86" width="20" height="16" rx="2"/><rect x="100" y="86" width="20" height="16" rx="2"/><rect x="124" y="86" width="20" height="16" rx="2"/>
+              <rect x="52" y="108" width="20" height="16" rx="2"/><rect x="100" y="108" width="20" height="16" rx="2"/><rect x="124" y="108" width="20" height="16" rx="2"/>
+              <rect x="52" y="130" width="20" height="16" rx="2"/><rect x="76" y="130" width="20" height="16" rx="2"/><rect x="100" y="130" width="20" height="16" rx="2"/><rect x="124" y="130" width="20" height="16" rx="2"/>
+              <rect x="52" y="152" width="20" height="16" rx="2"/><rect x="76" y="152" width="20" height="16" rx="2"/>
+            </g>
+            <rect x="76" y="108" width="20" height="16" rx="2" fill="#c0392b"/>
+            <circle cx="86" cy="116" r="0.1" fill="#c0392b"/>
+          </svg>
+        </div>
+        <h3 class="tema-titulo" data-pt="Os dias e os meses" data-tt="Loron no fulan sira">Os dias e os meses</h3>
+        <p class="tema-info" data-pt="15 palavras · 5 frases · 1 exercício" data-tt="Liafuan 15 · Fraze 5 · Ezersísiu 1">15 palavras · 5 frases · 1 exercício</p>
+        <span class="tema-btn" data-pt="Começar →" data-tt="Hahú →">Começar →</span>
+      </div>
+
+      <div class="tema-card ativo" onclick="abrirTema('cores')">
+        <p class="tema-num">08</p>
+        <div class="tema-emoji svg-emoji">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-label="Tais e chapéu">
+            <ellipse cx="100" cy="182" rx="58" ry="5" fill="#000" opacity="0.08"/>
+            <rect x="30" y="38" width="140" height="7" rx="3" fill="#8b5e3c"/>
+            <g>
+              <rect x="46" y="45" width="16" height="120" fill="#c0392b"/>
+              <rect x="62" y="45" width="10" height="120" fill="#1a1a1a"/>
+              <rect x="72" y="45" width="14" height="120" fill="#f0a500"/>
+              <rect x="86" y="45" width="8"  height="120" fill="#fff"/>
+              <rect x="94" y="45" width="16" height="120" fill="#c0392b"/>
+              <rect x="110" y="45" width="10" height="120" fill="#1a1a1a"/>
+              <rect x="120" y="45" width="14" height="120" fill="#f0a500"/>
+              <rect x="134" y="45" width="8"  height="120" fill="#fff"/>
+              <rect x="142" y="45" width="12" height="120" fill="#c0392b"/>
+            </g>
+            <g fill="#1a1a1a" opacity="0.35">
+              <rect x="46" y="70" width="108" height="3"/>
+              <rect x="46" y="132" width="108" height="3"/>
+            </g>
+            <g stroke="#8b5e3c" stroke-width="2">
+              <line x1="48" y1="165" x2="48" y2="173"/><line x1="58" y1="165" x2="58" y2="173"/><line x1="68" y1="165" x2="68" y2="173"/><line x1="78" y1="165" x2="78" y2="173"/><line x1="88" y1="165" x2="88" y2="173"/><line x1="98" y1="165" x2="98" y2="173"/><line x1="108" y1="165" x2="108" y2="173"/><line x1="118" y1="165" x2="118" y2="173"/><line x1="128" y1="165" x2="128" y2="173"/><line x1="138" y1="165" x2="138" y2="173"/><line x1="148" y1="165" x2="148" y2="173"/>
+            </g>
+            <ellipse cx="160" cy="158" rx="26" ry="9" fill="#d9b26a"/>
+            <path d="M 146 156 Q 146 138 160 138 Q 174 138 174 156 Q 160 162 146 156 Z" fill="#e6c684"/>
+            <path d="M 146 152 Q 160 158 174 152" stroke="#c0392b" stroke-width="3" fill="none"/>
+          </svg>
+        </div>
+        <h3 class="tema-titulo" data-pt="As cores e a roupa" data-tt="Kór no roupa">As cores e a roupa</h3>
+        <p class="tema-info" data-pt="15 palavras · 5 frases · 1 exercício" data-tt="Liafuan 15 · Fraze 5 · Ezersísiu 1">15 palavras · 5 frases · 1 exercício</p>
+        <span class="tema-btn" data-pt="Começar →" data-tt="Hahú →">Começar →</span>
+      </div>
+
+      <div class="tema-card ativo" onclick="abrirTema('localizacao')">
+        <p class="tema-num">09</p>
+        <div class="tema-emoji svg-emoji">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-label="Paisagem de Liquiçá">
+            <circle cx="158" cy="52" r="14" fill="#f0a500"/>
+            <path d="M 18 128 L 62 62 L 96 118 Z" fill="#1a5c2e"/>
+            <path d="M 70 128 L 112 78 L 150 124 Z" fill="#2e7d46"/>
+            <path d="M 54 74 L 62 62 L 71 76 Q 62 71 54 74 Z" fill="#e8f3ec"/>
+            <rect x="96" y="112" width="26" height="26" fill="#fff" stroke="#c9c2b6" stroke-width="1.5"/>
+            <path d="M 92 112 L 109 96 L 126 112 Z" fill="#c0392b"/>
+            <rect x="107" y="88" width="4" height="10" fill="#8b5e3c"/>
+            <rect x="105" y="90" width="8" height="3" fill="#8b5e3c"/>
+            <rect x="105" y="124" width="8" height="14" fill="#8b5e3c"/>
+            <rect x="138" y="118" width="22" height="20" fill="#f5e9d0" stroke="#c9c2b6" stroke-width="1.5"/>
+            <path d="M 134 118 L 149 106 L 164 118 Z" fill="#8b5e3c"/>
+            <rect x="146" y="126" width="6" height="12" fill="#6e4a2f"/>
+            <rect x="18" y="140" width="164" height="6" fill="#d9b26a"/>
+            <path d="M 18 146 L 182 146 L 182 178 L 18 178 Z" fill="#2c6e8f"/>
+            <path d="M 18 150 Q 40 147 60 150 T 100 150 T 140 150 T 182 150" stroke="#e8f3ec" stroke-width="2" fill="none" opacity="0.7"/>
+            <path d="M 18 160 Q 45 157 70 160 T 120 160 T 182 160" stroke="#e8f3ec" stroke-width="2" fill="none" opacity="0.5"/>
+          </svg>
+        </div>
+        <h3 class="tema-titulo" data-pt="A localização" data-tt="Fatin sira">A localização</h3>
+        <p class="tema-info" data-pt="15 palavras · 5 frases · 1 exercício" data-tt="Liafuan 15 · Fraze 5 · Ezersísiu 1">15 palavras · 5 frases · 1 exercício</p>
+        <span class="tema-btn" data-pt="Começar →" data-tt="Hahú →">Começar →</span>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1314,6 +1444,295 @@ const tema5 = {
 };
 
 /* ============================================================
+   DADOS DO TEMA 6 — A COMIDA E A BEBIDA (mercado/balcão; recicla
+   números do T03 nos preços). Tétum todo [REV-TT].
+   ============================================================ */
+const tema6 = {
+  vocab:[
+    {emoji:'🍽', pt:'a comida',   tt:'hahán'},
+    {emoji:'☕', pt:'o café',     tt:'kafé',
+      nota:{tt:'«Café» iha portugés bele bebida no mós fatin atu hemu kafé. No mós naran ita-nia eskola — CAFE!',
+            pt:'«Café» em português é a bebida e também o lugar onde se bebe. E é o nome da nossa escola — CAFE!'}},
+    {emoji:'🍵', pt:'o chá',      tt:'xá'},
+    {emoji:'💧', pt:'a água',     tt:'bee'},
+    {emoji:'🥛', pt:'o leite',    tt:'susubeen'},
+    {emoji:'🍞', pt:'o pão',      tt:'paun'},
+    {emoji:'🍚', pt:'o arroz',    tt:'etu (tein ona) / foos (seidauk tein)',
+      nota:{tt:'Portugés uza liafuan ida deit: «arroz» ba etu no mós ba foos. Kontestu mak hatudu.',
+            pt:'O português usa uma palavra só: «arroz» serve para etu e para foos. O contexto diz qual é.'}},
+    {emoji:'🐟', pt:'o peixe',    tt:'ikan'},
+    {emoji:'🍖', pt:'a carne',    tt:"na'an"},
+    {emoji:'🍗', pt:'o frango',   tt:"na'an manu"},
+    {emoji:'🥚', pt:'o ovo',      tt:'manu-tolun'},
+    {emoji:'🥬🥦🥒', pt:'os legumes', tt:'modo'},
+    {emoji:'🍎', pt:'a fruta',    tt:'ai-fuan'},
+    {emoji:'🍌', pt:'a banana',   tt:'hudi'},
+    {emoji:'🥭', pt:'a manga',    tt:'has'},
+    {emoji:'🌽', pt:'o milho',    tt:'batar'},
+    {emoji:'🧂', pt:'o sal',      tt:'masin'},
+    {emoji:'🍬', pt:'o açúcar',   tt:'masin-midar',
+      nota:{tt:'Iha Tetun, «masin» no «masin-midar» hanesan família ida. Iha portugés lae: «sal» no «açúcar» — liafuan rua la hanesan. Tenke aprende ida-idak.',
+            pt:'Em tétum, «masin» e «masin-midar» são da mesma família. Em português não: «sal» e «açúcar» são palavras diferentes. É preciso aprender cada uma.'}},
+    {emoji:'🥥', pt:'o coco',     tt:'nuu'}
+  ],
+  frasesNota:{
+    tt:'Iha portugés, atu husu ho respeitu, uza «queria» (lae «quero»). Iha Tetun, «hakarak» la muda — maibé iha portugés, «queria» mak forma di\'ak iha loja ka kafé.',
+    pt:'Em português, para pedir com respeito usa-se «queria» (não «quero»). Em tétum, «hakarak» não muda — mas em português, «queria» é a forma simpática na loja ou no café.'
+  },
+  frases:[
+    {pt:'Um café, por favor.',     tt:'Kafé ida, favór ida.'},
+    {pt:'Queria um chá e um pão.', tt:"Ha'u hakarak xá ida no paun ida.", registo:'formal'},
+    {pt:'Quanto custa?',           tt:'Folin hira?'},
+    {pt:'São dois dólares.',       tt:'Dolar rua.'},
+    {pt:'Bom apetite!',            tt:"Han ho di'ak!"}
+  ],
+  exercicio:[
+    {tipo:'ouve', ouvir:'o pão',      opcoes:['o pão','o peixe','o milho']},
+    {tipo:'ouve', ouvir:'a manga',    opcoes:['a manga','a banana','a carne']},
+    {tipo:'ouve', ouvir:'o chá',      opcoes:['o chá','o café','a comida']},
+    {tipo:'ouve', ouvir:'o sal',      opcoes:['o sal','o açúcar','o coco']},
+    {tipo:'ouve', ouvir:'a água',     opcoes:['a água','a fruta','o leite']},
+    {tipo:'ouve', ouvir:'os legumes', opcoes:['os legumes','o leite','o ovo']},
+    {tipo:'imagem', imagem:'🥭',       certa:'a manga',    opcoes:['a manga','a banana','a fruta']},
+    {tipo:'imagem', imagem:'🌽',       certa:'o milho',    opcoes:['o milho','o pão','o arroz']},
+    {tipo:'imagem', imagem:'🥥',       certa:'o coco',     opcoes:['o coco','o ovo','a água']},
+    {tipo:'imagem', imagem:'🐟',       certa:'o peixe',    opcoes:['o peixe','a carne','o leite']},
+    {tipo:'imagem', imagem:'☕',       certa:'o café',     opcoes:['o café','o chá','a água']},
+    {tipo:'imagem', imagem:'🥚',       certa:'o ovo',      opcoes:['o ovo','o coco','o sal']},
+    {tipo:'imagem', imagem:'🥬🥦🥒',   certa:'os legumes', opcoes:['os legumes','a fruta','o milho']},
+    {tipo:'imagem', imagem:'🍌',       certa:'a banana',   opcoes:['a banana','a manga','o milho']},
+    {tipo:'imagem', imagem:'🍗',       certa:'o frango',   opcoes:['o frango','o peixe','a carne']},
+    {tipo:'situacao', situacaoTT:"Bebida ne'ebé ema Liquiçá kuda no fa'an.",       certa:'o café',   opcoes:['o café','o chá','o leite']},
+    {tipo:'situacao', situacaoTT:"Ita han ida-ne'e ho masin-midar, la'ós ho masin.", certa:'a fruta',  opcoes:['a fruta','o peixe','o sal']},
+    {tipo:'situacao', situacaoTT:'Labarik sira gosta han has matak ho ai-manas!',  certa:'a manga',  opcoes:['a manga','a banana','o coco']},
+    {tipo:'situacao', situacaoTT:'Etu, ikan, na\'an, modo — hotu-hotu…',           certa:'a comida', opcoes:['a comida','a fruta','o café']}
+  ],
+  dialogoRegisto:'informal',
+  dialogo:[
+    {quem:'A', texto:'Bom dia! Quanto custa a manga?',     tt:'Bondia! Has folin hira?'},
+    {quem:'B', texto:'Um dólar.',                          tt:'Dolar ida.'},
+    {quem:'A', texto:'Queria três mangas, por favor.',     tt:"Ha'u hakarak has tolu, favór ida."},
+    {quem:'B', texto:'São três dólares.',                  tt:'Dolar tolu.'},
+    {quem:'A', texto:'Gosto de manga verde com piripíri!', tt:"Ha'u gosta has matak ho ai-manas!"},
+    {quem:'B', texto:'Eu também! Bom apetite!',            tt:"Ha'u mós! Han ho di'ak!"}
+  ]
+};
+
+/* ============================================================
+   DADOS DO TEMA 7 — OS DIAS E OS MESES. Os 7 dias levam um
+   mini-calendário SVG (semana 1–7, dia destacado a vermelho,
+   fim de semana em amarelo suave) — pedido da Clau: a posição
+   na semana vê-se, não se decora. Meses vivem na nota do «ano».
+   ============================================================ */
+function miniSemana(destaque){
+  let c='';
+  for(let i=1;i<=7;i++){
+    const x=4+(i-1)*24, fs=(i>=6);
+    const fundo=(i===destaque)?'#c0392b':(fs?'#fdf3d7':'#ffffff');
+    const cor=(i===destaque)?'#ffffff':'#2b2b2b';
+    c+=`<rect x="${x}" y="16" width="22" height="22" rx="3" fill="${fundo}" stroke="#c9c2b6" stroke-width="1"/>`+
+       `<text x="${x+11}" y="31" font-size="12" font-weight="700" text-anchor="middle" fill="${cor}" font-family="Georgia,serif">${i}</text>`;
+  }
+  return `<svg viewBox="0 0 176 44" style="width:150px;height:auto;display:block" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">`+
+         `<rect x="4" y="6" width="166" height="8" rx="3" fill="#1a5c2e"/>`+
+         `<circle cx="14" cy="10" r="1.6" fill="#f0a500"/><circle cx="160" cy="10" r="1.6" fill="#f0a500"/>${c}</svg>`;
+}
+const tema7 = {
+  vocab:[
+    {emoji:'☀️', pt:'o dia',     tt:'loron'},
+    {emoji:'🗓', pt:'a semana',  tt:'semana'},
+    {emoji:'🌙', pt:'o mês',     tt:'fulan',
+      nota:{tt:'Iha Tetun, «fulan» = fulan iha kalendáriu no mós fulan iha lalehan. Portugés fahe: «o mês» no «a lua».',
+            pt:'Em tétum, «fulan» é o mês do calendário e também a lua no céu. O português separa: «o mês» e «a lua».'}},
+    {emoji:'🎆', pt:'o ano',     tt:'tinan',
+      nota:{tt:'Tinan ida iha fulan 12 — no naran sira besik hanesan iha lian rua: janeiro/Janeiru, fevereiro/Fevereiru, março/Marsu, abril/Abríl, maio/Maiu, junho/Juñu, julho/Jullu, agosto/Agostu, setembro/Setembru, outubro/Outubru, novembro/Novembru, dezembro/Dezembru.',
+            pt:'Um ano tem 12 meses — e os nomes são quase iguais nas duas línguas: janeiro/Janeiru, fevereiro/Fevereiru, março/Marsu, abril/Abríl, maio/Maiu, junho/Juñu, julho/Jullu, agosto/Agostu, setembro/Setembru, outubro/Outubru, novembro/Novembru, dezembro/Dezembru.'}},
+    {svg:miniSemana(1), pt:'segunda-feira', tt:'loron-segunda',
+      nota:{tt:'Segunda to\'o sexta hola «-feira»; sábado no domingo lae. Naran loron sira iha Tetun mai husi portugés — besik hanesan!',
+            pt:'De segunda a sexta os dias levam «-feira»; sábado e domingo não. Os nomes em tétum vêm do português — quase iguais!'}},
+    {svg:miniSemana(2), pt:'terça-feira',  tt:'loron-tersa'},
+    {svg:miniSemana(3), pt:'quarta-feira', tt:'loron-kuarta'},
+    {svg:miniSemana(4), pt:'quinta-feira', tt:'loron-kinta'},
+    {svg:miniSemana(5), pt:'sexta-feira',  tt:'loron-sesta'},
+    {svg:miniSemana(6), pt:'sábado',       tt:'loron-sábadu'},
+    {svg:miniSemana(7), pt:'domingo',      tt:'loron-domingu'},
+    {emoji:'📍', pt:'hoje',          tt:'ohin loron'},
+    {emoji:'➡️', pt:'amanhã',        tt:'aban'},
+    {emoji:'⬅️', pt:'ontem',         tt:'horiseik'},
+    {emoji:'🎂', pt:'o aniversário', tt:'loron-moris / aniversáriu'}
+  ],
+  frasesNota:{
+    tt:'Iha Tetun, «tinan» serve ba tinan iha kalendáriu no ba idade. Portugés uza verbu «ter»: «Tenho vinte anos».',
+    pt:'Em tétum, «tinan» serve para o ano do calendário e para a idade. Em português usa-se o verbo «ter»: «Tenho vinte anos».'
+  },
+  frases:[
+    {pt:'Que dia é hoje?',              tt:'Ohin loron saida?'},
+    {pt:'Hoje é segunda-feira.',        tt:'Ohin loron-segunda.'},
+    {pt:'O meu aniversário é em maio.', tt:"Ha'u-nia aniversáriu iha fulan-Maiu."},
+    {pt:'Quantos anos tens?',           tt:'Ó tinan hira?', registo:'informal'},
+    {pt:'Tenho vinte anos.',            tt:"Ha'u tinan ruanulu."}
+  ],
+  exercicio:[
+    {tipo:'ouve', ouvir:'segunda-feira', opcoes:['segunda-feira','sexta-feira','sábado']},
+    {tipo:'ouve', ouvir:'sexta-feira',   opcoes:['sexta-feira','segunda-feira','terça-feira']},
+    {tipo:'ouve', ouvir:'terça-feira',   opcoes:['terça-feira','quarta-feira','quinta-feira']},
+    {tipo:'ouve', ouvir:'sábado',        opcoes:['sábado','domingo','o dia']},
+    {tipo:'ouve', ouvir:'hoje',          opcoes:['hoje','ontem','amanhã']},
+    {tipo:'ouve', ouvir:'o mês',         opcoes:['o mês','a semana','o ano']},
+    {tipo:'ouve', ouvir:'o aniversário', opcoes:['o aniversário','o ano','amanhã']},
+    {tipo:'situacao', situacaoTT:'Loron ne\'ebé tuir domingo.',        certa:'segunda-feira', opcoes:['segunda-feira','sábado','sexta-feira']},
+    {tipo:'situacao', situacaoTT:'Loron molok sábado.',                certa:'sexta-feira',   opcoes:['sexta-feira','domingo','quinta-feira']},
+    {tipo:'situacao', situacaoTT:'Loron ne\'ebé mai tuir ohin.',       certa:'amanhã',        opcoes:['amanhã','ontem','hoje']},
+    {tipo:'situacao', situacaoTT:'Loron ne\'ebé liu tiha ona.',        certa:'ontem',         opcoes:['ontem','amanhã','hoje']},
+    {tipo:'situacao', situacaoTT:'Fulan 12 halibur hamutuk.',          certa:'o ano',         opcoes:['o ano','o mês','a semana']},
+    {tipo:'situacao', situacaoTT:'Loron ne\'ebé ita moris.',           certa:'o aniversário', opcoes:['o aniversário','o dia','o ano']},
+    {tipo:'situacao', situacaoTT:'Loron hitu hamutuk.',                certa:'a semana',      opcoes:['a semana','o mês','o ano']}
+  ],
+  dialogoRegisto:'informal',
+  dialogo:[
+    {quem:'A', texto:'Que dia é hoje?',              tt:'Ohin loron saida?'},
+    {quem:'B', texto:'Hoje é sexta-feira.',          tt:'Ohin loron-sesta.'},
+    {quem:'A', texto:'Amanhã é o meu aniversário!',  tt:"Aban ha'u-nia loron-moris!"},
+    {quem:'B', texto:'Parabéns! Quantos anos tens?', tt:'Parabéns! Ó tinan hira?'},
+    {quem:'A', texto:'Tenho onze anos.',             tt:"Ha'u tinan sanulu-resin-ida."},
+    {quem:'B', texto:'Boa! Até amanhã!',             tt:"Di'ak! To'o aban!"}
+  ]
+};
+
+/* ============================================================
+   DADOS DO TEMA 8 — AS CORES E A ROUPA. Joia gramatical:
+   concordância (frasesNota). «matak» liga ao T06 (has matak);
+   «tais» é o empréstimo ao contrário — orgulho timorense.
+   ============================================================ */
+const tema8 = {
+  vocab:[
+    {emoji:'🎨', pt:'a cor',      tt:'kór'},
+    {emoji:'🔴', pt:'vermelho',   tt:'mean'},
+    {emoji:'🟡', pt:'amarelo',    tt:'kinur'},
+    {emoji:'🟢', pt:'verde',      tt:'matak',
+      nota:{tt:'«Matak» iha Tetun = kór verde no mós «seidauk tasak» (has matak!). Portugés fahe: «verde» (kór) no «verde/cru» (ai-fuan).',
+            pt:'«Matak» em tétum é a cor verde e também «não maduro» (has matak — a manga verde!). Em português, «verde» serve para a cor e para a fruta que ainda não amadureceu.'}},
+    {emoji:'🔵', pt:'azul',       tt:'azúl'},
+    {emoji:'⚪', pt:'branco',     tt:'mutin'},
+    {emoji:'⚫', pt:'preto',      tt:'metan'},
+    {emoji:'🧺', pt:'a roupa',    tt:'roupa / hatais'},
+    {emoji:'👕', pt:'a camisa',   tt:'kamiza'},
+    {emoji:'👖', pt:'as calças',  tt:'kalsa'},
+    {emoji:'👗', pt:'o vestido',  tt:'vestidu'},
+    {emoji:'🩳', pt:'a saia',     tt:'saia'},
+    {emoji:'👟', pt:'os sapatos', tt:'sapatu'},
+    {emoji:'👒', pt:'o chapéu',   tt:'xapeu'},
+    {emoji:'🧣', pt:'o tais',     tt:'tais',
+      nota:{tt:'Loke matan: dala ida-ne\'e portugés mak hola liafuan husi Tetun! «Tais» la iha traduasaun — iha lian hotu-hotu, tais naran tais.',
+            pt:'Repara: desta vez foi o português que pediu a palavra emprestada ao tétum! «Tais» não se traduz — em qualquer língua, o tais chama-se tais.'}}
+  ],
+  frasesNota:{
+    tt:'Iha Tetun, kór nunka muda: kamiza mutin, sapatu mutin. Iha portugés, kór muda tuir liafuan: «o chapéu pretO», «a saia pretA», «os sapatos pretOS».',
+    pt:'Em tétum, a cor nunca muda: kamiza mutin, sapatu mutin. Em português, a cor muda com a palavra: «o chapéu pretO», «a saia pretA», «os sapatos pretOS».'
+  },
+  frases:[
+    {pt:'De que cor é?',              tt:'Kór saida?'},
+    {pt:'A camisa é branca.',         tt:'Kamiza mutin.'},
+    {pt:'Gosto do vestido vermelho.', tt:"Ha'u gosta vestidu mean."},
+    {pt:'A bandeira de Timor-Leste é vermelha, preta, amarela e branca.', tt:'Bandeira Timor-Leste nian mean, metan, kinur no mutin.'},
+    {pt:'Que bonito!',                tt:'Furak loos!', registo:'informal'}
+  ],
+  exercicio:[
+    {tipo:'ouve', ouvir:'verde',      opcoes:['verde','vermelho','preto']},
+    {tipo:'ouve', ouvir:'amarelo',    opcoes:['amarelo','azul','branco']},
+    {tipo:'ouve', ouvir:'a camisa',   opcoes:['a camisa','as calças','a saia']},
+    {tipo:'ouve', ouvir:'os sapatos', opcoes:['os sapatos','a saia','o chapéu']},
+    {tipo:'ouve', ouvir:'o tais',     opcoes:['o tais','a cor','a roupa']},
+    {tipo:'imagem', imagem:'🔴', certa:'vermelho',   opcoes:['vermelho','verde','preto']},
+    {tipo:'imagem', imagem:'⚫', certa:'preto',      opcoes:['preto','branco','azul']},
+    {tipo:'imagem', imagem:'👗', certa:'o vestido',  opcoes:['o vestido','a saia','a camisa']},
+    {tipo:'imagem', imagem:'👖', certa:'as calças',  opcoes:['as calças','os sapatos','a saia']},
+    {tipo:'imagem', imagem:'👒', certa:'o chapéu',   opcoes:['o chapéu','a camisa','o tais']},
+    {tipo:'imagem', imagem:'🟢', certa:'verde',      opcoes:['verde','amarelo','azul']},
+    {tipo:'situacao', situacaoTT:'Kór has matak nian.',                    certa:'verde',      opcoes:['verde','amarelo','vermelho']},
+    {tipo:'situacao', situacaoTT:'Kór susubeen nian.',                     certa:'branco',     opcoes:['branco','preto','azul']},
+    {tipo:'situacao', situacaoTT:'Hena furak Timor nian, soru ho liman.',  certa:'o tais',     opcoes:['o tais','a roupa','a camisa']},
+    {tipo:'situacao', situacaoTT:'Kór kalan nian.',                        certa:'preto',      opcoes:['preto','branco','verde']},
+    {tipo:'situacao', situacaoTT:'Ita tau iha ain.',                       certa:'os sapatos', opcoes:['os sapatos','o chapéu','as calças']}
+  ],
+  dialogoRegisto:'formal',
+  dialogo:[
+    {quem:'A', texto:'Bom dia! Queria uma camisa.',   tt:"Bondia! Ha'u hakarak kamiza ida."},
+    {quem:'B', texto:'De que cor?',                   tt:'Kór saida?'},
+    {quem:'A', texto:'Amarela, por favor.',           tt:'Kinur, favór ida.'},
+    {quem:'B', texto:'Aqui está. São cinco dólares.', tt:"Iha ne'e. Dolar lima."},
+    {quem:'A', texto:'Que bonita! Obrigada.',         tt:'Furak loos! Obrigada.'},
+    {quem:'B', texto:'De nada! Até logo!',            tt:"La buat ida! To'o logu!"}
+  ]
+};
+
+/* ============================================================
+   DADOS DO TEMA 9 — A LOCALIZAÇÃO (B.2.2, o «futuro» prometido
+   na página Sobre). «tasi ibun» validado pela professora
+   timorense (correção ao site, julho 2026). frasesNota: «ficar».
+   ============================================================ */
+const tema9 = {
+  vocab:[
+    {emoji:'🏫', pt:'a escola',   tt:'eskola'},
+    {emoji:'🏠', pt:'a casa',     tt:'uma'},
+    {emoji:'🛒', pt:'o mercado',  tt:'merkadu / basar'},
+    {emoji:'⛪', pt:'a igreja',   tt:'igreja'},
+    {emoji:'🏪', pt:'a loja',     tt:'loja'},
+    {emoji:'🏥', pt:'o hospital', tt:'ospitál'},
+    {emoji:'🛣', pt:'a rua',      tt:'dalan / estrada'},
+    {emoji:'🏖', pt:'a praia',    tt:'tasi ibun'},
+    {emoji:'🌊', pt:'o mar',      tt:'tasi'},
+    {emoji:'⛰', pt:'a montanha', tt:'foho',
+      nota:{tt:'«Foho» iha Tetun mós katak rai-leten, area rurál — la\'ós de\'it foho ida. Portugés «montanha» la lori sentidu ne\'e.',
+            pt:'«Foho» em tétum também quer dizer o interior, as terras altas — não só uma montanha. O português «montanha» não carrega esse sentido.'}},
+    {emoji:'📍', pt:'aqui',       tt:"iha ne'e"},
+    {emoji:'👉', pt:'ali',        tt:"iha ne'ebá"},
+    {emoji:'🤏', pt:'perto',      tt:'besik'},
+    {emoji:'🔭', pt:'longe',      tt:'dook',
+      nota:{tt:'Atu lembra: «dook» — liafuan naruk atu dehan, hanesan distánsia ne\'ebé nia hatudu!',
+            pt:'Para lembrar: «longe» e «dook» — o próprio som estica, como a distância que descrevem!'}},
+    {emoji:'🏙', pt:'a cidade',   tt:'sidade'}
+  ],
+  frasesNota:{
+    tt:'Iha portugés, fatin sira «ficam»: «A escola FICA perto». Iha Tetun, «iha» de\'it to\'o ona: «Eskola besik».',
+    pt:'Em português, os lugares «ficam»: «A escola FICA perto». Em tétum basta «iha»: «Eskola besik».'
+  },
+  frases:[
+    {pt:'Onde fica a escola?',   tt:"Eskola iha ne'ebé?"},
+    {pt:'A escola fica perto.',  tt:'Eskola besik.'},
+    {pt:'O mercado fica longe.', tt:'Merkadu dook.'},
+    {pt:'A minha casa é ali.',   tt:"Ha'u-nia uma iha ne'ebá."},
+    {pt:'Vamos à praia!',        tt:'Mai ita bá tasi ibun!', registo:'informal'}
+  ],
+  exercicio:[
+    {tipo:'ouve', ouvir:'a escola', opcoes:['a escola','a igreja','a loja']},
+    {tipo:'ouve', ouvir:'perto',    opcoes:['perto','longe','ali']},
+    {tipo:'ouve', ouvir:'o mar',    opcoes:['o mar','a montanha','a rua']},
+    {tipo:'ouve', ouvir:'a praia',  opcoes:['a praia','a casa','a cidade']},
+    {tipo:'ouve', ouvir:'aqui',     opcoes:['aqui','ali','longe']},
+    {tipo:'imagem', imagem:'🏫', certa:'a escola',   opcoes:['a escola','a casa','a igreja']},
+    {tipo:'imagem', imagem:'⛪', certa:'a igreja',   opcoes:['a igreja','a escola','a loja']},
+    {tipo:'imagem', imagem:'⛰', certa:'a montanha', opcoes:['a montanha','o mar','a praia']},
+    {tipo:'imagem', imagem:'🏖', certa:'a praia',    opcoes:['a praia','o mar','a montanha']},
+    {tipo:'imagem', imagem:'🏠', certa:'a casa',     opcoes:['a casa','a loja','a escola']},
+    {tipo:'situacao', situacaoTT:'Fatin atu aprende.',                    certa:'a escola',  opcoes:['a escola','a loja','a igreja']},
+    {tipo:'situacao', situacaoTT:'Fatin atu sosa ikan, modo, ai-fuan.',   certa:'o mercado', opcoes:['o mercado','a loja','a escola']},
+    {tipo:'situacao', situacaoTT:'Tasi nia ibun, fatin ho rai-henek.',    certa:'a praia',   opcoes:['a praia','o mar','a rua']},
+    {tipo:'situacao', situacaoTT:'Fatin atu reza.',                       certa:'a igreja',  opcoes:['a igreja','a escola','o hospital']},
+    {tipo:'situacao', situacaoTT:'La besik.',                             certa:'longe',     opcoes:['longe','perto','aqui']}
+  ],
+  dialogoRegisto:'formal',
+  dialogo:[
+    {quem:'A', texto:'Desculpe, onde fica o mercado?', tt:"Deskulpa, merkadu iha ne'ebé?"},
+    {quem:'B', texto:'Fica ali, perto da igreja.',     tt:"Iha ne'ebá, besik igreja."},
+    {quem:'A', texto:'É longe?',                       tt:'Dook ka lae?'},
+    {quem:'B', texto:'Não, é perto.',                  tt:'Lae, besik deit.'},
+    {quem:'A', texto:'Muito obrigado!',                tt:'Obrigadu barak!'},
+    {quem:'B', texto:'De nada! Bom dia!',              tt:'La buat ida! Bondia!'}
+  ]
+};
+
+/* ============================================================
    STRINGS DA INTERFACE TRADUZIDAS DINAMICAMENTE
    (para botões e feedback gerados por JS)
    [REV-TT] = a confirmar com colega timorense
@@ -1335,6 +1754,8 @@ const i18n = {
     exInstrucaoPalavraLetra:'Toca no botão verde para ouvir uma palavra. Depois, escolhe a letra inicial.',
     exInstrucaoSituacao:'Lê a situação em Tétum. Escolhe a expressão portuguesa correta.',
     exSituacaoTag:'Situação',
+    exInstrucaoImagem:'Olha para a imagem. Escolhe a palavra portuguesa certa.',
+    exImagemTag:'Imagem',
     feedbackCerto:'✓ Boa! Acertaste. Tentas outra?',
     feedbackErrado:(certa)=>'✗ Quase! A resposta certa era "'+certa+'". Toca em "Nova" para tentar outra.',
     tetumLabel:'Tétum:',
@@ -1356,7 +1777,9 @@ const i18n = {
     exInstrucaoOuveHora:'Klik iha botaun verde atu rona oras. Depois, hili oras loos.',                                      /* [REV-TT] */
     exInstrucaoPalavraLetra:'Klik iha botaun verde atu rona liafuan ida. Depois, hili letra dahuluk.',                      /* [REV-TT] */
     exInstrucaoSituacao:'Lee situasaun iha Tétun. Hili espresaun portugés loos.',                                            /* [REV-TT] */
-    exSituacaoTag:'Situasaun',                                                                                                /* [REV-TT] */
+    exSituacaoTag:'Situasaun',
+    exInstrucaoImagem:'Haree imajen. Hili liafuan portugés loos.',                                                        /* [REV-TT] */
+    exImagemTag:'Imajen',                                                                                                 /* [REV-TT] */                                                                                                /* [REV-TT] */
     feedbackCerto:'✓ Diak! Loos! Hakarak koko seluk?',                       /* [REV-TT] */
     feedbackErrado:(certa)=>'✗ Próximu! Resposta loos mak "'+certa+'". Klik "Foun" atu koko seluk.', /* [REV-TT] */
     tetumLabel:'Tétum:',
@@ -1392,7 +1815,11 @@ const temas = {
   alfabeto: {dados:tema2, num:'02', titulo:{pt:'O <em>alfabeto</em>',        tt:'<em>Alfabétu</em>'},                  sub:{pt:'As 26 letras do alfabeto português — toca em cada uma para ouvir o nome.', tt:'Letra 26 husi alfabétu Portugés — klik letra ida-idak atu rona naran.'}},
   numeros:  {dados:tema3, num:'03', titulo:{pt:'Os <em>números</em>',        tt:'<em>Númeru</em> sira'},               sub:{pt:'Contar de 0 a 1000 em português — toca em cada número para ouvir.', tt:'Sura husi 0 to\'o 1000 iha portugés — klik númeru ida-idak atu rona.'}},
   horas:    {dados:tema4, num:'04', titulo:{pt:'As <em>horas</em>',          tt:'<em>Oras</em>'},                      sub:{pt:'Perguntar e dizer as horas em português — toca em cada cartão para ouvir.', tt:'Husu no dehan oras iha portugés — klik kartaun ida-idak atu rona.'}},
-  familia:  {dados:tema5, num:'05', titulo:{pt:'A minha <em>família</em>',   tt:'Ha\'u-nia <em>família</em>'},         sub:{pt:'As palavras da família e como apresentar os teus em português.', tt:'Liafuan família nian no oinsá apresenta ó-nia família iha portugés.'}}
+  familia:  {dados:tema5, num:'05', titulo:{pt:'A minha <em>família</em>',   tt:'Ha\'u-nia <em>família</em>'},         sub:{pt:'As palavras da família e como apresentar os teus em português.', tt:'Liafuan família nian no oinsá apresenta ó-nia família iha portugés.'}},
+  comida:   {dados:tema6, num:'06', titulo:{pt:'A comida e a <em>bebida</em>', tt:'Hahán no <em>hemu</em>'},            sub:{pt:'A comida, a bebida e o mercado — pedir, perguntar o preço e pagar em português.', tt:'Hahán, hemu no merkadu — husu, husu folin no selu iha portugés.'}},
+  dias:     {dados:tema7, num:'07', titulo:{pt:'Os dias e os <em>meses</em>',  tt:'Loron no <em>fulan</em> sira'},      sub:{pt:'Os dias da semana, os meses e o aniversário — toca em cada cartão para ouvir.', tt:'Loron semana nian, fulan sira no loron-moris — klik kartaun ida-idak atu rona.'}},
+  cores:    {dados:tema8, num:'08', titulo:{pt:'As cores e a <em>roupa</em>',  tt:'Kór no <em>roupa</em>'},             sub:{pt:'As cores e a roupa — e como a cor muda com a palavra em português.', tt:'Kór no roupa — no oinsá kór muda tuir liafuan iha portugés.'}},
+  localizacao:{dados:tema9, num:'09', titulo:{pt:'A <em>localização</em>',     tt:'<em>Fatin</em> sira'},               sub:{pt:'Os lugares de Liquiçá e como perguntar onde ficam, em português.', tt:'Fatin sira Liquiçá nian no oinsá husu sira iha ne\'ebé, iha portugés.'}}
 };
 let temaAtual = null;
 
@@ -1446,7 +1873,7 @@ function renderizarTema(){
     //   línguas (TT primeiro) — é andaime, como a nota do H mudo no Tema 2
     vl.innerHTML = dados.vocab.map((v,i)=>`
       <div class="vocab-item">
-        <div class="vocab-emoji">${v.emoji}</div>
+        <div class="vocab-emoji${v.svg?' svg-mini':''}">${v.svg||v.emoji}</div>
         <div class="vocab-pt">${v.pt}</div>
         <div class="vocab-acoes">
           <button class="vocab-btn audio" onclick="lerTexto('${(v.audio||v.pt).replace(/'/g,"\\'")}')">${t.btnOuvir}</button>
@@ -1730,7 +2157,7 @@ function renderizarHoras(dados, t){
   //    (ids tetum-N compatíveis com toggleTetum)
   let html = dados.vocab.map((v,i)=>`
     <div class="vocab-item">
-      <div class="vocab-emoji">${v.emoji}</div>
+      <div class="vocab-emoji${v.svg?' svg-mini':''}">${v.svg||v.emoji}</div>
       <div class="vocab-pt">${v.pt}</div>
       <div class="vocab-acoes">
         <button class="vocab-btn audio" onclick="lerTexto('${(v.audio||v.pt).replace(/'/g,"\\'")}')">${t.btnOuvir}</button>
@@ -1963,6 +2390,24 @@ function registarAudios(){
     const k = chaveAudio(d.texto);
     if(!mapaAudio[k]) mapaAudio[k] = 'a1_tema05_dialogo' + (i+1) + '.mp3';
   });
+
+  // --- Temas 06 a 09 (registo idêntico; guardas em TODOS os registos).
+  // O exercício «ouve» reutiliza os clips do vocabulário; os tipos
+  // «imagem» e «situação» não têm áudio de pergunta. ---
+  [[tema6,'06'],[tema7,'07'],[tema8,'08'],[tema9,'09']].forEach(([tema,num])=>{
+    tema.vocab.forEach(v=>{
+      const k = chaveAudio(v.pt);
+      if(!mapaAudio[k]) mapaAudio[k] = 'a1_tema' + num + '_vocab_' + limpo(v.pt) + '.mp3';
+    });
+    tema.frases.forEach((f,i)=>{
+      const k = chaveAudio(f.pt);
+      if(!mapaAudio[k]) mapaAudio[k] = 'a1_tema' + num + '_frase' + (i+1) + '.mp3';
+    });
+    tema.dialogo.forEach((d,i)=>{
+      const k = chaveAudio(d.texto);
+      if(!mapaAudio[k]) mapaAudio[k] = 'a1_tema' + num + '_dialogo' + (i+1) + '.mp3';
+    });
+  });
 }
 registarAudios();
 
@@ -2189,6 +2634,20 @@ function renderizarPergunta(p){
     }
     if(instrucao){
       instrucao.innerHTML = linhaBilingue(i18n.tt.exInstrucaoSituacao, i18n.pt.exInstrucaoSituacao);
+    }
+  }else if(p.tipo === 'imagem'){
+    // Tipo C — vê a imagem (emoji grande), escolhe a palavra portuguesa.
+    // Novo nos Temas 6–9; usa o campo explícito "certa", sem áudio de pergunta.
+    if(audioWrap) audioWrap.style.display = 'none';
+    if(situacaoWrap){
+      situacaoWrap.style.display = 'block';
+      situacaoWrap.innerHTML = `
+        <div class="ex-situacao-tag">${i18n.tt.exImagemTag} · ${i18n.pt.exImagemTag}</div>
+        <div class="ex-imagem">${p.imagem}</div>
+      `;
+    }
+    if(instrucao){
+      instrucao.innerHTML = linhaBilingue(i18n.tt.exInstrucaoImagem, i18n.pt.exInstrucaoImagem);
     }
   }else{
     // Tipos áudio (ouve, ouve-letra, palavra-letra) — mostra botão áudio
