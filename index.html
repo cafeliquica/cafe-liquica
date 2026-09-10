@@ -164,6 +164,12 @@
   .noticia-card{border:1px solid var(--cinza-medio);border-radius:8px;overflow:hidden;transition:box-shadow 0.3s,transform 0.3s}
   .noticia-card:hover{box-shadow:var(--sombra);transform:translateY(-4px)}
   .noticia-img{width:100%;height:200px;object-fit:cover;display:block}
+  /* ── CAPA DO CARTÃO DA APP DE EXAME (substitui a fotografia) ───────────── */
+  .noticia-capa-exame{width:100%;height:200px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:1.25rem;background:linear-gradient(135deg,var(--verde) 0%,#123f20 100%);border-radius:8px 8px 0 0;color:var(--branco)}
+  .noticia-capa-exame .capa-titulo{font-family:'Playfair Display',serif;font-size:1.3rem;line-height:1.25;margin:0 0 0.7rem}
+  .noticia-capa-exame .capa-ano{font-size:0.75rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--amarelo)}
+  /* CTA da app: verde, para distinguir dos CTAs de leitura (vermelhos) */
+  .noticia-cta-app{color:var(--verde)}
   .noticia-corpo{padding:1.5rem}
   .noticia-cat{font-size:0.7rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--vermelho);margin-bottom:0.5rem}
   .noticia-titulo{font-family:'Playfair Display',serif;font-size:1.1rem;line-height:1.4;margin-bottom:0.75rem;color:var(--preto)}
@@ -573,6 +579,25 @@
     <h2 class="section-titulo"><span data-pt="O que acontece " data-tt="Saida mak akontese ">O que acontece </span><em data-pt="no CAFE" data-tt="iha CAFE">no CAFE</em></h2>
     <div class="secao-linha"></div>
     <div class="noticias-grid">
+      <!-- Recurso permanente — App de preparação para o Exame Nacional de Matemática (10 setembro 2026) -->
+      <!-- Sem data-foto: o cartão não abre modal; o clique leva diretamente a exame.html -->
+      <!-- [REV-TT] traduções tétum (categoria, título, resumo, CTA) aguardam revisão da Engracia -->
+      <div class="noticia-card noticia-card-exame" onclick="location.href='exame.html'">
+        <div class="noticia-capa-exame">
+          <p class="capa-titulo" data-pt="Exame Nacional de Matemática" data-tt="Ezame Nasionál Matemátika">Exame Nacional de Matemática</p>
+          <p class="capa-ano" data-pt="9.º ano · 2026" data-tt="Tinan 9 · 2026">9.º ano · 2026</p>
+        </div>
+        <div class="noticia-corpo">
+          <p class="noticia-cat" data-pt="Recursos" data-tt="Rekursu sira">Recursos</p>
+          <h3 class="noticia-titulo" data-pt="App para praticar para o Exame Nacional de Matemática" data-tt="Aplikasaun atu treinu ba Ezame Nasionál Matemátika">App para praticar para o Exame Nacional de Matemática</h3>
+          <p class="noticia-resumo" data-pt="O CAFE de Liquiçá disponibiliza uma aplicação gratuita para os alunos do 3.º ciclo praticarem para o Exame Nacional de Matemática: 600 perguntas dos exames nacionais de 2014 a 2025, com resolução, organizadas por ano e por unidade; o formulário completo; e uma simulação de exame com 50 perguntas. Abre no telemóvel, sem instalar nada. Desenvolvida pela professora Cláudia Silva." data-tt="CAFE Liquiçá fó aplikasaun gratuita ida ba estudante 3.º siklu nian atu prepara ba Ezame Nasionál Matemátika: pergunta 600 husi ezame nasionál sira tinan 2014 to'o 2025, ho rezolusaun, organiza tuir tinan no unidade; formuláriu kompletu; no simulasaun ezame ho pergunta 50. Loke iha telemóvel, la presiza instala buat ida. Dezenvolve husi profesora Cláudia Silva.">O CAFE de Liquiçá disponibiliza uma aplicação gratuita para os alunos do 3.º ciclo praticarem para o Exame Nacional de Matemática: 600 perguntas dos exames nacionais de 2014 a 2025, com resolução, organizadas por ano e por unidade; o formulário completo; e uma simulação de exame com 50 perguntas. Abre no telemóvel, sem instalar nada. Desenvolvida pela professora Cláudia Silva.</p>
+          <p class="noticia-data">10 de setembro de 2026</p>
+          <div class="noticia-ctas">
+            <span class="noticia-cta noticia-cta-app" data-pt="🧮 Abrir a app →" data-tt="🧮 Loke aplikasaun →">🧮 Abrir a app →</span>
+          </div>
+        </div>
+      </div>
+
       <!-- Notícia 9 setembro 2026 — Feira de Carreira e Educação (SEFOPE) (DESTAQUE) -->
       <!-- [REV-TT] traduções tétum (categoria, título, resumo) aguardam revisão -->
       <div class="noticia-card" data-destaque="true" data-foto="fotofeira01.jpeg" data-galeria="fotofeira01.jpeg|A sessão de abertura da Feira de Carreira e Educação||fotofeira02.jpeg|Os alunos junto a um dos stands, em conversa com os representantes||fotofeira03.jpeg|Os finalistas do CAFE de Liquiçá no final da visita" data-cat="Orientação Vocacional" data-titulo="Finalistas do Secundário na Feira de Carreira e Educação do SEFOPE" data-texto="No dia 9 de setembro de 2026, os alunos finalistas do Ensino Secundário do CAFE de Liquiçá participaram na Feira de Carreira e Educação (Feira Karreira no Edukasaun), organizada pela Secretaria de Estado da Formação Profissional e Emprego (SEFOPE), a convite desta entidade. Ao longo da manhã, os alunos percorreram os stands de instituições de ensino superior, centros de formação profissional e entidades empregadoras, recolheram informação e colocaram as suas questões diretamente a quem trabalha nestas áreas. A feira teve como objetivo dar aos jovens uma visão concreta das oportunidades de carreira e de formação existentes no país, ajudando-os a conhecer melhor as opções disponíveis e a decidir com mais informação o que fazer depois de concluído o Ensino Secundário. Para os alunos que terminam este ano, o momento é particularmente oportuno: a escolha de um percurso — universidade, formação profissional ou entrada no mercado de trabalho — está a poucos meses de distância. O CAFE de Liquiçá agradece ao SEFOPE o convite e a oportunidade proporcionada aos seus alunos." data-data="9 de setembro de 2026">
