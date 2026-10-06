@@ -38,7 +38,8 @@ img{max-width:100%;display:block}
 .topo a{color:#fff;text-decoration:none;display:flex;align-items:center;gap:.6rem}
 .topo img{height:34px;width:auto}
 .topo .nome{font-size:1rem;line-height:1.1}
-.topo .nome small{display:block;font-family:'Source Sans 3',sans-serif;font-weight:400;font-size:.75rem;color:#cfe0d2}
+.topo .sair{border:1.5px solid var(--amarelo);color:var(--amarelo);border-radius:6px;padding:.4rem .65rem;font-size:.85rem;font-weight:700;white-space:nowrap}
+@media(max-width:620px){.topo .nome{display:none}}
 .lingua{display:flex;border:1px solid #4d7a59;border-radius:6px;overflow:hidden;flex-shrink:0}
 .lingua button{border:0;background:transparent;padding:.45rem .7rem;font-size:.82rem;font-weight:600;color:#cfe0d2}
 .lingua button.on{background:var(--amarelo);color:var(--tinta)}
@@ -176,7 +177,9 @@ footer a{color:var(--amarelo)}
 <header class="topo">
   <a href="index.html">
     <img src="logo.png" alt="">
-    <span class="nome serif">CAFE de Liquiçá<small data-i="voltarSite"></small></span>
+    <span class="nome serif">CAFE de Liquiçá</span>
+    <!-- Botão de regresso ao site principal: sempre visível -->
+    <span class="sair">‹ <span data-i="voltarSite"></span></span>
   </a>
   <div class="lingua">
     <button id="btn-tt" onclick="setLang('tt')">Tetun</button>
