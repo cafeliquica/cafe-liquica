@@ -91,10 +91,18 @@ img{max-width:100%;display:block}
 .cartao.feito .num{background:var(--amarelo);color:var(--tinta)}
 
 /* ---------- SITUAÇÃO ---------- */
-.cab{background:var(--verde-escuro);color:#fff;position:relative}
-.cab-img{aspect-ratio:16/9;max-height:360px;width:100%;background:linear-gradient(135deg,#2c7a45,#123f20);overflow:hidden}
+/* Cabeçalho da situação: a ilustração vê-se SEMPRE inteira (3:2), sem cortar cabeças.
+   Telemóvel: imagem em cima, título em baixo. Computador: título à esquerda, imagem à direita. */
+.cab{background:var(--verde-escuro);color:#fff}
+.cab-grelha{max-width:1080px;margin:0 auto;display:grid}
+.cab-img{aspect-ratio:3/2;width:100%;background:linear-gradient(135deg,#2c7a45,#123f20);overflow:hidden}
 .cab-img img{width:100%;height:100%;object-fit:cover}
-.cab-txt{padding:1rem 1rem 1.2rem;max-width:1080px;margin:0 auto}
+.cab-txt{padding:1rem 1rem 1.2rem}
+@media(min-width:820px){
+  .cab-grelha{grid-template-columns:1fr 1.25fr;align-items:center}
+  .cab-img{order:2}
+  .cab-txt{padding:2rem 2rem 2rem 1rem}
+}
 .voltar{background:none;border:0;color:var(--amarelo);font-weight:600;font-size:.95rem;padding:0 0 .5rem}
 .cab .n{font-size:.9rem;color:#cfe0d2}
 .cab h1{font-size:clamp(1.8rem,7vw,2.6rem);line-height:1.1}
@@ -105,7 +113,7 @@ img{max-width:100%;display:block}
 .objetivos li::before{content:'';position:absolute;left:.2rem;top:.5rem;width:9px;height:5px;border-left:2.5px solid var(--verde);border-bottom:2.5px solid var(--verde);transform:rotate(-45deg)}
 
 /* Passos 1–4 */
-.passos{position:sticky;top:50px;z-index:10;background:var(--fundo);display:grid;grid-template-columns:repeat(4,1fr);gap:.3rem;padding:.5rem 0;border-bottom:1px solid var(--linha)}
+.passos{position:sticky;top:var(--topo-h,56px);z-index:10;background:var(--fundo);display:grid;grid-template-columns:repeat(4,1fr);gap:.3rem;padding:.5rem 0;border-bottom:1px solid var(--linha)}
 .passos button{border:1px solid var(--linha);background:var(--papel);border-radius:8px;padding:.5rem .2rem;font-size:.85rem;font-weight:600;line-height:1.15}
 .passos button b{display:block;font-size:.75rem;color:var(--tinta-suave);font-weight:600}
 .passos button.on{background:var(--verde);border-color:var(--verde);color:#fff}
@@ -141,6 +149,19 @@ body.sem-tetum .tt{visibility:hidden}
 .nota{border-left:4px solid var(--amarelo);background:var(--areia);padding:.7rem .9rem;font-size:.95rem;margin:.8rem 0}
 .nota .pt-nota{color:var(--tinta-suave);font-size:.9rem;margin-top:.25rem}
 
+/* Grelha do alfabeto */
+.letras{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:.5rem}
+.letra{background:var(--papel);border:1px solid var(--linha);border-radius:10px;padding:.6rem .3rem .55rem;text-align:center;position:relative}
+.letra:active,.letra.ativa{background:var(--areia);border-color:var(--amarelo)}
+.letra .g{font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:2rem;line-height:1;color:var(--verde)}
+.letra .g sup{color:var(--vermelho);font-size:1rem}
+.letra .nm{font-weight:700;font-size:.95rem;margin-top:.2rem}
+.letra .exl{font-size:.85rem;margin-top:.15rem}
+.letra .tt{font-size:.8rem}
+.letra::after{content:'';position:absolute;top:6px;right:6px;width:8px;height:8px;border-radius:50%;background:var(--verde);opacity:.55}
+.subtit{font-size:.9rem;font-weight:700;color:var(--tinta-suave);margin:1rem 0 .5rem}
+.mini-som{border:0;background:var(--verde);color:#fff;border-radius:14px;padding:.1rem .55rem;font-weight:700;font-size:.9rem;margin:0 .1rem}
+
 /* Exercícios */
 .ex{background:var(--papel);border:1px solid var(--linha);border-radius:10px;padding:1.1rem}
 .ex .prog{font-size:.85rem;color:var(--tinta-suave);font-weight:600}
@@ -148,6 +169,8 @@ body.sem-tetum .tt{visibility:hidden}
 .ex .ouvir.grande{width:68px;height:68px;margin:.6rem auto 1rem}
 .ex .ouvir.grande svg{width:30px;height:30px}
 .opcoes{display:grid;gap:.5rem}
+.opcoes.curtas{grid-template-columns:repeat(3,1fr)}
+.opcoes.curtas button{text-align:center;font-family:'Playfair Display',Georgia,serif;font-size:1.8rem;padding:.6rem}
 .opcoes button{border:2px solid var(--linha);background:#fff;border-radius:8px;padding:.8rem 1rem;font-size:1.1rem;font-weight:600;text-align:left}
 .opcoes button.certa{border-color:var(--verde);background:#e3f1e6}
 .opcoes button.errada{border-color:var(--vermelho);background:#fbeceA}
@@ -220,14 +243,14 @@ footer a{color:var(--amarelo)}
 
 <!-- ======================= SITUAÇÃO ======================= -->
 <main id="ecra-situacao" hidden>
-  <div class="cab">
+  <div class="cab"><div class="cab-grelha">
     <div class="cab-img"><img id="cab-img" src="" alt="" onerror="this.style.display='none'"></div>
     <div class="cab-txt">
       <button class="voltar" onclick="abrirInicio()" data-i="voltarSit"></button>
       <p class="n" id="cab-n"></p>
       <h1 class="serif" id="cab-tit"></h1>
     </div>
-  </div>
+  </div></div>
 
   <div class="largura">
     <div class="objetivos">
@@ -257,19 +280,14 @@ footer a{color:var(--amarelo)}
       <div class="apoio"><span></span>
         <button class="interruptor" aria-pressed="true" onclick="alternarTetum(this)"><span>Tetun</span> <i></i></button>
       </div>
-      <h3 data-i="palavras"></h3>
-      <div class="quadro" id="vocab"></div>
-      <div id="vocab-notas"></div>
-      <h3 data-i="frases"></h3>
-      <div id="frases-nota"></div>
-      <div class="quadro" id="frases"></div>
+      <div id="descobrir"></div>
       <div class="navega"><button class="btn claro" onclick="irPasso(2)" data-i="continuar"></button></div>
     </section>
 
     <!-- 3. PRATICAR -->
     <section class="painel" id="p-praticar" hidden>
       <h2 class="serif" data-i="p3"></h2>
-      <p class="guia" data-i="p3guia"></p>
+      <p class="guia" id="guia-praticar"></p>
       <div class="ex" id="ex-praticar"></div>
       <div class="navega"><button class="btn claro" onclick="irPasso(3)" data-i="continuar"></button></div>
     </section>
@@ -322,7 +340,9 @@ const T = {
     palavras:'Palavras', frases:'Frases', formal:'formal', informal:'informal',
     de:'de', certo:'Certo.', errado:'A resposta certa é:', seguinte:'Seguinte',
     resultado:'respostas certas', denovo:'Tentar de novo',
-    fimTit:'Consegues fazer isto?', concluir:'Marcar como concluída', concluida:'Concluída'
+    fimTit:'Consegues fazer isto?', concluir:'Marcar como concluída', concluida:'Concluída',
+    alfabeto:'O alfabeto', estrangeiras:'Letras de origem estrangeira',
+    toqueLetra:'Toca numa letra: ouves o nome da letra e uma palavra.'
   },
   tt:{
     voltarSite:'Fila ba site', titulo:'Pratika Portugés — A1',
@@ -346,19 +366,22 @@ const T = {
     de:'husi', certo:'Loos.', errado:'Resposta loos mak:', seguinte:'Tuirmai',
     resultado:'resposta loos', denovo:'Koko fali',
     fimTit:"Ó bele halo ida-ne'e ona?",                                 /* [REV-TT] */
-    concluir:"Marka nu'udar kompleta", concluida:'Kompleta ona'         /* [REV-TT] */
+    concluir:"Marka nu'udar kompleta", concluida:'Kompleta ona',        /* [REV-TT] */
+    alfabeto:'Alfabétu', estrangeiras:'Letra husi orijen estranjeiru',  /* [REV-TT] */
+    toqueLetra:'Klik letra ida: ó rona letra nia naran no liafuan ida.' /* [REV-TT] */
   }
 };
 const t = k => T[lang][k];
 
 /* ============================================================
-   AS NOVE SITUAÇÕES (só a 01 está montada neste protótipo)
+   AS NOVE SITUAÇÕES — «pronta:true» = já montada na versão nova
    ============================================================ */
 const SITUACOES = [
   {id:'s01', img:'pratica01.jpg', pronta:true,
    pt:['Conhecer alguém','Cumprimentar, apresentar-se e despedir-se.'],
    tt:['Koñese ema ida','Kumprimenta, aprezenta an no despede an.']},                 /* [REV-TT] */
-  {id:'s02', img:'pratica02.jpg', pt:['O meu nome','Dizer e soletrar nomes.'],
+  {id:'s02', img:'pratica02.jpg', pronta:true,
+   pt:['O meu nome','Dizer e soletrar nomes.'],
    tt:["Ha'u-nia naran",'Dehan no soletra naran.']},                                   /* [REV-TT] */
   {id:'s03', img:'pratica03.jpg', pt:['Números no dia a dia','Telefone, idade e preços.'],
    tt:['Númeru iha loroloron','Telefone, idade no folin.']},                           /* [REV-TT] */
@@ -377,9 +400,17 @@ const SITUACOES = [
 ];
 
 /* ============================================================
-   CONTEÚDO DA SITUAÇÃO 01 — copiado do Tema 1 do pratica.html
-   (mesmos textos em português → mesmos MP3)
+   COMO SE DESCREVE UMA SITUAÇÃO (para as próximas)
+   objetivos {pt[],tt[]} · cena {pt,tt} · dialogoRegisto
+   dialogo [{quem, pt, tt, soletrar?}]
+   descobrir [blocos]: {tipo:'lista', titulo, itens[{pt,tt,audio?}]}
+                       {tipo:'letras', letras[...]}
+                       {tipo:'nota', tt, pt}  — [[palavra]] vira botão de som
+   praticar [{ouvir, certa?, opcoes[]}] · praticarGuia {pt,tt}
+   usar [{sit (tétum), certa, opcoes[]}] · nPerguntas
    ============================================================ */
+
+/* ---------- SITUAÇÃO 01 — Conhecer alguém (ex-Tema 1) ---------- */
 const s01 = {
   objetivos:{
     pt:['cumprimentar alguém','dizer o meu nome','perguntar o nome de outra pessoa','despedir-me'],
@@ -393,34 +424,35 @@ const s01 = {
     {quem:'Maria', pt:'Eu sou a Maria. Muito prazer!',  tt:"Ha'u Maria. Kontente atu hasoru!"},
     {quem:'João',  pt:'Igualmente. Até amanhã!',        tt:"Ha'u mós. Aban hasoru fali!"}
   ],
-  vocab:[
-    {pt:'Olá',        tt:'Olá / Bondia'},
-    {pt:'Bom dia',    tt:'Bondia'},
-    {pt:'Boa tarde',  tt:'Botarde'},
-    {pt:'Boa noite',  tt:'Bonoite'},
-    {pt:'Adeus',      tt:'Dá'},
-    {pt:'Até logo',   tt:'Hasoru fali'},
-    {pt:'Obrigado / Obrigada', audio:'Obrigado. Obrigada.', tt:'Obrigadu',
-      nota:{tt:'Mane sira dehan «obrigado». Feto sira dehan «obrigada».',
-            pt:'Os homens dizem «obrigado». As mulheres dizem «obrigada».'}},
-    {pt:'De nada',    tt:'De nada (uza mós iha Tetun) · La iha buat ida'},
-    {pt:'Prazer',     tt:'Kontente atu hasoru'}
+  descobrir:[
+    {tipo:'lista', titulo:'palavras', itens:[
+      {pt:'Olá',        tt:'Olá / Bondia'},
+      {pt:'Bom dia',    tt:'Bondia'},
+      {pt:'Boa tarde',  tt:'Botarde'},
+      {pt:'Boa noite',  tt:'Bonoite'},
+      {pt:'Adeus',      tt:'Dá'},
+      {pt:'Até logo',   tt:'Hasoru fali'},
+      {pt:'Obrigado / Obrigada', audio:'Obrigado. Obrigada.', tt:'Obrigadu'},
+      {pt:'De nada',    tt:'De nada (uza mós iha Tetun) · La iha buat ida'},
+      {pt:'Prazer',     tt:'Kontente atu hasoru'}
+    ]},
+    {tipo:'nota', tt:'Mane sira dehan «obrigado». Feto sira dehan «obrigada».',
+                  pt:'Os homens dizem «obrigado». As mulheres dizem «obrigada».'},
+    {tipo:'nota',
+     tt:'Iha portugés: «Como te chamas?» ba ema besik (hanesan «ó» iha Tetun). «Como se chama?» ba ema boot ka ema foun (hanesan «Ita»).',
+     pt:'Em português: «Como te chamas?» usa-se com pessoas próximas (como «ó» em tétum). «Como se chama?» usa-se com pessoas mais velhas ou desconhecidas (como «Ita»).'},
+    {tipo:'lista', titulo:'frases', itens:[
+      {pt:'Bom dia! Como te chamas?', tt:'Bondia! Ó-nia naran saida?', registo:'informal'},
+      {pt:'Eu chamo-me Maria.',       tt:"Ha'u-nia naran Maria."},
+      {pt:'Muito prazer!',            tt:'Kontente atu hasoru ó!'},
+      {pt:'Bom dia. Como se chama?',  tt:'Bondia. Ita-nia naran saida?', registo:'formal'},
+      {pt:'Como está?',               tt:'Ita diak ka lae?', registo:'formal'},
+      {pt:'Estou bem, obrigado.',     tt:"Ha'u diak, obrigadu."},
+      {pt:'Boa tarde, professora.',   tt:'Botarde, mestra.', registo:'formal'},
+      {pt:'Até amanhã!',              tt:'Aban hasoru fali!'}
+    ]}
   ],
-  frasesNota:{
-    tt:'Iha portugés: «Como te chamas?» ba ema besik (hanesan «ó» iha Tetun). «Como se chama?» ba ema boot ka ema foun (hanesan «Ita»).',
-    pt:'Em português: «Como te chamas?» usa-se com pessoas próximas (como «ó» em tétum). «Como se chama?» usa-se com pessoas mais velhas ou desconhecidas (como «Ita»).'
-  },
-  frases:[
-    {pt:'Bom dia! Como te chamas?', tt:'Bondia! Ó-nia naran saida?', registo:'informal'},
-    {pt:'Eu chamo-me Maria.',       tt:"Ha'u-nia naran Maria."},
-    {pt:'Muito prazer!',            tt:'Kontente atu hasoru ó!'},
-    {pt:'Bom dia. Como se chama?',  tt:'Bondia. Ita-nia naran saida?', registo:'formal'},
-    {pt:'Como está?',               tt:'Ita diak ka lae?', registo:'formal'},
-    {pt:'Estou bem, obrigado.',     tt:"Ha'u diak, obrigadu."},
-    {pt:'Boa tarde, professora.',   tt:'Botarde, mestra.', registo:'formal'},
-    {pt:'Até amanhã!',              tt:'Aban hasoru fali!'}
-  ],
-  /* PRATICAR — ouve e escolhe */
+  nPerguntas:5,
   praticar:[
     {ouvir:'Olá',       opcoes:['Olá','Adeus','Obrigado']},
     {ouvir:'Obrigado',  opcoes:['Bom dia','Obrigado','Prazer']},
@@ -432,7 +464,6 @@ const s01 = {
     {ouvir:'Até logo',  opcoes:['Até logo','Adeus','De nada']},
     {ouvir:'De nada',   opcoes:['De nada','Prazer','Boa noite']}
   ],
-  /* USAR — situação em tétum, escolhe o que dizes em português */
   usar:[
     {sit:'Saúda ema iha dadeer?',                                   certa:'Bom dia',    opcoes:['Bom dia','Boa noite','Adeus']},
     {sit:'Saúda ema iha lokraik?',                                  certa:'Boa tarde',  opcoes:['Boa tarde','Bom dia','Olá']},
@@ -443,33 +474,152 @@ const s01 = {
     {sit:'Ó sei hasoru fali ema iha oras badak.',                   certa:'Até logo',   opcoes:['Até logo','Bom dia','Prazer']},
     {sit:'Ó sei hasoru fali ema aban.',                             certa:'Até amanhã', opcoes:['Até amanhã','Boa tarde','De nada']},
     {sit:'Feto ida hakarak agradese. Nia dehan saida?',             certa:'Obrigada',   opcoes:['Obrigada','Obrigado','De nada']}
-  ]
+  ],
+  /* Liga os textos aos MP3 já gravados do antigo Tema 1 */
+  audios(m, limpo){
+    m['obrigado. obrigada.'] = ['a1_tema01_vocab_obrigado.mp3','a1_tema01_vocab_obrigada.mp3'];
+    m['obrigado'] = 'a1_tema01_vocab_obrigado.mp3';
+    m['obrigada'] = 'a1_tema01_vocab_obrigada.mp3';
+    this.descobrir[0].itens.forEach(v=>{ if(!v.audio) m[chave(v.pt)] = 'a1_tema01_vocab_' + limpo(v.pt) + '.mp3'; });
+    this.descobrir[3].itens.forEach((f,i)=> m[chave(f.pt)] = 'a1_tema01_frase' + (i+1) + '.mp3');
+    this.dialogo.forEach((d,i)=> m[chave(d.pt)] = 'a1_tema01_dialogo' + (i+1) + '.mp3');
+    m['até amanhã'] = 'a1_tema01_frase8.mp3';
+  }
 };
-const CONTEUDO = {s01};
+
+/* ---------- SITUAÇÃO 02 — O meu nome (ex-Tema 2, alfabeto) ----------
+   nome = como se escreve o nome da letra; voz = forma usada no áudio
+   (os MP3 das letras estão ligados às duas formas). */
+const LETRAS = [
+  {l:'A', nome:'á',    ex:'Água',   tt:'Bee'},
+  {l:'B', nome:'bê',   ex:'Bola',   tt:'Bola'},
+  {l:'C', nome:'cê',   ex:'Casa',   tt:'Uma'},
+  {l:'D', nome:'dê',   ex:'Dia',    tt:'Loron'},
+  {l:'E', nome:'é',    ex:'Escola', tt:'Eskola'},
+  {l:'F', nome:'efe',  voz:'éfe',  ex:'Família', tt:'Família'},
+  {l:'G', nome:'gê',   ex:'Gato',   tt:'Busa'},
+  {l:'H', nome:'agá',  ex:'Hora',   tt:'Oras', mudo:true},
+  {l:'I', nome:'i',    ex:'Igreja', tt:'Igreja'},
+  {l:'J', nome:'jota', ex:'Janela', tt:'Janela'},
+  {l:'L', nome:'ele',  voz:'éle',  ex:'Livro',   tt:'Livru'},
+  {l:'M', nome:'eme',  voz:'éme',  ex:'Mãe',     tt:'Inan'},
+  {l:'N', nome:'ene',  voz:'éne',  ex:'Nome',    tt:'Naran'},
+  {l:'O', nome:'ó',    ex:'Olá',    tt:'Olá'},
+  {l:'P', nome:'pê',   ex:'Pai',    tt:'Aman'},
+  {l:'Q', nome:'quê',  ex:'Queijo', tt:'Keiju'},
+  {l:'R', nome:'erre', voz:'érre', ex:'Rua',     tt:'Dalan'},
+  {l:'S', nome:'esse', voz:'ésse', ex:'Sol',     tt:'Loro-matan'},
+  {l:'T', nome:'tê',   ex:'Tempo',  tt:'Tempu'},
+  {l:'U', nome:'u',    voz:'ú',    ex:'Uva',     tt:'Uvas'},
+  {l:'V', nome:'vê',   ex:'Voz',    tt:'Lian'},
+  {l:'X', nome:'xis',  ex:'Xadrez', tt:'Xadrez'},
+  {l:'Z', nome:'zê',   ex:'Zebra',  tt:'Zebra'},
+  {l:'K', nome:'capa', voz:'cápa', ex:'Kiwi',    tt:'Kiwi', fora:true},
+  {l:'W', nome:'duplo vê',         ex:'Web',     tt:'Web',  fora:true},
+  {l:'Y', nome:'ípsilon',          ex:'Yoga',    tt:'Yoga', fora:true}
+];   /* traduções TT das palavras-exemplo: [REV-TT] */
+
+const s02 = {
+  objetivos:{
+    pt:['dizer o meu nome e apelido','soletrar o meu nome','pedir a alguém para soletrar','perceber as letras quando alguém soletra'],
+    tt:["dehan ha'u-nia naran no apelidu","soletra ha'u-nia naran",'husu ema atu soletra','komprende letra sira bainhira ema soletra']  /* [REV-TT] */
+  },
+  cena:{pt:'Uma mulher dá o nome num balcão de atendimento.', tt:'Feto ida fó nia naran iha balkaun atendimentu.'},  /* [REV-TT] */
+  dialogoRegisto:'formal',
+  dialogo:[
+    {quem:{pt:'Funcionário', tt:'Funsionáriu'}, pt:'Bom dia! Qual é o seu nome?',    tt:'Bondia! Saida mak nia naran?'},
+    {quem:'Ana',                                pt:'Chamo-me Ana Silva.',            tt:"Ha'u-nia naran Ana Silva."},
+    {quem:{pt:'Funcionário', tt:'Funsionáriu'}, pt:'Pode soletrar Silva, por favor?', tt:'Bele soletra Silva, favór ida?'},
+    {quem:'Ana', pt:'S – I – L – V – A', soletrar:['ésse','i','éle','vê','á']},
+    {quem:{pt:'Funcionário', tt:'Funsionáriu'}, pt:'Obrigada!',                      tt:'Obrigadu!'}
+  ],
+  descobrir:[
+    {tipo:'letras', letras:LETRAS},
+    {tipo:'nota',
+     tt:'<b>H la pronunsia</b> iha portugés. Liafuan [[Hora]] rona «ora».',
+     pt:'<b>O H não se pronuncia</b> em português. A palavra «Hora» lê-se «ora».'},
+    {tipo:'nota',
+     tt:'<b>Lian espesiál:</b> iha portugés, letra balun hamutuk halo lian foun: <b>ch</b> iha [[chave]], <b>lh</b> iha [[filho]], <b>nh</b> iha [[ninho]] — hanesan «ñ» iha Tetun (<i>koñese</i>). <b>ç</b> lee «ss», iha [[criança]].',
+     pt:'<b>Sons especiais:</b> algumas letras juntas fazem um som novo: <b>ch</b> em «chave», <b>lh</b> em «filho», <b>nh</b> em «ninho» — como o «ñ» do tétum (<i>koñese</i>). O <b>ç</b> lê-se «ss», em «criança».'},
+    {tipo:'lista', titulo:'frases', itens:[
+      {pt:'Como se escreve o teu nome?',             tt:'Eskreve nia naran oinsá?', registo:'informal'},
+      {pt:'M – A – R – I – A: Maria', soletrar:['éme','á','érre','i','á'], final:'Maria'},
+      {pt:'Pode soletrar o seu apelido, por favor?', tt:'Bele soletra nia apelidu, favór ida?', registo:'formal'},
+      {pt:'S – I – L – V – A: Silva', soletrar:['ésse','i','éle','vê','á'], final:'Silva'},
+      {pt:'É com cê ou esse?',                       tt:'Ho letra «C» ka «S»?'}
+    ]}
+  ],
+  praticarGuia:{pt:'Ouve e escolhe a letra certa.', tt:"Rona no hili letra ne'ebé loos."},  /* [REV-TT] */
+  nPerguntas:8,
+  /* nome da letra → letra; e palavra → letra inicial */
+  praticar:[
+    {ouvir:'á', certa:'A', opcoes:['A','E','O']}, {ouvir:'é', certa:'E', opcoes:['E','A','I']},
+    {ouvir:'i', certa:'I', opcoes:['I','E','Y']}, {ouvir:'ó', certa:'O', opcoes:['O','A','U']},
+    {ouvir:'ú', certa:'U', opcoes:['U','O','V']}, {ouvir:'bê', certa:'B', opcoes:['B','D','P']},
+    {ouvir:'dê', certa:'D', opcoes:['D','B','T']}, {ouvir:'pê', certa:'P', opcoes:['P','B','T']},
+    {ouvir:'cê', certa:'C', opcoes:['C','S','Z']}, {ouvir:'ésse', certa:'S', opcoes:['S','C','Z']},
+    {ouvir:'zê', certa:'Z', opcoes:['Z','S','C']}, {ouvir:'éfe', certa:'F', opcoes:['F','S','V']},
+    {ouvir:'vê', certa:'V', opcoes:['V','B','F']}, {ouvir:'gê', certa:'G', opcoes:['G','J','Q']},
+    {ouvir:'jota', certa:'J', opcoes:['J','G','Y']}, {ouvir:'éle', certa:'L', opcoes:['L','M','N']},
+    {ouvir:'éme', certa:'M', opcoes:['M','N','L']}, {ouvir:'éne', certa:'N', opcoes:['N','M','L']},
+    {ouvir:'érre', certa:'R', opcoes:['R','L','N']}, {ouvir:'agá', certa:'H', opcoes:['H','A','G']},
+    {ouvir:'xis', certa:'X', opcoes:['X','S','Z']}, {ouvir:'quê', certa:'Q', opcoes:['Q','C','K']},
+    {ouvir:'Hora', certa:'H', opcoes:['H','O','A']}, {ouvir:'Casa', certa:'C', opcoes:['C','K','Q']},
+    {ouvir:'Sol', certa:'S', opcoes:['S','C','Z']}, {ouvir:'Janela', certa:'J', opcoes:['J','G','Y']},
+    {ouvir:'Gato', certa:'G', opcoes:['G','J','Q']}, {ouvir:'Queijo', certa:'Q', opcoes:['Q','C','K']},
+    {ouvir:'Voz', certa:'V', opcoes:['V','B','F']}, {ouvir:'Xadrez', certa:'X', opcoes:['X','S','Z']}
+  ],
+  /* USAR — só com frases que já têm áudio gravado. [REV-TT] nas situações */
+  usar:[
+    {sit:'Ó hakarak husu ema ida nia naran, ho respeitu. Ó dehan saida?',
+     certa:'Bom dia! Qual é o seu nome?', opcoes:['Bom dia! Qual é o seu nome?','Chamo-me Ana Silva.','Obrigada!']},
+    {sit:'Ó-nia naran Ana Silva. Ema husu ó-nia naran. Ó responde saida?',
+     certa:'Chamo-me Ana Silva.', opcoes:['Chamo-me Ana Silva.','Pode soletrar Silva, por favor?','É com cê ou esse?']},
+    {sit:'Ó la hatene oinsá eskreve ema boot ida nia apelidu. Ó husu saida?',
+     certa:'Pode soletrar o seu apelido, por favor?', opcoes:['Pode soletrar o seu apelido, por favor?','Como se escreve o teu nome?','Chamo-me Ana Silva.']},
+    {sit:'Ó hakarak husu ó-nia kolega (ema besik) oinsá eskreve nia naran.',
+     certa:'Como se escreve o teu nome?', opcoes:['Como se escreve o teu nome?','Pode soletrar o seu apelido, por favor?','Obrigada!']},
+    {sit:'Ó la hatene se liafuan ida ho letra C ka S. Ó husu saida?',
+     certa:'É com cê ou esse?', opcoes:['É com cê ou esse?','Como se escreve o teu nome?','Bom dia! Qual é o seu nome?']},
+    {sit:'Ó feto. Ema ida soletra ba ó nia naran. Ó agradese.',
+     certa:'Obrigada!', opcoes:['Obrigada!','Chamo-me Ana Silva.','É com cê ou esse?']}
+  ],
+  /* Liga os textos aos MP3 já gravados do antigo Tema 2 */
+  audios(m, limpo){
+    LETRAS.forEach(x=>{
+      const f = 'a1_tema02_letra_' + x.l.toLowerCase() + '.mp3';
+      m[chave(x.nome)] = f;
+      if(x.voz) m[chave(x.voz)] = f;
+      m[chave(x.ex)] = 'a1_tema02_palavra_' + limpo(x.ex) + '.mp3';
+    });
+    ['Maria','Silva','chave','filho','ninho','criança'].forEach(p=> m[chave(p)] = 'a1_tema02_palavra_' + limpo(p) + '.mp3');
+    // frases: no antigo Tema 2 eram as posições 1, 3 e 5
+    m[chave('Como se escreve o teu nome?')] = 'a1_tema02_frase1.mp3';
+    m[chave('Pode soletrar o seu apelido, por favor?')] = 'a1_tema02_frase3.mp3';
+    m[chave('É com cê ou esse?')] = 'a1_tema02_frase5.mp3';
+    m[chave('Bom dia! Qual é o seu nome?')] = 'a1_tema02_dialogo1.mp3';
+    m[chave('Chamo-me Ana Silva.')] = 'a1_tema02_dialogo2.mp3';
+    m[chave('Pode soletrar Silva, por favor?')] = 'a1_tema02_dialogo3.mp3';
+    m[chave('Obrigada!')] = 'a1_tema02_dialogo5.mp3';
+  }
+};
+const CONTEUDO = {s01, s02};
 
 /* ============================================================
    ÁUDIO — igual ao pratica.html: 1.º o MP3 gravado em audios/,
    2.º síntese de voz se o ficheiro faltar.
+   «geracao» muda sempre que se pára: sequências antigas desistem.
    ============================================================ */
 const AUDIO_BASE = 'audios/';
-const mapaAudio = {};
 const chave = s => String(s).trim().toLowerCase();
-(function registarAudios(){
-  const limpo = s => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ /g,'_');
-  s01.vocab.forEach(v=>{
-    if(v.audio){
-      mapaAudio[chave(v.audio)] = ['a1_tema01_vocab_obrigado.mp3','a1_tema01_vocab_obrigada.mp3'];
-      mapaAudio['obrigado'] = 'a1_tema01_vocab_obrigado.mp3';
-      mapaAudio['obrigada'] = 'a1_tema01_vocab_obrigada.mp3';
-    }else mapaAudio[chave(v.pt)] = 'a1_tema01_vocab_' + limpo(v.pt) + '.mp3';
-  });
-  s01.frases.forEach((f,i)=> mapaAudio[chave(f.pt)] = 'a1_tema01_frase' + (i+1) + '.mp3');
-  s01.dialogo.forEach((d,i)=> mapaAudio[chave(d.pt)] = 'a1_tema01_dialogo' + (i+1) + '.mp3');
-  mapaAudio['até amanhã'] = 'a1_tema01_frase8.mp3';   // usada no passo «Usar»
-})();
+const limpo = s => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ /g,'_');
+const MAPAS = {};
+Object.keys(CONTEUDO).forEach(id=>{ MAPAS[id] = {}; CONTEUDO[id].audios(MAPAS[id], limpo); });
+const mapaAtual = () => MAPAS[sitAtual] || {};
 
-let audioAtual = null, dialogoATocar = false;
+let audioAtual = null, geracao = 0, dialogoATocar = false;
 function pararAudio(){
+  geracao++;
   if(audioAtual){ try{ audioAtual.pause(); }catch(e){} audioAtual = null; }
   if('speechSynthesis' in window) speechSynthesis.cancel();
 }
@@ -491,19 +641,43 @@ function tocarFicheiro(fich, aoFalhar, depois){
   a.onerror = ()=>{ if(feito) return; feito = true; aoFalhar(); };
   a.play().catch(()=>{ if(feito) return; feito = true; aoFalhar(); });
 }
+/* Diz um texto; «depois» só corre se ninguém tiver carregado em parar */
 function dizer(texto, depois){
-  const alvo = mapaAudio[chave(texto)];
-  const recurso = ()=> falarTTS(texto, depois);
+  const g = geracao;
+  const fim = ()=>{ if(g === geracao && depois) depois(); };
+  const alvo = mapaAtual()[chave(texto)];
+  const recurso = ()=> falarTTS(texto, fim);
   if(!alvo) return recurso();
   if(Array.isArray(alvo)){
     let i = 0;
-    const prox = ()=>{ if(i >= alvo.length){ if(depois) depois(); return; }
+    const prox = ()=>{ if(g !== geracao) return; if(i >= alvo.length) return fim();
       tocarFicheiro(alvo[i++], recurso, ()=>setTimeout(prox, 350)); };
     return prox();
   }
-  tocarFicheiro(alvo, recurso, depois);
+  tocarFicheiro(alvo, recurso, fim);
 }
-function ler(texto){ pararDialogo(); pararAudio(); dizer(texto); }
+/* Soletrar: letra a letra com 1 segundo de pausa, e a palavra no fim */
+function soletrarSeq(letras, final, depois){
+  const g = geracao; let i = 0;
+  (function prox(){
+    if(g !== geracao) return;
+    if(i < letras.length) return dizer(letras[i++], ()=>setTimeout(prox, 1000));
+    if(final) return setTimeout(()=>{ if(g === geracao) dizer(final, depois); }, 500);
+    if(depois) depois();
+  })();
+}
+/* Um item tocável (frase, fala, letra) */
+function tocarItem(it, depois){
+  if(it.soletrar) return soletrarSeq(it.soletrar, it.final, depois);
+  dizer(it.audio || it.pt, depois);
+}
+
+/* Botões de som: cada um guarda o que toca num registo (evita aspas no HTML) */
+let REG = [];
+const regista = fn => { REG.push(fn); return REG.length - 1; };
+function tocar(n){ pararDialogo(); pararAudio(); REG[n](); }
+const SVG_SOM = '<svg><use href="#som"/></svg>';
+const btnSom = (fn, cls='') => `<button class="ouvir ${cls}" aria-label="Ouvir" onclick="tocar(${regista(fn)})">${SVG_SOM}</button>`;
 
 /* ============================================================
    PROGRESSO (guardado no telemóvel de cada pessoa)
@@ -515,8 +689,8 @@ function guardarFeita(id){ const f = lerFeitas(); if(!f.includes(id)){ f.push(id
    ECRÃS
    ============================================================ */
 const $ = id => document.getElementById(id);
-const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
-const btnSom = (texto, cls='') => `<button class="ouvir ${cls}" aria-label="🔊" onclick="ler('${esc(texto).replace(/&#39;/g,"\\'")}')"><svg><use href="#som"/></svg></button>`;
+const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');
+const nomeQuem = q => typeof q === 'string' ? q : q[lang];
 let sitAtual = null, passoAtual = 0;
 const PASSOS = ['ouvir','descobrir','praticar','usar'];
 
@@ -550,10 +724,32 @@ function abrirInicio(){
 function abrirSituacao(id){
   sitAtual = id; passoAtual = 0;
   $('ecra-inicio').hidden = true; $('ecra-situacao').hidden = false;
-  desenharSituacao(); iniciarEx('praticar'); iniciarEx('usar'); scrollTo(0,0);
+  iniciarEx('praticar'); iniciarEx('usar');
+  desenharSituacao(); scrollTo(0,0);
+}
+
+/* Nota contrastiva: as duas línguas sempre visíveis (tétum primeiro).
+   [[palavra]] no tétum vira botão de som com a palavra portuguesa. */
+function notaHTML(n){
+  const tt = n.tt.replace(/\[\[(.+?)\]\]/g, (m,p)=> `<button class="mini-som" onclick="tocar(${regista(()=>dizer(p))})">${p} ▸</button>`);
+  return `<div class="nota"><div>${tt}</div><div class="pt-nota">${n.pt}</div></div>`;
+}
+const linhaHTML = it => `<div class="linha">${btnSom(()=>tocarItem(it))}<div>
+  <div class="pt">${it.pt}${it.registo?` <span class="etq">${t(it.registo)}</span>`:''}</div>
+  ${it.tt?`<div class="tt">${it.tt}</div>`:''}</div></div>`;
+
+function letrasHTML(letras){
+  const cartao = x => `<button class="letra" onclick="tocar(${regista(()=>dizer(x.voz||x.nome, ()=>setTimeout(()=>dizer(x.ex),400)))})">
+    <div class="g">${x.l}${x.mudo?'<sup>*</sup>':''}</div><div class="nm">${x.nome}</div>
+    <div class="exl">${x.ex}</div><div class="tt">${x.tt}</div></button>`;
+  return `<p class="guia">${t('toqueLetra')}</p>
+    <div class="letras">${letras.filter(x=>!x.fora).map(cartao).join('')}</div>
+    <p class="subtit">${t('estrangeiras')}</p>
+    <div class="letras">${letras.filter(x=>x.fora).map(cartao).join('')}</div>`;
 }
 
 function desenharSituacao(){
+  REG = [];
   const idx = SITUACOES.findIndex(s=>s.id===sitAtual), s = SITUACOES[idx], c = CONTEUDO[sitAtual];
   const img = $('cab-img'); img.style.display = ''; img.src = s.img;
   $('cab-n').textContent = `${t('situacao')} ${idx+1} ${t('de')} ${SITUACOES.length} · A1`;
@@ -564,25 +760,26 @@ function desenharSituacao(){
   $('passos').innerHTML = PASSOS.map((p,i)=>`<button class="${i===passoAtual?'on':''}" onclick="irPasso(${i})"><b>${i+1}</b>${t('p'+(i+1))}</button>`).join('');
   PASSOS.forEach((p,i)=> $('p-'+p).hidden = i!==passoAtual);
 
-  // 1. Ouvir — diálogo
-  $('btn-dialogo').textContent = '▶ ' + t('ouvirTudo');
+  // 1. Ouvir — diálogo (fala ímpar a verde, par a vermelho)
+  $('btn-dialogo').textContent = (dialogoATocar ? '■ ' + t('parar') : '▶ ' + t('ouvirTudo'));
   $('cena').innerHTML = `${c.cena[lang]} <span class="etq">${t(c.dialogoRegisto)}</span>`;
   $('dialogo').innerHTML = c.dialogo.map((d,i)=>{
     const b = i%2 ? 'b' : '';
-    return `<div class="linha" id="fala-${i}">${btnSom(d.pt,b)}<div><div class="quem ${b}">${d.quem}</div><div class="pt">${d.pt}</div><div class="tt">${d.tt}</div></div></div>`;
+    return `<div class="linha" id="fala-${i}">${btnSom(()=>tocarItem(d), b)}<div>
+      <div class="quem ${b}">${nomeQuem(d.quem)}</div><div class="pt">${d.pt}</div>${d.tt?`<div class="tt">${d.tt}</div>`:''}</div></div>`;
   }).join('');
 
-  // 2. Descobrir — palavras e frases
-  $('vocab').innerHTML = c.vocab.map(v=>`<div class="linha">${btnSom(v.audio||v.pt)}<div><div class="pt">${v.pt}</div><div class="tt">${v.tt}</div></div></div>`).join('');
-  $('vocab-notas').innerHTML = c.vocab.filter(v=>v.nota).map(v=>notaHTML(v.nota)).join('');
-  $('frases-nota').innerHTML = c.frasesNota ? notaHTML(c.frasesNota) : '';
-  $('frases').innerHTML = c.frases.map(f=>`<div class="linha">${btnSom(f.pt)}<div><div class="pt">${f.pt}${f.registo?` <span class="etq">${t(f.registo)}</span>`:''}</div><div class="tt">${f.tt}</div></div></div>`).join('');
+  // 2. Descobrir — blocos próprios de cada situação
+  $('descobrir').innerHTML = c.descobrir.map(b=>{
+    if(b.tipo === 'nota')   return notaHTML(b);
+    if(b.tipo === 'letras') return `<h3>${t('alfabeto')}</h3>` + letrasHTML(b.letras);
+    return `<h3>${t(b.titulo)}</h3><div class="quadro">${b.itens.map(linhaHTML).join('')}</div>`;
+  }).join('');
 
-  // 3 e 4 — redesenhar a pergunta em curso na língua nova
-  ['praticar','usar'].forEach(k=>{ if(EX[k]) mostrarPergunta(k); });
+  // 3 e 4 — exercícios (redesenha a pergunta em curso na língua nova)
+  $('guia-praticar').textContent = c.praticarGuia ? c.praticarGuia[lang] : t('p3guia');
+  ['praticar','usar'].forEach(k=> mostrarPergunta(k));
 }
-/* Nota contrastiva: as duas línguas sempre visíveis (tétum primeiro) */
-const notaHTML = n => `<div class="nota"><div>${n.tt}</div><div class="pt-nota">${n.pt}</div></div>`;
 
 function irPasso(i){
   pararDialogo(); pararAudio(); passoAtual = i;
@@ -604,7 +801,7 @@ function ouvirDialogo(){
     document.querySelectorAll('#dialogo .linha').forEach(l=>l.classList.remove('ativa'));
     if(!dialogoATocar || i >= falas.length){ pararDialogo(); return; }
     $('fala-'+i).classList.add('ativa');
-    dizer(falas[i++].pt, ()=>setTimeout(prox, 500));
+    tocarItem(falas[i++], ()=>setTimeout(prox, 600));
   })();
 }
 function pararDialogo(){
@@ -615,40 +812,42 @@ function pararDialogo(){
 }
 
 /* ============================================================
-   EXERCÍCIOS (Praticar e Usar) — 5 perguntas tiradas ao acaso
+   EXERCÍCIOS (Praticar e Usar) — perguntas tiradas ao acaso
    ============================================================ */
 const EX = {};
 const baralhar = a => a.map(x=>[Math.random(),x]).sort((p,q)=>p[0]-q[0]).map(x=>x[1]);
 function iniciarEx(k){
-  EX[k] = {lista: baralhar(CONTEUDO[sitAtual][k]).slice(0,5).map(p=>({...p, opcoes:baralhar(p.opcoes)})), i:0, certas:0, respondida:null};
-  mostrarPergunta(k);
+  const c = CONTEUDO[sitAtual];
+  EX[k] = {lista: baralhar(c[k]).slice(0, c.nPerguntas || 5).map(p=>({...p, opcoes:baralhar(p.opcoes)})), i:0, certas:0, respondida:null};
 }
+function reiniciarEx(k){ iniciarEx(k); mostrarPergunta(k); }
 function mostrarPergunta(k){
   const e = EX[k], cx = $('ex-'+k);
   if(e.i >= e.lista.length){
     cx.innerHTML = `<div class="resultado"><div class="nota-num serif">${e.certas} / ${e.lista.length}</div><p>${t('resultado')}</p>
-      <button class="btn claro" onclick="iniciarEx('${k}')">${t('denovo')}</button></div>`;
+      <button class="btn claro" onclick="reiniciarEx('${k}')">${t('denovo')}</button></div>`;
     return;
   }
   const p = e.lista[e.i], certa = p.certa || p.ouvir;
   const topo = k==='praticar'
-    ? `<button class="ouvir grande" aria-label="🔊" onclick="ler('${esc(p.ouvir)}')"><svg><use href="#som"/></svg></button>`
+    ? `<button class="ouvir grande" aria-label="Ouvir" onclick="tocar(${regista(()=>dizer(p.ouvir))})">${SVG_SOM}</button>`
     : `<p class="pergunta">${p.sit}</p>`;
+  const curtas = p.opcoes.every(o=>o.length <= 2) ? 'curtas' : '';
   cx.innerHTML = `<p class="prog">${e.i+1} ${t('de')} ${e.lista.length}</p>${topo}
-    <div class="opcoes">${p.opcoes.map(o=>{
+    <div class="opcoes ${curtas}">${p.opcoes.map((o,j)=>{
       let c = '';
       if(e.respondida){ if(o===certa) c='certa'; else if(o===e.respondida) c='errada'; }
-      return `<button class="${c}" ${e.respondida?'disabled':''} onclick="responder('${k}','${esc(o)}')">${o}</button>`;
+      return `<button class="${c}" ${e.respondida?'disabled':''} onclick="responder('${k}',${j})">${esc(o)}</button>`;
     }).join('')}</div>
-    <p class="retorno ${e.respondida ? (e.respondida===certa?'ok':'nok') : ''}">${e.respondida ? (e.respondida===certa ? t('certo') : t('errado')+' '+certa) : ''}</p>
+    <p class="retorno ${e.respondida ? (e.respondida===certa?'ok':'nok') : ''}">${e.respondida ? (e.respondida===certa ? t('certo') : t('errado')+' '+esc(certa)) : ''}</p>
     ${e.respondida ? `<div class="navega" style="margin-top:.4rem"><button class="btn verde" style="margin:0" onclick="seguinte('${k}')">${t('seguinte')}</button></div>` : ''}`;
 }
-function responder(k, escolha){
-  const e = EX[k], p = e.lista[e.i], certa = p.certa || p.ouvir;
+function responder(k, j){
+  const e = EX[k], p = e.lista[e.i], certa = p.certa || p.ouvir, escolha = p.opcoes[j];
   e.respondida = escolha;
   if(escolha === certa) e.certas++;
   mostrarPergunta(k);
-  if(k==='usar') ler(certa);          // ouve-se sempre a resposta certa
+  if(k==='usar'){ pararAudio(); dizer(certa); }      // ouve-se sempre a resposta certa
 }
 function seguinte(k){ EX[k].i++; EX[k].respondida = null; pararAudio(); mostrarPergunta(k); }
 
@@ -660,6 +859,9 @@ function concluir(){
 
 /* Arranque */
 setLang(lang);
+/* Os passos 1–4 ficam colados logo abaixo da barra de cima, seja qual for a sua altura */
+const ajustarTopo = ()=> document.documentElement.style.setProperty('--topo-h', document.querySelector('.topo').offsetHeight + 'px');
+ajustarTopo(); addEventListener('resize', ajustarTopo);
 </script>
 </body>
 </html>
