@@ -170,7 +170,7 @@ body.sem-tetum .tt{visibility:hidden}
 .ex .ouvir.grande svg{width:30px;height:30px}
 .opcoes{display:grid;gap:.5rem}
 .opcoes.curtas{grid-template-columns:repeat(3,1fr)}
-.opcoes.curtas button{text-align:center;font-family:'Playfair Display',Georgia,serif;font-size:1.8rem;padding:.6rem}
+.opcoes.curtas button{text-align:center;font-family:'Playfair Display',Georgia,serif;font-size:1.6rem;padding:.6rem .2rem}
 .opcoes button{border:2px solid var(--linha);background:#fff;border-radius:8px;padding:.8rem 1rem;font-size:1.1rem;font-weight:600;text-align:left}
 .opcoes button.certa{border-color:var(--verde);background:#e3f1e6}
 .opcoes button.errada{border-color:var(--vermelho);background:#fbeceA}
@@ -342,7 +342,8 @@ const T = {
     resultado:'respostas certas', denovo:'Tentar de novo',
     fimTit:'Consegues fazer isto?', concluir:'Marcar como concluída', concluida:'Concluída',
     alfabeto:'O alfabeto', estrangeiras:'Letras de origem estrangeira',
-    toqueLetra:'Toca numa letra: ouves o nome da letra e uma palavra.'
+    toqueLetra:'Toca numa letra: ouves o nome da letra e uma palavra.',
+    numeros:'Os números', toqueNumero:'Toca num número para o ouvir.'
   },
   tt:{
     voltarSite:'Fila ba site', titulo:'Pratika Portugés — A1',
@@ -368,7 +369,8 @@ const T = {
     fimTit:"Ó bele halo ida-ne'e ona?",                                 /* [REV-TT] */
     concluir:"Marka nu'udar kompleta", concluida:'Kompleta ona',        /* [REV-TT] */
     alfabeto:'Alfabétu', estrangeiras:'Letra husi orijen estranjeiru',  /* [REV-TT] */
-    toqueLetra:'Klik letra ida: ó rona letra nia naran no liafuan ida.' /* [REV-TT] */
+    toqueLetra:'Klik letra ida: ó rona letra nia naran no liafuan ida.', /* [REV-TT] */
+    numeros:'Númeru sira', toqueNumero:'Klik númeru ida atu rona.'      /* [REV-TT] */
   }
 };
 const t = k => T[lang][k];
@@ -383,7 +385,7 @@ const SITUACOES = [
   {id:'s02', img:'pratica02.jpg', pronta:true,
    pt:['O meu nome','Dizer e soletrar nomes.'],
    tt:["Ha'u-nia naran",'Dehan no soletra naran.']},                                   /* [REV-TT] */
-  {id:'s03', img:'pratica03.jpg', pt:['Números no dia a dia','Telefone, idade e preços.'],
+  {id:'s03', img:'pratica03.jpg', pronta:true, pt:['Números no dia a dia','Telefone, idade e preços.'],
    tt:['Númeru iha loroloron','Telefone, idade no folin.']},                           /* [REV-TT] */
   {id:'s04', img:'pratica04.jpg', pt:['Horas e compromissos','Perguntar e dizer as horas.'],
    tt:['Oras no kompromisu','Husu no dehan oras.']},                                   /* [REV-TT] */
@@ -550,6 +552,7 @@ const s02 = {
     ]}
   ],
   praticarGuia:{pt:'Ouve e escolhe a letra certa.', tt:"Rona no hili letra ne'ebé loos."},  /* [REV-TT] */
+  opcoesCurtas:true,
   nPerguntas:8,
   /* nome da letra → letra; e palavra → letra inicial */
   praticar:[
@@ -603,7 +606,107 @@ const s02 = {
     m[chave('Obrigada!')] = 'a1_tema02_dialogo5.mp3';
   }
 };
-const CONTEUDO = {s01, s02};
+/* ---------- SITUAÇÃO 03 — Números no dia a dia (ex-Tema 3) ----------
+   Idades passaram a ser de adultos: «Tenho trinta anos» e «Tenho vinte e cinco anos»
+   ainda NÃO têm gravação — até lá ouve-se a voz do computador (a1_s03_*.mp3 por gravar). */
+const NUMEROS = [
+  {rot:{pt:'De 0 a 10', tt:"Husi 0 to'o 10"}, itens:[
+    ['0','zero','zero'],['1','um','ida'],['2','dois','rua'],['3','três','tolu'],['4','quatro','haat'],['5','cinco','lima'],
+    ['6','seis','neen'],['7','sete','hitu'],['8','oito','walu'],['9','nove','sia'],['10','dez','sanulu']]},
+  {rot:{pt:'De 11 a 19', tt:"Husi 11 to'o 19"}, itens:[
+    ['11','onze','sanulu resin ida'],['12','doze','sanulu resin rua'],['13','treze','sanulu resin tolu'],['14','catorze','sanulu resin haat'],
+    ['15','quinze','sanulu resin lima'],['16','dezasseis','sanulu resin neen'],['17','dezassete','sanulu resin hitu'],
+    ['18','dezoito','sanulu resin walu'],['19','dezanove','sanulu resin sia']]},
+  {rot:{pt:'As dezenas', tt:'Dezena sira'}, itens:[
+    ['20','vinte','rua-nulu'],['30','trinta','tolu-nulu'],['40','quarenta','haat-nulu'],['50','cinquenta','lima-nulu'],
+    ['60','sessenta','neen-nulu'],['70','setenta','hitu-nulu'],['80','oitenta','walu-nulu'],['90','noventa','sia-nulu']]},
+  {rot:{pt:'As centenas e o mil', tt:'Atus sira no rihun'}, itens:[
+    ['100','cem','atus ida'],['200','duzentos','atus rua'],['300','trezentos','atus tolu'],['400','quatrocentos','atus haat'],
+    ['500','quinhentos','atus lima'],['600','seiscentos','atus neen'],['700','setecentos','atus hitu'],
+    ['800','oitocentos','atus walu'],['900','novecentos','atus sia'],['1000','mil','rihun ida']]}
+];   /* rótulos TT: [REV-TT] */
+
+const s03 = {
+  objetivos:{
+    pt:['contar de 0 a 1000','dizer a minha idade e perguntar a idade','dizer um número de telefone','perceber e dizer preços'],
+    tt:["konta husi 0 to'o 1000","dehan ha'u-nia idade no husu idade",'dehan númeru telefone','komprende no dehan folin']   /* [REV-TT] */
+  },
+  cena:{pt:'Dois colegas falam da idade e trocam o número de telefone.',
+        tt:"Kolega na'in-rua koalia kona-ba idade no troka númeru telefone."},   /* [REV-TT] */
+  dialogoRegisto:'informal',
+  dialogo:[
+    {quem:'Maria', pt:'Quantos anos tens?',               tt:'Ó iha tinan hira?'},                       /* [REV-TT] */
+    {quem:'João',  pt:'Tenho trinta anos. E tu?',         tt:"Ha'u iha tinan tolu-nulu. Ó nian?"},       /* [REV-TT] — POR GRAVAR */
+    {quem:'Maria', pt:'Tenho vinte e cinco anos.',        tt:"Ha'u iha tinan rua-nulu resin lima."},     /* [REV-TT] — POR GRAVAR */
+    {quem:'João',  pt:'Qual é o teu número de telefone?', tt:'Ó-nia númeru telefone saida?'},            /* [REV-TT] */
+    {quem:'Maria', pt:'É o sete, sete, cinco, três.',     tt:'Mak hitu, hitu, lima, tolu.'}              /* [REV-TT] */
+  ],
+  descobrir:[
+    {tipo:'numeros', grupos:NUMEROS},
+    {tipo:'nota',
+     tt:'<b>Kuidadu</b> ho númeru sira ne\'ebé lian besik malu: [[treze]] (13) la hanesan [[trinta]] (30); [[quinze]] (15) la hanesan [[cinquenta]] (50).',
+     pt:'<b>Atenção</b> aos números que soam parecido: treze (13) não é trinta (30); quinze (15) não é cinquenta (50).'},
+    {tipo:'nota',
+     tt:'<b>Oinsá halo númeru boot:</b> iha portugés ita uza «e» entre parte sira. Rona: [[cento e oito]] (108), [[duzentos e vinte e três]] (223), [[quinhentos e trinta e cinco]] (535). Atensaun: 100 = «cem», maibé 108 = «cento e oito».',
+     pt:'<b>Como compor números:</b> em português usa-se «e» entre as partes: cento e oito (108), duzentos e vinte e três (223), quinhentos e trinta e cinco (535). Atenção: 100 é «cem», mas 108 é «cento e oito».'},
+    {tipo:'lista', titulo:'frases', itens:[
+      {pt:'Quantos anos tens?',                  tt:'Ó iha tinan hira?', registo:'informal'},
+      {pt:'Tenho vinte e cinco anos.',           tt:"Ha'u iha tinan rua-nulu resin lima."},
+      {pt:'Que horas são? São oito horas.',      tt:'Tuku hira? Tuku walu.'},
+      {pt:'Na minha turma somos vinte e cinco.', tt:"Iha ha'u-nia turma ami na'in rua-nulu resin lima."},
+      {pt:'Este livro custa cinco dólares.',     tt:"Livru ne'e folin dólar lima."}
+    ]}   /* [REV-TT] todas */
+  ],
+  praticarGuia:{pt:'Ouve e escolhe o número certo.', tt:"Rona no hili númeru ne'ebé loos."},   /* [REV-TT] */
+  opcoesCurtas:true,
+  nPerguntas:8,
+  praticar:[
+    {ouvir:'três', certa:'3', opcoes:['3','13','30']},      {ouvir:'sete', certa:'7', opcoes:['7','17','70']},
+    {ouvir:'oito', certa:'8', opcoes:['8','18','80']},      {ouvir:'onze', certa:'11', opcoes:['11','1','10']},
+    {ouvir:'treze', certa:'13', opcoes:['13','30','3']},    {ouvir:'quinze', certa:'15', opcoes:['15','50','5']},
+    {ouvir:'dezasseis', certa:'16', opcoes:['16','60','6']},{ouvir:'vinte', certa:'20', opcoes:['20','2','12']},
+    {ouvir:'trinta', certa:'30', opcoes:['30','13','3']},   {ouvir:'quarenta', certa:'40', opcoes:['40','14','4']},
+    {ouvir:'cinquenta', certa:'50', opcoes:['50','15','5']},{ouvir:'sessenta', certa:'60', opcoes:['60','16','6']},
+    {ouvir:'noventa', certa:'90', opcoes:['90','19','9']},  {ouvir:'cem', certa:'100', opcoes:['100','10','1000']},
+    {ouvir:'duzentos', certa:'200', opcoes:['200','20','2000']}, {ouvir:'quinhentos', certa:'500', opcoes:['500','50','5000']},
+    {ouvir:'mil', certa:'1000', opcoes:['1000','100','10000']},
+    {ouvir:'cento e oito', certa:'108', opcoes:['108','180','100']},
+    {ouvir:'duzentos e vinte e três', certa:'223', opcoes:['223','232','203']}
+  ],
+  /* USAR — [REV-TT] nas situações */
+  usar:[
+    {sit:'Ema husu ó-nia idade. Ó iha tinan 25. Ó responde saida?',
+     certa:'Tenho vinte e cinco anos.', opcoes:['Tenho vinte e cinco anos.','Na minha turma somos vinte e cinco.','É o sete, sete, cinco, três.']},
+    {sit:'Ó hakarak hatene ó-nia kolega nia idade. Ó husu saida?',
+     certa:'Quantos anos tens?', opcoes:['Quantos anos tens?','Qual é o teu número de telefone?','Que horas são? São oito horas.']},
+    {sit:'Ó hakarak ó-nia kolega nia númeru telefone. Ó husu saida?',
+     certa:'Qual é o teu número de telefone?', opcoes:['Qual é o teu número de telefone?','Quantos anos tens?','Este livro custa cinco dólares.']},
+    {sit:'Ema husu ó-nia númeru telefone. Ó-nia númeru mak 7753. Ó responde saida?',
+     certa:'É o sete, sete, cinco, três.', opcoes:['É o sete, sete, cinco, três.','Tenho vinte e cinco anos.','Este livro custa cinco dólares.']},
+    {sit:'Iha loja, livru ida folin dólar 5. Ó hatete ba ó-nia kolega.',
+     certa:'Este livro custa cinco dólares.', opcoes:['Este livro custa cinco dólares.','Na minha turma somos vinte e cinco.','Quantos anos tens?']},
+    {sit:"Iha ó-nia turma, ema na'in 25. Ó dehan saida?",
+     certa:'Na minha turma somos vinte e cinco.', opcoes:['Na minha turma somos vinte e cinco.','Tenho vinte e cinco anos.','Que horas são? São oito horas.']},
+    {sit:'Ó haree folin: $15. Iha portugés ó lee oinsá?', certa:'quinze',    opcoes:['quinze','cinquenta','cinco']},
+    {sit:'Ó haree folin: $50. Iha portugés ó lee oinsá?', certa:'cinquenta', opcoes:['cinquenta','quinze','cinco']},
+    {sit:'Ó haree folin: $13. Iha portugés ó lee oinsá?', certa:'treze',     opcoes:['treze','trinta','três']}
+  ],
+  /* Liga os textos aos MP3 já gravados do antigo Tema 3 */
+  audios(m){
+    NUMEROS.forEach(g=> g.itens.forEach(([n,pt])=> m[chave(pt)] = 'a1_tema03_num_' + n + '.mp3'));
+    ['cento e oito','duzentos e vinte e três','quinhentos e trinta e cinco'].forEach((c,i)=> m[chave(c)] = 'a1_tema03_compor' + (i+1) + '.mp3');
+    m[chave('Quantos anos tens?')] = 'a1_tema03_frase1.mp3';
+    m[chave('Que horas são? São oito horas.')] = 'a1_tema03_frase3.mp3';
+    m[chave('Na minha turma somos vinte e cinco.')] = 'a1_tema03_frase4.mp3';
+    m[chave('Este livro custa cinco dólares.')] = 'a1_tema03_frase5.mp3';
+    m[chave('Qual é o teu número de telefone?')] = 'a1_tema03_dialogo4.mp3';
+    m[chave('É o sete, sete, cinco, três.')] = 'a1_tema03_dialogo5.mp3';
+    // gravações novas (ainda por fazer — enquanto faltarem, fala a voz do computador)
+    m[chave('Tenho trinta anos. E tu?')] = 'a1_s03_idade30.mp3';
+    m[chave('Tenho vinte e cinco anos.')] = 'a1_s03_idade25.mp3';
+  }
+};
+const CONTEUDO = {s01, s02, s03};
 
 /* ============================================================
    ÁUDIO — igual ao pratica.html: 1.º o MP3 gravado em audios/,
@@ -773,6 +876,9 @@ function desenharSituacao(){
   $('descobrir').innerHTML = c.descobrir.map(b=>{
     if(b.tipo === 'nota')   return notaHTML(b);
     if(b.tipo === 'letras') return `<h3>${t('alfabeto')}</h3>` + letrasHTML(b.letras);
+    if(b.tipo === 'numeros') return `<h3>${t('numeros')}</h3><p class="guia">${t('toqueNumero')}</p>` + b.grupos.map(g=>
+      `<p class="subtit">${g.rot[lang]}</p><div class="letras">${g.itens.map(([n,pt,tt])=>
+        `<button class="letra" onclick="tocar(${regista(()=>dizer(pt))})"><div class="g">${n}</div><div class="nm">${pt}</div><div class="tt">${tt}</div></button>`).join('')}</div>`).join('');
     return `<h3>${t(b.titulo)}</h3><div class="quadro">${b.itens.map(linhaHTML).join('')}</div>`;
   }).join('');
 
@@ -832,7 +938,7 @@ function mostrarPergunta(k){
   const topo = k==='praticar'
     ? `<button class="ouvir grande" aria-label="Ouvir" onclick="tocar(${regista(()=>dizer(p.ouvir))})">${SVG_SOM}</button>`
     : `<p class="pergunta">${p.sit}</p>`;
-  const curtas = p.opcoes.every(o=>o.length <= 2) ? 'curtas' : '';
+  const curtas = (k==='praticar' && CONTEUDO[sitAtual].opcoesCurtas) ? 'curtas' : '';
   cx.innerHTML = `<p class="prog">${e.i+1} ${t('de')} ${e.lista.length}</p>${topo}
     <div class="opcoes ${curtas}">${p.opcoes.map((o,j)=>{
       let c = '';
