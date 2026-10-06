@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Protótipo em teste: não indexar enquanto não substituir o pratica.html -->
+<meta name="robots" content="noindex">
+<title>Pratica Português — A1 · CAFE de Liquiçá</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   PRATICA PORTUGUÊS — versão 2 (protótipo)
+   Entrada + Situação 01 «Conhecer alguém».
+   Usa os MP3 já existentes na pasta audios/ (sem alterações).
+   Imagens esperadas na raiz do site:
+     praticaabertura.jpg  → imagem grande da entrada
+     pratica01.jpg … pratica09.jpg → uma por situação
+   Se uma imagem faltar, fica um fundo verde (nada se parte).
+   ============================================================ */
+:root{
+  --verde:#1a5c2e; --verde-escuro:#123f20; --vermelho:#c0392b; --amarelo:#f0a500;
+  --tinta:#17231b; --tinta-suave:#4f5d54;
+  --papel:#ffffff; --fundo:#e6ede3; --areia:#fbf1d6; --linha:#c5d2c6;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Source Sans 3',system-ui,sans-serif;color:var(--tinta);background:var(--fundo);line-height:1.5;-webkit-font-smoothing:antialiased}
+button{font-family:inherit;cursor:pointer;color:inherit}
+img{max-width:100%;display:block}
+:focus-visible{outline:3px solid var(--amarelo);outline-offset:2px}
+[hidden]{display:none!important}
+.serif{font-family:'Playfair Display',Georgia,serif;font-weight:700}
+
+/* ---------- Barra superior ---------- */
+.topo{background:var(--verde-escuro);color:#fff;display:flex;align-items:center;justify-content:space-between;gap:.8rem;padding:.6rem 1rem;position:sticky;top:0;z-index:20}
+.topo a{color:#fff;text-decoration:none;display:flex;align-items:center;gap:.6rem}
+.topo img{height:34px;width:auto}
+.topo .nome{font-size:1rem;line-height:1.1}
+.topo .nome small{display:block;font-family:'Source Sans 3',sans-serif;font-weight:400;font-size:.75rem;color:#cfe0d2}
+.lingua{display:flex;border:1px solid #4d7a59;border-radius:6px;overflow:hidden;flex-shrink:0}
+.lingua button{border:0;background:transparent;padding:.45rem .7rem;font-size:.82rem;font-weight:600;color:#cfe0d2}
+.lingua button.on{background:var(--amarelo);color:var(--tinta)}
+/* Faixa geométrica (decorativa; não pretende reproduzir um tais real) */
+.faixa{height:8px;background:repeating-linear-gradient(90deg,var(--vermelho) 0 18px,var(--amarelo) 18px 24px,var(--tinta) 24px 42px,var(--amarelo) 42px 48px)}
+
+.largura{max-width:1080px;margin:0 auto;padding:0 1rem}
+
+/* ---------- ENTRADA ---------- */
+.abertura{background:var(--verde);color:#fff}
+.abertura-grelha{max-width:1080px;margin:0 auto;display:grid}
+.abertura-img{aspect-ratio:3/2;background:linear-gradient(135deg,#2c7a45,#123f20);overflow:hidden}
+.abertura-img img{width:100%;height:100%;object-fit:cover}
+.abertura-txt{padding:1.4rem 1rem 1.8rem}
+.abertura h1{font-size:clamp(2rem,8vw,3.1rem);line-height:1.05}
+.abertura .sub{font-size:1.15rem;font-weight:600;color:var(--amarelo);margin-top:.5rem}
+.abertura p.txt{margin-top:.7rem;font-size:1.05rem;color:#e3efe5;max-width:30rem}
+.abertura ul{list-style:none;margin-top:1rem;display:grid;gap:.3rem;font-size:.95rem;color:#e3efe5}
+.abertura li::before{content:'';display:inline-block;width:8px;height:8px;background:var(--amarelo);margin-right:.6rem;transform:rotate(45deg) translateY(-1px)}
+.btn{display:inline-block;border:0;border-radius:8px;background:var(--vermelho);color:#fff;font-weight:700;font-size:1.05rem;padding:.8rem 1.4rem;margin-top:1.2rem;text-decoration:none}
+.btn.verde{background:var(--verde)}
+.btn.claro{background:var(--papel);color:var(--verde);border:2px solid var(--verde)}
+.abertura .ref{margin-top:1.1rem;font-size:.85rem;color:#cfe0d2}
+.abertura .ref a{color:var(--amarelo);font-weight:600}
+@media(min-width:820px){
+  .abertura-grelha{grid-template-columns:1fr 1.15fr;align-items:stretch}
+  .abertura-img{order:2;aspect-ratio:auto;min-height:440px}
+  .abertura-txt{padding:3rem 2rem 3rem 1rem;align-self:center}
+}
+
+.situacoes{padding-top:1.8rem;padding-bottom:3rem}
+.situacoes h2{font-size:1.5rem}
+.situacoes .guia{color:var(--tinta-suave);margin-bottom:1rem}
+.grelha{display:grid;gap:.8rem}
+@media(min-width:700px){.grelha{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:980px){.grelha{grid-template-columns:repeat(3,1fr)}}
+.cartao{display:grid;grid-template-columns:104px 1fr;gap:.9rem;align-items:center;text-align:left;background:var(--papel);border:1px solid var(--linha);border-radius:10px;overflow:hidden;padding:0 .9rem 0 0;min-height:104px;width:100%}
+.cartao .mini{width:104px;height:100%;min-height:104px;background:linear-gradient(135deg,#2c7a45,#123f20);position:relative;overflow:hidden}
+.cartao .mini img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.cartao .num{position:absolute;left:6px;bottom:6px;z-index:1;background:var(--verde);color:#fff;font-weight:700;font-size:.8rem;border-radius:50%;width:26px;height:26px;display:grid;place-items:center;border:2px solid #fff}
+.cartao .tit{font-size:1.1rem;line-height:1.2}
+.cartao .desc{font-size:.92rem;color:var(--tinta-suave);margin-top:.15rem}
+.cartao .estado{font-size:.78rem;font-weight:700;margin-top:.3rem;color:var(--verde)}
+.cartao.breve{opacity:.62;cursor:default}
+.cartao.breve .estado{color:var(--tinta-suave);font-weight:600}
+.cartao.feito .num{background:var(--amarelo);color:var(--tinta)}
+
+/* ---------- SITUAÇÃO ---------- */
+.cab{background:var(--verde-escuro);color:#fff;position:relative}
+.cab-img{aspect-ratio:16/9;max-height:360px;width:100%;background:linear-gradient(135deg,#2c7a45,#123f20);overflow:hidden}
+.cab-img img{width:100%;height:100%;object-fit:cover}
+.cab-txt{padding:1rem 1rem 1.2rem;max-width:1080px;margin:0 auto}
+.voltar{background:none;border:0;color:var(--amarelo);font-weight:600;font-size:.95rem;padding:0 0 .5rem}
+.cab .n{font-size:.9rem;color:#cfe0d2}
+.cab h1{font-size:clamp(1.8rem,7vw,2.6rem);line-height:1.1}
+.objetivos{background:var(--areia);border-left:5px solid var(--amarelo);padding:.9rem 1rem;margin:1rem 0}
+.objetivos b{display:block;margin-bottom:.3rem}
+.objetivos ul{list-style:none;display:grid;gap:.2rem}
+.objetivos li{padding-left:1.5rem;position:relative}
+.objetivos li::before{content:'';position:absolute;left:.2rem;top:.5rem;width:9px;height:5px;border-left:2.5px solid var(--verde);border-bottom:2.5px solid var(--verde);transform:rotate(-45deg)}
+
+/* Passos 1–4 */
+.passos{position:sticky;top:50px;z-index:10;background:var(--fundo);display:grid;grid-template-columns:repeat(4,1fr);gap:.3rem;padding:.5rem 0;border-bottom:1px solid var(--linha)}
+.passos button{border:1px solid var(--linha);background:var(--papel);border-radius:8px;padding:.5rem .2rem;font-size:.85rem;font-weight:600;line-height:1.15}
+.passos button b{display:block;font-size:.75rem;color:var(--tinta-suave);font-weight:600}
+.passos button.on{background:var(--verde);border-color:var(--verde);color:#fff}
+.passos button.on b{color:#cfe0d2}
+
+.painel{padding:1.2rem 0 2.5rem}
+.painel h2{font-size:1.45rem;border-left:5px solid var(--vermelho);padding-left:.6rem}
+.painel h3{font-size:1.1rem;margin:1.3rem 0 .5rem}
+.painel .guia{color:var(--tinta-suave);margin:.3rem 0 .9rem}
+.quadro{background:var(--papel);border:1px solid var(--linha);border-radius:10px;overflow:hidden}
+
+.apoio{display:flex;align-items:center;justify-content:space-between;gap:.8rem;flex-wrap:wrap;margin-bottom:.8rem}
+.interruptor{display:flex;align-items:center;gap:.55rem;background:none;border:0;font-weight:600;font-size:.95rem}
+.interruptor i{width:42px;height:24px;border-radius:12px;background:#aab7ad;position:relative}
+.interruptor i::after{content:'';position:absolute;top:2px;left:2px;width:20px;height:20px;border-radius:50%;background:#fff;transition:left .15s}
+.interruptor[aria-pressed="true"] i{background:var(--amarelo)}
+.interruptor[aria-pressed="true"] i::after{left:20px}
+body.sem-tetum .tt{visibility:hidden}
+
+.linha{display:grid;grid-template-columns:46px 1fr;gap:.8rem;align-items:center;padding:.7rem .9rem;border-bottom:1px solid var(--linha)}
+.linha:last-child{border-bottom:0}
+.linha:nth-child(even){background:#f2f6f1}
+.linha.ativa{background:var(--areia)}
+.ouvir{width:46px;height:46px;border-radius:50%;border:0;background:var(--verde);display:grid;place-items:center;flex-shrink:0}
+.ouvir svg{width:21px;height:21px}
+.ouvir.b{background:var(--vermelho)}
+.ouvir:active{transform:scale(.94)}
+.pt{font-size:1.15rem;font-weight:600}
+.tt{font-style:italic;color:var(--tinta-suave);font-size:.97rem}
+.quem{font-size:.85rem;font-weight:700;color:var(--verde)}
+.quem.b{color:var(--vermelho)}
+.etq{font-size:.75rem;font-weight:600;border:1px solid var(--linha);border-radius:4px;padding:0 .4rem;margin-left:.4rem;color:var(--tinta-suave);font-style:normal;white-space:nowrap;background:#fff}
+.nota{border-left:4px solid var(--amarelo);background:var(--areia);padding:.7rem .9rem;font-size:.95rem;margin:.8rem 0}
+.nota .pt-nota{color:var(--tinta-suave);font-size:.9rem;margin-top:.25rem}
+
+/* Exercícios */
+.ex{background:var(--papel);border:1px solid var(--linha);border-radius:10px;padding:1.1rem}
+.ex .prog{font-size:.85rem;color:var(--tinta-suave);font-weight:600}
+.ex .pergunta{font-size:1.15rem;font-weight:600;margin:.6rem 0 .9rem}
+.ex .ouvir.grande{width:68px;height:68px;margin:.6rem auto 1rem}
+.ex .ouvir.grande svg{width:30px;height:30px}
+.opcoes{display:grid;gap:.5rem}
+.opcoes button{border:2px solid var(--linha);background:#fff;border-radius:8px;padding:.8rem 1rem;font-size:1.1rem;font-weight:600;text-align:left}
+.opcoes button.certa{border-color:var(--verde);background:#e3f1e6}
+.opcoes button.errada{border-color:var(--vermelho);background:#fbeceA}
+.retorno{min-height:1.6rem;margin-top:.8rem;font-weight:600}
+.retorno.ok{color:var(--verde)} .retorno.nok{color:var(--vermelho)}
+.resultado{text-align:center;padding:1rem 0}
+.resultado .nota-num{font-size:2.4rem;color:var(--verde)}
+
+.fim{background:var(--verde);color:#fff;border-radius:10px;padding:1.2rem;margin-top:1.4rem}
+.fim h3{margin:0 0 .5rem;font-size:1.25rem}
+.fim ul{list-style:none;display:grid;gap:.25rem;margin-bottom:.4rem}
+.fim li::before{content:'✓';color:var(--amarelo);font-weight:700;margin-right:.6rem}
+.fim .btn{background:var(--amarelo);color:var(--tinta)}
+.navega{display:flex;justify-content:flex-end;margin-top:1.2rem}
+
+footer{background:var(--tinta);color:#cfd8d1;font-size:.82rem;padding:1.4rem 1rem;text-align:center;line-height:1.6}
+footer a{color:var(--amarelo)}
+</style>
+</head>
+<body>
+
+<!-- Ícone de som, reutilizado em todos os botões -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="som" viewBox="0 0 20 20">
+    <path d="M3 8h3l4-3.500v11L6 12H3z" fill="#fff" stroke="#fff" stroke-linejoin="round"/>
+    <path d="M13 7.200c1.200 1.600 1.200 4 0 5.600M15.300 5c2.300 2.900 2.300 7.100 0 10" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/>
+  </symbol>
+</defs></svg>
+
+<header class="topo">
+  <a href="index.html">
+    <img src="logo.png" alt="">
+    <span class="nome serif">CAFE de Liquiçá<small data-i="voltarSite"></small></span>
+  </a>
+  <div class="lingua">
+    <button id="btn-tt" onclick="setLang('tt')">Tetun</button>
+    <button id="btn-pt" onclick="setLang('pt')">Português</button>
+  </div>
+</header>
+<div class="faixa"></div>
+
+<!-- ======================= ENTRADA ======================= -->
+<main id="ecra-inicio">
+  <section class="abertura">
+    <div class="abertura-grelha">
+      <div class="abertura-img"><img src="praticaabertura.jpg" alt="" onerror="this.remove()"></div>
+      <div class="abertura-txt">
+        <h1 class="serif" data-i="titulo"></h1>
+        <p class="sub" data-i="sub"></p>
+        <p class="txt" data-i="txt"></p>
+        <ul>
+          <li data-i="f1"></li>
+          <li data-i="f2"></li>
+          <li data-i="f3"></li>
+        </ul>
+        <a class="btn" href="#situacoes" data-i="comecar"></a>
+        <p class="ref"><span data-i="nivel"></span> · <a href="pratica-sobre.html" data-i="sobre"></a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="situacoes largura" id="situacoes">
+    <h2 class="serif" data-i="sitTitulo"></h2>
+    <p class="guia" data-i="sitGuia"></p>
+    <div class="grelha" id="grelha"></div>
+  </section>
+</main>
+
+<!-- ======================= SITUAÇÃO ======================= -->
+<main id="ecra-situacao" hidden>
+  <div class="cab">
+    <div class="cab-img"><img id="cab-img" src="" alt="" onerror="this.style.display='none'"></div>
+    <div class="cab-txt">
+      <button class="voltar" onclick="abrirInicio()" data-i="voltarSit"></button>
+      <p class="n" id="cab-n"></p>
+      <h1 class="serif" id="cab-tit"></h1>
+    </div>
+  </div>
+
+  <div class="largura">
+    <div class="objetivos">
+      <b data-i="consigo"></b>
+      <ul id="objetivos"></ul>
+    </div>
+
+    <nav class="passos" id="passos"></nav>
+
+    <!-- 1. OUVIR -->
+    <section class="painel" id="p-ouvir">
+      <h2 class="serif" data-i="p1"></h2>
+      <p class="guia" data-i="p1guia"></p>
+      <div class="apoio">
+        <button class="btn verde" style="margin:0" id="btn-dialogo" onclick="ouvirDialogo()"></button>
+        <button class="interruptor" aria-pressed="true" onclick="alternarTetum(this)"><span>Tetun</span> <i></i></button>
+      </div>
+      <p class="guia" id="cena"></p>
+      <div class="quadro" id="dialogo"></div>
+      <div class="navega"><button class="btn claro" onclick="irPasso(1)" data-i="continuar"></button></div>
+    </section>
+
+    <!-- 2. DESCOBRIR -->
+    <section class="painel" id="p-descobrir" hidden>
+      <h2 class="serif" data-i="p2"></h2>
+      <p class="guia" data-i="p2guia"></p>
+      <div class="apoio"><span></span>
+        <button class="interruptor" aria-pressed="true" onclick="alternarTetum(this)"><span>Tetun</span> <i></i></button>
+      </div>
+      <h3 data-i="palavras"></h3>
+      <div class="quadro" id="vocab"></div>
+      <div id="vocab-notas"></div>
+      <h3 data-i="frases"></h3>
+      <div id="frases-nota"></div>
+      <div class="quadro" id="frases"></div>
+      <div class="navega"><button class="btn claro" onclick="irPasso(2)" data-i="continuar"></button></div>
+    </section>
+
+    <!-- 3. PRATICAR -->
+    <section class="painel" id="p-praticar" hidden>
+      <h2 class="serif" data-i="p3"></h2>
+      <p class="guia" data-i="p3guia"></p>
+      <div class="ex" id="ex-praticar"></div>
+      <div class="navega"><button class="btn claro" onclick="irPasso(3)" data-i="continuar"></button></div>
+    </section>
+
+    <!-- 4. USAR -->
+    <section class="painel" id="p-usar" hidden>
+      <h2 class="serif" data-i="p4"></h2>
+      <p class="guia" data-i="p4guia"></p>
+      <div class="ex" id="ex-usar"></div>
+      <div class="fim">
+        <h3 class="serif" data-i="fimTit"></h3>
+        <ul id="fim-lista"></ul>
+        <button class="btn" id="btn-concluir" onclick="concluir()"></button>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 CAFE de Liquiçá · <a href="index.html" data-i="voltarSite"></a> · <a href="pratica-sobre.html" data-i="sobre"></a></p>
+  <p style="margin-top:.6rem;opacity:.8">Tradusaun ba Tetun halo ho ajuda husi intelijénsia artifisiál (IA) no bele iha sala. Hetan sala ida? Favór avizu ami: <a href="mailto:liquicacafe@gmail.com">liquicacafe@gmail.com</a><br>
+  A tradução para tétum e as ilustrações foram feitas com apoio de inteligência artificial (IA). Encontrou algum erro? Avise-nos, por favor.</p>
+</footer>
+
+<script>
+/* ============================================================
+   LÍNGUA — o Pratica abre em TÉTUM (quem ainda não sabe português
+   tem de perceber a página). Mesma chave de memória do pratica.html.
+   ============================================================ */
+let lang = 'tt';
+try{ lang = localStorage.getItem('cafe-lang-pratica') || 'tt'; }catch(e){}
+
+/* Textos da interface. [REV-TT] = tétum novo, por rever por falante nativo */
+const T = {
+  pt:{
+    voltarSite:'Voltar ao site', titulo:'Pratica Português — A1',
+    sub:'Português para o dia a dia em Timor-Leste',
+    txt:'Aprende a comunicar em situações reais, ao teu ritmo.',
+    f1:'Áudio em português europeu', f2:'Apoio em tétum', f3:'Gratuito',
+    comecar:'Começar', nivel:'Nível A1 · segundo o Referencial Camões PLE', sobre:'Sobre este recurso',
+    sitTitulo:'As situações', sitGuia:'Nove situações do dia a dia. Começa pela primeira.',
+    abrir:'Abrir', breve:'Em preparação', feita:'Concluída',
+    voltarSit:'‹ Situações', situacao:'Situação', consigo:'No fim desta situação, consigo…',
+    p1:'Ouvir', p2:'Descobrir', p3:'Praticar', p4:'Usar',
+    p1guia:'Ouve o diálogo. Podes ouvir as vezes que quiseres.',
+    p2guia:'Ouve cada expressão e repete em voz alta.',
+    p3guia:'Ouve e escolhe a palavra certa.',
+    p4guia:'Lê a situação e escolhe o que dizes em português.',
+    ouvirTudo:'Ouvir o diálogo', parar:'Parar', continuar:'Continuar',
+    palavras:'Palavras', frases:'Frases', formal:'formal', informal:'informal',
+    de:'de', certo:'Certo.', errado:'A resposta certa é:', seguinte:'Seguinte',
+    resultado:'respostas certas', denovo:'Tentar de novo',
+    fimTit:'Consegues fazer isto?', concluir:'Marcar como concluída', concluida:'Concluída'
+  },
+  tt:{
+    voltarSite:'Fila ba site', titulo:'Pratika Portugés — A1',
+    sub:'Portugés ba moris loroloron iha Timor-Leste',                 /* [REV-TT] */
+    txt:'Aprende atu koalia iha situasaun reál, tuir ó-nia ritmu.',     /* [REV-TT] */
+    f1:'Áudiu iha portugés Europa nian',                                /* [REV-TT] */
+    f2:'Ajuda iha Tetun', f3:'Gratuitu (la selu)',                      /* [REV-TT] */
+    comecar:'Hahú', nivel:'Nivel A1 · tuir Referencial Camões PLE', sobre:"Kona-ba rekursu ne'e",
+    sitTitulo:'Situasaun sira',                                         /* [REV-TT] */
+    sitGuia:'Situasaun sia loroloron nian. Hahú husi dahuluk.',         /* [REV-TT] */
+    abrir:'Loke', breve:'Sei prepara hela', feita:'Kompleta ona',       /* [REV-TT] */
+    voltarSit:'‹ Situasaun sira', situacao:'Situasaun',
+    consigo:"Iha situasaun ne'e nia rohan, ha'u bele…",                 /* [REV-TT] */
+    p1:'Rona', p2:'Deskobre', p3:'Pratika', p4:'Uza',
+    p1guia:'Rona diálogu. Bele rona dala barak.',                       /* [REV-TT] */
+    p2guia:"Rona liafuan ida-idak no repete ho lian maka'as.",          /* [REV-TT] */
+    p3guia:"Rona no hili liafuan ne'ebé loos.",                         /* [REV-TT] */
+    p4guia:'Lee situasaun no hili saida mak ó dehan iha portugés.',     /* [REV-TT] */
+    ouvirTudo:'Rona diálogu', parar:'Para', continuar:'Kontinua',
+    palavras:'Liafuan', frases:'Fraze', formal:'formál', informal:'informál',
+    de:'husi', certo:'Loos.', errado:'Resposta loos mak:', seguinte:'Tuirmai',
+    resultado:'resposta loos', denovo:'Koko fali',
+    fimTit:"Ó bele halo ida-ne'e ona?",                                 /* [REV-TT] */
+    concluir:"Marka nu'udar kompleta", concluida:'Kompleta ona'         /* [REV-TT] */
+  }
+};
+const t = k => T[lang][k];
+
+/* ============================================================
+   AS NOVE SITUAÇÕES (só a 01 está montada neste protótipo)
+   ============================================================ */
+const SITUACOES = [
+  {id:'s01', img:'pratica01.jpg', pronta:true,
+   pt:['Conhecer alguém','Cumprimentar, apresentar-se e despedir-se.'],
+   tt:['Koñese ema ida','Kumprimenta, aprezenta an no despede an.']},                 /* [REV-TT] */
+  {id:'s02', img:'pratica02.jpg', pt:['O meu nome','Dizer e soletrar nomes.'],
+   tt:["Ha'u-nia naran",'Dehan no soletra naran.']},                                   /* [REV-TT] */
+  {id:'s03', img:'pratica03.jpg', pt:['Números no dia a dia','Telefone, idade e preços.'],
+   tt:['Númeru iha loroloron','Telefone, idade no folin.']},                           /* [REV-TT] */
+  {id:'s04', img:'pratica04.jpg', pt:['Horas e compromissos','Perguntar e dizer as horas.'],
+   tt:['Oras no kompromisu','Husu no dehan oras.']},                                   /* [REV-TT] */
+  {id:'s05', img:'pratica05.jpg', pt:['Falar da família','Apresentar as pessoas da família.'],
+   tt:['Koalia kona-ba família','Aprezenta ema sira iha família.']},                   /* [REV-TT] */
+  {id:'s06', img:'pratica06.jpg', pt:['No mercado e no café','Pedir, comprar e perguntar preços.'],
+   tt:['Iha merkadu no kafé','Husu, sosa no husu folin.']},                            /* [REV-TT] */
+  {id:'s07', img:'pratica07.jpg', pt:['Dias e datas','Dizer o dia, o mês e o aniversário.'],
+   tt:['Loron no data','Dehan loron, fulan no loron-moris.']},                         /* [REV-TT] */
+  {id:'s08', img:'pratica08.jpg', pt:['Descrever a roupa','Cores e peças de roupa.'],
+   tt:['Deskreve roupa','Kór no roupa.']},                                             /* [REV-TT] */
+  {id:'s09', img:'pratica09.jpg', pt:['Orientar-se em Liquiçá','Perguntar onde fica um lugar.'],
+   tt:['Buka dalan iha Liquiçá',"Husu fatin ida iha ne'ebé."]}                         /* [REV-TT] */
+];
+
+/* ============================================================
+   CONTEÚDO DA SITUAÇÃO 01 — copiado do Tema 1 do pratica.html
+   (mesmos textos em português → mesmos MP3)
+   ============================================================ */
+const s01 = {
+  objetivos:{
+    pt:['cumprimentar alguém','dizer o meu nome','perguntar o nome de outra pessoa','despedir-me'],
+    tt:['kumprimenta ema',"dehan ha'u-nia naran",'husu ema seluk nia naran','despede an']   /* [REV-TT] */
+  },
+  cena:{pt:'Duas pessoas encontram-se de manhã.', tt:"Ema na'in-rua hasoru malu iha dadeer."},  /* [REV-TT] */
+  dialogoRegisto:'informal',
+  dialogo:[
+    {quem:'Maria', pt:'Bom dia! Como te chamas?',       tt:'Bondia! Naran sá?'},
+    {quem:'João',  pt:'Chamo-me João. E tu?',           tt:"Ha'u-nia naran João. Ó nian?"},
+    {quem:'Maria', pt:'Eu sou a Maria. Muito prazer!',  tt:"Ha'u Maria. Kontente atu hasoru!"},
+    {quem:'João',  pt:'Igualmente. Até amanhã!',        tt:"Ha'u mós. Aban hasoru fali!"}
+  ],
+  vocab:[
+    {pt:'Olá',        tt:'Olá / Bondia'},
+    {pt:'Bom dia',    tt:'Bondia'},
+    {pt:'Boa tarde',  tt:'Botarde'},
+    {pt:'Boa noite',  tt:'Bonoite'},
+    {pt:'Adeus',      tt:'Dá'},
+    {pt:'Até logo',   tt:'Hasoru fali'},
+    {pt:'Obrigado / Obrigada', audio:'Obrigado. Obrigada.', tt:'Obrigadu',
+      nota:{tt:'Mane sira dehan «obrigado». Feto sira dehan «obrigada».',
+            pt:'Os homens dizem «obrigado». As mulheres dizem «obrigada».'}},
+    {pt:'De nada',    tt:'De nada (uza mós iha Tetun) · La iha buat ida'},
+    {pt:'Prazer',     tt:'Kontente atu hasoru'}
+  ],
+  frasesNota:{
+    tt:'Iha portugés: «Como te chamas?» ba ema besik (hanesan «ó» iha Tetun). «Como se chama?» ba ema boot ka ema foun (hanesan «Ita»).',
+    pt:'Em português: «Como te chamas?» usa-se com pessoas próximas (como «ó» em tétum). «Como se chama?» usa-se com pessoas mais velhas ou desconhecidas (como «Ita»).'
+  },
+  frases:[
+    {pt:'Bom dia! Como te chamas?', tt:'Bondia! Ó-nia naran saida?', registo:'informal'},
+    {pt:'Eu chamo-me Maria.',       tt:"Ha'u-nia naran Maria."},
+    {pt:'Muito prazer!',            tt:'Kontente atu hasoru ó!'},
+    {pt:'Bom dia. Como se chama?',  tt:'Bondia. Ita-nia naran saida?', registo:'formal'},
+    {pt:'Como está?',               tt:'Ita diak ka lae?', registo:'formal'},
+    {pt:'Estou bem, obrigado.',     tt:"Ha'u diak, obrigadu."},
+    {pt:'Boa tarde, professora.',   tt:'Botarde, mestra.', registo:'formal'},
+    {pt:'Até amanhã!',              tt:'Aban hasoru fali!'}
+  ],
+  /* PRATICAR — ouve e escolhe */
+  praticar:[
+    {ouvir:'Olá',       opcoes:['Olá','Adeus','Obrigado']},
+    {ouvir:'Obrigado',  opcoes:['Bom dia','Obrigado','Prazer']},
+    {ouvir:'Boa noite', opcoes:['Boa tarde','Boa noite','Bom dia']},
+    {ouvir:'Adeus',     opcoes:['Olá','Prazer','Adeus']},
+    {ouvir:'Bom dia',   opcoes:['Bom dia','Boa noite','Obrigado']},
+    {ouvir:'Boa tarde', opcoes:['Boa tarde','Boa noite','Adeus']},
+    {ouvir:'Prazer',    opcoes:['Prazer','Obrigado','Olá']},
+    {ouvir:'Até logo',  opcoes:['Até logo','Adeus','De nada']},
+    {ouvir:'De nada',   opcoes:['De nada','Prazer','Boa noite']}
+  ],
+  /* USAR — situação em tétum, escolhe o que dizes em português */
+  usar:[
+    {sit:'Saúda ema iha dadeer?',                                   certa:'Bom dia',    opcoes:['Bom dia','Boa noite','Adeus']},
+    {sit:'Saúda ema iha lokraik?',                                  certa:'Boa tarde',  opcoes:['Boa tarde','Bom dia','Olá']},
+    {sit:'Saúda ema iha kalan?',                                    certa:'Boa noite',  opcoes:['Boa noite','Bom dia','Adeus']},
+    {sit:'Despede an husi ema?',                                    certa:'Adeus',      opcoes:['Adeus','Prazer','Obrigado']},
+    {sit:'Hasoru ema foun, dahuluk?',                               certa:'Prazer',     opcoes:['Prazer','Obrigado','Boa noite']},
+    {sit:'Ema ida ajuda ó, ó dehan «obrigadu». Nia responde saida?', certa:'De nada',   opcoes:['De nada','Adeus','Boa noite']},
+    {sit:'Ó sei hasoru fali ema iha oras badak.',                   certa:'Até logo',   opcoes:['Até logo','Bom dia','Prazer']},
+    {sit:'Ó sei hasoru fali ema aban.',                             certa:'Até amanhã', opcoes:['Até amanhã','Boa tarde','De nada']},
+    {sit:'Feto ida hakarak agradese. Nia dehan saida?',             certa:'Obrigada',   opcoes:['Obrigada','Obrigado','De nada']}
+  ]
+};
+const CONTEUDO = {s01};
+
+/* ============================================================
+   ÁUDIO — igual ao pratica.html: 1.º o MP3 gravado em audios/,
+   2.º síntese de voz se o ficheiro faltar.
+   ============================================================ */
+const AUDIO_BASE = 'audios/';
+const mapaAudio = {};
+const chave = s => String(s).trim().toLowerCase();
+(function registarAudios(){
+  const limpo = s => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ /g,'_');
+  s01.vocab.forEach(v=>{
+    if(v.audio){
+      mapaAudio[chave(v.audio)] = ['a1_tema01_vocab_obrigado.mp3','a1_tema01_vocab_obrigada.mp3'];
+      mapaAudio['obrigado'] = 'a1_tema01_vocab_obrigado.mp3';
+      mapaAudio['obrigada'] = 'a1_tema01_vocab_obrigada.mp3';
+    }else mapaAudio[chave(v.pt)] = 'a1_tema01_vocab_' + limpo(v.pt) + '.mp3';
+  });
+  s01.frases.forEach((f,i)=> mapaAudio[chave(f.pt)] = 'a1_tema01_frase' + (i+1) + '.mp3');
+  s01.dialogo.forEach((d,i)=> mapaAudio[chave(d.pt)] = 'a1_tema01_dialogo' + (i+1) + '.mp3');
+  mapaAudio['até amanhã'] = 'a1_tema01_frase8.mp3';   // usada no passo «Usar»
+})();
+
+let audioAtual = null, dialogoATocar = false;
+function pararAudio(){
+  if(audioAtual){ try{ audioAtual.pause(); }catch(e){} audioAtual = null; }
+  if('speechSynthesis' in window) speechSynthesis.cancel();
+}
+function falarTTS(texto, depois){
+  if(!('speechSynthesis' in window)){ if(depois) depois(); return; }
+  const u = new SpeechSynthesisUtterance(texto);
+  u.lang = 'pt-PT'; u.rate = 0.9;
+  let feito = false;
+  const seguir = ()=>{ if(feito) return; feito = true; if(depois) depois(); };
+  u.onend = seguir; u.onerror = seguir;
+  speechSynthesis.speak(u);
+  setTimeout(seguir, Math.max(800, texto.length*220) + 600);
+}
+function tocarFicheiro(fich, aoFalhar, depois){
+  const a = new Audio(AUDIO_BASE + fich);
+  audioAtual = a;
+  let feito = false;
+  a.onended = ()=>{ if(feito) return; feito = true; if(depois) depois(); };
+  a.onerror = ()=>{ if(feito) return; feito = true; aoFalhar(); };
+  a.play().catch(()=>{ if(feito) return; feito = true; aoFalhar(); });
+}
+function dizer(texto, depois){
+  const alvo = mapaAudio[chave(texto)];
+  const recurso = ()=> falarTTS(texto, depois);
+  if(!alvo) return recurso();
+  if(Array.isArray(alvo)){
+    let i = 0;
+    const prox = ()=>{ if(i >= alvo.length){ if(depois) depois(); return; }
+      tocarFicheiro(alvo[i++], recurso, ()=>setTimeout(prox, 350)); };
+    return prox();
+  }
+  tocarFicheiro(alvo, recurso, depois);
+}
+function ler(texto){ pararDialogo(); pararAudio(); dizer(texto); }
+
+/* ============================================================
+   PROGRESSO (guardado no telemóvel de cada pessoa)
+   ============================================================ */
+function lerFeitas(){ try{ return JSON.parse(localStorage.getItem('pratica-feitas')||'[]'); }catch(e){ return []; } }
+function guardarFeita(id){ const f = lerFeitas(); if(!f.includes(id)){ f.push(id); try{ localStorage.setItem('pratica-feitas', JSON.stringify(f)); }catch(e){} } }
+
+/* ============================================================
+   ECRÃS
+   ============================================================ */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+const btnSom = (texto, cls='') => `<button class="ouvir ${cls}" aria-label="🔊" onclick="ler('${esc(texto).replace(/&#39;/g,"\\'")}')"><svg><use href="#som"/></svg></button>`;
+let sitAtual = null, passoAtual = 0;
+const PASSOS = ['ouvir','descobrir','praticar','usar'];
+
+function setLang(l){
+  lang = l;
+  try{ localStorage.setItem('cafe-lang-pratica', l); }catch(e){}
+  document.documentElement.lang = l === 'tt' ? 'tet' : 'pt-PT';
+  $('btn-tt').classList.toggle('on', l==='tt');
+  $('btn-pt').classList.toggle('on', l==='pt');
+  document.querySelectorAll('[data-i]').forEach(el=> el.textContent = t(el.dataset.i));
+  desenharGrelha();
+  if(sitAtual) desenharSituacao();
+}
+
+function desenharGrelha(){
+  const feitas = lerFeitas();
+  $('grelha').innerHTML = SITUACOES.map((s,i)=>{
+    const [tit,desc] = s[lang], feita = feitas.includes(s.id);
+    const estado = !s.pronta ? t('breve') : (feita ? t('feita') : t('abrir') + ' ›');
+    return `<button class="cartao ${s.pronta?'':'breve'} ${feita?'feito':''}" ${s.pronta?`onclick="abrirSituacao('${s.id}')"`:'disabled'}>
+      <span class="mini"><img src="${s.img}" alt="" loading="lazy" onerror="this.remove()"><span class="num">${i+1}</span></span>
+      <span><span class="tit serif">${tit}</span><br><span class="desc">${desc}</span><br><span class="estado">${estado}</span></span>
+    </button>`;
+  }).join('');
+}
+
+function abrirInicio(){
+  pararDialogo(); pararAudio(); sitAtual = null;
+  $('ecra-situacao').hidden = true; $('ecra-inicio').hidden = false;
+  desenharGrelha(); scrollTo(0,0);
+}
+function abrirSituacao(id){
+  sitAtual = id; passoAtual = 0;
+  $('ecra-inicio').hidden = true; $('ecra-situacao').hidden = false;
+  desenharSituacao(); iniciarEx('praticar'); iniciarEx('usar'); scrollTo(0,0);
+}
+
+function desenharSituacao(){
+  const idx = SITUACOES.findIndex(s=>s.id===sitAtual), s = SITUACOES[idx], c = CONTEUDO[sitAtual];
+  const img = $('cab-img'); img.style.display = ''; img.src = s.img;
+  $('cab-n').textContent = `${t('situacao')} ${idx+1} ${t('de')} ${SITUACOES.length} · A1`;
+  $('cab-tit').textContent = s[lang][0];
+  $('objetivos').innerHTML = c.objetivos[lang].map(o=>`<li>${o}</li>`).join('');
+  $('fim-lista').innerHTML = c.objetivos[lang].map(o=>`<li>${o}</li>`).join('');
+  $('btn-concluir').textContent = lerFeitas().includes(sitAtual) ? t('concluida') : t('concluir');
+  $('passos').innerHTML = PASSOS.map((p,i)=>`<button class="${i===passoAtual?'on':''}" onclick="irPasso(${i})"><b>${i+1}</b>${t('p'+(i+1))}</button>`).join('');
+  PASSOS.forEach((p,i)=> $('p-'+p).hidden = i!==passoAtual);
+
+  // 1. Ouvir — diálogo
+  $('btn-dialogo').textContent = '▶ ' + t('ouvirTudo');
+  $('cena').innerHTML = `${c.cena[lang]} <span class="etq">${t(c.dialogoRegisto)}</span>`;
+  $('dialogo').innerHTML = c.dialogo.map((d,i)=>{
+    const b = i%2 ? 'b' : '';
+    return `<div class="linha" id="fala-${i}">${btnSom(d.pt,b)}<div><div class="quem ${b}">${d.quem}</div><div class="pt">${d.pt}</div><div class="tt">${d.tt}</div></div></div>`;
+  }).join('');
+
+  // 2. Descobrir — palavras e frases
+  $('vocab').innerHTML = c.vocab.map(v=>`<div class="linha">${btnSom(v.audio||v.pt)}<div><div class="pt">${v.pt}</div><div class="tt">${v.tt}</div></div></div>`).join('');
+  $('vocab-notas').innerHTML = c.vocab.filter(v=>v.nota).map(v=>notaHTML(v.nota)).join('');
+  $('frases-nota').innerHTML = c.frasesNota ? notaHTML(c.frasesNota) : '';
+  $('frases').innerHTML = c.frases.map(f=>`<div class="linha">${btnSom(f.pt)}<div><div class="pt">${f.pt}${f.registo?` <span class="etq">${t(f.registo)}</span>`:''}</div><div class="tt">${f.tt}</div></div></div>`).join('');
+
+  // 3 e 4 — redesenhar a pergunta em curso na língua nova
+  ['praticar','usar'].forEach(k=>{ if(EX[k]) mostrarPergunta(k); });
+}
+/* Nota contrastiva: as duas línguas sempre visíveis (tétum primeiro) */
+const notaHTML = n => `<div class="nota"><div>${n.tt}</div><div class="pt-nota">${n.pt}</div></div>`;
+
+function irPasso(i){
+  pararDialogo(); pararAudio(); passoAtual = i;
+  desenharSituacao();
+  $('passos').scrollIntoView({block:'start'});
+}
+function alternarTetum(){
+  const ligado = !document.body.classList.toggle('sem-tetum');
+  document.querySelectorAll('.interruptor').forEach(b=>b.setAttribute('aria-pressed', ligado));
+}
+
+/* Diálogo completo, fala a fala, com destaque da linha */
+function ouvirDialogo(){
+  if(dialogoATocar){ pararDialogo(); return; }
+  pararAudio(); dialogoATocar = true;
+  $('btn-dialogo').textContent = '■ ' + t('parar');
+  const falas = CONTEUDO[sitAtual].dialogo; let i = 0;
+  (function prox(){
+    document.querySelectorAll('#dialogo .linha').forEach(l=>l.classList.remove('ativa'));
+    if(!dialogoATocar || i >= falas.length){ pararDialogo(); return; }
+    $('fala-'+i).classList.add('ativa');
+    dizer(falas[i++].pt, ()=>setTimeout(prox, 500));
+  })();
+}
+function pararDialogo(){
+  if(!dialogoATocar) return;
+  dialogoATocar = false; pararAudio();
+  document.querySelectorAll('#dialogo .linha').forEach(l=>l.classList.remove('ativa'));
+  const b = $('btn-dialogo'); if(b) b.textContent = '▶ ' + t('ouvirTudo');
+}
+
+/* ============================================================
+   EXERCÍCIOS (Praticar e Usar) — 5 perguntas tiradas ao acaso
+   ============================================================ */
+const EX = {};
+const baralhar = a => a.map(x=>[Math.random(),x]).sort((p,q)=>p[0]-q[0]).map(x=>x[1]);
+function iniciarEx(k){
+  EX[k] = {lista: baralhar(CONTEUDO[sitAtual][k]).slice(0,5).map(p=>({...p, opcoes:baralhar(p.opcoes)})), i:0, certas:0, respondida:null};
+  mostrarPergunta(k);
+}
+function mostrarPergunta(k){
+  const e = EX[k], cx = $('ex-'+k);
+  if(e.i >= e.lista.length){
+    cx.innerHTML = `<div class="resultado"><div class="nota-num serif">${e.certas} / ${e.lista.length}</div><p>${t('resultado')}</p>
+      <button class="btn claro" onclick="iniciarEx('${k}')">${t('denovo')}</button></div>`;
+    return;
+  }
+  const p = e.lista[e.i], certa = p.certa || p.ouvir;
+  const topo = k==='praticar'
+    ? `<button class="ouvir grande" aria-label="🔊" onclick="ler('${esc(p.ouvir)}')"><svg><use href="#som"/></svg></button>`
+    : `<p class="pergunta">${p.sit}</p>`;
+  cx.innerHTML = `<p class="prog">${e.i+1} ${t('de')} ${e.lista.length}</p>${topo}
+    <div class="opcoes">${p.opcoes.map(o=>{
+      let c = '';
+      if(e.respondida){ if(o===certa) c='certa'; else if(o===e.respondida) c='errada'; }
+      return `<button class="${c}" ${e.respondida?'disabled':''} onclick="responder('${k}','${esc(o)}')">${o}</button>`;
+    }).join('')}</div>
+    <p class="retorno ${e.respondida ? (e.respondida===certa?'ok':'nok') : ''}">${e.respondida ? (e.respondida===certa ? t('certo') : t('errado')+' '+certa) : ''}</p>
+    ${e.respondida ? `<div class="navega" style="margin-top:.4rem"><button class="btn verde" style="margin:0" onclick="seguinte('${k}')">${t('seguinte')}</button></div>` : ''}`;
+}
+function responder(k, escolha){
+  const e = EX[k], p = e.lista[e.i], certa = p.certa || p.ouvir;
+  e.respondida = escolha;
+  if(escolha === certa) e.certas++;
+  mostrarPergunta(k);
+  if(k==='usar') ler(certa);          // ouve-se sempre a resposta certa
+}
+function seguinte(k){ EX[k].i++; EX[k].respondida = null; pararAudio(); mostrarPergunta(k); }
+
+function concluir(){
+  guardarFeita(sitAtual);
+  $('btn-concluir').textContent = t('concluida');
+  setTimeout(abrirInicio, 600);
+}
+
+/* Arranque */
+setLang(lang);
+</script>
+</body>
+</html>
