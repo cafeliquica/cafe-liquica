@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="pt-PT">
+<html lang="pt-PT" translate="no" class="notranslate">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Protótipo em teste: não indexar enquanto não substituir o pratica.html -->
 <meta name="robots" content="noindex">
+<!-- Impede a tradução automática do navegador, que estragava os textos -->
+<meta name="google" content="notranslate">
 <title>Pratica Português — A1 · CAFE de Liquiçá</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,7 +40,8 @@ img{max-width:100%;display:block}
 .topo a{color:#fff;text-decoration:none;display:flex;align-items:center;gap:.6rem}
 .topo img{height:34px;width:auto}
 .topo .nome{font-size:1rem;line-height:1.1}
-.topo .sair{border:1.5px solid var(--amarelo);color:var(--amarelo);border-radius:6px;padding:.4rem .65rem;font-size:.85rem;font-weight:700;white-space:nowrap}
+.topo .sair{background:var(--amarelo);color:var(--tinta);border-radius:8px;padding:.55rem .9rem;font-size:1rem;font-weight:700;white-space:nowrap;box-shadow:0 2px 0 rgba(0,0,0,.25)}
+.topo .sair:hover{background:#ffc233}
 @media(max-width:620px){.topo .nome{display:none}}
 .lingua{display:flex;border:1px solid #4d7a59;border-radius:6px;overflow:hidden;flex-shrink:0}
 .lingua button{border:0;background:transparent;padding:.45rem .7rem;font-size:.82rem;font-weight:600;color:#cfe0d2}
@@ -520,7 +523,6 @@ const PASSOS = ['ouvir','descobrir','praticar','usar'];
 function setLang(l){
   lang = l;
   try{ localStorage.setItem('cafe-lang-pratica', l); }catch(e){}
-  document.documentElement.lang = l === 'tt' ? 'tet' : 'pt-PT';
   $('btn-tt').classList.toggle('on', l==='tt');
   $('btn-pt').classList.toggle('on', l==='pt');
   document.querySelectorAll('[data-i]').forEach(el=> el.textContent = t(el.dataset.i));
