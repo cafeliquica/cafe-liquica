@@ -189,8 +189,15 @@
   .contacto-icon{width:40px;height:40px;background:var(--verde);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:1rem;flex-shrink:0}
   .contacto-texto strong{display:block;font-size:0.82rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--preto);margin-bottom:4px}
   .contacto-texto span{font-size:0.92rem;color:var(--texto-claro)}
-  .mapa-placeholder{background:var(--cinza-medio);border-radius:8px;height:320px;overflow:hidden}
+  .mapa-placeholder{background:var(--cinza-medio);border-radius:8px;height:320px;overflow:hidden;position:relative}
   .mapa-placeholder iframe{width:100%;height:100%;border:none}
+  /* Cartão com o nome e as coordenadas, por cima do mapa (tapa também o aviso «Impossível carregar informações do local» do Google) */
+  .mapa-etiqueta{position:absolute;top:10px;left:10px;z-index:2;width:330px;max-width:calc(100% - 20px);min-height:88px;box-sizing:border-box;background:var(--branco);border-left:4px solid var(--verde);border-radius:6px;box-shadow:0 2px 10px rgba(0,0,0,0.18);padding:0.7rem 1rem;text-decoration:none;color:var(--texto);display:flex;flex-direction:column;gap:2px}
+  .mapa-etiqueta-nome{font-family:'Playfair Display',serif;font-weight:700;font-size:1.05rem;color:var(--verde)}
+  .mapa-etiqueta-gps{font-size:0.82rem;color:var(--texto-claro);font-variant-numeric:tabular-nums}
+  .mapa-etiqueta-link{font-size:0.75rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;color:var(--vermelho);margin-top:2px}
+  .mapa-etiqueta:hover .mapa-etiqueta-link{text-decoration:underline}
+  .contacto-gps{display:block;font-size:0.82rem;margin-top:3px;font-variant-numeric:tabular-nums}
   footer{background:var(--preto);color:rgba(255,255,255,0.45);padding:3rem 2.5rem 1.5rem}
   .footer-inner{max-width:1100px;margin:0 auto}
   .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:3rem;padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,0.08)}
@@ -1101,7 +1108,7 @@ A direção integra alunos do 9.º, do 11.º e do 12.º ano, assegurando represe
       <div class="contacto-info">
         <div class="contacto-item">
           <div class="contacto-icon">📍</div>
-          <div class="contacto-texto"><strong data-pt="Morada" data-tt="Enderesu">Morada</strong><span>Liquiçá, Timor-Leste</span></div>
+          <div class="contacto-texto"><strong data-pt="Morada" data-tt="Enderesu">Morada</strong><span>Liquiçá, Timor-Leste<span class="contacto-gps">GPS: 8°35'40.3"S 125°19'41.8"E<br>(-8.59452, 125.32828)</span></span></div>
         </div>
         <div class="contacto-item">
           <div class="contacto-icon">✉</div>
@@ -1118,6 +1125,11 @@ A direção integra alunos do 9.º, do 11.º e do 12.º ano, assegurando represe
       </div>
       <div class="mapa-placeholder">
         <!-- Mapa: pin no edifício do CAFE de Liquiçá (8°35'40.27"S 125°19'41.81"E = -8.59452, 125.32828), coordenadas confirmadas pela equipa a 13/10/2026 -->
+        <a class="mapa-etiqueta" href="https://www.google.com/maps/search/?api=1&amp;query=-8.59452,125.32828" target="_blank" rel="noopener">
+          <span class="mapa-etiqueta-nome">📍 CAFE de Liquiçá</span>
+          <span class="mapa-etiqueta-gps">-8.59452, 125.32828</span>
+          <span class="mapa-etiqueta-link" data-pt="Abrir no Google Maps →" data-tt="Loke iha Google Maps →">Abrir no Google Maps →</span>
+        </a>
         <iframe src="https://maps.google.com/maps?q=-8.59452,125.32828&amp;z=17&amp;hl=pt-PT&amp;output=embed" allowfullscreen="" loading="lazy" title="Mapa com a localização do CAFE de Liquiçá"></iframe>
       </div>
     </div>
