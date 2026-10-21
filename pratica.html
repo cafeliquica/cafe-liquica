@@ -369,7 +369,11 @@ const T = {
     tarefaTit:'Tarefa final: a minha ficha', tarefaGuia:'Preenche a ficha com os teus dados. Depois, lê a tua apresentação em voz alta.',
     fNome:'Nome', fApelido:'Apelido', fSou:'Sou', fHomem:'homem', fMulher:'mulher', fNac:'Nacionalidade', fDe:'Sou de (terra natal)',
     fEm:'Moro em', fProf:'Profissão', fTel:'Telefone', fEscolhe:'— escolhe —', fVer:'Ver a minha apresentação',
-    fApres:'A minha apresentação', fVoz:'Ouvir (voz do computador)'
+    fApres:'A minha apresentação', fVoz:'Ouvir (voz do computador)',
+    rotina:'A rotina', quando:'Quando?',
+    hTit:'Tarefa final: o meu horário', hGuia:'Escolhe as tuas horas. O texto escreve-se sozinho — depois lê-o em voz alta.',
+    hAcordo:'Acordo', hTrabalho:'Trabalho', hAlmoco:'Almoço', hJanto:'Janto', hDeito:'Deito-me', hGosto:'Gosto de…',
+    hVer:'Ver o meu dia', hTexto:'O meu dia'
   },
   tt:{
     voltarSite:'Fila ba site', titulo:'Pratika Portugés — A1',
@@ -403,7 +407,11 @@ const T = {
     tarefaTit:"Servisu ikus: ha'u-nia fixa", tarefaGuia:"Prenxe fixa ho ó-nia dadus. Depois, lee ó-nia aprezentasaun ho lian maka'as.",
     fNome:'Naran', fApelido:'Apelidu', fSou:"Ha'u", fHomem:'mane', fMulher:'feto', fNac:'Nasionalidade', fDe:"Ha'u husi (rai moris)",
     fEm:"Ha'u hela iha", fProf:'Servisu', fTel:'Telefone', fEscolhe:'— hili —', fVer:"Haree ha'u-nia aprezentasaun",
-    fApres:"Ha'u-nia aprezentasaun", fVoz:'Rona (lian komputadór)'   /* [REV-TT] */
+    fApres:"Ha'u-nia aprezentasaun", fVoz:'Rona (lian komputadór)',   /* [REV-TT] */
+    rotina:'Rutina', quando:'Bainhira?',
+    hTit:"Servisu ikus: ha'u-nia orário", hGuia:"Hili ó-nia oras. Testu sei hakerek mesak — depois lee ho lian maka'as.",
+    hAcordo:"Ha'u hader", hTrabalho:"Ha'u servisu", hAlmoco:"Ha'u han meiudia", hJanto:"Ha'u han kalan", hDeito:"Ha'u toba", hGosto:"Ha'u gosta…",
+    hVer:"Haree ha'u-nia loron", hTexto:"Ha'u-nia loron"   /* [REV-TT] */
   }
 };
 const t = k => T[lang][k];
@@ -434,7 +442,10 @@ const SITUACOES = [
    tt:['Buka dalan iha Liquiçá',"Husu fatin ida iha ne'ebé."]},                        /* [REV-TT] */
   /* auto:true — fica «Em preparação» até existirem no GitHub a imagem e o último áudio gravado */
   {id:'s10', img:'pratica10.jpg', auto:true, sentinela:'a1_s10_ouvir8.mp3', pt:['Quem sou eu','Nacionalidade, morada e profissão.'],
-   tt:["Ha'u mak sé",'Nasionalidade, hela-fatin no servisu.']}                          /* [REV-TT] */
+   tt:["Ha'u mak sé",'Nasionalidade, hela-fatin no servisu.']},                         /* [REV-TT] */
+  /* sentinelas: o último áudio de cada voz (feminina e masculina) */
+  {id:'s11', img:'pratica11.jpg', auto:true, sentinelas:['a1_s11_ouvir6.mp3','a1_s11_quando_asvezes.mp3'], pt:['O meu dia','A rotina diária e os gostos.'],
+   tt:["Ha'u-nia loron","Rutina loroloron no buat ne'ebé gosta."]}                    /* [REV-TT] */
 ];
 
 /* ============================================================
@@ -1421,7 +1432,124 @@ const s10 = {
   }
 };
 
-const CONTEUDO = {s01, s02, s03, s04, s05, s06, s07, s08, s09, s10};
+/* ---------- SITUAÇÃO 11 — O meu dia ----------
+   Rotina diária no presente do indicativo (o verbo muda com a pessoa — o tétum não),
+   verbos com «me» (levanto-me, deito-me), partes do dia, e gostos («gosto de»).
+   Tarefa final: escrever o meu horário.
+   Áudios a1_s11_*.mp3 — POR GRAVAR (Gravar_Situacao11_VozMasculina / _VozFeminina).
+   ABRE SOZINHA quando pratica11.jpg e os últimos áudios das duas vozes estiverem no GitHub. */
+const s11 = {
+  objetivos:{
+    pt:['dizer o que faço todos os dias','dizer a que horas faço as coisas','perguntar pela rotina de outra pessoa','dizer do que gosto e do que não gosto','escrever o meu horário'],
+    tt:["dehan saida mak ha'u halo loroloron","dehan ha'u halo buat sira tuku hira",'husu kona-ba ema seluk nia rutina',"dehan buat ne'ebé ha'u gosta no la gosta","hakerek ha'u-nia orário"]   /* [REV-TT] */
+  },
+  cena:{pt:'De manhã cedo, ele sai para o trabalho e ela organiza o dia.', tt:"Dadeer sedu, nia sai bá servisu no feto ne'e organiza loron."},   /* [REV-TT] */
+  dialogoRegisto:'informal',
+  dialogo:[
+    {quem:'Maria', pt:'Bom dia! Já vais trabalhar?',                         tt:'Bondia! Ó bá servisu ona?'},                                   /* [REV-TT] */
+    {quem:'João',  pt:'Vou. Começo às oito. E tu?',                          tt:"Bá. Ha'u hahú tuku walu. Ó?"},                                 /* [REV-TT] */
+    {quem:'Maria', pt:'Hoje trabalho à tarde. De manhã estudo português.',   tt:"Ohin ha'u servisu lokraik. Dadeer ha'u estuda portugés."},     /* [REV-TT] */
+    {quem:'João',  pt:'A que horas almoças?',                                tt:'Ó han meiudia tuku hira?'},                                    /* [REV-TT] */
+    {quem:'Maria', pt:'Almoço ao meio-dia. Depois vou para a escola.',       tt:"Ha'u han iha meiu-dia. Depois ha'u bá eskola."},               /* [REV-TT] */
+    {quem:'João',  pt:'Eu janto às sete. Até logo!',                         tt:"Ha'u han kalan tuku hitu. To'o logu!"}                         /* [REV-TT] */
+  ],
+  descobrir:[
+    {tipo:'lista', titulo:'rotina', itens:[
+      {pt:'acordar',                  tt:'hader'},
+      {pt:'levantar-me',              tt:'hamrik (husi toba)'},          /* [REV-TT] */
+      {pt:'tomar o pequeno-almoço',   tt:'han dadeer'},
+      {pt:'ir para o trabalho',       tt:'bá servisu'},
+      {pt:'trabalhar',                tt:'servisu'},
+      {pt:'almoçar',                  tt:'han meiudia'},
+      {pt:'estudar',                  tt:'estuda'},
+      {pt:'voltar para casa',         tt:'fila ba uma'},
+      {pt:'jantar',                   tt:'han kalan'},
+      {pt:'deitar-me',                tt:'toba'}
+    ]},
+    {tipo:'nota',
+     tt:"Iha Tetun, «servisu» nunka muda: ha'u servisu, ó servisu, nia servisu. Iha portugés, verbu muda tuir ema: eu [[Trabalho de manhã.]] — tu «trabalhas» — nia «trabalha». Ne'e mak novidade boot liu iha A1!",   /* [REV-TT] */
+     pt:'Em tétum, «servisu» nunca muda. Em português, o verbo muda com a pessoa: eu trabalh<b>o</b>, tu trabalh<b>as</b>, ele/ela trabalh<b>a</b>. É a grande novidade do A1.'},
+    {tipo:'nota',
+     tt:"Verbu balun iha portugés lori «me» iha kotuk: [[Levanto-me cedo.]] [[Deito-me às dez.]] «Me» katak «ha'u rasik».",   /* [REV-TT] */
+     pt:'Alguns verbos levam «me» depois: «levanto-me», «deito-me». O «me» quer dizer «eu próprio».'},
+    {tipo:'lista', titulo:'quando', itens:[
+      {pt:'de manhã',        tt:'dadeer'},
+      {pt:'à tarde',         tt:'lokraik'},
+      {pt:'à noite',         tt:'kalan'},
+      {pt:'todos os dias',   tt:'loroloron'},
+      {pt:'às vezes',        tt:'dala ruma'}
+    ]},
+    {tipo:'nota',
+     tt:"Ho oras, uza «às» (hanesan iha Situasaun 4): [[Acordo às seis.]] Ho parte loron nian: «de manhã», «à tarde», «à noite».",   /* [REV-TT] */
+     pt:'Com as horas usa-se «às» (como na Situação 4): «Acordo às seis». Com as partes do dia: «de manhã», «à tarde», «à noite».'},
+    {tipo:'lista', titulo:'frases', itens:[
+      {pt:'Acordo às seis.',                tt:"Ha'u hader tuku neen."},
+      {pt:'Levanto-me cedo.',               tt:"Ha'u hamrik sedu."},
+      {pt:'Tomo o pequeno-almoço às sete.', tt:"Ha'u han dadeer tuku hitu."},
+      {pt:'Trabalho de manhã.',             tt:"Ha'u servisu dadeer."},
+      {pt:'À tarde estudo português.',      tt:"Lokraik ha'u estuda portugés."},
+      {pt:'Janto com a minha família.',     tt:"Ha'u han kalan ho ha'u-nia família."},
+      {pt:'Deito-me às dez.',               tt:"Ha'u toba tuku sanulu."},
+      {pt:'O que fazes de manhã?',          tt:'Dadeer ó halo saida?', registo:'informal'},
+      {pt:'Gosto de café.',                 tt:"Ha'u gosta kafé."},
+      {pt:'Não gosto de acordar cedo.',     tt:"Ha'u la gosta hader sedu."}
+    ]},   /* [REV-TT] todas */
+    {tipo:'nota',
+     tt:"Iha Tetun ita dehan «ha'u gosta kafé». Iha portugés tenke tau «de»: [[Gosto de café.]] Atu dehan lae, tau «não» iha oin: [[Não gosto de acordar cedo.]]",   /* [REV-TT] */
+     pt:'Em tétum diz-se «ha\'u gosta kafé». Em português é preciso «de»: «Gosto <b>de</b> café». Para dizer que não, põe-se «não» antes: «Não gosto de acordar cedo».'}
+  ],
+  praticarGuia:{pt:'Ouve e escolhe a frase certa. Atenção às diferenças pequenas!', tt:"Rona no hili fraze ne'ebé loos. Kuidadu ho diferensa ki'ik sira!"},   /* [REV-TT] */
+  nPerguntas:8,
+  praticar:[
+    {ouvir:'Trabalho de manhã.',   opcoes:['Trabalho de manhã.','Trabalho à tarde.','Trabalho à noite.']},
+    {ouvir:'Trabalho à tarde.',    opcoes:['Trabalho à tarde.','Trabalho de manhã.','Trabalho à noite.']},
+    {ouvir:'Trabalho à noite.',    opcoes:['Trabalho à noite.','Trabalho à tarde.','Trabalho de manhã.']},
+    {ouvir:'Acordo às seis.',      opcoes:['Acordo às seis.','Acordo às sete.','Janto às seis.']},
+    {ouvir:'Acordo às sete.',      opcoes:['Acordo às sete.','Acordo às seis.','Janto às sete.']},
+    {ouvir:'Janto às sete.',       opcoes:['Janto às sete.','Almoço às sete.','Acordo às sete.']},
+    {ouvir:'Almoço ao meio-dia.',  opcoes:['Almoço ao meio-dia.','Janto ao meio-dia.','Almoço à meia-noite.']},
+    {ouvir:'Gosto de café.',       opcoes:['Gosto de café.','Não gosto de café.','Gosto de chá.']},
+    {ouvir:'Não gosto de café.',   opcoes:['Não gosto de café.','Gosto de café.','Não gosto de chá.']},
+    {ouvir:'Levanto-me cedo.',     opcoes:['Levanto-me cedo.','Deito-me cedo.','Levanto-me tarde.']},
+    {ouvir:'Deito-me às dez.',     opcoes:['Deito-me às dez.','Levanto-me às dez.','Deito-me às doze.']}
+  ],
+  /* USAR — [REV-TT] nas situações */
+  usar:[
+    {sit:'Ó hader tuku neen. Ó dehan saida?',
+     certa:'Acordo às seis.', opcoes:['Acordo às seis.','Deito-me às seis.','Janto às seis.']},
+    {sit:'Ó servisu dadeer. Ó dehan saida?',
+     certa:'Trabalho de manhã.', opcoes:['Trabalho de manhã.','Trabalhas de manhã.','Trabalho à noite.']},
+    {sit:'Ó hakarak hatene ó-nia kolega halo saida dadeer. Ó husu saida?',
+     certa:'O que fazes de manhã?', opcoes:['O que fazes de manhã?','A que horas almoças?','Trabalho de manhã.']},
+    {sit:'Ó hakarak hatene ó-nia kolega han meiudia tuku hira. Ó husu saida?',
+     certa:'A que horas almoças?', opcoes:['A que horas almoças?','A que horas almoço?','O que fazes de manhã?']},
+    {sit:'Ó toba tuku sanulu. Ó dehan saida?',
+     certa:'Deito-me às dez.', opcoes:['Deito-me às dez.','Levanto-me às dez.','Acordo às dez.']},
+    {sit:"Ó gosta kafé. Ó dehan saida?",
+     certa:'Gosto de café.', opcoes:['Gosto de café.','Gosto café.','Não gosto de café.']},
+    {sit:"Ó la gosta hader sedu. Ó dehan saida?",
+     certa:'Não gosto de acordar cedo.', opcoes:['Não gosto de acordar cedo.','Gosto de acordar cedo.','Não gosto acordar cedo.']},
+    {sit:"Ó han kalan ho ó-nia família. Ó dehan saida?",
+     certa:'Janto com a minha família.', opcoes:['Janto com a minha família.','Almoço com a minha família.','Janto com o meu família.']},
+    {sit:"Lokraik ó estuda portugés. Ó dehan saida?",
+     certa:'À tarde estudo português.', opcoes:['À tarde estudo português.','À noite estudo português.','De manhã estudo português.']}
+  ],
+  /* TAREFA FINAL — escrever o meu horário */
+  tarefa:'horario',
+  audios(m){
+    const f = (txt, fich)=>{ m[chave(txt)] = 'a1_s11_' + fich + '.mp3'; };
+    this.dialogo.forEach((d,i)=> f(d.pt, 'dialogo'+(i+1)));
+    const lista = t => this.descobrir.find(b=>b.titulo===t).itens;
+    ['acordar','levantar','pequenoalmoco','irtrabalho','trabalhar','almocar','estudar','voltar','jantar','deitar']
+      .forEach((k,i)=> f(lista('rotina')[i].pt, 'verbo_'+k));
+    ['manha','tarde','noite','todososdias','asvezes'].forEach((k,i)=> f(lista('quando')[i].pt, 'quando_'+k));
+    lista('frases').forEach((v,i)=> f(v.pt, 'frase'+(i+1)));
+    ['Trabalho à tarde.','Trabalho à noite.','Acordo às sete.','Janto às sete.','Almoço ao meio-dia.','Não gosto de café.']
+      .forEach((t,i)=> f(t, 'ouvir'+(i+1)));
+  }
+};
+
+const CONTEUDO = {s01, s02, s03, s04, s05, s06, s07, s08, s09, s10, s11};
 
 /* ============================================================
    ÁUDIO — igual ao pratica.html: 1.º o MP3 gravado em audios/,
@@ -1447,6 +1575,7 @@ function registarAntigo(id, num){
 }
 [['s04','04'],['s05','05'],['s06','06'],['s07','07'],['s08','08'],['s09','09']].forEach(([id,num])=> registarAntigo(id,num));
 PROPRIOS.s10 = {}; s10.audios(PROPRIOS.s10);
+PROPRIOS.s11 = {}; s11.audios(PROPRIOS.s11);
 const MAPAS = {};
 Object.keys(CONTEUDO).forEach(id=>{ MAPAS[id] = Object.assign({}, GLOBAL, PROPRIOS[id] || {}); });
 const mapaAtual = () => MAPAS[sitAtual] || {};
@@ -1616,7 +1745,7 @@ function desenharSituacao(){
   }).join('');
 
   // Tarefa de escrita (só nas situações que a têm)
-  $('tarefa').innerHTML = c.tarefa ? tarefaHTML() : '';
+  $('tarefa').innerHTML = c.tarefa === 'horario' ? horarioHTML() : (c.tarefa ? tarefaHTML() : '');
 
   // 3 e 4 — exercícios (redesenha a pergunta em curso na língua nova)
   $('guia-praticar').textContent = c.praticarGuia ? c.praticarGuia[lang] : t('p3guia');
@@ -1747,6 +1876,56 @@ function verApresentacao(){
     <button class="btn claro" style="margin:0" onclick="tocar(${regista(()=>{ pararAudio(); falarTTS(falado); })})">🔊 ${t('fVoz')}</button></div>`;
 }
 
+/* ============================================================
+   TAREFA FINAL — o meu horário (Situação 11). Escreve o texto com
+   as horas por extenso e as preposições certas (às, à, ao).
+   ============================================================ */
+const HORARIO = {acordo:'', trabalho:'', almoco:'', janto:'', deito:'', gosto:'', mostrar:false};
+const H_OPC = {
+  acordo:  [['5:00','às cinco'],['6:00','às seis'],['7:00','às sete'],['8:00','às oito'],['9:00','às nove']],
+  trabalho:[['','de manhã'],['','à tarde'],['','à noite'],['','todos os dias']],
+  almoco:  [['11:00','às onze'],['12:00','ao meio-dia'],['13:00','à uma'],['14:00','às duas']],
+  janto:   [['18:00','às seis'],['19:00','às sete'],['20:00','às oito'],['21:00','às nove']],
+  deito:   [['21:00','às nove'],['22:00','às dez'],['23:00','às onze'],['00:00','à meia-noite']]
+};
+function horarioHTML(){
+  const sel = k => `<select id="h-${k}" onchange="HORARIO.${k}=this.value"><option value="">${t('fEscolhe')}</option>${
+    H_OPC[k].map(([h,txt])=>`<option value="${txt}" ${HORARIO[k]===txt?'selected':''}>${h ? h+' — ' : ''}${txt}</option>`).join('')}</select>`;
+  const campo = (rot, html) => `<label class="campo"><span>${rot}</span>${html}</label>`;
+  setTimeout(()=>{ if(HORARIO.mostrar) verHorario(); }, 0);
+  return `<div class="ficha"><h3 class="serif">${t('hTit')}</h3><p class="guia">${t('hGuia')}</p>
+    <div class="ficha-grelha">
+      ${campo(t('hAcordo'), sel('acordo'))}
+      ${campo(t('hTrabalho'), sel('trabalho'))}
+      ${campo(t('hAlmoco'), sel('almoco'))}
+      ${campo(t('hJanto'), sel('janto'))}
+      ${campo(t('hDeito'), sel('deito'))}
+      ${campo(t('hGosto'), `<input type="text" placeholder="café" value="${esc(HORARIO.gosto)}" oninput="HORARIO.gosto=this.value" autocomplete="off">`)}
+    </div>
+    <button class="btn verde" onclick="verHorario()">${t('hVer')}</button>
+    <div id="horario-texto"></div></div>`;
+}
+/* «Gosto de» + artigo → contração (de + o = do, de + a = da…) */
+function gostoDe(x){
+  x = x.trim(); if(!x) return '';
+  const m = x.match(/^(o|a|os|as)\s+(.+)$/i);
+  if(m) return 'Gosto ' + {o:'do',a:'da',os:'dos',as:'das'}[m[1].toLowerCase()] + ' ' + m[2] + '.';
+  return 'Gosto de ' + x + '.';
+}
+function verHorario(){
+  HORARIO.mostrar = true;
+  const H = HORARIO, p = [];
+  if(H.acordo) p.push(`Acordo ${H.acordo}.`);
+  if(H.trabalho) p.push(`Trabalho ${H.trabalho}.`);
+  if(H.almoco) p.push(`Almoço ${H.almoco}.`);
+  if(H.janto) p.push(`Janto ${H.janto}.`);
+  if(H.deito) p.push(`Deito-me ${H.deito}.`);
+  if(H.gosto.trim()) p.push(gostoDe(H.gosto));
+  const txt = p.join(' ');
+  $('horario-texto').innerHTML = txt ? `<div class="nota"><b>${t('hTexto')}</b><p class="pt" style="margin:.4rem 0">${esc(txt)}</p>
+    <button class="btn claro" style="margin:0" onclick="tocar(${regista(()=>{ pararAudio(); falarTTS(txt); })})">🔊 ${t('fVoz')}</button></div>` : '';
+}
+
 function concluir(){
   guardarFeita(sitAtual);
   $('btn-concluir').textContent = t('concluida');
@@ -1758,7 +1937,7 @@ setLang(lang);
 /* Situações «auto»: abrem quando a imagem e o último áudio já estão no GitHub */
 SITUACOES.filter(s=>s.auto).forEach(s=>{
   const existe = u => fetch(u, {method:'HEAD', cache:'no-store'}).then(r=>r.ok).catch(()=>false);
-  Promise.all([existe(s.img), existe(AUDIO_BASE + s.sentinela)]).then(ok=>{
+  Promise.all([existe(s.img), ...(s.sentinelas || [s.sentinela]).map(f=> existe(AUDIO_BASE + f))]).then(ok=>{
     if(ok.every(Boolean)){ s.pronta = true; desenharGrelha(); }
   });
 });

@@ -849,7 +849,7 @@ footer a{color:var(--amarelo);text-decoration:none}
             <tr>
               <td class="col-categoria">Falar da rotina diária e dos gostos / <span class="tt-inline">Koalia kona-ba rutina loroloron no buat ne'ebé gosta</span></td>   <!-- [REV-TT] -->
               <td>11 · O meu dia / <span class="tt-inline">11 · Ha'u-nia loron</span></td>
-              <td class="col-status prep">Previsto<br><i>Sei halo</i></td>
+              <td class="col-status prep" data-auto="s11">Em preparação<br><i>Sei prepara</i></td>
             </tr>
             <tr>
               <td class="col-categoria">Revisão global do nível A1 / <span class="tt-inline">Revizaun jerál nivel A1</span></td>   <!-- [REV-TT] -->
@@ -1068,10 +1068,12 @@ function irParaTetum(evento){
   }
 }
 
-/* A linha da Situação 10 passa a «✓» sozinha quando a imagem e o último áudio
+/* As linhas das Situações 10 e 11 passam a «✓» sozinhas quando a imagem e o último áudio
    estiverem no GitHub (o mesmo critério que abre a situação no curso). */
-Promise.all(['pratica10.jpg','audios/a1_s10_ouvir8.mp3'].map(u=>fetch(u,{method:'HEAD',cache:'no-store'}).then(r=>r.ok).catch(()=>false)))
-  .then(ok=>{ if(ok.every(Boolean)) document.querySelectorAll('[data-auto="s10"]').forEach(td=>{ td.className='col-status feito'; td.textContent='✓'; }); });
+const AUTO = {s10:['pratica10.jpg','audios/a1_s10_ouvir8.mp3'], s11:['pratica11.jpg','audios/a1_s11_ouvir6.mp3','audios/a1_s11_quando_asvezes.mp3']};
+Object.entries(AUTO).forEach(([id,urls])=>
+  Promise.all(urls.map(u=>fetch(u,{method:'HEAD',cache:'no-store'}).then(r=>r.ok).catch(()=>false)))
+    .then(ok=>{ if(ok.every(Boolean)) document.querySelectorAll('[data-auto="'+id+'"]').forEach(td=>{ td.className='col-status feito'; td.textContent='✓'; }); }));
 </script>
 
 </body>
