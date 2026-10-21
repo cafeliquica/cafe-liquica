@@ -46,10 +46,17 @@ img{max-width:100%;display:block}
 /* ---------- Barra superior ---------- */
 .topo{background:var(--verde-escuro);color:#fff;display:flex;align-items:center;justify-content:space-between;gap:.8rem;padding:.6rem 1rem;position:sticky;top:0;z-index:20}
 .topo a{color:#fff;text-decoration:none;display:flex;align-items:center;gap:.6rem}
-.topo img{height:34px;width:auto}
+.topo img{height:34px;width:auto;flex-shrink:0}
 .topo .nome{font-size:1rem;line-height:1.1}
 .topo .sair{background:var(--amarelo);color:var(--tinta);border-radius:8px;padding:.55rem .9rem;font-size:1rem;font-weight:700;white-space:nowrap;box-shadow:0 2px 0 rgba(0,0,0,.25)}
 .topo .sair:hover{background:#ffc233}
+.topo-esq{display:flex;align-items:center;gap:.6rem;min-width:0}
+.topo-esq a{flex-shrink:0}
+.sair-sit{display:none;border:0;cursor:pointer;font-family:inherit}
+body.dentro .sair-sit{display:inline-block}
+body.dentro .topo a .sair{display:none}
+@media(max-width:400px){.topo{gap:.5rem;padding:.6rem .7rem}.topo .sair{padding:.5rem .65rem;font-size:.92rem}.lingua button{padding:.45rem .5rem}}
+@media(max-width:345px){.topo img{display:none}}
 @media(max-width:620px){.topo .nome{display:none}}
 .lingua{display:flex;border:1px solid #4d7a59;border-radius:6px;overflow:hidden;flex-shrink:0}
 .lingua button{border:0;background:transparent;padding:.45rem .7rem;font-size:.82rem;font-weight:600;color:#cfe0d2}
@@ -177,6 +184,15 @@ body.sem-tetum .tt{visibility:hidden}
 .campo{display:flex;flex-direction:column;gap:.25rem;font-weight:600;font-size:.92rem}
 .campo input[type=text],.campo input[type=tel],.campo select{font:inherit;font-weight:400;padding:.55rem .6rem;border:1px solid var(--linha);border-radius:8px;background:#fff}
 .sexo{display:flex;gap:1rem;font-weight:400;padding:.45rem 0}
+.cartao-verbos{width:100%;margin-top:.2rem}
+.mini-verbos{display:flex;align-items:center;justify-content:center;text-align:center;background:var(--verde);color:#fff;font-size:1.05rem;line-height:1.25;border-radius:8px}
+#ecra-verbos h1{font-size:1.9rem;margin:.6rem 0 .3rem;color:var(--verde)}
+.voltar-claro{margin-top:1rem;color:var(--verde)}
+.verbo{margin:1.2rem 0}
+.verbo h3{font-size:1.3rem;margin:0 0 .4rem}
+.verbo h3 .tt{font-size:.9rem;font-weight:400}
+.pron{color:var(--tinta-suave);font-weight:400;display:inline-block;min-width:9.5rem}
+.linha.exv{background:var(--areia)}
 .subtit{font-size:.9rem;font-weight:700;color:var(--tinta-suave);margin:1rem 0 .5rem}
 .mini-som{border:0;background:var(--verde);color:#fff;border-radius:14px;padding:.1rem .55rem;font-weight:700;font-size:.9rem;margin:0 .1rem}
 
@@ -219,12 +235,16 @@ footer a{color:var(--amarelo)}
 </defs></svg>
 
 <header class="topo">
+  <div class="topo-esq">
   <a href="index.html">
     <img src="logo.png" alt="">
     <span class="nome serif">CAFE de Liquiçá</span>
     <!-- Botão de regresso ao site principal: sempre visível -->
     <span class="sair">‹ <span data-i="voltarSite"></span></span>
   </a>
+  <!-- Dentro de uma situação (ou dos verbos), o botão amarelo passa a voltar à lista das situações -->
+  <button class="sair sair-sit" onclick="abrirInicio()">‹ <span data-i="situacoesBtn"></span></button>
+  </div>
   <div class="lingua">
     <button id="btn-tt" onclick="setLang('tt')">Tetun</button>
     <button id="btn-pt" onclick="setLang('pt')">Português</button>
@@ -257,6 +277,31 @@ footer a{color:var(--amarelo)}
     <p class="guia" data-i="sitGuia"></p>
     <div class="grelha" id="grelha"></div>
   </section>
+
+  <!-- Página de consulta «Os verbos do A1» — aparece quando os áudios estiverem no GitHub -->
+  <section class="largura" id="verbos-entrada" hidden>
+    <button class="cartao cartao-verbos" onclick="abrirVerbos()">
+      <span class="mini mini-verbos serif">ser<br>estar<br>ter</span>
+      <span><span class="tit serif" data-i="verbosCartao"></span><br><span class="desc" data-i="verbosCartaoDesc"></span><br><span class="estado" data-i="abrirV"></span></span>
+    </button>
+  </section>
+</main>
+
+<!-- ======================= OS VERBOS DO A1 ======================= -->
+<main id="ecra-verbos" hidden>
+  <div class="largura">
+    <button class="voltar voltar-claro" onclick="abrirInicio()" data-i="voltarSit"></button>
+    <h1 class="serif" data-i="verbosTit"></h1>
+    <p class="guia" data-i="verbosIntro"></p>
+    <div class="apoio"><span></span>
+      <button class="interruptor" aria-pressed="true" onclick="alternarTetum(this)"><span>Tetun</span> <i></i></button>
+    </div>
+    <div id="verbos-notas"></div>
+    <div id="verbos-lista"></div>
+    <h2 class="serif" data-i="verbosEx"></h2>
+    <p class="guia" data-i="verbosExGuia"></p>
+    <div class="ex" id="ex-verbos"></div>
+  </div>
 </main>
 
 <!-- ======================= SITUAÇÃO ======================= -->
@@ -342,7 +387,7 @@ try{ lang = localStorage.getItem('cafe-lang-pratica') || 'tt'; }catch(e){}
 /* Textos da interface. [REV-TT] = tétum novo, por rever por falante nativo */
 const T = {
   pt:{
-    voltarSite:'Voltar ao site', titulo:'Pratica Português — A1',
+    voltarSite:'Voltar ao site', situacoesBtn:'Situações', titulo:'Pratica Português — A1',
     sub:'Português para o dia a dia em Timor-Leste',
     txt:'Aprende a comunicar em situações reais, ao teu ritmo.',
     f1:'Áudio em português europeu', f2:'Apoio em tétum', f3:'Gratuito',
@@ -371,12 +416,15 @@ const T = {
     fEm:'Moro em', fProf:'Profissão', fTel:'Telefone', fEscolhe:'— escolhe —', fVer:'Ver a minha apresentação',
     fApres:'A minha apresentação', fVoz:'Ouvir (voz do computador)',
     rotina:'A rotina', quando:'Quando?',
+    verbosCartao:'Os verbos do A1', verbosCartaoDesc:'Consulta: os 10 verbos mais usados, com áudio.', abrirV:'Abrir ›',
+    verbosTit:'Os verbos do A1', verbosIntro:'Os 10 verbos mais usados nas situações, no presente. Toca em cada forma para a ouvir.',
+    verbosEx:'Praticar os verbos', verbosExGuia:'Lê a frase e escolhe a forma certa do verbo.', exemplo:'Exemplo', verSit:'Ver na situação',
     hTit:'Tarefa final: o meu horário', hGuia:'Escolhe as tuas horas. O texto escreve-se sozinho — depois lê-o em voz alta.',
     hAcordo:'Acordo', hTrabalho:'Trabalho', hAlmoco:'Almoço', hJanto:'Janto', hDeito:'Deito-me', hGosto:'Gosto de…',
     hVer:'Ver o meu dia', hTexto:'O meu dia'
   },
   tt:{
-    voltarSite:'Fila ba site', titulo:'Pratika Portugés — A1',
+    voltarSite:'Fila ba site', situacoesBtn:'Situasaun', titulo:'Pratika Portugés — A1',
     sub:'Portugés ba moris loroloron iha Timor-Leste',                 /* [REV-TT] */
     txt:'Aprende atu koalia iha situasaun reál, tuir ó-nia ritmu.',     /* [REV-TT] */
     f1:'Áudiu iha portugés Europa nian',                                /* [REV-TT] */
@@ -409,6 +457,9 @@ const T = {
     fEm:"Ha'u hela iha", fProf:'Servisu', fTel:'Telefone', fEscolhe:'— hili —', fVer:"Haree ha'u-nia aprezentasaun",
     fApres:"Ha'u-nia aprezentasaun", fVoz:'Rona (lian komputadór)',   /* [REV-TT] */
     rotina:'Rutina', quando:'Bainhira?',
+    verbosCartao:'Verbu sira A1 nian', verbosCartaoDesc:"Konsulta: verbu 10 ne'ebé uza liu, ho áudio.", abrirV:'Loke ›',
+    verbosTit:'Verbu sira A1 nian', verbosIntro:"Verbu 10 ne'ebé uza liu iha situasaun sira, iha tempu agora. Klik forma ida-idak atu rona.",
+    verbosEx:'Pratika verbu sira', verbosExGuia:"Lee fraze no hili verbu nia forma ne'ebé loos.", exemplo:'Ezemplu', verSit:'Haree iha situasaun',   /* [REV-TT] */
     hTit:"Servisu ikus: ha'u-nia orário", hGuia:"Hili ó-nia oras. Testu sei hakerek mesak — depois lee ho lian maka'as.",
     hAcordo:"Ha'u hader", hTrabalho:"Ha'u servisu", hAlmoco:"Ha'u han meiudia", hJanto:"Ha'u han kalan", hDeito:"Ha'u toba", hGosto:"Ha'u gosta…",
     hVer:"Haree ha'u-nia loron", hTexto:"Ha'u-nia loron"   /* [REV-TT] */
@@ -1578,6 +1629,96 @@ PROPRIOS.s10 = {}; s10.audios(PROPRIOS.s10);
 PROPRIOS.s11 = {}; s11.audios(PROPRIOS.s11);
 const MAPAS = {};
 Object.keys(CONTEUDO).forEach(id=>{ MAPAS[id] = Object.assign({}, GLOBAL, PROPRIOS[id] || {}); });
+
+/* ============================================================
+   OS VERBOS DO A1 — página de consulta (não é uma situação).
+   10 verbos no presente, com áudio por forma, exemplos tirados das
+   situações (com ligação) e um exercício de completar.
+   Áudios a1_verbo_*.mp3 — POR GRAVAR (Gravar_Verbos_A1.html).
+   O botão de entrada só aparece quando os últimos áudios das
+   duas partes do gravador estiverem no GitHub.
+   ============================================================ */
+const PESSOAS = [
+  {k:'eu',   pt:'eu',                    tt:"ha'u"},
+  {k:'tu',   pt:'tu',                    tt:'ó'},
+  {k:'ele',  pt:'ele / ela / você',      tt:'nia / Ita'},
+  {k:'nos',  pt:'nós',                   tt:'ami / ita'},
+  {k:'eles', pt:'eles / elas / vocês',   tt:'sira'}
+];   /* [REV-TT] */
+const VERBOS = [
+  {inf:'ser',      f:'ser',    tt:"(mak) — naran, nasionalidade, servisu",  formas:['sou','és','é','somos','são'],
+   ex:'Sou de Liquiçá.', exTt:"Ha'u husi Liquiçá.", sit:'s10'},
+  {inf:'estar',    f:'estar',  tt:'(iha) — agora de\'it: saúde, sentimentu, fatin', formas:['estou','estás','está','estamos','estão'],
+   ex:'Estou bem, obrigado.', exTt:"Ha'u diak, obrigadu.", sit:'s01'},
+  {inf:'ter',      f:'ter',    tt:'iha',     formas:['tenho','tens','tem','temos','têm'],
+   ex:'Tenho vinte anos.', exTt:"Ha'u tinan rua-nulu.", sit:'s07'},
+  {inf:'ir',       f:'ir',     tt:'bá',      formas:['vou','vais','vai','vamos','vão'],
+   ex:'Vamos à praia!', exTt:'Mai ita bá tasi ibun!', sit:'s09'},
+  {inf:'fazer',    f:'fazer',  tt:'halo',    formas:['faço','fazes','faz','fazemos','fazem'],
+   ex:'O que fazes de manhã?', exTt:'Dadeer ó halo saida?', sit:'s11'},
+  {inf:'querer',   f:'querer', tt:'hakarak', formas:['quero','queres','quer','queremos','querem'],
+   ex:'Queria um chá e um pão.', exTt:"Ha'u hakarak xá ida no paun ida.", sit:'s06',
+   nota:{pt:'Para pedir com delicadeza, usa-se «queria» em vez de «quero».', tt:"Atu husu ho respeitu, uza «queria» duké «quero»."}},
+  {inf:'poder',    f:'poder',  tt:'bele',    formas:['posso','podes','pode','podemos','podem'],
+   ex:'Pode repetir, por favor?', exTt:'Bele repete, favór ida?', sit:'s10'},
+  {inf:'gostar de',f:'gostar', tt:'gosta',   formas:['gosto','gostas','gosta','gostamos','gostam'],
+   ex:'Gosto de café.', exTt:"Ha'u gosta kafé.", sit:'s11'},
+  {inf:'morar',    f:'morar',  tt:'hela',    formas:['moro','moras','mora','moramos','moram'],
+   ex:'Moro em Díli.', exTt:"Ha'u hela iha Díli.", sit:'s10'},
+  {inf:'falar',    f:'falar',  tt:'koalia',  formas:['falo','falas','fala','falamos','falam'],
+   ex:'Falo tétum e português.', exTt:"Ha'u koalia tetun no portugés.", sit:null}
+];   /* traduções TT: [REV-TT] */
+
+const NOTAS_VERBOS = [
+  {tt:"<b>Verbu muda tuir ema.</b> Iha Tetun lae: ha'u koalia, ó koalia, nia koalia, ami koalia, sira koalia. Iha portugés: [[eu falo]] — [[tu falas]] — [[ele fala]] — [[nós falamos]] — [[eles falam]].",
+   pt:'<b>O verbo muda com a pessoa.</b> Em tétum não muda (ha\'u koalia, ó koalia…). Em português: eu fal<b>o</b>, tu fal<b>as</b>, ele fal<b>a</b>, nós fal<b>amos</b>, eles fal<b>am</b>.'},
+  {tt:"<b>«Ser» ka «estar»?</b> Iha Tetun ita dehan «Ha'u mestra» no «Ha'u kole» — la iha verbu. Iha portugés iha verbu rua: <b>ser</b> ba buat ne'ebé ita NE'E (naran, nasionalidade, servisu): [[Sou de Liquiçá.]] — <b>estar</b> ba buat ne'ebé AGORA de'it (saúde, sentimentu, fatin): [[Estou bem, obrigado.]]",
+   pt:'<b>«Ser» ou «estar»?</b> O tétum não tem verbo aqui. O português tem dois: <b>ser</b> para o que se é (nome, nacionalidade, profissão): «Sou professora»; <b>estar</b> para o que é só agora (saúde, sentimento, lugar): «Estou cansada», «Estou em casa».'},
+  {tt:"<b>«O senhor», «a senhora» no «você»</b> uza forma hanesan «ele»: [[Pode repetir, por favor?]] (= O senhor pode repetir?)",
+   pt:'<b>«O senhor», «a senhora» e «você»</b> usam a mesma forma de «ele»: «O senhor pode repetir?»'},
+  {tt:"Iha portugés, dala barak la presiza «eu»: «Sou de Liquiçá» = «Eu sou de Liquiçá». Verbu rasik hatudu sé mak koalia.",
+   pt:'Em português, muitas vezes não é preciso dizer «eu»: «Sou de Liquiçá» = «Eu sou de Liquiçá». A forma do verbo já diz quem fala.'}
+];   /* [REV-TT] */
+
+/* Exercício: completar a frase com a forma certa (ouve-se a forma no fim) */
+const EX_VERBOS = {nPerguntas:10, verbos:[
+  {sit:'Eu ___ de Liquiçá.',                 certa:'sou',     opcoes:['sou','é','somos']},
+  {sit:'A Maria ___ professora.',            certa:'é',       opcoes:['é','sou','são']},
+  {sit:'Nós ___ timorenses.',                certa:'somos',   opcoes:['somos','são','sou']},
+  {sit:'Hoje eu ___ cansada.',               certa:'estou',   opcoes:['estou','sou','está']},
+  {sit:'O João ___ no hospital.',            certa:'está',    opcoes:['está','é','estão']},
+  {sit:'Eles ___ bem, obrigado.',            certa:'estão',   opcoes:['estão','está','são']},
+  {sit:'Eu ___ vinte anos.',                 certa:'tenho',   opcoes:['tenho','tem','sou']},
+  {sit:'O João ___ dois irmãos.',            certa:'tem',     opcoes:['tem','tenho','têm']},
+  {sit:'Nós ___ à praia.',                   certa:'vamos',   opcoes:['vamos','vão','vou']},
+  {sit:'Tu ___ trabalhar hoje?',             certa:'vais',    opcoes:['vais','vai','vou']},
+  {sit:'O que ___ tu de manhã?',             certa:'fazes',   opcoes:['fazes','faz','faço']},
+  {sit:'Eu ___ um café, por favor.',         certa:'quero',   opcoes:['quero','quer','queres']},
+  {sit:'O senhor ___ repetir, por favor?',   certa:'pode',    opcoes:['pode','posso','podes']},
+  {sit:'Eu ___ de café.',                    certa:'gosto',   opcoes:['gosto','gosta','gostam']},
+  {sit:'Eles ___ de música.',                certa:'gostam',  opcoes:['gostam','gosta','gostamos']},
+  {sit:'Onde ___ tu?',                       certa:'moras',   opcoes:['moras','mora','moro']},
+  {sit:'Nós ___ em Liquiçá.',                certa:'moramos', opcoes:['moramos','moram','mora']},
+  {sit:'Eu ___ tétum e português.',          certa:'falo',    opcoes:['falo','fala','falas']},
+  {sit:'A Ana ___ português muito bem.',     certa:'fala',    opcoes:['fala','falo','falam']},
+  {sit:'Eu ___ timorense. (sempre)',         certa:'sou',     opcoes:['sou','estou','tenho']}
+]};
+
+/* Mapa de áudio dos verbos: forma com pronome («eu sou») e forma solta («sou») */
+function audiosVerbos(m){
+  const PRON = ['eu','tu','ele','nós','eles'];
+  VERBOS.forEach(v=> v.formas.forEach((fo,i)=>{
+    const fich = 'a1_verbo_' + v.f + '_' + PESSOAS[i].k + '.mp3';
+    m[chave(PRON[i] + ' ' + fo)] = fich;
+    m[chave(fo)] = fich;
+  }));
+  m[chave('Falo tétum e português.')] = 'a1_verbo_falar_exemplo.mp3';
+}
+const SENTINELAS_VERBOS = ['a1_verbo_fazer_eles.mp3','a1_verbo_falar_exemplo.mp3'];
+
+MAPAS.verbos = Object.assign({}, GLOBAL, PROPRIOS.s10, PROPRIOS.s11);
+audiosVerbos(MAPAS.verbos);
+CONTEUDO.verbos = EX_VERBOS;   /* o exercício usa o mesmo motor das situações */
 const mapaAtual = () => MAPAS[sitAtual] || {};
 
 let audioAtual = null, geracao = 0, dialogoATocar = false;
@@ -1664,7 +1805,8 @@ function setLang(l){
   $('btn-pt').classList.toggle('on', l==='pt');
   document.querySelectorAll('[data-i]').forEach(el=> el.textContent = t(el.dataset.i));
   desenharGrelha();
-  if(sitAtual) desenharSituacao();
+  if(sitAtual==='verbos') desenharVerbos();
+  else if(sitAtual) desenharSituacao();
 }
 
 function desenharGrelha(){
@@ -1680,15 +1822,38 @@ function desenharGrelha(){
 }
 
 function abrirInicio(){
-  pararDialogo(); pararAudio(); sitAtual = null;
-  $('ecra-situacao').hidden = true; $('ecra-inicio').hidden = false;
+  pararDialogo(); pararAudio(); sitAtual = null; document.body.classList.remove('dentro');
+  $('ecra-situacao').hidden = true; $('ecra-verbos').hidden = true; $('ecra-inicio').hidden = false;
   desenharGrelha(); scrollTo(0,0);
 }
 function abrirSituacao(id){
-  sitAtual = id; passoAtual = 0;
+  sitAtual = id; passoAtual = 0; document.body.classList.add('dentro');
   $('ecra-inicio').hidden = true; $('ecra-situacao').hidden = false;
   iniciarEx('praticar'); iniciarEx('usar');
   desenharSituacao(); scrollTo(0,0);
+}
+
+/* ---------- Os verbos do A1 ---------- */
+function abrirVerbos(){
+  pararDialogo(); pararAudio(); sitAtual = 'verbos'; document.body.classList.add('dentro');
+  $('ecra-inicio').hidden = true; $('ecra-situacao').hidden = true; $('ecra-verbos').hidden = false;
+  iniciarEx('verbos'); desenharVerbos(); scrollTo(0,0);
+}
+function irSituacao(id){ abrirSituacao(id); }
+function desenharVerbos(){
+  REG = [];
+  $('verbos-notas').innerHTML = NOTAS_VERBOS.map(notaHTML).join('');
+  $('verbos-lista').innerHTML = VERBOS.map(v=>{
+    const s = v.sit && SITUACOES.find(x=>x.id===v.sit);
+    const ligacao = (s && s.pronta) ? `<button class="mini-som" onclick="irSituacao('${v.sit}')">${t('verSit')} ${SITUACOES.indexOf(s)+1} ›</button>` : '';
+    return `<div class="verbo"><h3 class="serif">${v.inf} <span class="tt">— ${v.tt}</span></h3>
+      <div class="quadro">${v.formas.map((fo,i)=>`<div class="linha">${btnSom(()=>dizer(['eu','tu','ele','nós','eles'][i]+' '+fo))}<div>
+        <div class="pt"><span class="pron">${PESSOAS[i].pt}</span> <b>${fo}</b></div><div class="tt">${PESSOAS[i].tt}</div></div></div>`).join('')}
+        <div class="linha exv">${btnSom(()=>dizer(v.ex))}<div><div class="pt"><span class="etq">${t('exemplo')}</span> ${v.ex}</div>
+          <div class="tt">${v.exTt}</div>${v.nota ? `<div class="pt-nota">${v.nota[lang]}</div>` : ''}${ligacao}</div></div>
+      </div></div>`;
+  }).join('');
+  mostrarPergunta('verbos');
 }
 
 /* Nota contrastiva: as duas línguas sempre visíveis (tétum primeiro).
@@ -1803,7 +1968,7 @@ function mostrarPergunta(k){
   const topo = k==='praticar'
     ? `<button class="ouvir grande" aria-label="Ouvir" onclick="tocar(${regista(()=>dizer(p.ouvir))})">${SVG_SOM}</button>`
     : `<p class="pergunta">${p.sit}</p>`;
-  const curtas = (k==='praticar' && CONTEUDO[sitAtual].opcoesCurtas) ? 'curtas' : '';
+  const curtas = ((k==='praticar' && CONTEUDO[sitAtual].opcoesCurtas) || k==='verbos') ? 'curtas' : '';
   cx.innerHTML = `<p class="prog">${e.i+1} ${t('de')} ${e.lista.length}</p>${topo}
     <div class="opcoes ${curtas}">${p.opcoes.map((o,j)=>{
       let c = '';
@@ -1818,7 +1983,7 @@ function responder(k, j){
   e.respondida = escolha;
   if(escolha === certa) e.certas++;
   mostrarPergunta(k);
-  if(k==='usar'){ pararAudio(); dizer(certa); }      // ouve-se sempre a resposta certa
+  if(k==='usar' || k==='verbos'){ pararAudio(); dizer(certa); }      // ouve-se sempre a resposta certa
 }
 function seguinte(k){ EX[k].i++; EX[k].respondida = null; pararAudio(); mostrarPergunta(k); }
 
@@ -1934,6 +2099,9 @@ function concluir(){
 
 /* Arranque */
 setLang(lang);
+/* «Os verbos do A1»: a entrada aparece quando as duas partes do gravador estiverem no GitHub */
+Promise.all(SENTINELAS_VERBOS.map(f=> fetch(AUDIO_BASE + f, {method:'HEAD', cache:'no-store'}).then(r=>r.ok).catch(()=>false)))
+  .then(ok=>{ if(ok.every(Boolean)) $('verbos-entrada').hidden = false; });
 /* Situações «auto»: abrem quando a imagem e o último áudio já estão no GitHub */
 SITUACOES.filter(s=>s.auto).forEach(s=>{
   const existe = u => fetch(u, {method:'HEAD', cache:'no-store'}).then(r=>r.ok).catch(()=>false);
