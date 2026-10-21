@@ -12,7 +12,7 @@
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Versão nova do Pratica Português (9 situações reais, A1) — substituiu a antiga a 20/10/2026; a antiga ficou em praticaantigo.html -->
-<meta name="description" content="Pratica Português — português europeu para o dia a dia em Timor-Leste, nível A1: nove situações reais com áudio e apoio em tétum. CAFE de Liquiçá.">
+<meta name="description" content="Pratica Português — português europeu para o dia a dia em Timor-Leste, nível A1: situações reais com áudio e apoio em tétum. CAFE de Liquiçá.">
 <!-- Impede a tradução automática do navegador, que estragava os textos -->
 <meta name="google" content="notranslate">
 <title>Pratica Português — A1 · CAFE de Liquiçá</title>
@@ -172,6 +172,11 @@ body.sem-tetum .tt{visibility:hidden}
 .letra .g.dig{font-size:1.35rem}
 .semana{width:150px;height:auto;display:block;margin-bottom:.2rem}
 .amostra{display:inline-block;width:1rem;height:1rem;border-radius:50%;border:1px solid #9a9488;vertical-align:-2px;margin-right:.45rem}
+.ficha{margin-top:1.4rem;border-top:2px solid var(--linha);padding-top:1rem}
+.ficha-grelha{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.7rem;margin:.6rem 0 1rem}
+.campo{display:flex;flex-direction:column;gap:.25rem;font-weight:600;font-size:.92rem}
+.campo input[type=text],.campo input[type=tel],.campo select{font:inherit;font-weight:400;padding:.55rem .6rem;border:1px solid var(--linha);border-radius:8px;background:#fff}
+.sexo{display:flex;gap:1rem;font-weight:400;padding:.45rem 0}
 .subtit{font-size:.9rem;font-weight:700;color:var(--tinta-suave);margin:1rem 0 .5rem}
 .mini-som{border:0;background:var(--verde);color:#fff;border-radius:14px;padding:.1rem .55rem;font-weight:700;font-size:.9rem;margin:0 .1rem}
 
@@ -310,6 +315,7 @@ footer a{color:var(--amarelo)}
       <h2 class="serif" data-i="p4"></h2>
       <p class="guia" data-i="p4guia"></p>
       <div class="ex" id="ex-usar"></div>
+      <div id="tarefa"></div>
       <div class="fim">
         <h3 class="serif" data-i="fimTit"></h3>
         <ul id="fim-lista"></ul>
@@ -341,7 +347,7 @@ const T = {
     txt:'Aprende a comunicar em situações reais, ao teu ritmo.',
     f1:'Áudio em português europeu', f2:'Apoio em tétum', f3:'Gratuito',
     comecar:'Começar', nivel:'Nível A1 · Quadro Europeu Comum de Referência (QECR)', sobre:'Sobre este recurso',
-    sitTitulo:'As situações', sitGuia:'Nove situações do dia a dia. Começa pela primeira.',
+    sitTitulo:'As situações', sitGuia:'Situações reais do dia a dia. Começa pela primeira.',
     abrir:'Abrir', breve:'Em preparação', feita:'Concluída',
     voltarSit:'‹ Situações', situacao:'Situação', consigo:'No fim desta situação, consigo…',
     p1:'Ouvir', p2:'Descobrir', p3:'Praticar', p4:'Usar',
@@ -358,7 +364,12 @@ const T = {
     toqueLetra:'Toca numa letra: ouves o nome da letra e uma palavra.',
     numeros:'Os números', toqueNumero:'Toca num número para o ouvir.',
     lerHoras:'Ler as horas', toqueHora:'Toca num relógio para ouvir a hora.',
-    dias:'Os dias da semana', cores:'As cores', roupa:'A roupa', lugares:'Os lugares', onde:'Onde fica?'
+    dias:'Os dias da semana', cores:'As cores', roupa:'A roupa', lugares:'Os lugares', onde:'Onde fica?',
+    nacionalidades:'Nacionalidades', profissoes:'Profissões', ajuda:'Quando não percebo',
+    tarefaTit:'Tarefa final: a minha ficha', tarefaGuia:'Preenche a ficha com os teus dados. Depois, lê a tua apresentação em voz alta.',
+    fNome:'Nome', fApelido:'Apelido', fSou:'Sou', fHomem:'homem', fMulher:'mulher', fNac:'Nacionalidade', fDe:'Sou de (terra natal)',
+    fEm:'Moro em', fProf:'Profissão', fTel:'Telefone', fEscolhe:'— escolhe —', fVer:'Ver a minha apresentação',
+    fApres:'A minha apresentação', fVoz:'Ouvir (voz do computador)'
   },
   tt:{
     voltarSite:'Fila ba site', titulo:'Pratika Portugés — A1',
@@ -368,7 +379,7 @@ const T = {
     f2:'Ajuda iha Tetun', f3:'Gratuitu (la selu)',                      /* [REV-TT] */
     comecar:'Hahú', nivel:'Nivel A1 · tuir Kuadru Europeu Komun Referénsia (QECR)', sobre:"Kona-ba rekursu ne'e",
     sitTitulo:'Situasaun sira',                                         /* [REV-TT] */
-    sitGuia:'Situasaun sia loroloron nian. Hahú husi dahuluk.',         /* [REV-TT] */
+    sitGuia:'Situasaun reál loroloron nian. Hahú husi dahuluk.',         /* [REV-TT] */
     abrir:'Loke', breve:'Sei prepara hela', feita:'Kompleta ona',       /* [REV-TT] */
     voltarSit:'‹ Situasaun sira', situacao:'Situasaun',
     consigo:"Iha situasaun ne'e nia rohan, ha'u bele…",                 /* [REV-TT] */
@@ -387,7 +398,12 @@ const T = {
     toqueLetra:'Klik letra ida: ó rona letra nia naran no liafuan ida.', /* [REV-TT] */
     numeros:'Númeru sira', toqueNumero:'Klik númeru ida atu rona.',     /* [REV-TT] */
     lerHoras:'Lee oras', toqueHora:'Klik relójiu ida atu rona oras.',   /* [REV-TT] */
-    dias:'Loron sira iha semana', cores:'Kór sira', roupa:'Roupa', lugares:'Fatin sira', onde:"Iha ne'ebé?"   /* [REV-TT] */
+    dias:'Loron sira iha semana', cores:'Kór sira', roupa:'Roupa', lugares:'Fatin sira', onde:"Iha ne'ebé?",   /* [REV-TT] */
+    nacionalidades:'Nasionalidade sira', profissoes:'Profisaun sira', ajuda:"Bainhira ha'u la komprende",
+    tarefaTit:"Servisu ikus: ha'u-nia fixa", tarefaGuia:"Prenxe fixa ho ó-nia dadus. Depois, lee ó-nia aprezentasaun ho lian maka'as.",
+    fNome:'Naran', fApelido:'Apelidu', fSou:"Ha'u", fHomem:'mane', fMulher:'feto', fNac:'Nasionalidade', fDe:"Ha'u husi (rai moris)",
+    fEm:"Ha'u hela iha", fProf:'Servisu', fTel:'Telefone', fEscolhe:'— hili —', fVer:"Haree ha'u-nia aprezentasaun",
+    fApres:"Ha'u-nia aprezentasaun", fVoz:'Rona (lian komputadór)'   /* [REV-TT] */
   }
 };
 const t = k => T[lang][k];
@@ -415,7 +431,10 @@ const SITUACOES = [
   {id:'s08', img:'pratica08.jpg', pronta:true, pt:['Descrever a roupa','Cores e peças de roupa.'],
    tt:['Deskreve roupa','Kór no roupa.']},                                             /* [REV-TT] */
   {id:'s09', img:'pratica09.jpg', pronta:true, pt:['Orientar-se em Liquiçá','Perguntar onde fica um lugar.'],
-   tt:['Buka dalan iha Liquiçá',"Husu fatin ida iha ne'ebé."]}                         /* [REV-TT] */
+   tt:['Buka dalan iha Liquiçá',"Husu fatin ida iha ne'ebé."]},                        /* [REV-TT] */
+  /* auto:true — fica «Em preparação» até existirem no GitHub a imagem e o último áudio gravado */
+  {id:'s10', img:'pratica10.jpg', auto:true, sentinela:'a1_s10_ouvir8.mp3', pt:['Quem sou eu','Nacionalidade, morada e profissão.'],
+   tt:["Ha'u mak sé",'Nasionalidade, hela-fatin no servisu.']}                          /* [REV-TT] */
 ];
 
 /* ============================================================
@@ -1273,7 +1292,136 @@ const s09 = {
   audios(){}
 };
 
-const CONTEUDO = {s01, s02, s03, s04, s05, s06, s07, s08, s09};
+/* ---------- SITUAÇÃO 10 — Quem sou eu ----------
+   Dados pessoais do descritor A1 do QECR: de onde sou, onde moro, o que faço,
+   apresentar outra pessoa, e pedir ajuda quando não percebo.
+   Termina com uma tarefa de escrita: preencher a minha ficha.
+   Áudios a1_s10_*.mp3 — POR GRAVAR (Gravar_Situacao10.html).
+   A situação ABRE SOZINHA quando pratica10.jpg e os áudios estiverem no GitHub. */
+const s10 = {
+  objetivos:{
+    pt:['dizer de onde sou e a minha nacionalidade','dizer onde moro','dizer a minha profissão e onde trabalho','apresentar outra pessoa','pedir ajuda quando não percebo','preencher uma ficha com os meus dados'],
+    tt:["dehan ha'u husi ne'ebé no ha'u-nia nasionalidade","dehan ha'u hela iha ne'ebé","dehan ha'u-nia servisu no ha'u servisu iha ne'ebé",'aprezenta ema seluk',"husu ajuda bainhira ha'u la komprende","prenxe fixa ida ho ha'u-nia dadus"]   /* [REV-TT] */
+  },
+  cena:{pt:'No primeiro dia de uma formação, duas pessoas conhecem-se.', tt:"Iha formasaun ida nia loron dahuluk, ema na'in-rua koñese malu."},   /* [REV-TT] */
+  dialogoRegisto:'informal',
+  dialogo:[
+    {quem:'João',  pt:'Olá! Eu sou o João. E tu?',                  tt:"Olá! Ha'u João. Ó?"},                                    /* [REV-TT] */
+    {quem:'Maria', pt:'Eu sou a Maria. És de Liquiçá?',             tt:"Ha'u Maria. Ó husi Liquiçá?"},                           /* [REV-TT] */
+    {quem:'João',  pt:'Não, sou de Baucau, mas moro em Díli.',      tt:"Lae, ha'u husi Baucau, maibé ha'u hela iha Díli."},     /* [REV-TT] */
+    {quem:'Maria', pt:'Eu moro aqui, em Liquiçá. O que fazes?',     tt:"Ha'u hela iha ne'e, iha Liquiçá. Ó servisu saida?"},     /* [REV-TT] */
+    {quem:'João',  pt:'Sou enfermeiro. Trabalho no hospital. E tu?', tt:"Ha'u enfermeiru. Ha'u servisu iha ospitál. Ó?"},        /* [REV-TT] */
+    {quem:'Maria', pt:'Sou professora. Trabalho numa escola.',      tt:"Ha'u mestra. Ha'u servisu iha eskola ida."}              /* [REV-TT] */
+  ],
+  descobrir:[
+    {tipo:'lista', titulo:'nacionalidades', itens:[
+      {pt:'timorense',                audio:'timorense',                tt:'timor-oan'},
+      {pt:'português / portuguesa',   audio:'português, portuguesa',    tt:'ema Portugál nian'},     /* [REV-TT] */
+      {pt:'indonésio / indonésia',    audio:'indonésio, indonésia',     tt:'ema Indonézia nian'},    /* [REV-TT] */
+      {pt:'australiano / australiana',audio:'australiano, australiana', tt:'ema Austrália nian'}     /* [REV-TT] */
+    ]},
+    {tipo:'nota',
+     tt:'[[timorense]] la muda: mane ka feto, hotu-hotu «timorense». Maibé nasionalidade barak muda: mane [[Sou português.]] — feto [[Sou portuguesa.]]',   /* [REV-TT] */
+     pt:'«Timorense» não muda: homem ou mulher, é sempre «timorense». Mas muitas nacionalidades mudam: ele é «português», ela é «portuguesa».'},
+    {tipo:'lista', titulo:'profissoes', itens:[
+      {pt:'professor / professora',   audio:'professor, professora',    tt:'mestre / mestra'},
+      {pt:'enfermeiro / enfermeira',  audio:'enfermeiro, enfermeira',   tt:'enfermeiru / enfermeira'},          /* [REV-TT] */
+      {pt:'médico / médica',          audio:'médico, médica',           tt:'doutór / doutora'},                 /* [REV-TT] */
+      {pt:'agricultor / agricultora', audio:'agricultor, agricultora',  tt:"agrikultór / to'os-na'in"},         /* [REV-TT] */
+      {pt:'pescador / pescadora',     audio:'pescador, pescadora',      tt:'peskadór / ema kaer ikan'},         /* [REV-TT] */
+      {pt:'comerciante',              audio:'comerciante',              tt:"komersiante / ema fa'an sasán"},    /* [REV-TT] */
+      {pt:'motorista',                audio:'motorista',                tt:'motorista / xofer'},                /* [REV-TT] */
+      {pt:'estudante',                audio:'estudante',                tt:'estudante'}
+    ]},
+    {tipo:'nota',
+     tt:"Profisaun barak muda tuir mane ka feto: [[professor / professora]]. Balun la muda: [[comerciante]], [[estudante]], [[motorista]].",   /* [REV-TT] */
+     pt:'Muitas profissões mudam com homem e mulher: «professor», «professora». Algumas não mudam: «comerciante», «estudante», «motorista».'},
+    {tipo:'nota',
+     tt:"Iha Tetun ita dehan «ha'u husi» no «ha'u hela iha». Iha portugés: <b>ser de</b> ba fatin ne'ebé ó mai husi — [[Sou de Liquiçá.]] — no <b>morar em</b> ba fatin ne'ebé ó hela agora — [[Moro em Díli.]]",   /* [REV-TT] */
+     pt:'Em português: <b>ser de</b> para o lugar de onde vens («Sou de Liquiçá») e <b>morar em</b> para o lugar onde vives agora («Moro em Díli»).'},
+    {tipo:'lista', titulo:'frases', itens:[
+      {pt:'De onde és?',                 tt:"Ó husi ne'ebé?",            registo:'informal'},   /* [REV-TT] */
+      {pt:'Sou de Liquiçá.',             tt:"Ha'u husi Liquiçá."},
+      {pt:'Sou timorense.',              tt:"Ha'u timor-oan."},
+      {pt:'Onde moras?',                 tt:"Ó hela iha ne'ebé?",        registo:'informal'},   /* [REV-TT] */
+      {pt:'Moro em Díli.',               tt:"Ha'u hela iha Díli."},
+      {pt:'O que fazes?',                tt:'Ó servisu saida?',          registo:'informal'},   /* [REV-TT] */
+      {pt:'Qual é a sua profissão?',     tt:'Ita-nia servisu saida?',    registo:'formal'},     /* [REV-TT] */
+      {pt:'Trabalho no mercado.',        tt:"Ha'u servisu iha merkadu."},
+      {pt:'Este é o meu colega Paulo.',  tt:"Ida-ne'e ha'u-nia kolega Paulo."},              /* [REV-TT] */
+      {pt:'Esta é a minha amiga Ana.',   tt:"Ida-ne'e ha'u-nia belun Ana."}                  /* [REV-TT] */
+    ]},
+    {tipo:'nota',
+     tt:"Atu aprezenta ema: mane — «Este é o meu…»; feto — «Esta é a minha…». Rona: [[Este é o meu colega Paulo.]] [[Esta é a minha amiga Ana.]]",   /* [REV-TT] */
+     pt:'Para apresentar alguém: homem — «Este é o meu…»; mulher — «Esta é a minha…».'},
+    {tipo:'lista', titulo:'ajuda', itens:[
+      {pt:'Não percebo.',                          tt:"Ha'u la komprende."},                      /* [REV-TT] */
+      {pt:'Pode repetir, por favor?',              tt:'Bele repete, favór ida?', registo:'formal'},   /* [REV-TT] */
+      {pt:'Mais devagar, por favor.',              tt:'Neineik liu, favór ida.'},                 /* [REV-TT] */
+      {pt:'Como se diz «bee» em português?',       tt:"Iha portugés, «bee» dehan oinsá?"},        /* [REV-TT] */
+      {pt:'O que quer dizer «morada»?',            tt:"«Morada» katak saida?"}                    /* [REV-TT] */
+    ]},
+    {tipo:'nota',
+     tt:"La bele nonok bainhira ó la komprende! Ema ne'ebé koalia portugés kontente atu ajuda. Husu deit: [[Pode repetir, por favor?]]",   /* [REV-TT] */
+     pt:'Quando não percebes, não fiques calado: quem fala português gosta de ajudar. Pede: «Pode repetir, por favor?»'}
+  ],
+  praticarGuia:{pt:'Ouve e escolhe a frase certa. Atenção às diferenças pequenas!', tt:"Rona no hili fraze ne'ebé loos. Kuidadu ho diferensa ki'ik sira!"},   /* [REV-TT] */
+  nPerguntas:8,
+  praticar:[
+    {ouvir:'Sou de Díli.',        opcoes:['Sou de Díli.','Moro em Díli.','Trabalho em Díli.']},
+    {ouvir:'Moro em Díli.',       opcoes:['Moro em Díli.','Sou de Díli.','Trabalho em Díli.']},
+    {ouvir:'Trabalho em Díli.',   opcoes:['Trabalho em Díli.','Moro em Díli.','Sou de Díli.']},
+    {ouvir:'Sou enfermeiro.',     opcoes:['Sou enfermeiro.','Sou enfermeira.','Sou professor.']},
+    {ouvir:'Sou enfermeira.',     opcoes:['Sou enfermeira.','Sou enfermeiro.','Sou professora.']},
+    {ouvir:'Sou professor.',      opcoes:['Sou professor.','Sou professora.','Sou enfermeiro.']},
+    {ouvir:'Sou professora.',     opcoes:['Sou professora.','Sou professor.','Sou portuguesa.']},
+    {ouvir:'Sou português.',      opcoes:['Sou português.','Sou portuguesa.','Sou timorense.']},
+    {ouvir:'Sou portuguesa.',     opcoes:['Sou portuguesa.','Sou português.','Sou professora.']},
+    {ouvir:'Sou timorense.',      opcoes:['Sou timorense.','Sou português.','Sou de Liquiçá.']}
+  ],
+  /* USAR — [REV-TT] nas situações */
+  usar:[
+    {sit:"Ema husu ó husi ne'ebé. Ó husi Liquiçá. Ó responde saida?",
+     certa:'Sou de Liquiçá.', opcoes:['Sou de Liquiçá.','Moro de Liquiçá.','Sou em Liquiçá.']},
+    {sit:"Ó hela iha Díli. Ema husu ó hela iha ne'ebé. Ó responde saida?",
+     certa:'Moro em Díli.', opcoes:['Moro em Díli.','Sou em Díli.','Moro de Díli.']},
+    {sit:"Ó hakarak hatene ó-nia kolega hela iha ne'ebé. Ó husu saida?",
+     certa:'Onde moras?', opcoes:['Onde moras?','De onde és?','O que fazes?']},
+    {sit:'Ó hakarak hatene ema boot ida nia servisu, ho respeitu. Ó husu saida?',
+     certa:'Qual é a sua profissão?', opcoes:['Qual é a sua profissão?','O que fazes?','Onde moras?']},
+    {sit:'Ó feto no ó mestra. Ó dehan saida?',
+     certa:'Sou professora.', opcoes:['Sou professora.','Sou professor.','Sou enfermeira.']},
+    {sit:'Ó mane no ó enfermeiru. Ó dehan saida?',
+     certa:'Sou enfermeiro.', opcoes:['Sou enfermeiro.','Sou enfermeira.','Sou professor.']},
+    {sit:'Ó timor-oan. Ó dehan saida?',
+     certa:'Sou timorense.', opcoes:['Sou timorense.','Sou timorensa.','Sou de timorense.']},
+    {sit:"Ó hakarak aprezenta ó-nia kolega Paulo (mane).",
+     certa:'Este é o meu colega Paulo.', opcoes:['Este é o meu colega Paulo.','Esta é a minha colega Paulo.','Este é a minha colega Paulo.']},
+    {sit:"Ó servisu iha merkadu. Ó dehan saida?",
+     certa:'Trabalho no mercado.', opcoes:['Trabalho no mercado.','Moro no mercado.','Sou de mercado.']},
+    {sit:"Ema koalia lalais tebes no ó la komprende. Ó husu saida?",
+     certa:'Pode repetir, por favor?', opcoes:['Pode repetir, por favor?','O que fazes?','Até logo!']},
+    {sit:"Ó la hatene liafuan «morada». Ó husu saida?",
+     certa:'O que quer dizer «morada»?', opcoes:['O que quer dizer «morada»?','Onde moras?','Não percebo.']}
+  ],
+  /* TAREFA FINAL — escrever (o único passo de produção escrita do A1) */
+  tarefa:true,
+  audios(m){
+    const f = (txt, fich)=>{ m[chave(txt)] = 'a1_s10_' + fich + '.mp3'; };
+    this.dialogo.forEach((d,i)=> f(d.pt, 'dialogo'+(i+1)));
+    const lista = t => this.descobrir.find(b=>b.titulo===t).itens;
+    const nomesNac = ['timorense','portugues','indonesio','australiano'];
+    lista('nacionalidades').forEach((v,i)=>{ f(v.pt, 'nac_'+nomesNac[i]); f(v.audio, 'nac_'+nomesNac[i]); });
+    const nomesProf = ['professor','enfermeiro','medico','agricultor','pescador','comerciante','motorista','estudante'];
+    lista('profissoes').forEach((v,i)=>{ f(v.pt, 'prof_'+nomesProf[i]); f(v.audio, 'prof_'+nomesProf[i]); });
+    lista('frases').forEach((v,i)=> f(v.pt, 'frase'+(i+1)));
+    lista('ajuda').forEach((v,i)=> f(v.pt, 'ajuda'+(i+1)));
+    ['Sou de Díli.','Trabalho em Díli.','Sou enfermeiro.','Sou enfermeira.','Sou professor.','Sou professora.','Sou português.','Sou portuguesa.']
+      .forEach((t,i)=> f(t, 'ouvir'+(i+1)));
+  }
+};
+
+const CONTEUDO = {s01, s02, s03, s04, s05, s06, s07, s08, s09, s10};
 
 /* ============================================================
    ÁUDIO — igual ao pratica.html: 1.º o MP3 gravado em audios/,
@@ -1298,6 +1446,7 @@ function registarAntigo(id, num){
   c.dialogo.forEach((d,i)=> g(d.pt, 'a1_tema'+num+'_dialogo'+(i+1)+'.mp3'));
 }
 [['s04','04'],['s05','05'],['s06','06'],['s07','07'],['s08','08'],['s09','09']].forEach(([id,num])=> registarAntigo(id,num));
+PROPRIOS.s10 = {}; s10.audios(PROPRIOS.s10);
 const MAPAS = {};
 Object.keys(CONTEUDO).forEach(id=>{ MAPAS[id] = Object.assign({}, GLOBAL, PROPRIOS[id] || {}); });
 const mapaAtual = () => MAPAS[sitAtual] || {};
@@ -1466,6 +1615,9 @@ function desenharSituacao(){
     return `<h3>${t(b.titulo)}</h3><div class="quadro">${b.itens.map(linhaHTML).join('')}</div>`;
   }).join('');
 
+  // Tarefa de escrita (só nas situações que a têm)
+  $('tarefa').innerHTML = c.tarefa ? tarefaHTML() : '';
+
   // 3 e 4 — exercícios (redesenha a pergunta em curso na língua nova)
   $('guia-praticar').textContent = c.praticarGuia ? c.praticarGuia[lang] : t('p3guia');
   ['praticar','usar'].forEach(k=> mostrarPergunta(k));
@@ -1541,6 +1693,60 @@ function responder(k, j){
 }
 function seguinte(k){ EX[k].i++; EX[k].respondida = null; pararAudio(); mostrarPergunta(k); }
 
+/* ============================================================
+   TAREFA FINAL — a minha ficha (Situação 10). Os dados ficam só
+   neste ecrã (nada é enviado nem guardado); a apresentação é
+   montada com a concordância certa (professor/professora…).
+   ============================================================ */
+const FICHA = {nome:'', apelido:'', sexo:'f', nac:'', de:'', em:'', prof:'', tel:''};
+const NAC = {timorense:['timorense','timorense'], portugues:['português','portuguesa'], indonesio:['indonésio','indonésia'], australiano:['australiano','australiana']};
+const PROF = {professor:['professor','professora'], enfermeiro:['enfermeiro','enfermeira'], medico:['médico','médica'], agricultor:['agricultor','agricultora'],
+              pescador:['pescador','pescadora'], comerciante:['comerciante','comerciante'], motorista:['motorista','motorista'], estudante:['estudante','estudante']};
+const forma = (tab, k) => k ? tab[k][FICHA.sexo==='m' ? 0 : 1] : '';
+function tarefaHTML(){
+  const opc = tab => `<option value="">${t('fEscolhe')}</option>` + Object.keys(tab).map(k=>`<option value="${k}">${forma(tab,k)}</option>`).join('');
+  const campo = (id, rot, html) => `<label class="campo"><span>${rot}</span>${html}</label>`;
+  const inp = (id, ph, tipo='text') => `<input id="f-${id}" type="${tipo}" placeholder="${ph}" value="${esc(FICHA[id])}" oninput="FICHA.${id}=this.value" autocomplete="off">`;
+  const html = `<div class="ficha"><h3 class="serif">${t('tarefaTit')}</h3><p class="guia">${t('tarefaGuia')}</p>
+    <div class="ficha-grelha">
+      ${campo('nome', t('fNome'), inp('nome','Ana'))}
+      ${campo('apelido', t('fApelido'), inp('apelido','Soares'))}
+      ${campo('sexo', t('fSou'), `<span class="sexo"><label><input type="radio" name="f-sexo" value="m" ${FICHA.sexo==='m'?'checked':''} onchange="FICHA.sexo='m';desenharSituacao()"> ${t('fHomem')}</label>
+          <label><input type="radio" name="f-sexo" value="f" ${FICHA.sexo==='f'?'checked':''} onchange="FICHA.sexo='f';desenharSituacao()"> ${t('fMulher')}</label></span>`)}
+      ${campo('nac', t('fNac'), `<select id="f-nac" onchange="FICHA.nac=this.value">${opc(NAC)}</select>`)}
+      ${campo('de', t('fDe'), inp('de','Baucau'))}
+      ${campo('em', t('fEm'), inp('em','Liquiçá'))}
+      ${campo('prof', t('fProf'), `<select id="f-prof" onchange="FICHA.prof=this.value">${opc(PROF)}</select>`)}
+      ${campo('tel', t('fTel'), inp('tel','7712 3456','tel'))}
+    </div>
+    <button class="btn verde" onclick="verApresentacao()">${t('fVer')}</button>
+    <div id="apresentacao"></div></div>`;
+  setTimeout(()=>{ const a=$('f-nac'), b=$('f-prof'); if(a) a.value=FICHA.nac; if(b) b.value=FICHA.prof; if(FICHA.mostrar) verApresentacao(); }, 0);
+  return html;
+}
+function textoApresentacao(){
+  const F = FICHA, partes = [];
+  const nome = [F.nome.trim(), F.apelido.trim()].filter(Boolean).join(' ');
+  if(nome) partes.push(`Chamo-me ${nome}.`);
+  if(F.nac) partes.push(`Sou ${forma(NAC,F.nac)}.`);
+  const de = F.de.trim(), em = F.em.trim();
+  if(de && em) partes.push(`Sou de ${de} e moro em ${em}.`);
+  else if(de) partes.push(`Sou de ${de}.`);
+  else if(em) partes.push(`Moro em ${em}.`);
+  if(F.prof) partes.push(`Sou ${forma(PROF,F.prof)}.`);
+  if(F.tel.trim()) partes.push(`O meu número de telefone é ${F.tel.trim()}.`);
+  return partes.join(' ');
+}
+function verApresentacao(){
+  FICHA.mostrar = true;
+  const txt = textoApresentacao();
+  if(!txt){ $('apresentacao').innerHTML = ''; return; }
+  // telefone lido algarismo a algarismo pela voz do computador
+  const falado = txt.replace(/(\d)(?=\d)/g,'$1 ');
+  $('apresentacao').innerHTML = `<div class="nota"><b>${t('fApres')}</b><p class="pt" style="margin:.4rem 0">${esc(txt)}</p>
+    <button class="btn claro" style="margin:0" onclick="tocar(${regista(()=>{ pararAudio(); falarTTS(falado); })})">🔊 ${t('fVoz')}</button></div>`;
+}
+
 function concluir(){
   guardarFeita(sitAtual);
   $('btn-concluir').textContent = t('concluida');
@@ -1549,6 +1755,13 @@ function concluir(){
 
 /* Arranque */
 setLang(lang);
+/* Situações «auto»: abrem quando a imagem e o último áudio já estão no GitHub */
+SITUACOES.filter(s=>s.auto).forEach(s=>{
+  const existe = u => fetch(u, {method:'HEAD', cache:'no-store'}).then(r=>r.ok).catch(()=>false);
+  Promise.all([existe(s.img), existe(AUDIO_BASE + s.sentinela)]).then(ok=>{
+    if(ok.every(Boolean)){ s.pronta = true; desenharGrelha(); }
+  });
+});
 /* Os passos 1–4 ficam colados logo abaixo da barra de cima, seja qual for a sua altura */
 const ajustarTopo = ()=> document.documentElement.style.setProperty('--topo-h', document.querySelector('.topo').offsetHeight + 'px');
 ajustarTopo(); addEventListener('resize', ajustarTopo);
